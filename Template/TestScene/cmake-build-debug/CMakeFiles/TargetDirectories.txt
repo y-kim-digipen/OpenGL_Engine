@@ -1,0 +1,4 @@
+/home/yoonki/Desktop/CS300/Template/TestScene/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/yoonki/Desktop/CS300/Template/TestScene/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/yoonki/Desktop/CS300/Template/TestScene/cmake-build-debug/CMakeFiles/common_lib.dir
+/home/yoonki/Desktop/CS300/Template/TestScene/cmake-build-debug/CMakeFiles/TestScene_CS300.dir

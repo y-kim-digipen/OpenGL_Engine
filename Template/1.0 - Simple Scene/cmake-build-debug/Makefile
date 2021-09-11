@@ -190,6 +190,30 @@ SimpleScene_Quad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SimpleScene_OGL4.dir/build.make CMakeFiles/SimpleScene_OGL4.dir/SimpleScene_Quad.cpp.s
 .PHONY : SimpleScene_Quad.cpp.s
 
+home/yoonki/Desktop/CS300/Template/Common/Engine.o: home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o
+
+home/yoonki/Desktop/CS300/Template/Common/Engine.i: home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i
+
+home/yoonki/Desktop/CS300/Template/Common/Engine.s: home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s
+
 home/yoonki/Desktop/CS300/Template/Common/Mesh.o: home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.o
 .PHONY : home/yoonki/Desktop/CS300/Template/Common/Mesh.o
 
@@ -305,6 +329,9 @@ help:
 	@echo "... SimpleScene_Quad.o"
 	@echo "... SimpleScene_Quad.i"
 	@echo "... SimpleScene_Quad.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/Common/Engine.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/Common/Engine.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/Common/Engine.s"
 	@echo "... home/yoonki/Desktop/CS300/Template/Common/Mesh.o"
 	@echo "... home/yoonki/Desktop/CS300/Template/Common/Mesh.i"
 	@echo "... home/yoonki/Desktop/CS300/Template/Common/Mesh.s"

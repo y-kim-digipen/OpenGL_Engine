@@ -31,7 +31,18 @@ add_library( common_lib
 #        ../Common/GeometryShaderManager.h
 #        ../Common/Light.cpp
 #        ../Common/Light.h
+        ../Common/Input/KeyCodes.h
+        ../Common/Input/InputManager.cpp
+        ../Common/Input/InputManager.h
+        ../Common/Engine.cpp
+        ../Common/Engine.h
+        ../Common/Color.h
+
+
         )
+
+target_link_libraries( common_lib ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES}
+        ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )

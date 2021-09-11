@@ -1,4 +1,4 @@
-set( CMAKE_CXX_STANDARD 11 )
+set( CMAKE_CXX_STANDARD 17 )
 set( OpenGL_GL_PREFERENCE GLVND)
 
 find_package(PkgConfig REQUIRED)

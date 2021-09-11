@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yoonki/Desktop/CS300/Template/Common/Color.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+iostream
+-
+GL/glew.h
+-
+GLFW/glfw3.h
+-
+Input/InputManager.h
+/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+string
+-
+glm/glm.hpp
+-
+Color.h
+/home/yoonki/Desktop/CS300/Template/Common/Color.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
+utility
+-
+vector
+-
+KeyCodes.h
+/home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
+GLFW/glfw3.h
+-
+

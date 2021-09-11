@@ -118,12 +118,26 @@ CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp -o CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.s
 
+CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o: CMakeFiles/common_lib.dir/flags.make
+CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o: /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
+
+CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp > CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.i
+
+CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp -o CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.s
+
 # Object files for target common_lib
 common_lib_OBJECTS = \
 "CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/shader.cpp.o" \
 "CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp.o" \
 "CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp.o" \
-"CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.o"
+"CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.o" \
+"CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o"
 
 # External object files for target common_lib
 common_lib_EXTERNAL_OBJECTS =
@@ -132,9 +146,10 @@ libcommon_lib.a: CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Co
 libcommon_lib.a: CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp.o
 libcommon_lib.a: CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp.o
 libcommon_lib.a: CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp.o
+libcommon_lib.a: CMakeFiles/common_lib.dir/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp.o
 libcommon_lib.a: CMakeFiles/common_lib.dir/build.make
 libcommon_lib.a: CMakeFiles/common_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libcommon_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libcommon_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/common_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/common_lib.dir/link.txt --verbose=$(VERBOSE)
 

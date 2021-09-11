@@ -137,6 +137,18 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/SimpleScene_Quad.h">
 			<Option target="SimpleScene_OGL4"/>
 		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Color.h">
+			<Option target="common_lib"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp">
+			<Option target="common_lib"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.h">
+			<Option target="common_lib"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h">
+			<Option target="common_lib"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp">
 			<Option target="common_lib"/>
 		</Unit>
