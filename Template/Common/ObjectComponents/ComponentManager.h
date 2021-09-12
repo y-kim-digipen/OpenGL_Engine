@@ -23,7 +23,7 @@ public:
     template<typename... Args>
     bool AddComponent(const std::string& name, Args... args);
     bool RemoveComponent(const std::string& nameStr);
-
+    std::shared_ptr<ComponentType> GetComponent(const std::string& name);
 
     [[nodiscard]] size_t Size() const;
     //todo for future expansion

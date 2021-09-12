@@ -8,11 +8,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/yoonki/Desktop/CS300/Template/Common/Camera.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Camera.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Engine.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Input/InputManager.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Mesh.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/OBJReader.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/Common/Object.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Object.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Scene.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/SceneBase.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Shader.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Shader.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/main.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/main.cpp.o"
   )

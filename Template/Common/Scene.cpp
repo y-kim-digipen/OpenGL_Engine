@@ -4,15 +4,13 @@
 
 #include "Scene.h"
 
-Scene::Scene() : _windowWidth(100), _windowHeight(100)
-{
-
-}
+Scene::Scene() : Scene(100, 100) {}
 
 Scene::Scene(int windowWidth, int windowHeight)
 {
-    _windowHeight = windowHeight;
-    _windowWidth = windowWidth;
+    mWindowHeight = windowHeight;
+    mWindowWidth = windowWidth;
+    mFocusedCameraIdx = -1;
 }
 
 Scene::~Scene()
@@ -25,6 +23,14 @@ Scene::~Scene()
 // Init: called once when the scene is initialized
 int Scene::Init()
 {
+    mCameras.push_back(std::make_unique<Camera>());
+    mFocusedCameraIdx = 0;
+
+    std::unique_ptr<Object> mDefaultCubeObject;
+    mDefaultCubeObject->SetMesh("");
+    mDefaultCubeObject->SetShader("");
+
+    mObjects.emplace_back(mDefaultCubeObject.release());
     return -1;
 }
 

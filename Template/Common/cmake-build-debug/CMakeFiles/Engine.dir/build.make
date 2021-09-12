@@ -157,6 +157,45 @@ CMakeFiles/Engine.dir/Engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Engine.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp -o CMakeFiles/Engine.dir/Engine.cpp.s
 
+CMakeFiles/Engine.dir/Object.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/Object.cpp.o: ../Object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Engine.dir/Object.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Object.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Object.cpp
+
+CMakeFiles/Engine.dir/Object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/Object.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/Object.cpp > CMakeFiles/Engine.dir/Object.cpp.i
+
+CMakeFiles/Engine.dir/Object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Object.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Object.cpp -o CMakeFiles/Engine.dir/Object.cpp.s
+
+CMakeFiles/Engine.dir/Camera.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/Camera.cpp.o: ../Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Engine.dir/Camera.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Camera.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Camera.cpp
+
+CMakeFiles/Engine.dir/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/Camera.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/Camera.cpp > CMakeFiles/Engine.dir/Camera.cpp.i
+
+CMakeFiles/Engine.dir/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Camera.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Camera.cpp -o CMakeFiles/Engine.dir/Camera.cpp.s
+
+CMakeFiles/Engine.dir/SceneBase.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/SceneBase.cpp.o: ../SceneBase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Engine.dir/SceneBase.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/SceneBase.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp
+
+CMakeFiles/Engine.dir/SceneBase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/SceneBase.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp > CMakeFiles/Engine.dir/SceneBase.cpp.i
+
+CMakeFiles/Engine.dir/SceneBase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/SceneBase.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp -o CMakeFiles/Engine.dir/SceneBase.cpp.s
+
 # Object files for target Engine
 Engine_OBJECTS = \
 "CMakeFiles/Engine.dir/main.cpp.o" \
@@ -165,7 +204,10 @@ Engine_OBJECTS = \
 "CMakeFiles/Engine.dir/OBJReader.cpp.o" \
 "CMakeFiles/Engine.dir/Mesh.cpp.o" \
 "CMakeFiles/Engine.dir/Input/InputManager.cpp.o" \
-"CMakeFiles/Engine.dir/Engine.cpp.o"
+"CMakeFiles/Engine.dir/Engine.cpp.o" \
+"CMakeFiles/Engine.dir/Object.cpp.o" \
+"CMakeFiles/Engine.dir/Camera.cpp.o" \
+"CMakeFiles/Engine.dir/SceneBase.cpp.o"
 
 # External object files for target Engine
 Engine_EXTERNAL_OBJECTS =
@@ -177,6 +219,9 @@ Engine: CMakeFiles/Engine.dir/OBJReader.cpp.o
 Engine: CMakeFiles/Engine.dir/Mesh.cpp.o
 Engine: CMakeFiles/Engine.dir/Input/InputManager.cpp.o
 Engine: CMakeFiles/Engine.dir/Engine.cpp.o
+Engine: CMakeFiles/Engine.dir/Object.cpp.o
+Engine: CMakeFiles/Engine.dir/Camera.cpp.o
+Engine: CMakeFiles/Engine.dir/SceneBase.cpp.o
 Engine: CMakeFiles/Engine.dir/build.make
 Engine: /usr/lib/x86_64-linux-gnu/libGLEW.so
 Engine: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
@@ -184,7 +229,7 @@ Engine: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 Engine: /usr/lib/x86_64-linux-gnu/libGLU.so
 Engine: /usr/lib/x86_64-linux-gnu/libGLX.so
 Engine: CMakeFiles/Engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

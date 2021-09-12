@@ -7,23 +7,29 @@
 
 #include <filesystem>
 
+#include "Camera.h"
 #include "Object.h"
 
 class SceneBase{
 public:
-    virtual void Init() = 0;
+    virtual void Init();
 
+    //todo implement this if needed
     //void InitFromFile(const std::filesystem::path& filePath);
 
-    virtual void PreRender() = 0;
-    virtual void Render() = 0;
-    virtual void PostRender() = 0;
+    virtual void PreRender();
+    virtual void Render() const;
+    virtual void PostRender();
 
-    virtual void CleanUp() = 0;
+    virtual void CleanUp();
 
+    [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
 
 protected:
-    ComponentManager<Object> mObjects;
+    short mFocusedCameraIdx;
+
+    std::vector<std::shared_ptr<Camera>> m_pCameras;
+    std::map<std::string, std::unique_ptr<Object>> m_pObjects;
 };
 
 #endif //ENGINE_SCENEBASE_H

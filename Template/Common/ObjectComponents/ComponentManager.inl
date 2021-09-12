@@ -11,7 +11,7 @@ void ComponentManager<ComponentType>::Cleanup() {
 
 template<typename ComponentType>
 bool ComponentManager<ComponentType>::validate_existence(const std::string &nameStr) {
-    return std::find(mNameList.begin(), mNameList.end(), nameStr) != mNameList.end();
+    return std::find(mNameList.begin(), mNameList.end(), nameStr) == mNameList.end();
 }
 
 template<typename ComponentType>
@@ -66,6 +66,15 @@ template<typename ComponentType>
 template<typename... Args>
 bool ComponentManager<ComponentType>::AddComponent(const std::string &name, Args... args) {
     return AddComponent(name, std::make_shared<ComponentType>(ComponentType(args...)));
+}
+
+template<typename ComponentType>
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::GetComponent(const std::string &name) {
+    auto foundItr = mComponentMap.template find(name);
+    if(foundItr != mComponentMap.end()){
+        return foundItr->second;
+    }
+    return nullptr;
 }
 
 //template<typename ComponentType>

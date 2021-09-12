@@ -129,6 +129,30 @@ Engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/build
 .PHONY : Engine/fast
 
+Camera.o: Camera.cpp.o
+.PHONY : Camera.o
+
+# target to build an object file
+Camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Camera.cpp.o
+.PHONY : Camera.cpp.o
+
+Camera.i: Camera.cpp.i
+.PHONY : Camera.i
+
+# target to preprocess a source file
+Camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Camera.cpp.i
+.PHONY : Camera.cpp.i
+
+Camera.s: Camera.cpp.s
+.PHONY : Camera.s
+
+# target to generate assembly for a file
+Camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Camera.cpp.s
+.PHONY : Camera.cpp.s
+
 Engine.o: Engine.cpp.o
 .PHONY : Engine.o
 
@@ -225,6 +249,30 @@ OBJReader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/OBJReader.cpp.s
 .PHONY : OBJReader.cpp.s
 
+Object.o: Object.cpp.o
+.PHONY : Object.o
+
+# target to build an object file
+Object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Object.cpp.o
+.PHONY : Object.cpp.o
+
+Object.i: Object.cpp.i
+.PHONY : Object.i
+
+# target to preprocess a source file
+Object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Object.cpp.i
+.PHONY : Object.cpp.i
+
+Object.s: Object.cpp.s
+.PHONY : Object.s
+
+# target to generate assembly for a file
+Object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Object.cpp.s
+.PHONY : Object.cpp.s
+
 Scene.o: Scene.cpp.o
 .PHONY : Scene.o
 
@@ -248,6 +296,30 @@ Scene.s: Scene.cpp.s
 Scene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.s
 .PHONY : Scene.cpp.s
+
+SceneBase.o: SceneBase.cpp.o
+.PHONY : SceneBase.o
+
+# target to build an object file
+SceneBase.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/SceneBase.cpp.o
+.PHONY : SceneBase.cpp.o
+
+SceneBase.i: SceneBase.cpp.i
+.PHONY : SceneBase.i
+
+# target to preprocess a source file
+SceneBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/SceneBase.cpp.i
+.PHONY : SceneBase.cpp.i
+
+SceneBase.s: SceneBase.cpp.s
+.PHONY : SceneBase.s
+
+# target to generate assembly for a file
+SceneBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/SceneBase.cpp.s
+.PHONY : SceneBase.cpp.s
 
 Shader.o: Shader.cpp.o
 .PHONY : Shader.o
@@ -306,6 +378,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Engine"
+	@echo "... Camera.o"
+	@echo "... Camera.i"
+	@echo "... Camera.s"
 	@echo "... Engine.o"
 	@echo "... Engine.i"
 	@echo "... Engine.s"
@@ -318,9 +393,15 @@ help:
 	@echo "... OBJReader.o"
 	@echo "... OBJReader.i"
 	@echo "... OBJReader.s"
+	@echo "... Object.o"
+	@echo "... Object.i"
+	@echo "... Object.s"
 	@echo "... Scene.o"
 	@echo "... Scene.i"
 	@echo "... Scene.s"
+	@echo "... SceneBase.o"
+	@echo "... SceneBase.i"
+	@echo "... SceneBase.s"
 	@echo "... Shader.o"
 	@echo "... Shader.i"
 	@echo "... Shader.s"

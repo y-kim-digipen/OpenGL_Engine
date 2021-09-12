@@ -6,7 +6,11 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include "Input/InputManager.h"
+//todo delete this after testing scene
+#include "TestScene.h"
+
 Engine::Engine() {
     mClearColor = Color(0.f);
     mWinSize = glm::vec2{};
@@ -63,7 +67,6 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
         glfwTerminate();
         return -1;
     }
-
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(m_pWindow, GLFW_STICKY_KEYS, GL_TRUE);
 
@@ -80,14 +83,24 @@ void Engine::InitEngine() {
     InputManager::Init();
 
     //todo for now, it is for debugging
-    Mesh* mymesh = new Mesh();
     Mesh mymesh2;
-    MeshManager.AddComponent("Hello", std::forward<Mesh>(mymesh2));
-    MeshManager.AddComponent("Hello2", mymesh);
+//    mymesh2->
+    Shader myShader;
+
+    mMeshManager.AddComponent("TestMesh", mymesh2);
+    mShaderManager.AddComponent("TestShader", myShader);
+
+    m_pScenes.emplace_back(new TestScene());
+    mFocusedSceneIdx = 0;
+    //debug part ended here
+
+    for(auto& scene : m_pScenes){
+        scene->Init();
+    }
 }
 
 void Engine::Update() {
-    if(mFocusedSceneIdx > 0){
+    if(mFocusedSceneIdx >= 0){
         PreRender();
         Render();
         PostRender();
@@ -102,7 +115,20 @@ void Engine::Update() {
 
 void Engine::CleanUp() {
     //delete GetInstance();
+    for(auto pScene : m_pScenes){
+        pScene->CleanUp();
+        delete pScene;
+        pScene = nullptr;
+    }
     glfwTerminate();
+}
+
+std::shared_ptr<Mesh> Engine::GetMesh(const std::string &meshStr) {
+    return mMeshManager.GetComponent(meshStr);
+}
+
+std::shared_ptr<Shader> Engine::GetShader(const std::string &shaderStr) {
+    return mShaderManager.GetComponent(shaderStr);;
 }
 
 bool Engine::IsRunning() {
@@ -146,6 +172,11 @@ void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, int k
         InputManager::on_key_released(static_cast<Key>(key));
     }
 }
+
+glm::vec2 Engine::GetWindowSize() {
+    return mWinSize;
+}
+
 
 
 

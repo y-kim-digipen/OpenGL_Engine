@@ -39,6 +39,11 @@ public:
     static void SetClearColor(Color newClearColor);
 
     static bool IsRunning();
+
+    static glm::vec2 GetWindowSize();
+
+    static std::shared_ptr<Mesh> GetMesh(const std::string& meshStr);
+    static std::shared_ptr<Shader> GetShader(const std::string& shaderStr);
 private:
     static void PreRender();
     static void Render();
@@ -54,10 +59,10 @@ private:
     inline static glm::vec2 mWinSize;
     inline static Color mClearColor;
 
-    inline static std::vector<std::unique_ptr<SceneBase>> m_pScenes;
+    inline static std::vector<SceneBase*> m_pScenes;
 
     inline static short mFocusedSceneIdx;
 
-    inline static ComponentManager<Mesh> MeshManager;
-    inline static ComponentManager<Shader> ShaderManager;
+    inline static ComponentManager<Mesh> mMeshManager;
+    inline static ComponentManager<Shader> mShaderManager;
 };

@@ -6,7 +6,9 @@
 #define SIMPLE_OBJ_SCENE_MESH_H
 
 #include <vector>
+
 #include <glm/glm.hpp>
+#include <GL/glut.h>
 
 #include "ObjectComponents/ComponentBase.h"
 
@@ -65,7 +67,6 @@ private:
 
     glm::vec3               boundingBox[2];
     GLfloat                 normalLength;
-
 };
 
 

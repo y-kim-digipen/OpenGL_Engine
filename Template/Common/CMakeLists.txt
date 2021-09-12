@@ -45,8 +45,10 @@ add_executable( ${TARGET_NAME}
         ../Common/ObjectComponents/ComponentManager.h
         ../Common/ObjectComponents/ComponentManager.inl
         ../Common/TestScene.h
+        ../Common/Object.cpp
         ../Common/Object.h
-        )
+        ../Common/Camera.cpp
+        ../Common/Camera.h SceneBase.cpp)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )

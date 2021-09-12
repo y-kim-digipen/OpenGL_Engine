@@ -5,10 +5,14 @@
 #ifndef SAMPLE3_2_FBO_SCENE_H
 #define SAMPLE3_2_FBO_SCENE_H
 
+#include <vector>
+#include <memory>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-//#include <nanogui/nanogui.h>
+#include "Camera.h"
+#include "Object.h"
 
 //#include "SceneManager.h"
 //#include "VertexDataManager.h"
@@ -48,16 +52,18 @@ public:
     virtual void CleanUp();
 
     // NanoGUI stuff
-    virtual void SetupNanoGUI(GLFWwindow *pWwindow) = 0;
+    //virtual void SetupNanoGUI(GLFWwindow *pWwindow) = 0;
 //    virtual void CleanupNanoGUI(GLFWwindow *pWwindow, const nanogui::FormHelper &screen) = 0;
 
 protected:
-    int _windowHeight, _windowWidth;
+    int mWindowHeight, mWindowWidth;
 
     // Common functionality for all scenes
 //    SceneManager                    _scnManager;
 //    std::vector<VertexDataManager>   VAOs;
-
+    std::vector<std::unique_ptr<Camera>> mCameras;
+    std::vector<std::unique_ptr<Object>> mObjects;
+    short mFocusedCameraIdx;
 };
 
 

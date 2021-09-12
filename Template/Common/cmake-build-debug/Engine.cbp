@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Camera.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Camera.h">
+			<Option target="Engine"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Color.h">
 			<Option target="Engine"/>
 		</Unit>
@@ -117,6 +123,9 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/OBJReader.h">
 			<Option target="Engine"/>
 		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Object.cpp">
+			<Option target="Engine"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Object.h">
 			<Option target="Engine"/>
 		</Unit>
@@ -133,6 +142,9 @@
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Scene.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.h">
