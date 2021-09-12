@@ -159,7 +159,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=EngineTest
+CMAKE_PROJECT_NAME:STATIC=Engine
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -228,6 +228,12 @@ EngineTest_BINARY_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/Common/cmake-bu
 
 //Value Computed by CMake
 EngineTest_SOURCE_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/Common
+
+//Value Computed by CMake
+Engine_BINARY_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug
+
+//Value Computed by CMake
+Engine_SOURCE_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/Common
 
 //The directory containing a CMake configuration file for GLEW.
 GLEW_DIR:PATH=GLEW_DIR-NOTFOUND

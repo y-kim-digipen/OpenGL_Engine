@@ -6,8 +6,8 @@ include( ../Common/build_files/Common_packages.cmake )
 set( TARGET_NAME SimpleScene_OGL4 )
 
 add_executable( ${TARGET_NAME}
-        ../Common/shader.cpp
-        ../Common/shader.hpp
+        ../Common/Shader.cpp
+        ../Common/Shader.h
         SimpleScene_Quad.cpp
         SimpleScene_Quad.h
         GLApplication.cpp )

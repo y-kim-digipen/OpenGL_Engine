@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/EngineTestBuild.dir/all
+all: CMakeFiles/Engine.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/EngineTestBuild.dir/clean
+clean: CMakeFiles/Engine.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/EngineTestBuild.dir
+# Target rules for target CMakeFiles/Engine.dir
 
 # All Build rule for target.
-CMakeFiles/EngineTestBuild.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target EngineTestBuild"
-.PHONY : CMakeFiles/EngineTestBuild.dir/all
+CMakeFiles/Engine.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Engine"
+.PHONY : CMakeFiles/Engine.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/EngineTestBuild.dir/rule: cmake_check_build_system
+CMakeFiles/Engine.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/EngineTestBuild.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Engine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/EngineTestBuild.dir/rule
+.PHONY : CMakeFiles/Engine.dir/rule
 
 # Convenience name for target.
-EngineTestBuild: CMakeFiles/EngineTestBuild.dir/rule
-.PHONY : EngineTestBuild
+Engine: CMakeFiles/Engine.dir/rule
+.PHONY : Engine
 
 # clean rule for target.
-CMakeFiles/EngineTestBuild.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/clean
-.PHONY : CMakeFiles/EngineTestBuild.dir/clean
+CMakeFiles/Engine.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/clean
+.PHONY : CMakeFiles/Engine.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

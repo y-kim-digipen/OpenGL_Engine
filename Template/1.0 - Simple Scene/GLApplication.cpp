@@ -16,7 +16,7 @@
 
 // Local / project headers
 #include "../Common/Scene.h"
-#include "shader.hpp"
+#include "Shader.h"
 #include "SimpleScene_Quad.h"
 
 //////////////////////////////////////////////////////////////////////

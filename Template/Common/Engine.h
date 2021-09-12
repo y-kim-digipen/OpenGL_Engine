@@ -6,12 +6,19 @@
 #define SIMPLE_SCENE_ENGINE_H
 
 #endif //SIMPLE_SCENE_ENGINE_H
-#include <string>
+
 #include <glm/glm.hpp>
 
+#include <string>
+#include <memory>
+#include <vector>
+#include <ObjectComponents/ComponentManager.h>
+
 #include "Color.h"
-
-
+#include "Scene.h"
+#include "Mesh.h"
+#include "SceneBase.h"
+#include "Shader.h"
 
 class GLFWwindow;
 
@@ -46,4 +53,11 @@ private:
     inline static GLFWwindow* m_pWindow;
     inline static glm::vec2 mWinSize;
     inline static Color mClearColor;
+
+    inline static std::vector<std::unique_ptr<SceneBase>> m_pScenes;
+
+    inline static short mFocusedSceneIdx;
+
+    inline static ComponentManager<Mesh> MeshManager;
+    inline static ComponentManager<Shader> ShaderManager;
 };

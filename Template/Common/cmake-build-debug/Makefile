@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named EngineTestBuild
+# Target rules for targets named Engine
 
 # Build rule for target.
-EngineTestBuild: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 EngineTestBuild
-.PHONY : EngineTestBuild
+Engine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Engine
+.PHONY : Engine
 
 # fast build rule for target.
-EngineTestBuild/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/build
-.PHONY : EngineTestBuild/fast
+Engine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/build
+.PHONY : Engine/fast
 
 Engine.o: Engine.cpp.o
 .PHONY : Engine.o
 
 # target to build an object file
 Engine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Engine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine.cpp.o
 .PHONY : Engine.cpp.o
 
 Engine.i: Engine.cpp.i
@@ -142,7 +142,7 @@ Engine.i: Engine.cpp.i
 
 # target to preprocess a source file
 Engine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Engine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine.cpp.i
 .PHONY : Engine.cpp.i
 
 Engine.s: Engine.cpp.s
@@ -150,7 +150,7 @@ Engine.s: Engine.cpp.s
 
 # target to generate assembly for a file
 Engine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Engine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine.cpp.s
 .PHONY : Engine.cpp.s
 
 Input/InputManager.o: Input/InputManager.cpp.o
@@ -158,7 +158,7 @@ Input/InputManager.o: Input/InputManager.cpp.o
 
 # target to build an object file
 Input/InputManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Input/InputManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Input/InputManager.cpp.o
 .PHONY : Input/InputManager.cpp.o
 
 Input/InputManager.i: Input/InputManager.cpp.i
@@ -166,7 +166,7 @@ Input/InputManager.i: Input/InputManager.cpp.i
 
 # target to preprocess a source file
 Input/InputManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Input/InputManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Input/InputManager.cpp.i
 .PHONY : Input/InputManager.cpp.i
 
 Input/InputManager.s: Input/InputManager.cpp.s
@@ -174,7 +174,7 @@ Input/InputManager.s: Input/InputManager.cpp.s
 
 # target to generate assembly for a file
 Input/InputManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Input/InputManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Input/InputManager.cpp.s
 .PHONY : Input/InputManager.cpp.s
 
 Mesh.o: Mesh.cpp.o
@@ -182,7 +182,7 @@ Mesh.o: Mesh.cpp.o
 
 # target to build an object file
 Mesh.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Mesh.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Mesh.cpp.o
 .PHONY : Mesh.cpp.o
 
 Mesh.i: Mesh.cpp.i
@@ -190,7 +190,7 @@ Mesh.i: Mesh.cpp.i
 
 # target to preprocess a source file
 Mesh.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Mesh.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Mesh.cpp.i
 .PHONY : Mesh.cpp.i
 
 Mesh.s: Mesh.cpp.s
@@ -198,7 +198,7 @@ Mesh.s: Mesh.cpp.s
 
 # target to generate assembly for a file
 Mesh.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Mesh.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Mesh.cpp.s
 .PHONY : Mesh.cpp.s
 
 OBJReader.o: OBJReader.cpp.o
@@ -206,7 +206,7 @@ OBJReader.o: OBJReader.cpp.o
 
 # target to build an object file
 OBJReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/OBJReader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/OBJReader.cpp.o
 .PHONY : OBJReader.cpp.o
 
 OBJReader.i: OBJReader.cpp.i
@@ -214,7 +214,7 @@ OBJReader.i: OBJReader.cpp.i
 
 # target to preprocess a source file
 OBJReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/OBJReader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/OBJReader.cpp.i
 .PHONY : OBJReader.cpp.i
 
 OBJReader.s: OBJReader.cpp.s
@@ -222,7 +222,7 @@ OBJReader.s: OBJReader.cpp.s
 
 # target to generate assembly for a file
 OBJReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/OBJReader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/OBJReader.cpp.s
 .PHONY : OBJReader.cpp.s
 
 Scene.o: Scene.cpp.o
@@ -230,7 +230,7 @@ Scene.o: Scene.cpp.o
 
 # target to build an object file
 Scene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Scene.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.o
 .PHONY : Scene.cpp.o
 
 Scene.i: Scene.cpp.i
@@ -238,7 +238,7 @@ Scene.i: Scene.cpp.i
 
 # target to preprocess a source file
 Scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Scene.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.i
 .PHONY : Scene.cpp.i
 
 Scene.s: Scene.cpp.s
@@ -246,15 +246,39 @@ Scene.s: Scene.cpp.s
 
 # target to generate assembly for a file
 Scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/Scene.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.s
 .PHONY : Scene.cpp.s
+
+Shader.o: Shader.cpp.o
+.PHONY : Shader.o
+
+# target to build an object file
+Shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Shader.cpp.o
+.PHONY : Shader.cpp.o
+
+Shader.i: Shader.cpp.i
+.PHONY : Shader.i
+
+# target to preprocess a source file
+Shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Shader.cpp.i
+.PHONY : Shader.cpp.i
+
+Shader.s: Shader.cpp.s
+.PHONY : Shader.s
+
+# target to generate assembly for a file
+Shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Shader.cpp.s
+.PHONY : Shader.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -262,7 +286,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -270,32 +294,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-shader.o: shader.cpp.o
-.PHONY : shader.o
-
-# target to build an object file
-shader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/shader.cpp.o
-.PHONY : shader.cpp.o
-
-shader.i: shader.cpp.i
-.PHONY : shader.i
-
-# target to preprocess a source file
-shader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/shader.cpp.i
-.PHONY : shader.cpp.i
-
-shader.s: shader.cpp.s
-.PHONY : shader.s
-
-# target to generate assembly for a file
-shader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EngineTestBuild.dir/build.make CMakeFiles/EngineTestBuild.dir/shader.cpp.s
-.PHONY : shader.cpp.s
 
 # Help Target
 help:
@@ -305,7 +305,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... EngineTestBuild"
+	@echo "... Engine"
 	@echo "... Engine.o"
 	@echo "... Engine.i"
 	@echo "... Engine.s"
@@ -321,12 +321,12 @@ help:
 	@echo "... Scene.o"
 	@echo "... Scene.i"
 	@echo "... Scene.s"
+	@echo "... Shader.o"
+	@echo "... Shader.i"
+	@echo "... Shader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... shader.o"
-	@echo "... shader.i"
-	@echo "... shader.s"
 .PHONY : help
 
 

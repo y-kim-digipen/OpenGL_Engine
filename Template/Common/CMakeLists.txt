@@ -1,14 +1,15 @@
 cmake_minimum_required( VERSION 3.9 )
-project( EngineTest )
+project( Engine )
 
 include( ../Common/build_files/Common_packages.cmake )
 
-set( TARGET_NAME EngineTestBuild )
+set( TARGET_NAME Engine )
 
 add_executable( ${TARGET_NAME}
         main.cpp
-        ../Common/shader.cpp
-        ../Common/shader.hpp
+        ../Common/CommonConstants.h
+        Shader.cpp
+        Shader.h
         #        ../Common/Utilities.cpp
         #        ../Common/Utilities.h
         ../Common/Scene.cpp
@@ -38,7 +39,14 @@ add_executable( ${TARGET_NAME}
         ../Common/Input/InputManager.h
         ../Common/Engine.cpp
         ../Common/Engine.h
-        ../Common/Color.h)
+        ../Common/Color.h
+        ../Common/SceneBase.h
+        ../Common/ObjectComponents/ComponentBase.h
+        ../Common/ObjectComponents/ComponentManager.h
+        ../Common/ObjectComponents/ComponentManager.inl
+        ../Common/TestScene.h
+        ../Common/Object.h
+        )
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )

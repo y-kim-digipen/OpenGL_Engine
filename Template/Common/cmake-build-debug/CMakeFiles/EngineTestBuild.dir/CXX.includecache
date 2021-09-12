@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+../../Common/Color.h
+
+../../Common/Engine.h
+glm/glm.hpp
+-
+string
+-
+memory
+-
+vector
+-
+Color.h
+../../Common/Color.h
+
 /home/yoonki/Desktop/CS300/Template/Common/Color.h
 
 /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
@@ -21,9 +35,13 @@ Input/InputManager.h
 /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
 
 /home/yoonki/Desktop/CS300/Template/Common/Engine.h
+glm/glm.hpp
+-
 string
 -
-glm/glm.hpp
+memory
+-
+vector
 -
 Color.h
 /home/yoonki/Desktop/CS300/Template/Common/Color.h
@@ -38,5 +56,9 @@ KeyCodes.h
 
 /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
 GLFW/glfw3.h
+-
+
+/home/yoonki/Desktop/CS300/Template/Common/main.cpp
+Engine.h
 -
 

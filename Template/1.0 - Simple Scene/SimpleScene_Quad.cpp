@@ -4,7 +4,7 @@
 
 
 #include "SimpleScene_Quad.h"
-#include <shader.hpp>
+#include <Shader.h>
 #include <glm/vec3.hpp>
 #include <glm/detail/type_mat4x4.hpp>
 

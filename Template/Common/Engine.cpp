@@ -76,20 +76,28 @@ void Engine::SetClearColor(Color newClearColor) {
 }
 
 void Engine::InitEngine() {
+    mFocusedSceneIdx = -1;
     InputManager::Init();
+
+    //todo for now, it is for debugging
+    Mesh* mymesh = new Mesh();
+    Mesh mymesh2;
+    MeshManager.AddComponent("Hello", std::forward<Mesh>(mymesh2));
+    MeshManager.AddComponent("Hello2", mymesh);
 }
 
 void Engine::Update() {
-    PreRender();
-    Render();
-    PostRender();
+    if(mFocusedSceneIdx > 0){
+        PreRender();
+        Render();
+        PostRender();
+    }
 
-    //todo delete this after scene is implemented
     glfwSwapBuffers(m_pWindow);
+    //todo delete this after scene is implemented
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glfwPollEvents();
-
-
 }
 
 void Engine::CleanUp() {
@@ -104,15 +112,15 @@ bool Engine::IsRunning() {
 }
 
 void Engine::PreRender() {
-
+    m_pScenes[mFocusedSceneIdx]->PreRender();
 }
 
 void Engine::Render() {
-
+    m_pScenes[mFocusedSceneIdx]->Render();
 }
 
 void Engine::PostRender() {
-
+    m_pScenes[mFocusedSceneIdx]->PostRender();
 }
 
 void Engine::GLFWErrorCallback([[maybe_unused]]int, const char *err_str) {

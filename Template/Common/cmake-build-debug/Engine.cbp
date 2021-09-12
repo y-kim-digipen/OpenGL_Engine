@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="EngineTest"/>
+		<Option title="Engine"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;CMake Files\build_files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\;"/>
@@ -84,10 +84,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/BaseScene.h">
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Color.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Color.h">
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp">
@@ -117,7 +117,16 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/OBJReader.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ManagerBase.h">
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Object.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentManager.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentManager.inl">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp">
@@ -126,13 +135,19 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Scene.h">
 			<Option target="Engine"/>
 		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Shader.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Shader.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/TestScene.h">
+			<Option target="Engine"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/main.cpp">
-			<Option target="Engine"/>
-		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/shader.cpp">
-			<Option target="Engine"/>
-		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/shader.hpp">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CMakeLists.txt">

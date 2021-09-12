@@ -6,11 +6,11 @@
 #define SIMPLE_OBJ_SCENE_MESH_H
 
 #include <vector>
-
 #include <glm/glm.hpp>
 
+#include "ObjectComponents/ComponentBase.h"
 
-class Mesh
+class Mesh : public ComponentBase
 {
 public:
     friend class OBJReader;
