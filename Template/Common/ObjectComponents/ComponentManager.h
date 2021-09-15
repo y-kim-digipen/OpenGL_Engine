@@ -14,14 +14,15 @@
 template<typename ComponentType>
 class ComponentManager{
 public:
+    ~ComponentManager();
     void Cleanup();
 //    std::shared_ptr<ComponentType> GetComponent(const std::string& nameStr);
 //    bool LoadFromFile(const std::string& fileStr);
-    bool AddComponent(const std::string& name, ComponentType&& type);
-    bool AddComponent(const std::string& name, ComponentType* type);
-    bool AddComponent(const std::string& name, std::shared_ptr<ComponentType> pComponent);
+    std::shared_ptr<ComponentType> AddComponent(const std::string& name, ComponentType&& type);
+    std::shared_ptr<ComponentType> AddComponent(const std::string& name, ComponentType* type);
+    std::shared_ptr<ComponentType> AddComponent(const std::string& name, std::shared_ptr<ComponentType> pComponent);
     template<typename... Args>
-    bool AddComponent(const std::string& name, Args... args);
+    std::shared_ptr<ComponentType> AddComponent(const std::string& name, Args... args);
     bool RemoveComponent(const std::string& nameStr);
     std::shared_ptr<ComponentType> GetComponent(const std::string& name);
 

@@ -280,6 +280,9 @@ Simple_Scene_BINARY_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/1.0 - Simple 
 //Value Computed by CMake
 Simple_Scene_SOURCE_DIR:STATIC=/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene
 
+//Dependencies for the target
+common_lib_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libGLEW.so;general;glfw;general;/usr/lib/x86_64-linux-gnu/libOpenGL.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;general;/usr/lib/x86_64-linux-gnu/libGLX.so;
+
 //The directory containing a CMake configuration file for glfw3.
 glfw3_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/glfw3
 

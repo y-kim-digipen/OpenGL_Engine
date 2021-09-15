@@ -1,3 +1,4 @@
+#version 410 core
 
 in VS_OUT
 {
@@ -12,6 +13,6 @@ out vec3 fragColor;
 void main()
 {
     vec3 lightVector = vec3( 0.0, 0.0, 1.0 );
-    float N_dot_L = max( dot( normalize(fs_in.fragNormal), normalize(lightVector)), 0.0f );
+    float N_dot_L = max( dot( normalize(fs_in.fragNormal), normalize(lightVector)), 1.0f );
 	fragColor = fs_in.fragDiffuse * N_dot_L;
 }

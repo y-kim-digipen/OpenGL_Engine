@@ -68,7 +68,7 @@ double OBJReader::ReadOBJFile(std::string filepath, Mesh *pMesh,
 
     double timeDuration = std::chrono::duration< double, std::milli >( endTime - startTime ).count();
 
-    std::cout << "OBJ file read in "
+    std::cout << "OBJ file: " << filepath << " read in "
               << timeDuration
               << "  milli seconds." << std::endl;
 

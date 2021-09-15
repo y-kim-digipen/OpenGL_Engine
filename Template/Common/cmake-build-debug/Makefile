@@ -177,6 +177,30 @@ Engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine.cpp.s
 .PHONY : Engine.cpp.s
 
+GUI/GUIManager.o: GUI/GUIManager.cpp.o
+.PHONY : GUI/GUIManager.o
+
+# target to build an object file
+GUI/GUIManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o
+.PHONY : GUI/GUIManager.cpp.o
+
+GUI/GUIManager.i: GUI/GUIManager.cpp.i
+.PHONY : GUI/GUIManager.i
+
+# target to preprocess a source file
+GUI/GUIManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIManager.cpp.i
+.PHONY : GUI/GUIManager.cpp.i
+
+GUI/GUIManager.s: GUI/GUIManager.cpp.s
+.PHONY : GUI/GUIManager.s
+
+# target to generate assembly for a file
+GUI/GUIManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIManager.cpp.s
+.PHONY : GUI/GUIManager.cpp.s
+
 Input/InputManager.o: Input/InputManager.cpp.o
 .PHONY : Input/InputManager.o
 
@@ -273,30 +297,6 @@ Object.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Object.cpp.s
 .PHONY : Object.cpp.s
 
-Scene.o: Scene.cpp.o
-.PHONY : Scene.o
-
-# target to build an object file
-Scene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.o
-.PHONY : Scene.cpp.o
-
-Scene.i: Scene.cpp.i
-.PHONY : Scene.i
-
-# target to preprocess a source file
-Scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.i
-.PHONY : Scene.cpp.i
-
-Scene.s: Scene.cpp.s
-.PHONY : Scene.s
-
-# target to generate assembly for a file
-Scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Scene.cpp.s
-.PHONY : Scene.cpp.s
-
 SceneBase.o: SceneBase.cpp.o
 .PHONY : SceneBase.o
 
@@ -345,6 +345,174 @@ Shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Shader.cpp.s
 .PHONY : Shader.cpp.s
 
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.o
+
+# target to build an object file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.i: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.i
+
+# target to preprocess a source file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i
+
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.s: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.s
+
+# target to generate assembly for a file
+home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s
+.PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -384,6 +552,9 @@ help:
 	@echo "... Engine.o"
 	@echo "... Engine.i"
 	@echo "... Engine.s"
+	@echo "... GUI/GUIManager.o"
+	@echo "... GUI/GUIManager.i"
+	@echo "... GUI/GUIManager.s"
 	@echo "... Input/InputManager.o"
 	@echo "... Input/InputManager.i"
 	@echo "... Input/InputManager.s"
@@ -396,15 +567,33 @@ help:
 	@echo "... Object.o"
 	@echo "... Object.i"
 	@echo "... Object.s"
-	@echo "... Scene.o"
-	@echo "... Scene.i"
-	@echo "... Scene.s"
 	@echo "... SceneBase.o"
 	@echo "... SceneBase.i"
 	@echo "... SceneBase.s"
 	@echo "... Shader.o"
 	@echo "... Shader.i"
 	@echo "... Shader.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.s"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.o"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.i"
+	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

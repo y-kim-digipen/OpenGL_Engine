@@ -13,11 +13,13 @@
 
 class Object{
 public:
-    Object() = default;
+    Object();
     Object(std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader);
     Object(const std::string& meshStr, const std::string& shaderStr);
     void Init();
+    void PreRender();
     void Render() const;
+    void PostRender();
 
     void CleanUp() const;
     //todo implement this
@@ -27,15 +29,19 @@ public:
     [[nodiscard]] bool IsRenderReady() const;
 
 private:
+    glm::mat4 GetObjectToWorldMatrix() const;
+    void TryCalculateMatrix();
+
+
 
 private:
     std::shared_ptr<Mesh> m_pMesh;
     std::shared_ptr<Shader> m_pShader;
 //    std::shared_ptr<Texture> mTexture;
 
-    bool m_fMatrixCacheDirty;
+    bool m_MatrixCacheDirty;
 
-private:
+    glm::mat4 mToWorldMatrix;
     glm::vec3 m_position;
     glm::vec3 m_scale;
     glm::vec3 m_rotation;

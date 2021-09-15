@@ -1,13 +1,10 @@
 //
 // Created by yoonki on 9/11/21.
 //
+#include <iostream>
 #include "InputManager.h"
 
-std::vector<bool> InputManager::mNewKeyBuffer, InputManager::mOldKeyBuffer;
-
 void InputManager::Init() {
-    mOldKeyBuffer.resize(static_cast<size_t>(Key::COUNT));
-    mNewKeyBuffer.resize(static_cast<size_t>(Key::COUNT));
 }
 
 void InputManager::Update() {
@@ -15,29 +12,29 @@ void InputManager::Update() {
 }
 
 void InputManager::CleanUp() {
-    mOldKeyBuffer.clear();
-    mNewKeyBuffer.clear();
+//    mOldKeyBuffer.();
+//    mNewKeyBuffer.clear();
 }
 
-bool InputManager::IsPressed(Key KeyCode) {
-    const auto keyIdx = static_cast<short>(KeyCode);
+bool InputManager::IsPressed(GLint KeyCode) {
+    const auto keyIdx = static_cast<int>(KeyCode);
     return !mOldKeyBuffer[keyIdx] && mNewKeyBuffer[keyIdx];
 }
 
-bool InputManager::IsReleased(Key KeyCode) {
-    const auto keyIdx = static_cast<short>(KeyCode);
+bool InputManager::IsReleased(GLint KeyCode) {
+    const auto keyIdx = static_cast<int>(KeyCode);
     return !mNewKeyBuffer[keyIdx] && mOldKeyBuffer[keyIdx];
 }
 
-bool InputManager::OnKeyDown(Key KeyCode) {
-    return mNewKeyBuffer[static_cast<short>(KeyCode)];
+bool InputManager::OnKeyDown(GLint KeyCode) {
+    return mNewKeyBuffer[static_cast<int>(KeyCode)];
 }
 
-void InputManager::on_key_pressed(Key KeyCode) {
-    mNewKeyBuffer[static_cast<short>(KeyCode)] = true;
+void InputManager::on_key_pressed(GLint KeyCode) {
+    mNewKeyBuffer[static_cast<int>(KeyCode)] = true;
 }
 
-void InputManager::on_key_released(Key KeyCode) {
-    mNewKeyBuffer[static_cast<short>(KeyCode)] = false;
+void InputManager::on_key_released(GLint KeyCode) {
+    mNewKeyBuffer[static_cast<int>(KeyCode)] = false;
 }
 

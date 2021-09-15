@@ -79,9 +79,100 @@ CMakeFiles/Engine.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/main.cpp -o CMakeFiles/Engine.dir/main.cpp.s
 
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.s
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o: /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o -c /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp > CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.i
+
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp -o CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.s
+
 CMakeFiles/Engine.dir/Shader.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Shader.cpp.o: ../Shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Engine.dir/Shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Engine.dir/Shader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Shader.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Shader.cpp
 
 CMakeFiles/Engine.dir/Shader.cpp.i: cmake_force
@@ -92,22 +183,9 @@ CMakeFiles/Engine.dir/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Shader.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Shader.cpp -o CMakeFiles/Engine.dir/Shader.cpp.s
 
-CMakeFiles/Engine.dir/Scene.cpp.o: CMakeFiles/Engine.dir/flags.make
-CMakeFiles/Engine.dir/Scene.cpp.o: ../Scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Engine.dir/Scene.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Scene.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Scene.cpp
-
-CMakeFiles/Engine.dir/Scene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/Scene.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/Scene.cpp > CMakeFiles/Engine.dir/Scene.cpp.i
-
-CMakeFiles/Engine.dir/Scene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Scene.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/Scene.cpp -o CMakeFiles/Engine.dir/Scene.cpp.s
-
 CMakeFiles/Engine.dir/OBJReader.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/OBJReader.cpp.o: ../OBJReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Engine.dir/OBJReader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Engine.dir/OBJReader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/OBJReader.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp
 
 CMakeFiles/Engine.dir/OBJReader.cpp.i: cmake_force
@@ -120,7 +198,7 @@ CMakeFiles/Engine.dir/OBJReader.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/Mesh.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Mesh.cpp.o: ../Mesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Engine.dir/Mesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Engine.dir/Mesh.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Mesh.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp
 
 CMakeFiles/Engine.dir/Mesh.cpp.i: cmake_force
@@ -133,7 +211,7 @@ CMakeFiles/Engine.dir/Mesh.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/Input/InputManager.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Input/InputManager.cpp.o: ../Input/InputManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Engine.dir/Input/InputManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Engine.dir/Input/InputManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Input/InputManager.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp
 
 CMakeFiles/Engine.dir/Input/InputManager.cpp.i: cmake_force
@@ -146,7 +224,7 @@ CMakeFiles/Engine.dir/Input/InputManager.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/Engine.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Engine.cpp.o: ../Engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Engine.dir/Engine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Engine.dir/Engine.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Engine.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
 
 CMakeFiles/Engine.dir/Engine.cpp.i: cmake_force
@@ -159,7 +237,7 @@ CMakeFiles/Engine.dir/Engine.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/Object.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Object.cpp.o: ../Object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Engine.dir/Object.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Engine.dir/Object.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Object.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Object.cpp
 
 CMakeFiles/Engine.dir/Object.cpp.i: cmake_force
@@ -172,7 +250,7 @@ CMakeFiles/Engine.dir/Object.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/Camera.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/Camera.cpp.o: ../Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Engine.dir/Camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Engine.dir/Camera.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/Camera.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/Camera.cpp
 
 CMakeFiles/Engine.dir/Camera.cpp.i: cmake_force
@@ -185,7 +263,7 @@ CMakeFiles/Engine.dir/Camera.cpp.s: cmake_force
 
 CMakeFiles/Engine.dir/SceneBase.cpp.o: CMakeFiles/Engine.dir/flags.make
 CMakeFiles/Engine.dir/SceneBase.cpp.o: ../SceneBase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Engine.dir/SceneBase.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Engine.dir/SceneBase.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/SceneBase.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp
 
 CMakeFiles/Engine.dir/SceneBase.cpp.i: cmake_force
@@ -196,25 +274,51 @@ CMakeFiles/Engine.dir/SceneBase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/SceneBase.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp -o CMakeFiles/Engine.dir/SceneBase.cpp.s
 
+CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o: CMakeFiles/Engine.dir/flags.make
+CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o: ../GUI/GUIManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o -c /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp
+
+CMakeFiles/Engine.dir/GUI/GUIManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Engine.dir/GUI/GUIManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp > CMakeFiles/Engine.dir/GUI/GUIManager.cpp.i
+
+CMakeFiles/Engine.dir/GUI/GUIManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/GUI/GUIManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp -o CMakeFiles/Engine.dir/GUI/GUIManager.cpp.s
+
 # Object files for target Engine
 Engine_OBJECTS = \
 "CMakeFiles/Engine.dir/main.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o" \
+"CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o" \
 "CMakeFiles/Engine.dir/Shader.cpp.o" \
-"CMakeFiles/Engine.dir/Scene.cpp.o" \
 "CMakeFiles/Engine.dir/OBJReader.cpp.o" \
 "CMakeFiles/Engine.dir/Mesh.cpp.o" \
 "CMakeFiles/Engine.dir/Input/InputManager.cpp.o" \
 "CMakeFiles/Engine.dir/Engine.cpp.o" \
 "CMakeFiles/Engine.dir/Object.cpp.o" \
 "CMakeFiles/Engine.dir/Camera.cpp.o" \
-"CMakeFiles/Engine.dir/SceneBase.cpp.o"
+"CMakeFiles/Engine.dir/SceneBase.cpp.o" \
+"CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o"
 
 # External object files for target Engine
 Engine_EXTERNAL_OBJECTS =
 
 Engine: CMakeFiles/Engine.dir/main.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
+Engine: CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
 Engine: CMakeFiles/Engine.dir/Shader.cpp.o
-Engine: CMakeFiles/Engine.dir/Scene.cpp.o
 Engine: CMakeFiles/Engine.dir/OBJReader.cpp.o
 Engine: CMakeFiles/Engine.dir/Mesh.cpp.o
 Engine: CMakeFiles/Engine.dir/Input/InputManager.cpp.o
@@ -222,14 +326,19 @@ Engine: CMakeFiles/Engine.dir/Engine.cpp.o
 Engine: CMakeFiles/Engine.dir/Object.cpp.o
 Engine: CMakeFiles/Engine.dir/Camera.cpp.o
 Engine: CMakeFiles/Engine.dir/SceneBase.cpp.o
+Engine: CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o
 Engine: CMakeFiles/Engine.dir/build.make
 Engine: /usr/lib/x86_64-linux-gnu/libGLEW.so
 Engine: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 Engine: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 Engine: /usr/lib/x86_64-linux-gnu/libGLU.so
 Engine: /usr/lib/x86_64-linux-gnu/libGLX.so
+Engine: /usr/lib/x86_64-linux-gnu/libSM.so
+Engine: /usr/lib/x86_64-linux-gnu/libICE.so
+Engine: /usr/lib/x86_64-linux-gnu/libX11.so
+Engine: /usr/lib/x86_64-linux-gnu/libXext.so
 Engine: CMakeFiles/Engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable Engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

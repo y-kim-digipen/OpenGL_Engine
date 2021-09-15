@@ -2,12 +2,66 @@
 // Created by pushpak on 10/5/18.
 //
 
-#include <GL/gl.h>
+
 #include <iostream>
 #include <set>
-#include "Mesh.h"
 
 #include <glm/gtc/epsilon.hpp>
+#include <GL/glew.h>
+
+#include "Mesh.h"
+
+#include "Shader.h"
+
+void Mesh::SetupBuffer() {
+    const size_t shaderAttribCount = Shader::ShaderAttribNames.size();
+    mEBO_IDs.resize(shaderAttribCount);
+
+    GLuint VertexArrayID;
+    glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+
+    //todo chage this method to detect inputsize of vector size
+    glGenBuffers(shaderAttribCount, mEBO_IDs.data());
+
+    for(GLint attribIdx = 0; attribIdx < shaderAttribCount; ++attribIdx){
+        glBindBuffer(GL_ARRAY_BUFFER, mEBO_IDs[attribIdx]);
+        switch(static_cast<Shader::ShaderAttrib>(attribIdx)){
+            case Shader::POS:{
+                std::cout << getVertexCount() * sizeof(decltype(vertexBuffer)::value_type) << std::endl;
+                glBufferData(GL_ARRAY_BUFFER, getVertexCount() * sizeof(decltype(vertexBuffer)::value_type),
+                             getVertexBuffer(), GL_STATIC_DRAW);
+                break;
+            }
+            case Shader::COLOR:{
+//                glBufferData(GL_ARRAY_BUFFER, getVertexCount() * sizeof(decltype(colorBuffer)::value_type),
+//                             getColorBuffer(), GL_STATIC_DRAW);
+                break;
+            }
+            case Shader::NORMAL:{
+                glBufferData(GL_ARRAY_BUFFER, getVertexNormalCount() * sizeof(decltype(vertexNormals)::value_type),
+                             getVertexNormals(), GL_STATIC_DRAW);
+                break;
+            }
+            case Shader::UV:{
+                glBufferData(GL_ARRAY_BUFFER, vertexUVs.size() * sizeof(decltype(vertexUVs)::value_type),
+                             getVertexUVs(), GL_STATIC_DRAW);
+                break;
+            }
+        }
+    }
+    doIndexing = !vertexIndices.empty();
+    if(doIndexing){
+        GLuint idxBuffer;
+        glGenBuffers(1, &idxBuffer);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idxBuffer);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertexIndices.size() * sizeof(decltype(vertexIndices)::value_type),
+                     vertexIndices.data(), GL_STATIC_DRAW);
+        mIdxBufferID = idxBuffer;
+    }
+    mVAO_ID = VertexArrayID;
+}
 
 // Initialize the data members in the mesh
 void Mesh::initData()
@@ -54,29 +108,33 @@ GLuint *Mesh::getIndexBuffer()
 ////////////////////////////////////
 ////////////////////////////////////
 ////////////////////////////////////
-unsigned int Mesh::getVertexBufferSize()
+unsigned int Mesh::getVertexBufferSize() const
 {
     return (unsigned int) vertexBuffer.size();
 }
 
-unsigned int Mesh::getIndexBufferSize()
+unsigned int Mesh::getIndexBufferSize() const
 {
     return (unsigned int) vertexIndices.size();
 }
 
-unsigned int Mesh::getTriangleCount()
+unsigned int Mesh::getTriangleCount() const
 {
     return getIndexBufferSize() / 3;
 }
 
-unsigned int Mesh::getVertexCount()
+unsigned int Mesh::getVertexCount() const
 {
     return getVertexBufferSize();
 }
 
-unsigned int Mesh::getVertexNormalCount()
+unsigned int Mesh::getVertexNormalCount() const
 {
     return vertexNormalDisplay.size();
+}
+
+unsigned int Mesh::getVertexIndicesCount() const {
+    return vertexIndices.size();
 }
 
 glm::vec3  Mesh::getModelScale()
@@ -395,3 +453,33 @@ glm::vec2 Mesh::calcCubeMap(glm::vec3 vEntity)
 
     return uv;
 }
+
+Mesh::DrawType Mesh::GetDrawType() const {
+    return drawType;
+}
+
+void Mesh::SetDrawType(Mesh::DrawType newDrawType) {
+    drawType = newDrawType;
+}
+
+void Mesh::CleanUp() {
+    initData();
+}
+
+GLint Mesh::GetVAOID() const {
+    return mVAO_ID;
+}
+
+GLint Mesh::GetEBOID(size_t idx) const {
+    //todo validate index
+    return mEBO_IDs[idx];
+}
+
+GLboolean Mesh::DoIndexing() const {
+    return doIndexing;
+}
+
+GLint Mesh::GetIndexBufferID() const {
+    return mIdxBufferID;
+}
+

@@ -113,7 +113,7 @@ Camera& Camera::Roll(float angle)
 
 glm::mat4 Camera::GetLookAtMatrix() const
 {
-    const glm::vec3 e {eye.x, eye.y, eye.z};
+    const glm::vec3 e { eye.x, eye.y, eye.z };
     const glm::vec3 b { back.x, back.y, back.z };
     const glm::vec3 u { up.x, up.y, up.z };
     return glm::lookAt(e, e - b, u);
@@ -133,52 +133,56 @@ glm::mat4 Camera::GetOrthogonalMatrix() const
 
 void Camera::Update()
 {
-    if (InputManager::IsPressed(Key::LEFT_ARROW))
+    if (InputManager::OnKeyDown(GLFW_KEY_LEFT))
     {
         Yaw(0.03f);
     }
-    if (InputManager::IsPressed(Key::RIGHT_ARROW))
+    if (InputManager::OnKeyDown(GLFW_KEY_RIGHT))
     {
         Yaw(-0.03f);
     }
-    if (InputManager::IsPressed(Key::UP_ARROW))
+    if (InputManager::OnKeyDown(GLFW_KEY_UP))
     {
         Pitch(0.03f);
     }
-    if (InputManager::IsPressed(Key::DOWN_ARROW))
+    if (InputManager::OnKeyDown(GLFW_KEY_DOWN))
     {
         Pitch(-0.03f);
     }
-    if (InputManager::IsPressed(Key::W))
+    if (InputManager::OnKeyDown(GLFW_KEY_W))
     {
         eye += -0.1f * back;
     }
-    if (InputManager::IsPressed(Key::S))
+    if (InputManager::OnKeyDown(GLFW_KEY_S))
     {
         eye += 0.1f * back;
     }
-    if (InputManager::IsPressed(Key::D))
+    if (InputManager::OnKeyDown(GLFW_KEY_D))
     {
         eye += 0.1f * right;
     }
-    if (InputManager::IsPressed(Key::A))
+    if (InputManager::OnKeyDown(GLFW_KEY_A))
     {
         eye += -0.1f * right;
     }
-    if (InputManager::IsPressed(Key::SPACE))
+    if (InputManager::OnKeyDown(GLFW_KEY_SPACE))
     {
         eye += 0.1f * up;
     }
-    if (InputManager::IsPressed(Key::L_CTRL))
+    if (InputManager::OnKeyDown(GLFW_KEY_LEFT_CONTROL))
     {
         eye += -0.1f * up;
     }
-    if(InputManager::IsPressed(Key::Q))
+    if(InputManager::OnKeyDown(GLFW_KEY_Q))
     {
         Roll(0.03f);
     }
-    if(InputManager::IsPressed(Key::E))
+    if(InputManager::OnKeyDown(GLFW_KEY_E))
     {
         Roll(-0.03f);
     }
+}
+
+glm::vec3 Camera::GetEyePosition() const {
+    return eye;
 }

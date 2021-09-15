@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include <array>
 
 #include <glm/glm.hpp>
 
@@ -24,6 +25,25 @@ public:
         DataType mType = DataType::Count;
     };
 
+    enum ShaderAttrib{
+        POS = 0,
+        NORMAL,
+        COLOR,
+        UV,
+    };
+
+    static inline std::vector<std::string> ShaderAttribNames = {
+            "vPosition",
+            "vertexNormal",
+            "vColor",
+            "vUV",
+    };
+
+    Shader() = default;
+    Shader(const Shader& other);
+    Shader(Shader&& other);
+    Shader& operator=(const Shader& other);
+    Shader& operator=(Shader&& other);
     ~Shader();
     //TODO load
     bool CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs, bool linkWithGUI = true);
@@ -72,14 +92,16 @@ public:
     void SetUniformMatrix3f(char const* name, glm::mat3& m);
     void SetUniformMatrix4f(char const* name, glm::mat4& m);
 
+    const std::array<bool, 4>& GetAttribUsages() const;
 private:
     using Byte = unsigned char;
 
+    std::array<bool, 4> mShaderAttributeUsages;
     std::vector<std::pair<unsigned int, std::string>> m_current_shader_paths;
     mutable std::vector<Byte> mUniformVarBuffer;
     mutable std::map<std::string, UniformAttribute> mUniforms;
 
-    unsigned int mProgramID = 0;
+    GLint mProgramID = 0;
 
     GLboolean mUsingTessellation = false;
     void deleteProgram();

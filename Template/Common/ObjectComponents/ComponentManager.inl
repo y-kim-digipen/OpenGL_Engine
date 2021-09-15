@@ -1,11 +1,22 @@
 //
 // Created by yoonki on 9/11/21.
 //
+#include <iostream>
 #include "ComponentManager.h"
 
 template<typename ComponentType>
+ComponentManager<ComponentType>::~ComponentManager() {
+    Cleanup();
+}
+
+
+template<typename ComponentType>
 void ComponentManager<ComponentType>::Cleanup() {
+    //todo have to do something
     mNameList.clear();
+//    for(auto& pComp : mComponentMap){
+//        pComp.second->release();
+//    }
     mComponentMap.clear();
 }
 
@@ -43,28 +54,29 @@ size_t ComponentManager<ComponentType>::Size() const {
 }
 
 template<typename ComponentType>
-bool ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType &&type) {
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType &&type) {
     return AddComponent(name, std::make_shared<ComponentType>(type));
 }
 
 template<typename ComponentType>
-bool ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType *type) {
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType *type) {
     return AddComponent(name, std::shared_ptr<ComponentType>(type));
 }
 
 template<typename ComponentType>
-bool ComponentManager<ComponentType>::AddComponent(const std::string &name, std::shared_ptr<ComponentType> type) {
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, std::shared_ptr<ComponentType> type) {
     if(validate_existence(name) == false){
-        return false;
+        std::cerr << "Failed to add" << name << std::endl;
+        return nullptr;
     }
     mNameList.push_back(name);
-    mComponentMap.template try_emplace(name.c_str(), type);
-    return true;
+    std::cout << name << " successfully added" << std::endl;
+    return mComponentMap.template try_emplace(name.c_str(), type).first->second;
 }
 
 template<typename ComponentType>
 template<typename... Args>
-bool ComponentManager<ComponentType>::AddComponent(const std::string &name, Args... args) {
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, Args... args) {
     return AddComponent(name, std::make_shared<ComponentType>(ComponentType(args...)));
 }
 
@@ -76,6 +88,7 @@ std::shared_ptr<ComponentType> ComponentManager<ComponentType>::GetComponent(con
     }
     return nullptr;
 }
+
 
 //template<typename ComponentType>
 //const std::vector<const char *const> &ComponentManager<ComponentType>::ListNames() {

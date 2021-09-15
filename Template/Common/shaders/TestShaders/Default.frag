@@ -8,13 +8,9 @@
 #version 450 core
 
 layout (location = 0) in vec4 vPosition;
-layout (location = 1) in vec3 vClrCoord;
-layout (location = 2) in vec3 vNormal;
-uniform vec3 uDirectionalLight;
 
-layout (location=0) out vec4 fFragClr;
+layout (location = 0) out vec4 fFragClr;
 
 void main () {
-  float d = dot(uDirectionalLight , vNormal);
-  fFragClr = vec4(vClrCoord * d, 1.0);
+  fFragClr = vec4(0.f, 1.f, 0.f, 1.f);
 }

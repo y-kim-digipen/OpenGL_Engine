@@ -10,13 +10,20 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/yoonki/Desktop/CS300/Template/Common/Camera.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Camera.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Engine.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Input/InputManager.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Mesh.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/OBJReader.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Object.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Object.cpp.o"
-  "/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Scene.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/SceneBase.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/Shader.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/Shader.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o"
+  "/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o"
   "/home/yoonki/Desktop/CS300/Template/Common/main.cpp" "/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/Engine.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -24,6 +31,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../../Common"
+  "../../Common/shaders"
+  "../../External/imgui-1.84.2"
   )
 
 # The set of dependency files which are needed:

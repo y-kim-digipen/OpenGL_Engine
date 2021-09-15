@@ -10,20 +10,21 @@ void Shader::deleteProgram()
 {
     if (mProgramID > 0)
     {
+        std::cerr << "PID: " << mProgramID << " shader program deleted" << std::endl;
         glDeleteProgram(mProgramID);
+        mProgramID = -1;
     }
 }
 
 Shader::~Shader()
 {
-    deleteProgram();
+//    deleteProgram();
 }
 
 bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs, bool linkWithGUI)
 {
-    deleteProgram();
-
     mProgramID = glCreateProgram();
+
     if (mProgramID == 0)
     {
         std::cerr<< "Couldn't create shader!" <<std::endl;
@@ -33,16 +34,16 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     int i = 0;
     for (auto typePathPair : shaderTypePathPairs)
     {
-        std::ifstream vertexShaderFile(typePathPair.second, std::ifstream::in);
-        if (!vertexShaderFile)
+        std::ifstream shaderFile(typePathPair.second, std::ifstream::in);
+        if (!shaderFile)
         {
-            std::cout << "No such vertex shader file!" <<std::endl;
+            std::cerr << "Unable to find " << typePathPair.second << std::endl;
             deleteProgram();
             return false;
         }
         std::stringstream buffer;
-        buffer << vertexShaderFile.rdbuf();
-        vertexShaderFile.close();
+        buffer << shaderFile.rdbuf();
+        shaderFile.close();
 
         unsigned int shaderID = glCreateShader(typePathPair.first);
         std::string shaderSource = buffer.str();
@@ -55,7 +56,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         glGetShaderiv(shaderID, GL_COMPILE_STATUS, &compileResult);
         if (compileResult == GL_FALSE)
         {
-            std::cout << i << " th shader failed to compile!" <<std::endl;
+            std::cerr << typePathPair.second << " shader failed to compile!" << std::endl;
             int logLength;
             glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &logLength);
             if (logLength > 0)
@@ -64,7 +65,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
                 logContent = new char[logLength];
                 int writtenLogLength;
                 glGetShaderInfoLog(shaderID, logLength, &writtenLogLength, logContent);
-                std::cout<< logContent << std::endl;
+                std::cerr << "================Error Message================\n\t"<<logContent << std::endl;
                 delete[] logContent;
             }
             deleteProgram();
@@ -84,7 +85,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     glGetProgramiv(mProgramID, GL_LINK_STATUS, &linkStatus);
     if (linkStatus == GL_FALSE)
     {
-        std::cout << "program failed to link!" <<std::endl;
+        std::cout << "program failed to link!" << std::endl;
         int logLength;
         glGetProgramiv(mProgramID, GL_INFO_LOG_LENGTH, &logLength);
         if (logLength > 0)
@@ -101,6 +102,41 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     }
 
     m_current_shader_paths = shaderTypePathPairs;
+
+    GLint count;
+    glGetProgramiv(mProgramID, GL_ACTIVE_ATTRIBUTES, &count);
+    printf("\tActive Attributes: %d\n", count);
+
+    const GLint numShaderAttribs = static_cast<GLint>(ShaderAttribNames.size());
+
+    for (GLint i = 0; i < count; i++)
+    {
+        const GLsizei bufSize = 16; // maximum name length
+        GLchar name[bufSize]; // variable name in GLSL
+        GLsizei length; // name length
+
+        GLint size; // size of the variable
+        GLenum type; // type of the variable (float, vec3 or mat4, etc)
+
+        glGetActiveAttrib(mProgramID, (GLuint)i, bufSize, &length, &size, &type, name);
+
+        printf("\t\t -Attribute #%d Name: %s\n", i, name);
+
+        const std::string nameStr = name;
+        //todo also check type to check match
+        GLint attribIdx = 0;
+        for(attribIdx = 0; attribIdx < numShaderAttribs; ++attribIdx){
+            if(ShaderAttribNames[attribIdx] == nameStr){
+                mShaderAttributeUsages[attribIdx] = true;
+            }
+        }
+        if(attribIdx > numShaderAttribs){
+            std::cerr << "Trying to using unsupported shader attrib :" << name << std::endl;
+        }
+
+    }
+
+    UnUse();
 
     if(!linkWithGUI)
     {
@@ -401,5 +437,36 @@ void Shader::SetAllUniforms()
 void Shader::Reload()
 {
     CreateProgramAndLoadCompileAttachLinkShaders(m_current_shader_paths);
+}
+
+Shader::Shader(const Shader &other) {
+    std::cerr << "Refer copy constructor called" << std::endl;
+}
+
+Shader::Shader(Shader &&other) {
+    std::cerr << "RRef called" << std::endl;
+    mProgramID = other.mProgramID;
+    other.mProgramID = -1;
+    m_current_shader_paths = std::move(other.m_current_shader_paths);
+    mUniformVarBuffer = std::move(other.mUniformVarBuffer);
+    mUniforms = std::move(other.mUniforms);
+    mUsingTessellation = other.mUsingTessellation;
+    mShaderAttributeUsages = other.mShaderAttributeUsages;
+
+//    CreateProgramAndLoadCompileAttachLinkShaders(other.m_current_shader_paths, !other.mUniforms.empty());
+}
+
+Shader &Shader::operator=(const Shader &other) {
+    std::cerr << "Refer copy called" << std::endl;
+    return *this;
+}
+
+Shader &Shader::operator=(Shader &&other) {
+    std::cerr << "rRefer copy called" << std::endl;
+    return *this;
+}
+
+const std::array<bool, 4> &Shader::GetAttribUsages() const {
+    return mShaderAttributeUsages;
 }
 

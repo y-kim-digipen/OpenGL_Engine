@@ -10,6 +10,7 @@
 #include "Input/InputManager.h"
 //todo delete this after testing scene
 #include "TestScene.h"
+#include "OBJReader.h"
 
 Engine::Engine() {
     mClearColor = Color(0.f);
@@ -29,7 +30,7 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
 
     //GLFW settings
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
     glfwWindowHint(GLFW_SAMPLES, 1); // change for anti-aliasing
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
@@ -41,6 +42,9 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
     glfwWindowHint(GLFW_BLUE_BITS, 8);
     glfwWindowHint(GLFW_ALPHA_BITS, 8);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 
     glfwInit();
 
@@ -69,7 +73,6 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
     }
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(m_pWindow, GLFW_STICKY_KEYS, GL_TRUE);
-
     return 0;
 }
 
@@ -79,42 +82,47 @@ void Engine::SetClearColor(Color newClearColor) {
 }
 
 void Engine::InitEngine() {
+    OBJReader objReader;
     mFocusedSceneIdx = -1;
     InputManager::Init();
+    mGUIManager.Init(m_pWindow);
 
+    SetupShaders();
+    SetupMeshes();
     //todo for now, it is for debugging
-    Mesh mymesh2;
-//    mymesh2->
-    Shader myShader;
 
-    mMeshManager.AddComponent("TestMesh", mymesh2);
-    mShaderManager.AddComponent("TestShader", myShader);
-
-    m_pScenes.emplace_back(new TestScene());
+    SetupScenes();
     mFocusedSceneIdx = 0;
+    SetClearColor(Color(0.5f));
     //debug part ended here
 
     for(auto& scene : m_pScenes){
         scene->Init();
     }
+
+    std::cout << "Engine is initialized, ready to update" << std::endl;
 }
 
 void Engine::Update() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    InputManager::Update();
+
     if(mFocusedSceneIdx >= 0){
         PreRender();
         Render();
         PostRender();
     }
 
-    glfwSwapBuffers(m_pWindow);
-    //todo delete this after scene is implemented
+    mGUIManager.Update();
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glfwSwapBuffers(m_pWindow);
     glfwPollEvents();
 }
 
 void Engine::CleanUp() {
     //delete GetInstance();
+    mGUIManager.CleanUp();
     for(auto pScene : m_pScenes){
         pScene->CleanUp();
         delete pScene;
@@ -161,7 +169,7 @@ void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, int k
 
     if (GLFW_PRESS == action)
     {
-        InputManager::on_key_pressed(static_cast<Key>(key));
+        InputManager::on_key_pressed(key);
     }
     else if (GLFW_REPEAT == action)
     {
@@ -169,7 +177,7 @@ void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, int k
     }
     else if (GLFW_RELEASE == action)
     {
-        InputManager::on_key_released(static_cast<Key>(key));
+        InputManager::on_key_released(key);
     }
 }
 
@@ -177,6 +185,54 @@ glm::vec2 Engine::GetWindowSize() {
     return mWinSize;
 }
 
+void Engine::SetupScenes() {
+    SceneBase* baseScene = new TestScene();
+    baseScene->AddCamera();
+    m_pScenes.emplace_back(baseScene);
+}
+
+void Engine::SetupShaders() {
+    auto pShader = mShaderManager.AddComponent("TestShader", new Shader());
+
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/QuadVertexShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/QuadFragmentShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("3D_DefaultShader", new Shader());
+
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/SimpleVertexShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/SimpleFragmentShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("DiffuseShader", new Shader());
+
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/DiffuseShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/DiffuseShader.frag"} });
+}
+
+void Engine::SetupMeshes() {
+    OBJReader objReader;
+
+    Mesh quadMesh;
+    quadMesh.SetDrawType(Mesh::DrawType::TRIANGLES);
+
+    auto pMesh = mMeshManager.AddComponent("TestMesh", quadMesh);
+//    pMesh->SetDrawType(GL_TRIANGLES);
+    pMesh->initData();
+    objReader.ReadOBJFile("../models/bunny.obj", pMesh.get());
+    pMesh->SetupBuffer();
+
+//    Mesh cubeMesh;
+//    quadMesh.SetDrawType(Mesh::DrawType::TRIANGLES);
+//    pMesh = mMeshManager.AddComponent("CubeMesh", cubeMesh);
+//    objReader.ReadOBJFile("../models/cube.obj", pMesh.get());
+//    pMesh->SetupBuffer();
+}
+
+SceneBase* Engine::GetCurrentScene() {
+    return m_pScenes[mFocusedSceneIdx];
+}
 
 
 

@@ -9,10 +9,14 @@ class TestScene : public SceneBase{
 public:
     virtual void Init() override
     {
+        AddCamera();
         //for initializing camera
         SceneBase::Init();
-        m_pObjects.emplace("TestObject", std::make_unique<Object>("TestMesh", "TestShader"));
-        m_pObjects.begin()->second->Init();
+//        m_pObjects.emplace("TestObject", std::make_unique<Object>("TestMesh", "TestShader"));
+//        m_pObjects.begin()->second->Init();
+
+        m_pObjects.emplace("TestCubeObject", std::make_unique<Object>("TestMesh", "3D_DefaultShader"));
+//        m_pObjects.begin()->second->Init();
     };
 
     //void InitFromFile(const std::filesystem::path& filePath);

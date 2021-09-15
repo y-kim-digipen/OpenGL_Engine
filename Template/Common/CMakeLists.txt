@@ -6,14 +6,30 @@ include( ../Common/build_files/Common_packages.cmake )
 set( TARGET_NAME Engine )
 
 add_executable( ${TARGET_NAME}
-        main.cpp
+        ../Common/main.cpp
+        #IMGUI_BEGIN
+        ../External/imgui-1.84.2/imconfig.h
+        ../External/imgui-1.84.2/imgui.cpp
+        ../External/imgui-1.84.2/imgui.h
+        ../External/imgui-1.84.2/imgui_demo.cpp
+        ../External/imgui-1.84.2/imgui_draw.cpp
+        ../External/imgui-1.84.2/imgui_internal.h
+        ../External/imgui-1.84.2/imgui_tables.cpp
+        ../External/imgui-1.84.2/imgui_widgets.cpp
+        ../External/imgui-1.84.2/imstb_rectpack.h
+        ../External/imgui-1.84.2/imstb_textedit.h
+        ../External/imgui-1.84.2/imstb_truetype.h
+        ../External/imgui-1.84.2/imgui_impl_glfw.cpp
+        ../External/imgui-1.84.2/imgui_impl_glfw.h
+        ../External/imgui-1.84.2/imgui_impl_opengl3.cpp
+        ../External/imgui-1.84.2/imgui_impl_opengl3.h
+        ../External/imgui-1.84.2/imgui_impl_opengl3_loader.h
+        #IMGUI_END
         ../Common/CommonConstants.h
         Shader.cpp
         Shader.h
         #        ../Common/Utilities.cpp
         #        ../Common/Utilities.h
-        ../Common/Scene.cpp
-        ../Common/Scene.h
         #        ../Common/SceneManager.cpp
         #        ../Common/SceneManager.h
         ../Common/OBJReader.cpp
@@ -48,13 +64,20 @@ add_executable( ${TARGET_NAME}
         ../Common/Object.cpp
         ../Common/Object.h
         ../Common/Camera.cpp
-        ../Common/Camera.h SceneBase.cpp)
+        ../Common/Camera.h
+        ../Common/SceneBase.cpp
+        ../Common/Drawer.h
+        ../Common/Light.h
+        ../Common/GUI/GUIManager.h
+        ../Common/GUI/GUIManager.cpp)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )
 target_include_directories( ${TARGET_NAME} PUBLIC ${GLFW_INCLUDE_DIRS} )
 target_include_directories( ${TARGET_NAME} PUBLIC "../Common/" )
+target_include_directories( ${TARGET_NAME} PUBLIC "../Common/shaders/" )
 target_include_directories( ${TARGET_NAME} PUBLIC /usr/local/include/ )
+target_include_directories( ${TARGET_NAME} PUBLIC "../External/imgui-1.84.2/" )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
@@ -64,6 +87,11 @@ target_include_directories( ${TARGET_NAME} PUBLIC /usr/local/include/ )
 target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}
         ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
+target_link_libraries(${CMAKE_PROJECT_NAME}
+        ${CMAKE_THREAD_LIBS_INIT}
+        ${X11_LIBRARIES}
+        ${CMAKE_DL_LIBS}
+        )
 
 message( "GLFW Include : " ${GLFW_INCLUDE_DIRS} )
 message( "GLFW Libs : " ${GLFW_LIBRARIES} )

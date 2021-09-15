@@ -10,7 +10,13 @@ void SceneBase::Init() {
 }
 
 void SceneBase::PreRender() {
-
+    for(auto& cam : m_pCameras){
+        cam->Update();
+    }
+    for(auto& obj : m_pObjects){
+        auto& pObject = obj.second;
+        pObject->PreRender();
+    }
 }
 
 void SceneBase::Render() const {
@@ -23,7 +29,10 @@ void SceneBase::Render() const {
 }
 
 void SceneBase::PostRender() {
-
+    for(auto& obj : m_pObjects){
+        auto& pObject = obj.second;
+        pObject->PostRender();
+    }
 }
 
 void SceneBase::CleanUp() {
@@ -37,3 +46,18 @@ std::shared_ptr<Camera> SceneBase::GetCurrentCamera() {
     }
     return m_pCameras[mFocusedCameraIdx];
 }
+
+template<typename... Args>
+void SceneBase::AddCamera(Args... arg) {
+    AddCamera(std::make_shared<Camera>(arg...));
+}
+
+void SceneBase::AddCamera(void) {
+    AddCamera(std::make_shared<Camera>());
+}
+
+void SceneBase::AddCamera(std::shared_ptr<Camera> cam) {
+    m_pCameras.emplace_back(cam);
+}
+
+

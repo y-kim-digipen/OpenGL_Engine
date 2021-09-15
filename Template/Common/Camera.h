@@ -32,12 +32,9 @@ public:
     glm::mat4 GetPerspectiveMatrix() const;
     glm::mat4 GetOrthogonalMatrix() const;
 
-    glm::vec3 GetEyePosition() const
-    {
-        return eye;
-    }
+    glm::vec3 GetEyePosition() const;
 
-//    virtual void Init(Demo*);
+//    virtual void SetupBuffer(Demo*);
     virtual void Update();
 //    virtual void Unload() {}
 private:

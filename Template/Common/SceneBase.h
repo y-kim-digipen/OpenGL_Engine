@@ -23,8 +23,12 @@ public:
 
     virtual void CleanUp();
 
-    [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
+    template<typename... Args>
+    void AddCamera(Args... arg);
+    void AddCamera(void);
+    void AddCamera(std::shared_ptr<Camera> cam);
 
+    [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
 protected:
     short mFocusedCameraIdx;
 

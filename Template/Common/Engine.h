@@ -13,9 +13,12 @@
 #include <memory>
 #include <vector>
 #include <ObjectComponents/ComponentManager.h>
+#include <GL/glew.h>
+
+
+#include "GUI/GUIManager.h"
 
 #include "Color.h"
-#include "Scene.h"
 #include "Mesh.h"
 #include "SceneBase.h"
 #include "Shader.h"
@@ -44,10 +47,16 @@ public:
 
     static std::shared_ptr<Mesh> GetMesh(const std::string& meshStr);
     static std::shared_ptr<Shader> GetShader(const std::string& shaderStr);
+
+    static SceneBase* GetCurrentScene();
 private:
     static void PreRender();
     static void Render();
     static void PostRender();
+
+    static void SetupScenes();
+    static void SetupShaders();
+    static void SetupMeshes();
 
     static void GLFWErrorCallback(int, const char* err_str);
     static void KeyboardInputCallback(GLFWwindow*, int key, [[maybe_unused]] int keyCode, int action, [[maybe_unused]] int modifier);
@@ -65,4 +74,6 @@ private:
 
     inline static ComponentManager<Mesh> mMeshManager;
     inline static ComponentManager<Shader> mShaderManager;
+
+    inline static GUI_Manager mGUIManager;
 };

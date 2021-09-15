@@ -45,6 +45,8 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common"/>
+					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common/shaders"/>
+					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../External/imgui-1.84.2"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -68,6 +70,8 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common"/>
+					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common/shaders"/>
+					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../External/imgui-1.84.2"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -96,10 +100,19 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h">
 			<Option target="Engine"/>
 		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Drawer.h">
+			<Option target="Engine"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp">
@@ -109,6 +122,9 @@
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Light.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp">
@@ -138,12 +154,6 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentManager.inl">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Scene.cpp">
-			<Option target="Engine"/>
-		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Scene.h">
-			<Option target="Engine"/>
-		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp">
 			<Option target="Engine"/>
 		</Unit>
@@ -160,6 +170,54 @@
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/main.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_rectpack.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_truetype.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CMakeLists.txt">
