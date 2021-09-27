@@ -7,12 +7,13 @@ in VS_OUT
 
 } fs_in;
 
-
 out vec3 fragColor;
+
+uniform vec3 directionalLight = vec3( 0.0, 1.0, 1.0 );
 
 void main()
 {
-    vec3 lightVector = vec3( 0.0, 0.0, 1.0 );
-    float N_dot_L = max( dot( normalize(fs_in.fragNormal), normalize(lightVector)), 1.0f );
-	fragColor = fs_in.fragDiffuse * N_dot_L;
+    vec3 ambient = fs_in.fragDiffuse * 0.1f;
+    float N_dot_L = max( dot( normalize(directionalLight), normalize(fs_in.fragNormal)), 0.0f );
+	fragColor = max(ambient, fs_in.fragDiffuse * N_dot_L);
 }

@@ -1,4 +1,4 @@
-/snap/clion/163/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/yoonki/Desktop/CS300/Template/Common
+/snap/clion/164/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/yoonki/Desktop/CS300/Template/Common
 GLFW Include : 
 GLFW Libs : glfw
 GLEW Include : /usr/include

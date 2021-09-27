@@ -22,6 +22,8 @@
 #include "Mesh.h"
 #include "SceneBase.h"
 #include "Shader.h"
+#include "VAOManager.h"
+#include "VBOManager.h"
 
 class GLFWwindow;
 
@@ -47,8 +49,16 @@ public:
 
     static std::shared_ptr<Mesh> GetMesh(const std::string& meshStr);
     static std::shared_ptr<Shader> GetShader(const std::string& shaderStr);
+    static GUI::GUI_Manager& GetGUIManager();
+    static ComponentManager<Mesh>& GetMeshManager();
+    static ComponentManager<Shader>& GetShaderManager();
+
+    static VAOManager& GetVAOManager();
+    static VBOManager& GetVBOManager();
 
     static SceneBase* GetCurrentScene();
+    static std::string GetTitleName();
+    static float GetFPS();
 private:
     static void PreRender();
     static void Render();
@@ -57,6 +67,7 @@ private:
     static void SetupScenes();
     static void SetupShaders();
     static void SetupMeshes();
+    static void SetupGUI();
 
     static void GLFWErrorCallback(int, const char* err_str);
     static void KeyboardInputCallback(GLFWwindow*, int key, [[maybe_unused]] int keyCode, int action, [[maybe_unused]] int modifier);
@@ -64,6 +75,7 @@ private:
     //static void MouseScrollCallback(GLFWwindow*, double, double yOffset)
 
 private:
+    inline static std::string mTitleStr;
     inline static GLFWwindow* m_pWindow;
     inline static glm::vec2 mWinSize;
     inline static Color mClearColor;
@@ -75,5 +87,11 @@ private:
     inline static ComponentManager<Mesh> mMeshManager;
     inline static ComponentManager<Shader> mShaderManager;
 
-    inline static GUI_Manager mGUIManager;
+    inline static VAOManager mVAOManager;
+    inline static VBOManager mVBOManager;
+
+    inline static GUI::GUI_Manager mGUIManager;
+    inline static float FPS;
+
+    inline static int TargetFPS = 30;
 };

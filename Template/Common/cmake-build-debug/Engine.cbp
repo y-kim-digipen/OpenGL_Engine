@@ -109,10 +109,49 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.h">
 			<Option target="Engine"/>
 		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h">
+			<Option target="Engine"/>
+		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp">
@@ -167,6 +206,18 @@
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/TestScene.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VAOManager.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VAOManager.h">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VBOManager.cpp">
+			<Option target="Engine"/>
+		</Unit>
+		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VBOManager.h">
 			<Option target="Engine"/>
 		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/main.cpp">

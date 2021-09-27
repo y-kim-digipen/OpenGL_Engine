@@ -4,6 +4,7 @@
 
 #include <GL/glew.h>
 
+#include "Engine.h"
 #include "Shader.h"
 
 void Shader::deleteProgram()
@@ -21,129 +22,135 @@ Shader::~Shader()
 //    deleteProgram();
 }
 
-bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs, bool linkWithGUI)
+bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs)
 {
     mProgramID = glCreateProgram();
-
     if (mProgramID == 0)
     {
-        std::cerr<< "Couldn't create shader!" <<std::endl;
+        std::cerr << "Failed to create shader!" <<std::endl;
         return false;
     }
 
-    int i = 0;
-    for (auto typePathPair : shaderTypePathPairs)
+    //compile and attatch to program
     {
-        std::ifstream shaderFile(typePathPair.second, std::ifstream::in);
-        if (!shaderFile)
+        int i = 0;
+        for (auto typePathPair : shaderTypePathPairs)
         {
-            std::cerr << "Unable to find " << typePathPair.second << std::endl;
-            deleteProgram();
-            return false;
+            std::ifstream shaderFile(typePathPair.second, std::ifstream::in);
+            if (!shaderFile)
+            {
+                std::cerr << "Unable to find " << typePathPair.second << std::endl;
+                deleteProgram();
+                return false;
+            }
+            std::stringstream buffer;
+            buffer << shaderFile.rdbuf();
+            shaderFile.close();
+
+            unsigned int shaderID = glCreateShader(typePathPair.first);
+            std::string shaderSource = buffer.str();
+            const char* shaderSourceStr = shaderSource.c_str();
+            glShaderSource(shaderID, 1, &shaderSourceStr, NULL);
+            glCompileShader(shaderID);
+
+            //check compile status
+            int compileResult;
+            glGetShaderiv(shaderID, GL_COMPILE_STATUS, &compileResult);
+            if (compileResult == GL_FALSE)
+            {
+                std::cerr << typePathPair.second << " shader failed to compile!" << std::endl;
+                int logLength;
+                glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &logLength);
+                if (logLength > 0)
+                {
+                    char* logContent;
+                    logContent = new char[logLength];
+                    int writtenLogLength;
+                    glGetShaderInfoLog(shaderID, logLength, &writtenLogLength, logContent);
+                    std::cerr << "================Error Message================\n\t"<<logContent << std::endl;
+                    delete[] logContent;
+                }
+                deleteProgram();
+                return false;
+            }
+            i++;
+            glAttachShader(mProgramID, shaderID);
+            glDeleteShader(shaderID);
         }
-        std::stringstream buffer;
-        buffer << shaderFile.rdbuf();
-        shaderFile.close();
+    }
 
-        unsigned int shaderID = glCreateShader(typePathPair.first);
-        std::string shaderSource = buffer.str();
-        const char* shaderSourceStr = shaderSource.c_str();
-        glShaderSource(shaderID, 1, &shaderSourceStr, NULL);
-        glCompileShader(shaderID);
-
-        //check compile status
-        int compileResult;
-        glGetShaderiv(shaderID, GL_COMPILE_STATUS, &compileResult);
-        if (compileResult == GL_FALSE)
+    //linking shader
+    {
+        glLinkProgram(mProgramID);
+        int linkStatus;
+        glGetProgramiv(mProgramID, GL_LINK_STATUS, &linkStatus);
+        if (linkStatus == GL_FALSE)
         {
-            std::cerr << typePathPair.second << " shader failed to compile!" << std::endl;
+            std::cerr << "program failed to link!" << std::endl;
             int logLength;
-            glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &logLength);
+            glGetProgramiv(mProgramID, GL_INFO_LOG_LENGTH, &logLength);
             if (logLength > 0)
             {
                 char* logContent;
                 logContent = new char[logLength];
                 int writtenLogLength;
-                glGetShaderInfoLog(shaderID, logLength, &writtenLogLength, logContent);
-                std::cerr << "================Error Message================\n\t"<<logContent << std::endl;
+                glGetProgramInfoLog(mProgramID, logLength, &writtenLogLength, logContent);
+                std::cout << logContent <<std::endl;
                 delete[] logContent;
             }
             deleteProgram();
             return false;
         }
-        i++;
-        glAttachShader(mProgramID, shaderID);
-        if(typePathPair.first == GL_TESS_CONTROL_SHADER || typePathPair.first == GL_TESS_EVALUATION_SHADER)
-        {
-            mUsingTessellation = true;
-        }
-        glDeleteShader(shaderID);
     }
 
-    glLinkProgram(mProgramID);
-    int linkStatus;
-    glGetProgramiv(mProgramID, GL_LINK_STATUS, &linkStatus);
-    if (linkStatus == GL_FALSE)
+    mShaderPaths = shaderTypePathPairs;
+    glUseProgram(mProgramID);
+
+    //setting attribute infos
+    GLint attributeCount;
+    glGetProgramiv(mProgramID, GL_ACTIVE_ATTRIBUTES, &attributeCount);
+    printf("\tActive Attributes: %d\n", attributeCount);
+
+    AttributeInfoContainer attributeInfos;
+    for (GLint i = 0; i < attributeCount; i++)
     {
-        std::cout << "program failed to link!" << std::endl;
-        int logLength;
-        glGetProgramiv(mProgramID, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0)
-        {
-            char* logContent;
-            logContent = new char[logLength];
-            int writtenLogLength;
-            glGetProgramInfoLog(mProgramID, logLength, &writtenLogLength, logContent);
-            std::cout << logContent <<std::endl;
-            delete[] logContent;
-        }
-        deleteProgram();
-        return false;
-    }
-
-    m_current_shader_paths = shaderTypePathPairs;
-
-    GLint count;
-    glGetProgramiv(mProgramID, GL_ACTIVE_ATTRIBUTES, &count);
-    printf("\tActive Attributes: %d\n", count);
-
-    const GLint numShaderAttribs = static_cast<GLint>(ShaderAttribNames.size());
-
-    for (GLint i = 0; i < count; i++)
-    {
-        const GLsizei bufSize = 16; // maximum name length
+        const static GLsizei bufSize = 32; // maximum name length
         GLchar name[bufSize]; // variable name in GLSL
         GLsizei length; // name length
 
         GLint size; // size of the variable
         GLenum type; // type of the variable (float, vec3 or mat4, etc)
-
         glGetActiveAttrib(mProgramID, (GLuint)i, bufSize, &length, &size, &type, name);
+        const std::string nameStr = name;
 
         printf("\t\t -Attribute #%d Name: %s\n", i, name);
-
-        const std::string nameStr = name;
-        //todo also check type to check match
-        GLint attribIdx = 0;
-        for(attribIdx = 0; attribIdx < numShaderAttribs; ++attribIdx){
-            if(ShaderAttribNames[attribIdx] == nameStr){
-                mShaderAttributeUsages[attribIdx] = true;
+        GLint attribLocation = glGetAttribLocation(mProgramID, nameStr.c_str());
+        GLenum dataType;
+        GLuint datasize;
+        switch(type){
+            case GL_FLOAT_VEC3:{
+                dataType = GL_FLOAT;
+                datasize = 3;
+                break;
             }
+            case GL_FLOAT:{
+                dataType = GL_FLOAT;
+                datasize = 1;
+                break;
+            }
+            default:{
+                throw std::logic_error("Trying to send unknown type to shader attrib");
+            }
+
+
         }
-        if(attribIdx > numShaderAttribs){
-            std::cerr << "Trying to using unsupported shader attrib :" << name << std::endl;
-        }
 
+
+        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, datasize});
     }
-
-    UnUse();
-
-    if(!linkWithGUI)
-    {
-        return true;
-    }
-
-    Use();
+    mAttributeInfos = attributeInfos;
+    GLuint VAOID = Engine::GetVAOManager().GetVAO(mAttributeInfos);
+    printf("\tVAOID: %d\n", VAOID);
 
     GLint numActiveUniforms = 0;
     GLuint curOffset = 0;
@@ -250,22 +257,8 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         curUniformBufferLocation = mUniformVarBuffer.data() + curOffset;
     }
     mUniformVarBuffer.resize(curOffset);
-    UnUse();
-    return true;
-}
-
-void Shader::Use() const
-{
-    if (mProgramID == 0)
-    {
-        std::cout<< "Shader program handle is invalid!" << std::endl;
-    }
-    glUseProgram(mProgramID);
-}
-
-void Shader::UnUse() const
-{
     glUseProgram(0);
+    return true;
 }
 
 void Shader::SetUniform1b(char const* name, bool val)
@@ -436,7 +429,7 @@ void Shader::SetAllUniforms()
 
 void Shader::Reload()
 {
-    CreateProgramAndLoadCompileAttachLinkShaders(m_current_shader_paths);
+    CreateProgramAndLoadCompileAttachLinkShaders(mShaderPaths);
 }
 
 Shader::Shader(const Shader &other) {
@@ -447,13 +440,12 @@ Shader::Shader(Shader &&other) {
     std::cerr << "RRef called" << std::endl;
     mProgramID = other.mProgramID;
     other.mProgramID = -1;
-    m_current_shader_paths = std::move(other.m_current_shader_paths);
+    mShaderPaths = std::move(other.mShaderPaths);
     mUniformVarBuffer = std::move(other.mUniformVarBuffer);
     mUniforms = std::move(other.mUniforms);
-    mUsingTessellation = other.mUsingTessellation;
-    mShaderAttributeUsages = other.mShaderAttributeUsages;
+    mAttributeInfos = std::move(other.mAttributeInfos);
 
-//    CreateProgramAndLoadCompileAttachLinkShaders(other.m_current_shader_paths, !other.mUniforms.empty());
+//    CreateProgramAndLoadCompileAttachLinkShaders(other.mShaderPaths, !other.mUniforms.empty());
 }
 
 Shader &Shader::operator=(const Shader &other) {
@@ -466,7 +458,7 @@ Shader &Shader::operator=(Shader &&other) {
     return *this;
 }
 
-const std::array<bool, 4> &Shader::GetAttribUsages() const {
-    return mShaderAttributeUsages;
+AttributeInfoContainer &Shader::GetAttribInfos() {
+    return mAttributeInfos;
 }
 

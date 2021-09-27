@@ -9,15 +9,25 @@
 
 #include <glm/glm.hpp>
 #include <GL/glut.h>
+#include <memory>
 
+#include "VBOManager.h"
 #include "ObjectComponents/ComponentBase.h"
 
 class Mesh : public ComponentBase
 {
 public:
+    enum class ProceduralMeshType{
+        SPHERE,
+        COUNT,
+    };
+public:
     friend class OBJReader;
-    void SetupBuffer();
+    Mesh(std::string name);
+    void Init();
     void CleanUp();
+
+    void MakeProcedural(ProceduralMeshType type, int stacks, int slices);
     // Get attribute values buffer
     GLfloat *getVertexBuffer();             // attribute 0
     GLfloat *getVertexNormals();            // attribute 1
@@ -28,6 +38,7 @@ public:
     [[nodiscard]] unsigned int getVertexBufferSize() const;
     [[nodiscard]] unsigned int getVertexCount() const;
     [[nodiscard]] unsigned int getVertexNormalCount() const;
+    [[nodiscard]] unsigned int getFaceNormalDisplayCount() const;
     [[nodiscard]] unsigned int getVertexIndicesCount() const;
 
     // Get vertex index buffer
@@ -39,18 +50,24 @@ public:
     glm::vec3   getModelCentroid();
     glm::vec3   getCentroidVector( glm::vec3 vVertex );
 
+    glm::vec3 GetMeshSize();
+    std::pair<glm::vec3, glm::vec3> GetBoundingBox();
+    std::string GetName();
 
     GLfloat  &  getNormalLength();
     void setNormalLength( GLfloat nLength );
 
     // initialize the data members
-    void initData();
+    void ClearData();
 
     // calculate vertex normals
     int calcVertexNormals(GLboolean bFlipNormals = false);
 
     // calculate the "display" normals
     void calcVertexNormalsForDisplay(GLboolean bFlipNormals = false);
+
+    // calculate the face normals
+    int calcFaceNormals(GLboolean bFlipNormals = false);
 
     // calculate texture coordinates
     enum UVType { PLANAR_UV = 0,
@@ -82,11 +99,16 @@ public:
 
     [[nodiscard]] GLboolean DoIndexing() const;
 
+
+private:
+    void IndexingProceduralMesh(int stacks, int slices);
+    void MakeProceduralSphere(int stacks, int slices);
 private:
     std::vector<glm::vec3>    vertexBuffer;
     std::vector<GLuint>       vertexIndices;
     std::vector<glm::vec2>    vertexUVs;
     std::vector<glm::vec3>    vertexNormals, vertexNormalDisplay;
+    std::vector<glm::vec3>    vertexFaceNormals, vertexFaceNormalsDisplay;
 
     glm::vec3               boundingBox[2];
     GLfloat                 normalLength;
@@ -98,6 +120,12 @@ private:
     GLint mVAO_ID;
     GLint mIdxBufferID;
     std::vector<GLuint> mEBO_IDs;
+
+    std::string mName;
+
+
+public:
+    friend void VBOManager::SetUpVBO(Mesh*);
 };
 
 

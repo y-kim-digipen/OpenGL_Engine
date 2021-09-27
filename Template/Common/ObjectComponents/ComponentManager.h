@@ -31,6 +31,7 @@ public:
     //    const std::vector<const char* const>& ListNames();
     //virtual bool CopyFromType(const ObjectComponent&& copiedType) = 0;
 
+    const std::vector<std::string>& GetNameList();
 protected:
     bool validate_existence(const std::string&);
     bool validate_sizes();

@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/163/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/164/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/163/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/164/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/163/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/164/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/163/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/164/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -177,6 +177,54 @@ Engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine.cpp.s
 .PHONY : Engine.cpp.s
 
+GUI/CurrentCameraInfoContent.o: GUI/CurrentCameraInfoContent.cpp.o
+.PHONY : GUI/CurrentCameraInfoContent.o
+
+# target to build an object file
+GUI/CurrentCameraInfoContent.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o
+.PHONY : GUI/CurrentCameraInfoContent.cpp.o
+
+GUI/CurrentCameraInfoContent.i: GUI/CurrentCameraInfoContent.cpp.i
+.PHONY : GUI/CurrentCameraInfoContent.i
+
+# target to preprocess a source file
+GUI/CurrentCameraInfoContent.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.i
+.PHONY : GUI/CurrentCameraInfoContent.cpp.i
+
+GUI/CurrentCameraInfoContent.s: GUI/CurrentCameraInfoContent.cpp.s
+.PHONY : GUI/CurrentCameraInfoContent.s
+
+# target to generate assembly for a file
+GUI/CurrentCameraInfoContent.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.s
+.PHONY : GUI/CurrentCameraInfoContent.cpp.s
+
+GUI/EngineInfo.o: GUI/EngineInfo.cpp.o
+.PHONY : GUI/EngineInfo.o
+
+# target to build an object file
+GUI/EngineInfo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o
+.PHONY : GUI/EngineInfo.cpp.o
+
+GUI/EngineInfo.i: GUI/EngineInfo.cpp.i
+.PHONY : GUI/EngineInfo.i
+
+# target to preprocess a source file
+GUI/EngineInfo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.i
+.PHONY : GUI/EngineInfo.cpp.i
+
+GUI/EngineInfo.s: GUI/EngineInfo.cpp.s
+.PHONY : GUI/EngineInfo.s
+
+# target to generate assembly for a file
+GUI/EngineInfo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.s
+.PHONY : GUI/EngineInfo.cpp.s
+
 GUI/GUIManager.o: GUI/GUIManager.cpp.o
 .PHONY : GUI/GUIManager.o
 
@@ -200,6 +248,78 @@ GUI/GUIManager.s: GUI/GUIManager.cpp.s
 GUI/GUIManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIManager.cpp.s
 .PHONY : GUI/GUIManager.cpp.s
+
+GUI/GUIWindow.o: GUI/GUIWindow.cpp.o
+.PHONY : GUI/GUIWindow.o
+
+# target to build an object file
+GUI/GUIWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIWindow.cpp.o
+.PHONY : GUI/GUIWindow.cpp.o
+
+GUI/GUIWindow.i: GUI/GUIWindow.cpp.i
+.PHONY : GUI/GUIWindow.i
+
+# target to preprocess a source file
+GUI/GUIWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIWindow.cpp.i
+.PHONY : GUI/GUIWindow.cpp.i
+
+GUI/GUIWindow.s: GUI/GUIWindow.cpp.s
+.PHONY : GUI/GUIWindow.s
+
+# target to generate assembly for a file
+GUI/GUIWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/GUIWindow.cpp.s
+.PHONY : GUI/GUIWindow.cpp.s
+
+GUI/ObjectDetailContent.o: GUI/ObjectDetailContent.cpp.o
+.PHONY : GUI/ObjectDetailContent.o
+
+# target to build an object file
+GUI/ObjectDetailContent.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o
+.PHONY : GUI/ObjectDetailContent.cpp.o
+
+GUI/ObjectDetailContent.i: GUI/ObjectDetailContent.cpp.i
+.PHONY : GUI/ObjectDetailContent.i
+
+# target to preprocess a source file
+GUI/ObjectDetailContent.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.i
+.PHONY : GUI/ObjectDetailContent.cpp.i
+
+GUI/ObjectDetailContent.s: GUI/ObjectDetailContent.cpp.s
+.PHONY : GUI/ObjectDetailContent.s
+
+# target to generate assembly for a file
+GUI/ObjectDetailContent.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.s
+.PHONY : GUI/ObjectDetailContent.cpp.s
+
+GUI/ObjectListContent.o: GUI/ObjectListContent.cpp.o
+.PHONY : GUI/ObjectListContent.o
+
+# target to build an object file
+GUI/ObjectListContent.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o
+.PHONY : GUI/ObjectListContent.cpp.o
+
+GUI/ObjectListContent.i: GUI/ObjectListContent.cpp.i
+.PHONY : GUI/ObjectListContent.i
+
+# target to preprocess a source file
+GUI/ObjectListContent.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.i
+.PHONY : GUI/ObjectListContent.cpp.i
+
+GUI/ObjectListContent.s: GUI/ObjectListContent.cpp.s
+.PHONY : GUI/ObjectListContent.s
+
+# target to generate assembly for a file
+GUI/ObjectListContent.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.s
+.PHONY : GUI/ObjectListContent.cpp.s
 
 Input/InputManager.o: Input/InputManager.cpp.o
 .PHONY : Input/InputManager.o
@@ -344,6 +464,54 @@ Shader.s: Shader.cpp.s
 Shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Shader.cpp.s
 .PHONY : Shader.cpp.s
+
+VAOManager.o: VAOManager.cpp.o
+.PHONY : VAOManager.o
+
+# target to build an object file
+VAOManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VAOManager.cpp.o
+.PHONY : VAOManager.cpp.o
+
+VAOManager.i: VAOManager.cpp.i
+.PHONY : VAOManager.i
+
+# target to preprocess a source file
+VAOManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VAOManager.cpp.i
+.PHONY : VAOManager.cpp.i
+
+VAOManager.s: VAOManager.cpp.s
+.PHONY : VAOManager.s
+
+# target to generate assembly for a file
+VAOManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VAOManager.cpp.s
+.PHONY : VAOManager.cpp.s
+
+VBOManager.o: VBOManager.cpp.o
+.PHONY : VBOManager.o
+
+# target to build an object file
+VBOManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VBOManager.cpp.o
+.PHONY : VBOManager.cpp.o
+
+VBOManager.i: VBOManager.cpp.i
+.PHONY : VBOManager.i
+
+# target to preprocess a source file
+VBOManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VBOManager.cpp.i
+.PHONY : VBOManager.cpp.i
+
+VBOManager.s: VBOManager.cpp.s
+.PHONY : VBOManager.s
+
+# target to generate assembly for a file
+VBOManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/VBOManager.cpp.s
+.PHONY : VBOManager.cpp.s
 
 home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o: home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
 .PHONY : home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o
@@ -552,9 +720,24 @@ help:
 	@echo "... Engine.o"
 	@echo "... Engine.i"
 	@echo "... Engine.s"
+	@echo "... GUI/CurrentCameraInfoContent.o"
+	@echo "... GUI/CurrentCameraInfoContent.i"
+	@echo "... GUI/CurrentCameraInfoContent.s"
+	@echo "... GUI/EngineInfo.o"
+	@echo "... GUI/EngineInfo.i"
+	@echo "... GUI/EngineInfo.s"
 	@echo "... GUI/GUIManager.o"
 	@echo "... GUI/GUIManager.i"
 	@echo "... GUI/GUIManager.s"
+	@echo "... GUI/GUIWindow.o"
+	@echo "... GUI/GUIWindow.i"
+	@echo "... GUI/GUIWindow.s"
+	@echo "... GUI/ObjectDetailContent.o"
+	@echo "... GUI/ObjectDetailContent.i"
+	@echo "... GUI/ObjectDetailContent.s"
+	@echo "... GUI/ObjectListContent.o"
+	@echo "... GUI/ObjectListContent.i"
+	@echo "... GUI/ObjectListContent.s"
 	@echo "... Input/InputManager.o"
 	@echo "... Input/InputManager.i"
 	@echo "... Input/InputManager.s"
@@ -573,6 +756,12 @@ help:
 	@echo "... Shader.o"
 	@echo "... Shader.i"
 	@echo "... Shader.s"
+	@echo "... VAOManager.o"
+	@echo "... VAOManager.i"
+	@echo "... VAOManager.s"
+	@echo "... VBOManager.o"
+	@echo "... VBOManager.i"
+	@echo "... VBOManager.s"
 	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.o"
 	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.i"
 	@echo "... home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.s"

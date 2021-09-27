@@ -75,6 +75,7 @@ double OBJReader::ReadOBJFile(std::string filepath, Mesh *pMesh,
 
     // Now calculate vertex normals
     _currentMesh->calcVertexNormals(bFlipNormals);
+    _currentMesh->calcFaceNormals(bFlipNormals);
     _currentMesh->calcUVs(Mesh::CYLINDRICAL_UV);
 
     return timeDuration;
@@ -227,7 +228,7 @@ void OBJReader::ParseOBJRecord( char *buffer, glm::vec3 &min, glm::vec3 &max )
 
                 _currentMesh->vertexBuffer.emplace_back(x, y, z);
             }
-                // vertex normals
+            // vertex normals
             else if( token[1] == 'n' )
             {
                 glm::vec3 vNormal;

@@ -3,40 +3,46 @@
 //
 #include "Engine.h"
 #include <iostream>
+#include <chrono>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <thread>
 
 #include "Input/InputManager.h"
 //todo delete this after testing scene
 #include "TestScene.h"
 #include "OBJReader.h"
 
+
+//GUI things
+#include "GUI/GUIWindow.h"
+#include "GUI/CurrentCameraInfoContent.h"
+#include "GUI/ObjectListContent.h"
+
+
+static auto CurrentTime = std::chrono::system_clock::now();
+static auto LastTime = CurrentTime;
+
 Engine::Engine() {
     mClearColor = Color(0.f);
     mWinSize = glm::vec2{};
 }
 
-//Engine* Engine::GetInstance(){
-//    static Engine* p_instance = nullptr;
-//    if(p_instance == nullptr){
-//        p_instance = new Engine();
-//    }
-//    return p_instance;
-//}
-
 int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
+    mTitleStr = title_name;
     mWinSize = win_size;
 
     //GLFW settings
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 
     glfwWindowHint(GLFW_SAMPLES, 1); // change for anti-aliasing
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE);
+    glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glfwWindowHint(GLFW_RED_BITS, 8);
     glfwWindowHint(GLFW_GREEN_BITS, 8);
     glfwWindowHint(GLFW_BLUE_BITS, 8);
@@ -48,7 +54,7 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
 
     glfwInit();
 
-    m_pWindow = glfwCreateWindow(static_cast<int>(mWinSize.x), static_cast<int>(mWinSize.y), title_name.c_str(), nullptr, nullptr);
+    m_pWindow = glfwCreateWindow(static_cast<int>(mWinSize.x), static_cast<int>(mWinSize.y), mTitleStr.c_str(), nullptr, nullptr);
     if(m_pWindow == nullptr) {
         std::cerr << "Failed to open GLFW window. Check if your GPU is compatible." << std::endl;
         glfwTerminate();
@@ -92,6 +98,7 @@ void Engine::InitEngine() {
     //todo for now, it is for debugging
 
     SetupScenes();
+
     mFocusedSceneIdx = 0;
     SetClearColor(Color(0.5f));
     //debug part ended here
@@ -99,23 +106,39 @@ void Engine::InitEngine() {
     for(auto& scene : m_pScenes){
         scene->Init();
     }
+    SetupGUI();
 
     std::cout << "Engine is initialized, ready to update" << std::endl;
 }
 
 void Engine::Update() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    const static float TargetDeltaTime = 1.f / FPS;
+    auto deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
+    //todo set FPS limit
+//    if(deltaTime < TargetDeltaTime){
+//        std::chrono::duration_cast<std::chrono::seconds>(TargetDeltaTime - deltaTime);
+//        std::this_thread::sleep_for();
+//
+//        deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
+//    }
+    LastTime = CurrentTime;
+    CurrentTime = std::chrono::system_clock::now();
+    FPS = 1.f / deltaTime;
 
     InputManager::Update();
+    //why it had to be called every frame?
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     if(mFocusedSceneIdx >= 0){
         PreRender();
         Render();
         PostRender();
     }
-
     mGUIManager.Update();
-
     glfwSwapBuffers(m_pWindow);
     glfwPollEvents();
 }
@@ -185,6 +208,10 @@ glm::vec2 Engine::GetWindowSize() {
     return mWinSize;
 }
 
+GUI::GUI_Manager &Engine::GetGUIManager() {
+    return mGUIManager;
+}
+
 void Engine::SetupScenes() {
     SceneBase* baseScene = new TestScene();
     baseScene->AddCamera();
@@ -209,31 +236,118 @@ void Engine::SetupShaders() {
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/DiffuseShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/DiffuseShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("NormalDrawShader", new Shader());
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/SimpleLineVertexShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/SimpleLineFragmentShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("FaceNormalDrawShader", new Shader());
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/FaceNormalVertexShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/FaceNormalFragmentShader.frag"} });
 }
 
 void Engine::SetupMeshes() {
     OBJReader objReader;
 
-    Mesh quadMesh;
-    quadMesh.SetDrawType(Mesh::DrawType::TRIANGLES);
 
-    auto pMesh = mMeshManager.AddComponent("TestMesh", quadMesh);
-//    pMesh->SetDrawType(GL_TRIANGLES);
-    pMesh->initData();
+
+    auto pMesh = mMeshManager.AddComponent("Bunny", std::make_shared<Mesh>("Bunny"));
+    pMesh->ClearData();
     objReader.ReadOBJFile("../models/bunny.obj", pMesh.get());
-    pMesh->SetupBuffer();
+    pMesh->Init();
 
-//    Mesh cubeMesh;
-//    quadMesh.SetDrawType(Mesh::DrawType::TRIANGLES);
-//    pMesh = mMeshManager.AddComponent("CubeMesh", cubeMesh);
-//    objReader.ReadOBJFile("../models/cube.obj", pMesh.get());
-//    pMesh->SetupBuffer();
+    pMesh = mMeshManager.AddComponent("Lucy", std::make_shared<Mesh>("Lucy"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/lucy_princeton.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("Cube", std::make_shared<Mesh>("Cube"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/cube2.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("Sphere", std::make_shared<Mesh>("Sphere"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/sphere.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("SphereModified", std::make_shared<Mesh>("SphereModified"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/sphere_modified.obj", pMesh.get());
+    pMesh->Init();
+
+//    pMesh = mMeshManager.AddComponent("Rhino", std::make_shared<Mesh>("Rhino"));
+//    pMesh->ClearData();
+//    objReader.ReadOBJFile("../models/rhino.obj", pMesh.get());
+//    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("Cup", std::make_shared<Mesh>("Cup"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/cup.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("StarWars", std::make_shared<Mesh>("StarWars"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/starwars1.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("4Sphere", std::make_shared<Mesh>("4Sphere"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/4Sphere.obj", pMesh.get());
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("ProceduralSphere", std::make_shared<Mesh>("ProceduralSphere"));
+    pMesh->ClearData();
+    pMesh->MakeProcedural(Mesh::ProceduralMeshType::SPHERE, 20, 20);
+    pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("Plane", std::make_shared<Mesh>("Plane"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/triangle.obj", pMesh.get());
+    pMesh->Init();
 }
 
 SceneBase* Engine::GetCurrentScene() {
     return m_pScenes[mFocusedSceneIdx];
 }
 
+void Engine::SetupGUI() {
+    using namespace GUI;
+    auto pGUIWindow = mGUIManager.AddWindow("Camera Settings");
+    pGUIWindow->AddContent("Position", new CurrentCameraInfoContent());
+    pGUIWindow = mGUIManager.AddWindow("Object Lists");
+    pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
+    pGUIWindow->AddContent("Object Lists", new ObjectListContent());
+//    pGUIWindow->AddContent();
+
+//    pGUIWindow->AddContent()
+}
+
+std::string Engine::GetTitleName() {
+    return mTitleStr;
+}
+
+float Engine::GetFPS() {
+    return FPS;
+}
+
+ComponentManager<Mesh> &Engine::GetMeshManager() {
+    return mMeshManager;
+}
+
+ComponentManager<Shader> &Engine::GetShaderManager() {
+    return mShaderManager;
+}
+
+VAOManager &Engine::GetVAOManager() {
+    return mVAOManager;
+}
+
+VBOManager &Engine::GetVBOManager() {
+    return mVBOManager;
+}
 
 
 

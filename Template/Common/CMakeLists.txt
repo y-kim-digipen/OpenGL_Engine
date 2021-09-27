@@ -68,8 +68,22 @@ add_executable( ${TARGET_NAME}
         ../Common/SceneBase.cpp
         ../Common/Drawer.h
         ../Common/Light.h
+        #GUI stuffs begin
         ../Common/GUI/GUIManager.h
-        ../Common/GUI/GUIManager.cpp)
+        ../Common/GUI/GUIManager.cpp
+        ../Common/GUI/GUIObject.h
+        ../Common/GUI/GUIWindow.cpp
+        ../Common/GUI/GUIWindow.h
+        ../Common/GUI/GUIContent.h
+        ../Common/GUI/CurrentCameraInfoContent.h
+        ../Common/GUI/CurrentCameraInfoContent.cpp
+        ../Common/GUI/EngineInfo.cpp
+        ../Common/GUI/EngineInfo.h
+        ../Common/GUI/ObjectListContent.cpp
+        ../Common/GUI/ObjectListContent.h
+        #GUI stuffs end
+
+        GUI/ColorSet.h GUI/ObjectDetailContent.cpp GUI/ObjectDetailContent.h VAOManager.cpp VAOManager.h VBOManager.cpp VBOManager.h)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )

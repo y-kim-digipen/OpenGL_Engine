@@ -60,4 +60,8 @@ void SceneBase::AddCamera(std::shared_ptr<Camera> cam) {
     m_pCameras.emplace_back(cam);
 }
 
+const std::map<std::string, std::shared_ptr<Object>> &SceneBase::GetObjectList() const {
+    return m_pObjects;
+}
+
 

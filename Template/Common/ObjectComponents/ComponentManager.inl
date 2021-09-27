@@ -71,8 +71,11 @@ std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(con
     }
     mNameList.push_back(name);
     std::cout << name << " successfully added" << std::endl;
-    return mComponentMap.template try_emplace(name.c_str(), type).first->second;
+//    return mComponentMap.template try_emplace(name.c_str(), type).first->second;
+    mComponentMap[name.c_str()] = type;
+    return mComponentMap[name.c_str()];
 }
+
 
 template<typename ComponentType>
 template<typename... Args>
@@ -87,6 +90,11 @@ std::shared_ptr<ComponentType> ComponentManager<ComponentType>::GetComponent(con
         return foundItr->second;
     }
     return nullptr;
+}
+
+template<typename ComponentType>
+const std::vector<std::string> &ComponentManager<ComponentType>::GetNameList() {
+    return mNameList;
 }
 
 

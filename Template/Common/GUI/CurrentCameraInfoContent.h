@@ -2,12 +2,22 @@
 // Created by yoonki on 9/15/21.
 //
 
-#ifndef ENGINE_CAMERAINFOCONTENT_H
-#define ENGINE_CAMERAINFOCONTENT_H
-#include "GUIContent.h"
-namespace GUI{
-    class CameraInfoContent : public GUI_Object{
+#ifndef ENGINE_CURRENTCAMERAINFOCONTENT_H
+#define ENGINE_CURRENTCAMERAINFOCONTENT_H
+#include <memory>
 
+#include "GUIContent.h"
+#include "Camera.h"
+namespace GUI{
+    class CurrentCameraInfoContent : public GUI_Content{
+    private:
+        virtual void Init() {}
+        virtual void CleanUp() {}
+
+        void Render() override;
+
+    private:
+        [[nodiscard]] std::shared_ptr<Camera> GetCurrentActiveCamera() const;
     };
 }
-#endif //ENGINE_CAMERAINFOCONTENT_H
+#endif //ENGINE_CURRENTCAMERAINFOCONTENT_H

@@ -17,7 +17,7 @@ Camera::Camera(void) : eye(0, 0, 4), back(0, 0, 1), right(1, 0, 0), up(0, 1, 0)
 
     float aspect = windowSize.x / windowSize.y;
     near = 0.1f;
-    far = 10;
+    far = 50;
     distance = near;
     height = 2.f * distance * tan(fov / 2.f);
     width = height * aspect;
@@ -185,4 +185,8 @@ void Camera::Update()
 
 glm::vec3 Camera::GetEyePosition() const {
     return eye;
+}
+
+void Camera::SetEyePosition(const glm::vec3 &pos) {
+    eye = pos;
 }

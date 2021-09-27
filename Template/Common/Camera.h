@@ -33,12 +33,12 @@ public:
     glm::mat4 GetOrthogonalMatrix() const;
 
     glm::vec3 GetEyePosition() const;
+    void SetEyePosition(const glm::vec3& pos);
 
 //    virtual void SetupBuffer(Demo*);
     virtual void Update();
 //    virtual void Unload() {}
 private:
-protected:
     glm::vec3 eye;
     glm::vec3 back, right, up;
     float width, height, near, far, distance;

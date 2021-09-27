@@ -8,6 +8,8 @@
 #include <glm/glm.hpp>
 
 #include "CommonConstants.h"
+#include "VAOManager.h"
+
 
 enum Primitive_Enum
 {
@@ -19,26 +21,6 @@ enum Primitive_Enum
 class Shader
 {
 public:
-    struct UniformAttribute
-    {
-        GLuint mOffset = 0;
-        DataType mType = DataType::Count;
-    };
-
-    enum ShaderAttrib{
-        POS = 0,
-        NORMAL,
-        COLOR,
-        UV,
-    };
-
-    static inline std::vector<std::string> ShaderAttribNames = {
-            "vPosition",
-            "vertexNormal",
-            "vColor",
-            "vUV",
-    };
-
     Shader() = default;
     Shader(const Shader& other);
     Shader(Shader&& other);
@@ -46,9 +28,7 @@ public:
     Shader& operator=(Shader&& other);
     ~Shader();
     //TODO load
-    bool CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs, bool linkWithGUI = true);
-    void Use() const;
-    void UnUse() const;
+    bool CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs);
     void SetAllUniforms();
     void Reload();
     template<class T>
@@ -73,11 +53,6 @@ public:
         return mUniforms.end() != mUniforms.find(name);
     }
 
-    bool UsingTessellationShader() const
-    {
-        return mUsingTessellation;
-    }
-
     unsigned int GetProgramID() const { return mProgramID; }
 
     //TODO
@@ -92,19 +67,24 @@ public:
     void SetUniformMatrix3f(char const* name, glm::mat3& m);
     void SetUniformMatrix4f(char const* name, glm::mat4& m);
 
-    const std::array<bool, 4>& GetAttribUsages() const;
+    AttributeInfoContainer& GetAttribInfos();
 private:
+    void deleteProgram();
+private:
+    struct UniformAttribute
+    {
+        GLuint mOffset = 0;
+        DataType mType = DataType::Count;
+    };
+
     using Byte = unsigned char;
 
-    std::array<bool, 4> mShaderAttributeUsages;
-    std::vector<std::pair<unsigned int, std::string>> m_current_shader_paths;
+    std::vector<std::pair<unsigned int, std::string>> mShaderPaths;
     mutable std::vector<Byte> mUniformVarBuffer;
     mutable std::map<std::string, UniformAttribute> mUniforms;
-
+    AttributeInfoContainer mAttributeInfos;
     GLint mProgramID = 0;
-
-    GLboolean mUsingTessellation = false;
-    void deleteProgram();
 };
+
 
 #endif

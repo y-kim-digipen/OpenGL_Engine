@@ -2,17 +2,22 @@
 // Created by yoonki on 9/17/21.
 //
 
-#ifndef ENGINE_VERTEXBUFFERMANAGER_H
-#define ENGINE_VERTEXBUFFERMANAGER_H
+#ifndef ENGINE_VBOMANAGER_H
+#define ENGINE_VBOMANAGER_H
 #include <map>
+#include <memory>
+
 #include <GL/gl.h>
 
-class VertexBufferManager {
+class Mesh;
+class VBOManager {
+public:
+    void SetUpVBO(Mesh* pMesh);
+    std::pair<std::map<std::string, GLuint>, GLuint>& GetVBOInfo(std::shared_ptr<Mesh> pMesh);
 private:
-    //VAOID, <meshName, <attribname, >>>
-    std::map<GLuint, std::map<std::string, std::map<std::string, std::pair<GLint, GLint>>>> mAttribOffsets;
-
+    //<MeshName, <<name, VBO>, EBO>>
+    std::map<std::string, std::pair<std::map<std::string, GLuint>, GLuint>> mVBOInfos;
 };
 
 
-#endif //ENGINE_VERTEXBUFFERMANAGER_H
+#endif //ENGINE_VBOMANAGER_H
