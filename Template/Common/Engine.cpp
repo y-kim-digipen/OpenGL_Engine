@@ -237,12 +237,12 @@ void Engine::SetupShaders() {
                                                                   {GL_VERTEX_SHADER,"../shaders/DiffuseShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/DiffuseShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("NormalDrawShader", new Shader());
+    pShader = mShaderManager.AddComponent("NormalDrawShader", new Shader(), false);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/SimpleLineVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/SimpleLineFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("FaceNormalDrawShader", new Shader());
+    pShader = mShaderManager.AddComponent("FaceNormalDrawShader", new Shader(), false);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/FaceNormalVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/FaceNormalFragmentShader.frag"} });
@@ -315,14 +315,11 @@ SceneBase* Engine::GetCurrentScene() {
 
 void Engine::SetupGUI() {
     using namespace GUI;
-    auto pGUIWindow = mGUIManager.AddWindow("Camera Settings");
-    pGUIWindow->AddContent("Position", new CurrentCameraInfoContent());
-    pGUIWindow = mGUIManager.AddWindow("Object Lists");
+//    auto pGUIWindow = mGUIManager.AddWindow("Camera Settings");
+//    pGUIWindow->AddContent("Position", new CurrentCameraInfoContent());
+    auto pGUIWindow = mGUIManager.AddWindow("Object Lists");
     pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
     pGUIWindow->AddContent("Object Lists", new ObjectListContent());
-//    pGUIWindow->AddContent();
-
-//    pGUIWindow->AddContent()
 }
 
 std::string Engine::GetTitleName() {

@@ -490,23 +490,6 @@ void Mesh::CleanUp() {
     ClearData();
 }
 
-GLint Mesh::GetVAOID() const {
-    return mVAO_ID;
-}
-
-GLint Mesh::GetEBOID(size_t idx) const {
-    //todo validate index
-    return mEBO_IDs[idx];
-}
-
-GLboolean Mesh::DoIndexing() const {
-    return doIndexing;
-}
-
-GLint Mesh::GetIndexBufferID() const {
-    return mIdxBufferID;
-}
-
 glm::vec3 Mesh::GetMeshSize() {
     return boundingBox[1] - boundingBox[0];
 }

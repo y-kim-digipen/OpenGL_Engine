@@ -5,8 +5,6 @@
 #include "ObjectListContent.h"
 
 #include "Engine.h"
-#include "SceneBase.h"
-
 #include "GUIWindow.h"
 #include "ColorSet.h"
 #include "ObjectDetailContent.h"

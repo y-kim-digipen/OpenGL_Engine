@@ -54,24 +54,25 @@ size_t ComponentManager<ComponentType>::Size() const {
 }
 
 template<typename ComponentType>
-std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType &&type) {
-    return AddComponent(name, std::make_shared<ComponentType>(type));
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType &&type, bool showGUI) {
+    return AddComponent(name, std::make_shared<ComponentType>(type), showGUI);
 }
 
 template<typename ComponentType>
-std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType *type) {
-    return AddComponent(name, std::shared_ptr<ComponentType>(type));
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, ComponentType *type, bool showGUI) {
+    return AddComponent(name, std::shared_ptr<ComponentType>(type), showGUI);
 }
 
 template<typename ComponentType>
-std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, std::shared_ptr<ComponentType> type) {
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, std::shared_ptr<ComponentType> type, bool showGUI) {
     if(validate_existence(name) == false){
         std::cerr << "Failed to add" << name << std::endl;
         return nullptr;
     }
-    mNameList.push_back(name);
+    if(showGUI){
+        mNameList.push_back(name);
+    }
     std::cout << name << " successfully added" << std::endl;
-//    return mComponentMap.template try_emplace(name.c_str(), type).first->second;
     mComponentMap[name.c_str()] = type;
     return mComponentMap[name.c_str()];
 }
@@ -79,8 +80,8 @@ std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(con
 
 template<typename ComponentType>
 template<typename... Args>
-std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, Args... args) {
-    return AddComponent(name, std::make_shared<ComponentType>(ComponentType(args...)));
+std::shared_ptr<ComponentType> ComponentManager<ComponentType>::AddComponent(const std::string &name, Args... args, bool showGUI) {
+    return AddComponent(name, std::make_shared<ComponentType>(ComponentType(args...)), showGUI);
 }
 
 template<typename ComponentType>

@@ -24,7 +24,7 @@ namespace GUI{
         void PostRender();
 
     private:
-        bool show_demo_window = true;
+        bool show_demo_window = false;
         std::map<std::string, GUI_Window*> m_pWindows;
 
     };

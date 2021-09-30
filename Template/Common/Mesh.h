@@ -93,16 +93,10 @@ public:
     [[nodiscard]] DrawType GetDrawType() const;
     void SetDrawType(DrawType drawType);
 
-    [[nodiscard]] GLint GetVAOID() const;
-    [[nodiscard]] GLint GetEBOID(size_t idx) const;
-    [[nodiscard]] GLint GetIndexBufferID() const;
-
-    [[nodiscard]] GLboolean DoIndexing() const;
-
-
 private:
     void IndexingProceduralMesh(int stacks, int slices);
     void MakeProceduralSphere(int stacks, int slices);
+
 private:
     std::vector<glm::vec3>    vertexBuffer;
     std::vector<GLuint>       vertexIndices;
@@ -114,16 +108,8 @@ private:
     GLfloat                 normalLength;
 
     DrawType                drawType = DrawType::TRIANGLE_STRIP;
-    GLboolean               doIndexing = false;
-
-    //todo might needed to another place?
-    GLint mVAO_ID;
-    GLint mIdxBufferID;
-    std::vector<GLuint> mEBO_IDs;
 
     std::string mName;
-
-
 public:
     friend void VBOManager::SetUpVBO(Mesh*);
 };

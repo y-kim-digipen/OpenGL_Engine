@@ -11,7 +11,7 @@ class TestScene : public SceneBase{
 public:
     virtual void Init() override
     {
-        constexpr float orbitRadius = 1.f;
+        constexpr float orbitRadius = 2.f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
         static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 8](int i, Object* obj) mutable {
             //axis y is fixed
@@ -42,7 +42,7 @@ public:
                 orbitLines.reserve(segments * 2);
                 glm::vec3 center = obj->GetPosition();
                 const float radianMove = PI * 2.f / segments;
-                for(float radian = 0.f; radian <= PI * 2.f - radianMove; radian += radianMove){
+                for(float radian = 0.f; radian <= PI * 2.f /*- radianMove*/; radian += radianMove){
                     orbitLines.emplace_back(glm::vec3(std::cos(radian), 0.f , std::sin(radian)) * 0.5f);
                     orbitLines.emplace_back(glm::vec3( std::cos(radian + radianMove), 0.f, std::sin(radian + radianMove)) * 0.5f);
                 }

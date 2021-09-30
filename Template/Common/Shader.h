@@ -85,6 +85,4 @@ private:
     AttributeInfoContainer mAttributeInfos;
     GLint mProgramID = 0;
 };
-
-
 #endif
