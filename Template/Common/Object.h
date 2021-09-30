@@ -18,9 +18,9 @@ namespace GUI{
 class Object{
     friend class GUI::ObjectDetailContent;
 public:
-    Object();
-    Object(std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader);
-    Object(const std::string& meshStr, const std::string& shaderStr);
+    Object(const std::string& name);
+    Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader);
+    Object(const std::string& name, const std::string& meshStr, const std::string& shaderStr);
     void Init();
     void PreRender();
     void Render() const;
@@ -52,10 +52,10 @@ public:
     void BindFunction(std::function<void(Object*)> func);
 
     glm::mat4 GetObjectToWorldMatrix() const;
+
+    std::string GetName() const;
 private:
-
     void TryCalculateMatrix();
-
     void RenderModel() const;
     void RenderVertexNormal() const;
     void RenderFaceNormal() const;
@@ -63,6 +63,7 @@ private:
 private:
     std::shared_ptr<Mesh> m_pMesh;
     std::shared_ptr<Shader> m_pShader;
+    std::string mObjectName;
     std::string mMeshName;
     std::string mShaderName;
 //    std::shared_ptr<Texture> mTexture;
@@ -76,8 +77,8 @@ private:
 
     std::function<void(void)> mAdditionalFunction;
 
-    GLboolean mDoVertexNormalDrawing;
-    GLboolean mDoFaceNormalDrawing;
+    bool mDoVertexNormalDrawing;
+    bool mDoFaceNormalDrawing;
 };
 
 #endif //ENGINE_OBJECT_H

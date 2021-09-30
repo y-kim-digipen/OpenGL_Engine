@@ -9,19 +9,22 @@
 #include <iostream>
 #include "Engine.h"
 #include "Shader.h"
-Object::Object() : Object(std::shared_ptr<Mesh>(), std::shared_ptr<Shader>()){
+Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), std::shared_ptr<Shader>()){
 
 }
 
-Object::Object(std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
-    : m_pMesh(pMesh), m_pShader(pShader),
+Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
+    : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
     m_position(), m_scale(1.f), m_rotation(0.f), mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
+    if(m_pShader){
+        m_pShader->SetShaderBuffer(mObjectName);
+    }
     mDoVertexNormalDrawing = false;
     mDoFaceNormalDrawing = false;
 }
 
-Object::Object(const std::string &meshStr, const std::string &shaderStr)
-    : Object(Engine::GetMesh(meshStr), Engine::GetShader(shaderStr)) {
+Object::Object(const std::string& name, const std::string &meshStr, const std::string &shaderStr)
+    : Object(name, Engine::GetMesh(meshStr), Engine::GetShader(shaderStr)) {
     mMeshName = meshStr;
     mShaderName = shaderStr;
 }
@@ -98,7 +101,7 @@ void Object::RenderModel() const {
 
 
     glDrawElements(GL_TRIANGLES, m_pMesh->getVertexIndicesCount(), GL_UNSIGNED_INT, (void*) 0);
-    m_pShader->SetAllUniforms();
+    m_pShader->SetAllUniforms(mObjectName);
 
     for(auto& attribute : attributeInfos){
         glDisableVertexAttribArray(attribute.location);
@@ -332,4 +335,8 @@ void Object::AddScale(glm::vec3 amount) {
 
 void Object::BindFunction(std::function<void(Object *)> func) {
     mAdditionalFunction = std::bind(func, this);
+}
+
+std::string Object::GetName() const {
+    return mObjectName;
 }

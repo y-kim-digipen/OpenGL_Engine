@@ -233,6 +233,8 @@ VAOManager.h
 /home/yoonki/Desktop/CS300/Template/Common/TestScene.h
 glm/gtx/transform.hpp
 -
+random
+-
 SceneBase.h
 /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
 

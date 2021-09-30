@@ -64,4 +64,8 @@ const std::map<std::string, std::shared_ptr<Object>> &SceneBase::GetObjectList()
     return m_pObjects;
 }
 
+std::shared_ptr<Object> SceneBase::AddObject(const std::string &objectName, const std::string &usingMesh, const std::string &usingShader) {
+    return  m_pObjects.emplace(objectName, std::make_unique<Object>(objectName, usingMesh, usingShader)).first->second;
+}
+
 

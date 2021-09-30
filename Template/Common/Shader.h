@@ -29,18 +29,18 @@ public:
     ~Shader();
     //TODO load
     bool CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs);
-    void SetAllUniforms();
+    void SetAllUniforms(const std::string& objName);
     void Reload();
     template<class T>
-    T& GetUniformValue(std::string&& name)
+    T& GetUniformValue(const std::string& objName, std::string&& name)
     {
-        return *(reinterpret_cast<T*>(mUniformVarBuffer.data() + mUniforms[name].mOffset));
+        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() : mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
     }
 
     template<class T>
-    T& GetUniformValue(const std::string& name)
+    T& GetUniformValue(const std::string& objName, const std::string& name)
     {
-        return *(reinterpret_cast<T*>(mUniformVarBuffer.data() + mUniforms[name].mOffset));
+        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() : mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
     }
 
     auto& GetUniforms() const
@@ -55,7 +55,11 @@ public:
 
     unsigned int GetProgramID() const { return mProgramID; }
 
-    //TODO
+    AttributeInfoContainer& GetAttribInfos();
+
+    void SetShaderBuffer(const std::string& objectName);
+    void DeleteShaderBuffer(const std::string& objectName);
+private:
     void SetUniform1b(char const* name, bool val);
     void SetUniform1i(char const* name, int val);
     void SetUniform1f(char const* name, float val);
@@ -67,8 +71,6 @@ public:
     void SetUniformMatrix3f(char const* name, glm::mat3& m);
     void SetUniformMatrix4f(char const* name, glm::mat4& m);
 
-    AttributeInfoContainer& GetAttribInfos();
-private:
     void deleteProgram();
 private:
     struct UniformAttribute
@@ -80,9 +82,11 @@ private:
     using Byte = unsigned char;
 
     std::vector<std::pair<unsigned int, std::string>> mShaderPaths;
-    mutable std::vector<Byte> mUniformVarBuffer;
+    mutable std::map<std::string, std::vector<Byte>> mUniformVarBuffer;
     mutable std::map<std::string, UniformAttribute> mUniforms;
     AttributeInfoContainer mAttributeInfos;
     GLint mProgramID = 0;
+
+    inline static const std::string defaultBufferName = "DefaultBuffer";
 };
 #endif

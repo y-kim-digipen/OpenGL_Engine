@@ -65,13 +65,14 @@ void GUI::ObjectDetailContent::Render() {
 
         /////////
         if (ImGui::BeginTabItem("ShaderUniforms")) {
+            const std::string& objName = m_pTargetObject->mObjectName;
             auto pShader = m_pTargetObject->m_pShader;
             auto &uniforms = pShader->GetUniforms();
             for (auto &uniformAttrib: uniforms) {
                 std::string name = uniformAttrib.first;
                 switch (uniformAttrib.second.mType) {
                     case DataType::Bool: {
-                        GLboolean *value = &pShader->GetUniformValue<GLboolean>(name);
+                        GLboolean *value = &pShader->GetUniformValue<GLboolean>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -79,7 +80,7 @@ void GUI::ObjectDetailContent::Render() {
                         break;
                     }
                     case DataType::Int: {
-                        GLint *value = &pShader->GetUniformValue<GLint>(name);
+                        GLint *value = &pShader->GetUniformValue<GLint>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -87,7 +88,7 @@ void GUI::ObjectDetailContent::Render() {
                         break;
                     }
                     case DataType::Float: {
-                        GLfloat *value = &pShader->GetUniformValue<GLfloat>(name);
+                        GLfloat *value = &pShader->GetUniformValue<GLfloat>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -95,7 +96,7 @@ void GUI::ObjectDetailContent::Render() {
                         break;
                     }
                     case DataType::Vec2f: {
-                        glm::vec2 *value = &pShader->GetUniformValue<glm::vec2>(name);
+                        glm::vec2 *value = &pShader->GetUniformValue<glm::vec2>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -103,7 +104,7 @@ void GUI::ObjectDetailContent::Render() {
                         break;
                     }
                     case DataType::Vec3f: {
-                        glm::vec3 *value = &pShader->GetUniformValue<glm::vec3>(name);
+                        glm::vec3 *value = &pShader->GetUniformValue<glm::vec3>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -116,7 +117,7 @@ void GUI::ObjectDetailContent::Render() {
                         break;
                     }
                     case DataType::Vec4f: {
-                        glm::vec4 *value = &pShader->GetUniformValue<glm::vec4>(name);
+                        glm::vec4 *value = &pShader->GetUniformValue<glm::vec4>(objName, name);
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
@@ -144,6 +145,20 @@ void GUI::ObjectDetailContent::Render() {
             }
             ImGui::EndTabItem();
         }
+        if (ImGui::BeginTabItem("Others")) {
+            if(ImGui::Checkbox("VertexNormalDrawing", &m_pTargetObject->mDoVertexNormalDrawing)){
+                if(m_pTargetObject->mDoFaceNormalDrawing){
+                    m_pTargetObject->mDoVertexNormalDrawing = false;
+                }
+            }
+            if(ImGui::Checkbox("FaceNormalDrawing", &m_pTargetObject->mDoFaceNormalDrawing)){
+                if(m_pTargetObject->mDoVertexNormalDrawing){
+                    m_pTargetObject->mDoFaceNormalDrawing = false;
+                }
+            }
+            ImGui::EndTabItem();
+        }
+
         ImGui::EndTabBar();
     }
 }

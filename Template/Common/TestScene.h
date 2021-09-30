@@ -6,6 +6,7 @@
 #define ENGINE_TESTSCENE_H
 
 #include <glm/gtx/transform.hpp>
+#include <random>
 #include "SceneBase.h"
 class TestScene : public SceneBase{
 public:
@@ -118,12 +119,17 @@ public:
         //for initializing camera
         SceneBase::Init();
 
-        auto pCentralObj = m_pObjects.emplace("CentralObject", std::make_unique<Object>("Bunny", "3D_DefaultShader")).first->second;
+        auto pCentralObj = AddObject("CentralObject", "Bunny", "3D_DefaultShader");
         pCentralObj->BindFunction(DrawOrbit);
 
         for(int i = 0; i < 8; ++i){
-            auto pObj = m_pObjects.emplace("OrbitObject" + std::to_string(i), std::make_unique<Object>("Sphere", "DiffuseShader")).first->second;
+            std::random_device randomDevice;
+            std::uniform_int_distribution<int> randomDistribution(0, 255);
+            const std::string& objName = "OrbitObject" + std::to_string(i);
+            auto pObj = AddObject(objName, "Sphere", "DiffuseShader");
             pObj->BindFunction(std::bind(OrbitsMoveUpdate,  i, _1));
+           Engine::GetShader(pObj->GetUsingShaderName())->GetUniformValue<glm::vec3>(pObj->GetName(), "diffuseColor")
+                   = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
         }
     };
 

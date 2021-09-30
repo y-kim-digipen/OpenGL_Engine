@@ -144,8 +144,6 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
 
 
         }
-
-
         attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, datasize});
     }
     mAttributeInfos = attributeInfos;
@@ -156,9 +154,10 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     GLuint curOffset = 0;
     glGetProgramiv(mProgramID, GL_ACTIVE_UNIFORMS, &numActiveUniforms);
 
-    mUniformVarBuffer.resize(2048);
+    auto& currentUniformVarBuffer = mUniformVarBuffer[defaultBufferName];
+    currentUniformVarBuffer.resize(2048);
 
-    Byte* curUniformBufferLocation = mUniformVarBuffer.data();
+    Byte* curUniformBufferLocation = currentUniformVarBuffer.data();
 
     for (GLint idx = 0; idx < numActiveUniforms; idx++)
     {
@@ -254,9 +253,9 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         }
         mUniforms.emplace(uniformVarName, currentUniformAttribute);
         curOffset += dataTypeSize * uniformArraySize;
-        curUniformBufferLocation = mUniformVarBuffer.data() + curOffset;
+        curUniformBufferLocation = currentUniformVarBuffer.data() + curOffset;
     }
-    mUniformVarBuffer.resize(curOffset);
+    currentUniformVarBuffer.resize(curOffset);
     glUseProgram(0);
     return true;
 }
@@ -371,7 +370,7 @@ void Shader::SetUniformMatrix4f(char const* name, glm::mat4& m)
     glUniformMatrix4fv(location, 1, GL_FALSE, &m[0][0]);
 }
 
-void Shader::SetAllUniforms()
+void Shader::SetAllUniforms(const std::string& objName)
 {
     for(auto& uniformAttrib : mUniforms)
     {
@@ -380,42 +379,42 @@ void Shader::SetAllUniforms()
         {
             case DataType::Bool:
             {
-                SetUniform1b(name.c_str(), GetUniformValue<GLboolean>(name));
+                SetUniform1b(name.c_str(), GetUniformValue<GLboolean>(objName, name));
                 break;
             }
             case DataType::Int:
             {
-                SetUniform1i(name.c_str(), GetUniformValue<GLint>(name));
+                SetUniform1i(name.c_str(), GetUniformValue<GLint>(objName, name));
                 break;
             }
             case DataType::Float:
             {
-                SetUniform1f(name.c_str(), GetUniformValue<GLfloat>(name));
+                SetUniform1f(name.c_str(), GetUniformValue<GLfloat>(objName, name));
                 break;
             }
             case DataType::Vec2f:
             {
-                SetUniformVec2f(name.c_str(), GetUniformValue<glm::vec2>(name));
+                SetUniformVec2f(name.c_str(), GetUniformValue<glm::vec2>(objName, name));
                 break;
             }
             case DataType::Vec3f:
             {
-                SetUniformVec3f(name.c_str(), GetUniformValue<glm::vec3>(name));
+                SetUniformVec3f(name.c_str(), GetUniformValue<glm::vec3>(objName, name));
                 break;
             }
             case DataType::Vec4f:
             {
-                SetUniformVec4f(name.c_str(), GetUniformValue<glm::vec4>(name));
+                SetUniformVec4f(name.c_str(), GetUniformValue<glm::vec4>(objName, name));
                 break;
             }
             case DataType::Mat3f:
             {
-                SetUniformMatrix3f(name.c_str(), GetUniformValue<glm::mat3>(name));
+                SetUniformMatrix3f(name.c_str(), GetUniformValue<glm::mat3>(objName, name));
                 break;
             }
             case DataType::Mat4f:
             {
-                SetUniformMatrix4f(name.c_str(), GetUniformValue<glm::mat4>(name));
+                SetUniformMatrix4f(name.c_str(), GetUniformValue<glm::mat4>(objName, name));
                 break;
             }
             default:
@@ -460,5 +459,16 @@ Shader &Shader::operator=(Shader &&other) {
 
 AttributeInfoContainer &Shader::GetAttribInfos() {
     return mAttributeInfos;
+}
+
+void Shader::SetShaderBuffer(const std::string &objectName) {
+    mUniformVarBuffer[objectName] = mUniformVarBuffer[defaultBufferName];
+}
+
+void Shader::DeleteShaderBuffer(const std::string &objectName) {
+    if(mUniformVarBuffer.find(objectName) == mUniformVarBuffer.end()){
+        return;
+    }
+    mUniformVarBuffer.erase(objectName);
 }
 
