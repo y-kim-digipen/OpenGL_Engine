@@ -5,6 +5,8 @@ include( ../Common/build_files/Common_packages.cmake )
 
 set( TARGET_NAME Engine )
 
+add_compile_options(-Wall -Wextra -pedantic -Werror)
+
 add_executable( ${TARGET_NAME}
         ../Common/main.cpp
         #IMGUI_BEGIN

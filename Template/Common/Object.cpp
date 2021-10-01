@@ -23,8 +23,8 @@ Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), 
 }
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
-    : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
-    m_position(), m_scale(1.f), m_rotation(0.f), mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
+    : m_pMesh(pMesh), m_pShader(pShader), mObjectName(name),
+      m_MatrixCacheDirty(true), mToWorldMatrix(1.f), m_position(), m_scale(1.f), m_rotation(0.f) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
@@ -59,7 +59,6 @@ void Object::PreRender() {
 }
 
 void Object::RenderModel() const {
-    auto& VBOManager = Engine::GetVBOManager();
     const GLint shaderPID = m_pShader->GetProgramID();
 
     //setting&binding buffer
@@ -121,7 +120,6 @@ void Object::RenderModel() const {
 }
 
 void Object::RenderVertexNormal() const {
-    auto& VBOManager = Engine::GetVBOManager();
     auto pNormalDrawShader = Engine::GetShader("NormalDrawShader");
     const GLint shaderPID = pNormalDrawShader->GetProgramID();
 
@@ -171,7 +169,6 @@ void Object::RenderVertexNormal() const {
 }
 
 void Object::RenderFaceNormal() const {
-    auto& VBOManager = Engine::GetVBOManager();
     auto pNormalDrawShader = Engine::GetShader("FaceNormalDrawShader");
     const GLint shaderPID = pNormalDrawShader->GetProgramID();
 

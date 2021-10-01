@@ -9,6 +9,7 @@
 namespace GUI {
     class GUI_Object {
     public:
+        virtual ~GUI_Object(){};
         virtual void Init() {}
 
         void Update() {

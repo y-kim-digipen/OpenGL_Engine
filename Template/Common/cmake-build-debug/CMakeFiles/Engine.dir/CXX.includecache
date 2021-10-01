@@ -164,6 +164,24 @@ stdint.h
 imgui_user.h
 ../../External/imgui-1.84.2/imgui_user.h
 
+/home/yoonki/Desktop/CS300/Template/Common/Camera.cpp
+Camera.h
+/home/yoonki/Desktop/CS300/Template/Common/Camera.h
+glm/gtc/matrix_transform.hpp
+-
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+Input/InputManager.h
+/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
+CommonConstants.h
+/home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Camera.h
+glm/glm.hpp
+-
+GL/glew.h
+-
+
 /home/yoonki/Desktop/CS300/Template/Common/Color.h
 
 /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
@@ -228,6 +246,20 @@ VAOManager.h
 VBOManager.h
 /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
 
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h
+imgui.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/imgui.h
+
+/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.cpp
+CurrentCameraInfoContent.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Engine.h
+SceneBase.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/SceneBase.h
+Camera.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Camera.h
+
 /home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h
 memory
 -
@@ -235,6 +267,18 @@ GUIContent.h
 /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
 Camera.h
 /home/yoonki/Desktop/CS300/Template/Common/GUI/Camera.h
+
+/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.cpp
+EngineInfo.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Engine.h
+
+/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h
+GUIWindow.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
+string
+-
 
 /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
 GUIObject.h
@@ -256,6 +300,36 @@ string
 map
 -
 
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.cpp
+ObjectDetailContent.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Engine.h
+ObjectComponents/ComponentManager.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectComponents/ComponentManager.h
+ObjectComponents/ComponentBase.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectComponents/ComponentBase.h
+
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h
+memory
+-
+Object.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Object.h
+GUIContent.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
+
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.cpp
+ObjectListContent.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/Engine.h
+GUIWindow.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
+ColorSet.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h
+ObjectDetailContent.h
+/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h
+
 /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h
 memory
 -
@@ -275,6 +349,24 @@ KeyCodes.h
 /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
 GLFW/glfw3.h
 -
+
+/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp
+iostream
+-
+set
+-
+glm/gtc/epsilon.hpp
+-
+GL/glew.h
+-
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+Mesh.h
+/home/yoonki/Desktop/CS300/Template/Common/Mesh.h
+Shader.h
+/home/yoonki/Desktop/CS300/Template/Common/Shader.h
+VAOManager.h
+/home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
 
 /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
 vector
@@ -304,6 +396,22 @@ glm/glm.hpp
 Mesh.h
 /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
 
+/home/yoonki/Desktop/CS300/Template/Common/Object.cpp
+Object.h
+/home/yoonki/Desktop/CS300/Template/Common/Object.h
+GL/glew.h
+-
+glm/glm.hpp
+-
+glm/gtx/transform.hpp
+-
+iostream
+-
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+Shader.h
+/home/yoonki/Desktop/CS300/Template/Common/Shader.h
+
 /home/yoonki/Desktop/CS300/Template/Common/Object.h
 memory
 -
@@ -316,6 +424,10 @@ Mesh.h
 
 /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
 
+/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp
+SceneBase.h
+/home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
+
 /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
 filesystem
 -
@@ -323,6 +435,20 @@ Camera.h
 /home/yoonki/Desktop/CS300/Template/Common/Camera.h
 Object.h
 /home/yoonki/Desktop/CS300/Template/Common/Object.h
+
+/home/yoonki/Desktop/CS300/Template/Common/Shader.cpp
+iostream
+-
+fstream
+-
+sstream
+-
+GL/glew.h
+-
+Engine.h
+/home/yoonki/Desktop/CS300/Template/Common/Engine.h
+Shader.h
+/home/yoonki/Desktop/CS300/Template/Common/Shader.h
 
 /home/yoonki/Desktop/CS300/Template/Common/Shader.h
 map

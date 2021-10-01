@@ -156,7 +156,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
 
 
         }
-        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, datasize});
+        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, static_cast<int>(datasize)});
     }
     mAttributeInfos = attributeInfos;
     mAttributeInfoID = Engine::GetVAOManager().GetAttribID(mAttributeInfos);
@@ -444,10 +444,6 @@ void Shader::Reload()
     CreateProgramAndLoadCompileAttachLinkShaders(mShaderPaths);
 }
 
-Shader::Shader(const Shader &other) {
-    std::cerr << "Refer copy constructor called" << std::endl;
-}
-
 Shader::Shader(Shader &&other) {
     std::cerr << "RRef called" << std::endl;
     mProgramID = other.mProgramID;
@@ -458,16 +454,6 @@ Shader::Shader(Shader &&other) {
     mAttributeInfos = std::move(other.mAttributeInfos);
 
 //    CreateProgramAndLoadCompileAttachLinkShaders(other.mShaderPaths, !other.mUniforms.empty());
-}
-
-Shader &Shader::operator=(const Shader &other) {
-    std::cerr << "Refer copy called" << std::endl;
-    return *this;
-}
-
-Shader &Shader::operator=(Shader &&other) {
-    std::cerr << "rRefer copy called" << std::endl;
-    return *this;
 }
 
 AttributeInfoContainer &Shader::GetAttribInfos() {

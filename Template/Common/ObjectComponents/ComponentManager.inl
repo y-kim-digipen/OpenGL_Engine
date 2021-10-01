@@ -44,7 +44,7 @@ bool ComponentManager<ComponentType>::RemoveComponent(const std::string &nameStr
     //for debugging purpose
     //todo change to meaningful error message
     if(validate_sizes() == false){
-        throw(std::logic_error("????????/"));
+        throw(std::logic_error("Trying to remove " + nameStr + "does not exist!"));
     }
     return true;
 }
@@ -57,7 +57,7 @@ bool ComponentManager<ComponentType>::validate_sizes() {
 template<typename ComponentType>
 size_t ComponentManager<ComponentType>::Size() const {
     if(validate_sizes() == false){
-        throw(std::logic_error("????????/"));
+        throw(std::logic_error("From ComponentManager::Size(), This does not have to be happen"));
     }
     return mNameList.size();
 }

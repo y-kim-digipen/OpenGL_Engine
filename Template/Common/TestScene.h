@@ -49,7 +49,6 @@ public:
 
             if(initialSetting){
                 orbitLines.reserve(segments * 2);
-                glm::vec3 center = obj->GetPosition();
                 const float radianMove = PI * 2.f / segments;
                 for(float radian = 0.f; radian <= PI * 2.f /*- radianMove*/; radian += radianMove){
                     orbitLines.emplace_back(glm::vec3(std::cos(radian), 0.f , std::sin(radian)) * 0.5f);
@@ -94,9 +93,6 @@ public:
             const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
             //Get matricies
-            glm::mat4 modelToWorldMatrix = obj->GetObjectToWorldMatrix();
-
-
             glm::mat4 tempToWorld(1.f);
             tempToWorld = glm::translate(tempToWorld, obj->GetPosition());
 

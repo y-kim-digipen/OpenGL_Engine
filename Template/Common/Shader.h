@@ -32,10 +32,7 @@ class Shader
 {
 public:
     Shader() = default;
-    Shader(const Shader& other);
     Shader(Shader&& other);
-    Shader& operator=(const Shader& other);
-    Shader& operator=(Shader&& other);
     ~Shader();
     //TODO load
     bool CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs);

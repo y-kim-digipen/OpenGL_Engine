@@ -21,7 +21,7 @@ End Header --------------------------------------------------------*/
 class SceneBase{
 public:
     virtual void Init();
-
+    virtual ~SceneBase() {};
     //todo implement this if needed
     //void InitFromFile(const std::filesystem::path& filePath);
 

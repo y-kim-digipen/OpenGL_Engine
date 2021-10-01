@@ -12,7 +12,7 @@ GUI::ObjectDetailContent::ObjectDetailContent(std::shared_ptr<Object> target) : 
 }
 
 void GUI::ObjectDetailContent::Render() {
-    constexpr auto ToFloatColour = [](int r, int g, int b){
+    [[maybe_unused]] constexpr auto ToFloatColour = [](int r, int g, int b){
         return ImVec4(r/255.f, g/255.f, b/255.f, 1.f);
     };
 
@@ -108,7 +108,7 @@ void GUI::ObjectDetailContent::Render() {
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
-                        if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                        if ((name.find("color") < name.size()) | (name.find("Color") < name.size())) {
                             ImGui::ColorEdit3(("##" + name).c_str(), &value->x);
                         } else {
 
@@ -121,7 +121,7 @@ void GUI::ObjectDetailContent::Render() {
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
-                        if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                        if ((name.find("color") < name.size()) | (name.find("Color") < name.size())) {
                             ImGui::ColorEdit4(("##" + name).c_str(), &value->x);
                         } else {
                             ImGui::DragFloat4(("##" + name).c_str(), &value->x, 0.1f);

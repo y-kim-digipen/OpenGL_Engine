@@ -8,6 +8,7 @@
 namespace GUI {
     class GUI_Content {
     public:
+        virtual ~GUI_Content() {}
         virtual void Init() = 0;
         virtual void CleanUp() = 0;
 

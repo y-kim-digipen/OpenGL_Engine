@@ -120,7 +120,7 @@ void Engine::InitEngine() {
 }
 
 void Engine::Update() {
-    const static float TargetDeltaTime = 1.f / FPS;
+//    const static float TargetDeltaTime = 1.f / FPS;
     auto deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
     //todo set FPS limit
 //    if(deltaTime < TargetDeltaTime){
@@ -194,7 +194,7 @@ void Engine::GLFWErrorCallback([[maybe_unused]]int, const char *err_str) {
     std::cerr << "GLFW Error: " << err_str << std::endl;
 }
 
-void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, int keyCode, int action, [[maybe_unused]] int modifier) {
+void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, [[maybe_unused]]int keyCode, int action, [[maybe_unused]] int modifier) {
     if (key < 0 || key > 1000)
     {
         return;

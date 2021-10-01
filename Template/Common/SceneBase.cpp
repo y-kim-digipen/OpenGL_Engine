@@ -50,7 +50,7 @@ void SceneBase::CleanUp() {
 }
 
 std::shared_ptr<Camera> SceneBase::GetCurrentCamera() {
-    if(mFocusedCameraIdx < 0 || mFocusedCameraIdx >= m_pCameras.size()){
+    if(mFocusedCameraIdx < 0 || mFocusedCameraIdx >= static_cast<short>(m_pCameras.size())){
         return nullptr;
     }
     return m_pCameras[mFocusedCameraIdx];

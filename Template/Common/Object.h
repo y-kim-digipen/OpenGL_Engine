@@ -25,9 +25,11 @@ namespace GUI{
 }
 class Object{
     friend class GUI::ObjectDetailContent;
+private:
+    Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader);
 public:
     Object(const std::string& name);
-    Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader);
+
     Object(const std::string& name, const std::string& meshStr, const std::string& shaderStr);
     void Init();
     void PreRender();
