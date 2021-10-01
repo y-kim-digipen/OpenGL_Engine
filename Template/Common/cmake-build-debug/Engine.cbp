@@ -100,9 +100,6 @@
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Drawer.h">
-			<Option target="Engine"/>
-		</Unit>
 		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp">
 			<Option target="Engine"/>
 		</Unit>

@@ -66,7 +66,6 @@ add_executable( ${TARGET_NAME}
         ../Common/Camera.cpp
         ../Common/Camera.h
         ../Common/SceneBase.cpp
-        ../Common/Drawer.h
         ../Common/Light.h
         #GUI stuffs begin
         ../Common/GUI/GUIManager.h
