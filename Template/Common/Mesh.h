@@ -8,13 +8,26 @@
 #include <vector>
 
 #include <glm/glm.hpp>
+#include <GL/glut.h>
+#include <memory>
 
+#include "VBOManager.h"
+#include "ObjectComponents/ComponentBase.h"
 
-class Mesh
+class Mesh : public ComponentBase
 {
 public:
+    enum class ProceduralMeshType{
+        SPHERE,
+        COUNT,
+    };
+public:
     friend class OBJReader;
+    Mesh(std::string name);
+    void Init();
+    void CleanUp();
 
+    void MakeProcedural(ProceduralMeshType type, int stacks, int slices);
     // Get attribute values buffer
     GLfloat *getVertexBuffer();             // attribute 0
     GLfloat *getVertexNormals();            // attribute 1
@@ -22,31 +35,39 @@ public:
 
     GLfloat *getVertexNormalsForDisplay();  // attribute 0
 
-    unsigned int getVertexBufferSize();
-    unsigned int getVertexCount();
-    unsigned int getVertexNormalCount();
+    [[nodiscard]] unsigned int getVertexBufferSize() const;
+    [[nodiscard]] unsigned int getVertexCount() const;
+    [[nodiscard]] unsigned int getVertexNormalCount() const;
+    [[nodiscard]] unsigned int getFaceNormalDisplayCount() const;
+    [[nodiscard]] unsigned int getVertexIndicesCount() const;
 
     // Get vertex index buffer
     GLuint *getIndexBuffer();
-    unsigned int getIndexBufferSize();
-    unsigned int getTriangleCount();
+    [[nodiscard]] unsigned int getIndexBufferSize() const;
+    [[nodiscard]] unsigned int getTriangleCount() const;
 
     glm::vec3   getModelScale();
     glm::vec3   getModelCentroid();
     glm::vec3   getCentroidVector( glm::vec3 vVertex );
 
+    glm::vec3 GetMeshSize();
+    std::pair<glm::vec3, glm::vec3> GetBoundingBox();
+    std::string GetName();
 
     GLfloat  &  getNormalLength();
     void setNormalLength( GLfloat nLength );
 
     // initialize the data members
-    void initData();
+    void ClearData();
 
     // calculate vertex normals
     int calcVertexNormals(GLboolean bFlipNormals = false);
 
     // calculate the "display" normals
     void calcVertexNormalsForDisplay(GLboolean bFlipNormals = false);
+
+    // calculate the face normals
+    int calcFaceNormals(GLboolean bFlipNormals = false);
 
     // calculate texture coordinates
     enum UVType { PLANAR_UV = 0,
@@ -57,15 +78,40 @@ public:
     int         calcUVs( Mesh::UVType uvType = Mesh::PLANAR_UV );
     glm::vec2   calcCubeMap( glm::vec3 vEntity );
 
+    //todo add more if needed
+    enum DrawType{  POINT = GL_POINT,
+                    POINTS = GL_POINTS,
+                    LINE = GL_LINE,
+                    LINES = GL_LINES,
+                    LINE_STRIP = GL_LINE_STRIP,
+                    LINE_LOOP = GL_LINE_LOOP,
+                    TRIANGLES = GL_TRIANGLES,
+                    TRIANGLE_STRIP = GL_TRIANGLE_STRIP,
+                    TRIANGLE_FAN = GL_TRIANGLE_FAN,
+    };
+
+    [[nodiscard]] DrawType GetDrawType() const;
+    void SetDrawType(DrawType drawType);
+
+private:
+    void IndexingProceduralMesh(int stacks, int slices);
+    void MakeProceduralSphere(int stacks, int slices);
+
 private:
     std::vector<glm::vec3>    vertexBuffer;
     std::vector<GLuint>       vertexIndices;
     std::vector<glm::vec2>    vertexUVs;
     std::vector<glm::vec3>    vertexNormals, vertexNormalDisplay;
+    std::vector<glm::vec3>    vertexFaceNormals, vertexFaceNormalsDisplay;
 
     glm::vec3               boundingBox[2];
     GLfloat                 normalLength;
 
+    DrawType                drawType = DrawType::TRIANGLE_STRIP;
+
+    std::string mName;
+public:
+    friend void VBOManager::SetUpVBO(Mesh*);
 };
 
 

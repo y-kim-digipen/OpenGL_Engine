@@ -1,4 +1,4 @@
-
+#version 410 core
 
 uniform sampler2D texSampler;
 
@@ -14,7 +14,8 @@ out vec3 fragColor;
 
 void main()
 {
-    vec3 tColor = texture( texSampler, fs_in.vertexUV ).rgb;
-    vec3 fColor = fs_in.vertexColor;
-    fragColor = mix( tColor, fColor, 0.015f );
+//    vec3 tColor = texture( texSampler, fs_in.vertexUV ).rgb;
+//    vec3 fColor = fs_in.vertexColor;
+//    fragColor = mix( tColor, fColor, 0.015f );
+    fragColor = vec3(1.f);
 }

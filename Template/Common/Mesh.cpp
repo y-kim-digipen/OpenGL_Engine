@@ -2,23 +2,34 @@
 // Created by pushpak on 10/5/18.
 //
 
-#include <GL/gl.h>
+
 #include <iostream>
 #include <set>
-#include "Mesh.h"
 
 #include <glm/gtc/epsilon.hpp>
+#include <GL/glew.h>
+
+#include "Engine.h"
+#include "Mesh.h"
+#include "Shader.h"
+#include "VAOManager.h"
+
+void Mesh::Init() {
+    Engine::GetVBOManager().SetUpVBO(this);
+}
 
 // Initialize the data members in the mesh
-void Mesh::initData()
+void Mesh::ClearData()
 {
     vertexBuffer.clear();
     vertexIndices.clear();
     vertexUVs.clear();
     vertexNormals.clear();
     vertexNormalDisplay.clear();
+    vertexFaceNormals.clear();
+    vertexFaceNormalsDisplay.clear();
 
-    normalLength = 0.00f;
+    normalLength = 0.5f;
 
     return;
 }
@@ -54,29 +65,37 @@ GLuint *Mesh::getIndexBuffer()
 ////////////////////////////////////
 ////////////////////////////////////
 ////////////////////////////////////
-unsigned int Mesh::getVertexBufferSize()
+unsigned int Mesh::getVertexBufferSize() const
 {
     return (unsigned int) vertexBuffer.size();
 }
 
-unsigned int Mesh::getIndexBufferSize()
+unsigned int Mesh::getIndexBufferSize() const
 {
     return (unsigned int) vertexIndices.size();
 }
 
-unsigned int Mesh::getTriangleCount()
+unsigned int Mesh::getTriangleCount() const
 {
     return getIndexBufferSize() / 3;
 }
 
-unsigned int Mesh::getVertexCount()
+unsigned int Mesh::getVertexCount() const
 {
     return getVertexBufferSize();
 }
 
-unsigned int Mesh::getVertexNormalCount()
+unsigned int Mesh::getVertexNormalCount() const
 {
     return vertexNormalDisplay.size();
+}
+
+unsigned int Mesh::getVertexIndicesCount() const {
+    return vertexIndices.size();
+}
+
+unsigned int Mesh::getFaceNormalDisplayCount() const {
+    return vertexFaceNormalsDisplay.size();
 }
 
 glm::vec3  Mesh::getModelScale()
@@ -138,11 +157,12 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
     }
 
     // Pre-built vertex normals
-//    if( !vertexNormals.empty() )
-//    {
-//        std::cout << "Vertex normals specified by the file. Skipping this step." << std::endl;
-//        return rFlag;
-//    }
+    if( !vertexNormals.empty() )
+    {
+        calcVertexNormalsForDisplay(bFlipNormals);
+        std::cout << "Vertex normals specified by the file. Skipping this step." << std::endl;
+        return rFlag;
+    }
 
     // Initialize vertex normals
     GLuint  numVertices = getVertexCount();
@@ -180,6 +200,7 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
     }
 
     // Now sum up the values per vertex
+    float shrinkFactor = getModelScale().y;
     for( int index =0; index < vNormalSet.size(); ++index )
     {
         glm::vec3  vNormal(0.0f);
@@ -203,7 +224,7 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
         glm::vec3  vA = vertexBuffer[index];
 
         vertexNormalDisplay[2*index] = vA;
-        vertexNormalDisplay[(2*index) + 1] = vA + ( normalLength * vertexNormals[index] );
+        vertexNormalDisplay[(2*index) + 1] = vA + shrinkFactor * ( normalLength * vertexNormals[index] );
 
     }
 
@@ -229,6 +250,67 @@ void Mesh::calcVertexNormalsForDisplay(GLboolean bFlipNormals)
         vertexNormalDisplay[(2 * iNormal) + 1] = vertexBuffer[iNormal] + normal;
     }
 }
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+int Mesh::calcFaceNormals(GLboolean bFlipNormals) {
+    int rFlag = -1;
+
+    // vertices and indices must be populated
+    if( vertexBuffer.empty() || vertexIndices.empty() )
+    {
+        std::cout << "Cannot calculate vertex normals for empty mesh." << std::endl;
+        return rFlag;
+    }
+
+    // Pre-built vertex normals
+    if( !vertexFaceNormals.empty() )
+    {
+        calcVertexNormalsForDisplay(bFlipNormals);
+        std::cout << "Vertex normals specified by the file. Skipping this step." << std::endl;
+        return rFlag;
+    }
+
+    const int indexBufferSize = vertexIndices.size();
+    vertexFaceNormals.reserve(indexBufferSize);
+    vertexFaceNormalsDisplay.reserve(indexBufferSize / 3 * 2);
+
+    int idx = 0;
+    while(idx < indexBufferSize){
+        glm::vec3 a = vertexBuffer[vertexIndices[idx++]];
+        glm::vec3 b = vertexBuffer[vertexIndices[idx++]];
+        glm::vec3 c = vertexBuffer[vertexIndices[idx++]];
+
+        // Edge vectors
+        glm::vec3  E1 = b - a;
+        glm::vec3  E2 = c - a;
+
+        glm::vec3  N = glm::normalize( glm::cross( E1, E2 ) );
+
+        if( bFlipNormals )
+            N = N * -1.0f;
+
+        // For vertex a
+        vertexFaceNormals.emplace_back( N );
+    }
+
+    float shrinkFactor = getModelScale().y;
+    idx = 0;
+    while(idx < indexBufferSize){
+        glm::vec3 N = vertexFaceNormals[idx/3];
+        glm::vec3  vA = vertexBuffer[vertexIndices[idx++]];
+        glm::vec3  vB = vertexBuffer[vertexIndices[idx++]];
+        glm::vec3  vC = vertexBuffer[vertexIndices[idx++]];
+
+
+        glm::vec3 vD = (vA + vB + vC) / 3.f;
+
+        // For vertex a
+        vertexFaceNormalsDisplay.emplace_back( vD );
+        vertexFaceNormalsDisplay.emplace_back( vD + shrinkFactor * normalLength * N );
+    }
+}
+
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
@@ -395,3 +477,104 @@ glm::vec2 Mesh::calcCubeMap(glm::vec3 vEntity)
 
     return uv;
 }
+
+Mesh::DrawType Mesh::GetDrawType() const {
+    return drawType;
+}
+
+void Mesh::SetDrawType(Mesh::DrawType newDrawType) {
+    drawType = newDrawType;
+}
+
+void Mesh::CleanUp() {
+    ClearData();
+}
+
+glm::vec3 Mesh::GetMeshSize() {
+    return boundingBox[1] - boundingBox[0];
+}
+
+Mesh::Mesh(std::string name) {
+    mName = name;
+}
+
+std::string Mesh::GetName() {
+    return mName;
+}
+
+std::pair<glm::vec3, glm::vec3> Mesh::GetBoundingBox() {
+    return std::make_pair(boundingBox[0], boundingBox[1]);
+}
+
+void Mesh::MakeProcedural(ProceduralMeshType type, int stacks, int slices) {
+    switch(type){
+        case ProceduralMeshType::SPHERE:{
+            MakeProceduralSphere(stacks, slices);
+            break;
+        }
+        default:{
+            throw;
+        }
+    }
+    IndexingProceduralMesh(stacks, slices);
+    calcVertexNormalsForDisplay();
+}
+
+void Mesh::IndexingProceduralMesh(int stacks, int slices) {
+    GLushort i0 = 0, i1 = 0, i2 = 0;
+
+    for (GLushort i = 0; i < stacks; ++i)
+    {
+        for (GLushort j = 0; j < slices; ++j)
+        {
+
+            /*  You need to compute the indices for the first triangle here */
+            i0 = i * (slices + 1) + j;
+            i1 = i0 + 1;
+            i2 = i1 + slices + 1;
+
+            vertexIndices.push_back(i0);
+            vertexIndices.push_back(i2);
+            vertexIndices.push_back(i1);
+
+            /*  You need to compute the indices for the second triangle here */
+
+            i1 = i2;
+            i2 = i1 - 1;
+            vertexIndices.push_back(i0);
+            vertexIndices.push_back(i2);
+            vertexIndices.push_back(i1);
+        }
+    }
+}
+
+void Mesh::MakeProceduralSphere(int stacks, int slices) {
+    constexpr float rad = 0.5;
+
+    for (int stack = 0; stack <= stacks; ++stack)
+    {
+        float row = (float)stack / stacks;
+        float beta = PI * (row - .5f);
+        for (int slice = 0; slice <= slices; ++slice)
+        {
+            float col = (float)slice / slices;
+
+            float alpha = PI * 2.f - col * PI * 2.f;
+
+            glm::vec3 pos = glm::vec3(rad * sin(alpha) * cos(beta), rad * sin(beta), rad * cos(alpha) * cos(beta));
+            glm::vec3 nrm = glm::vec3(glm::normalize(pos));
+            glm::vec2 uv = glm::vec2(col, 1 - row);
+
+            vertexBuffer.emplace_back(pos);
+            vertexNormals.emplace_back(nrm);
+            vertexUVs.emplace_back(uv);
+        }
+    }
+    boundingBox[0] = glm::vec3(-0.5, -0.5, -0.5);
+    boundingBox[1] = glm::vec3(0.5, 0.5, 0.5);
+    drawType = DrawType::TRIANGLES;
+}
+
+
+
+

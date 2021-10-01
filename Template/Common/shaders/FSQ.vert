@@ -1,3 +1,4 @@
+#version 410 core
 
 uniform mat4  vertexTransform;
 
@@ -17,6 +18,7 @@ out mat4  vTransform;
 
 void main()
 {
+//    vs_out.vertexPosition = vertexTransform *  vec4( vPosition, 1.0f );
     vs_out.vertexPosition = vec4( vPosition, 1.0f );
     vs_out.vertexColor = vColor;
 

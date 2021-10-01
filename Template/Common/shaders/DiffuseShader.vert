@@ -1,11 +1,13 @@
+#version 410 core
 
 uniform mat4 vertexTransform;
+uniform mat4 vertexNormalTransform;
 
-in layout(location = 0) vec3 modelPosition;
+in layout(location = 0) vec3 vPosition;
 in layout(location = 1) vec3 vertexNormal;
 //in layout(location = 2) vec3 diffuseColor;
 
-vec3 diffuseColor = vec3( 0.3f, 0.3f, 0.3f );
+uniform vec3 diffuseColor = vec3( 1.f, 0.3f, 0.3f );
 
 out VS_OUT
 {
@@ -17,7 +19,7 @@ out VS_OUT
 void main()
 {
     vs_out.fragDiffuse = diffuseColor;
-    vs_out.fragNormal = vertexNormal;
+    vs_out.fragNormal = mat3(vertexNormalTransform) * vertexNormal;
 
-	gl_Position = vertexTransform * vec4( modelPosition, 1.0f );
+	gl_Position = vertexTransform * vec4( vPosition, 1.0f );
 }
