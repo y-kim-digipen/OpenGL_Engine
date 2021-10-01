@@ -67,6 +67,10 @@ add_executable( ${TARGET_NAME}
         ../Common/Camera.h
         ../Common/SceneBase.cpp
         ../Common/Light.h
+        VAOManager.cpp
+        VAOManager.h
+        VBOManager.cpp
+        VBOManager.h
         #GUI stuffs begin
         ../Common/GUI/GUIManager.h
         ../Common/GUI/GUIManager.cpp
@@ -80,9 +84,11 @@ add_executable( ${TARGET_NAME}
         ../Common/GUI/EngineInfo.h
         ../Common/GUI/ObjectListContent.cpp
         ../Common/GUI/ObjectListContent.h
+        GUI/ColorSet.h
+        GUI/ObjectDetailContent.cpp
+        GUI/ObjectDetailContent.h
         #GUI stuffs end
-
-        GUI/ColorSet.h GUI/ObjectDetailContent.cpp GUI/ObjectDetailContent.h VAOManager.cpp VAOManager.h VBOManager.cpp VBOManager.h)
+)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )
