@@ -31,7 +31,7 @@ public:
             fixedYCenter += orbitRadius * glm::vec2(std::cos(currentRadian), std::sin(currentRadian));
             obj->SetPosition(glm::vec3(fixedYCenter.x, center.y, fixedYCenter.y));
             obj->SetRotation(glm::vec3(cos(-currentRadian),0.f,sin(-currentRadian)));
-            currentRadian += 0.003f;
+            currentRadian += 0.0003f;
         };
 
         static auto DrawOrbit = [&, initialSetting = true](Object* obj) mutable {
@@ -60,7 +60,7 @@ public:
 
             //setting&binding buffer
             auto& attributeInfos = Engine::GetShader("FaceNormalDrawShader")->GetAttribInfos();
-            const GLuint VAOID = Engine::GetVAOManager().GetVAO(attributeInfos);
+            const GLuint VAOID = Engine::GetVAOManager().GetVAO( Engine::GetShader("FaceNormalDrawShader")->GetAttributeID());
 
             glBindVertexArray(VAOID);
             for(auto& attribute : attributeInfos){

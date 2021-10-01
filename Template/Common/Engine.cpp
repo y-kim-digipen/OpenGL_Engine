@@ -146,6 +146,8 @@ void Engine::Update() {
 void Engine::CleanUp() {
     //delete GetInstance();
     mGUIManager.CleanUp();
+    mShaderManager.Cleanup();
+    mMeshManager.Cleanup();
     for(auto pScene : m_pScenes){
         pScene->CleanUp();
         delete pScene;

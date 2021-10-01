@@ -10,18 +10,29 @@ VAOManager::~VAOManager() {
     CleanUp();
 }
 
-GLuint VAOManager::GetVAO(AttributeInfoContainer pAttributes) {
-    if(mVAOs.find(pAttributes) == mVAOs.end()){
-        const GLsizei numAttributes = pAttributes.size();
+GLuint VAOManager::GetVAO(GLuint pAttributeID) {
+    if(mVAOs.find(pAttributeID) == mVAOs.end()){
 
         GLuint VAOID;
         glGenVertexArrays(1, &VAOID);
 
-        mVAOs.emplace(pAttributes, VAOID);
+        mVAOs.emplace(pAttributeID, VAOID);
     }
-    return mVAOs[pAttributes];
+    return mVAOs[pAttributeID];
 }
 
+
+GLuint VAOManager::GetAttribID(AttributeInfoContainer pAttributes) {
+    if(mAttribIDs.find(pAttributes) == mAttribIDs.end()) {
+        static GLuint idGenerator = 0;
+        mAttribIDs.emplace(pAttributes, idGenerator++);
+    }
+    return mAttribIDs[pAttributes];
+}
+
+
 void VAOManager::CleanUp() {
-    //todo add
+    for(const auto& attrib : mVAOs) {
+        glDeleteVertexArrays(1, &attrib.second);
+    }
 }

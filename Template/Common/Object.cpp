@@ -55,7 +55,7 @@ void Object::RenderModel() const {
 
     //setting&binding buffer
     auto& attributeInfos = m_pShader->GetAttribInfos();
-    const GLuint VAOID = Engine::GetVAOManager().GetVAO(attributeInfos);
+    const GLuint VAOID = Engine::GetVAOManager().GetVAO(m_pShader->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
 
@@ -95,13 +95,14 @@ void Object::RenderModel() const {
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
     glm::mat4 normalMatrix = modelToWorldMatrix;//glm::transpose(glm::inverse(/*viewMatrix * */modelToWorldMatrix));
 
+
+    m_pShader->SetAllUniforms(mObjectName);
+
+
     glUniformMatrix4fv(vTransformLoc, 1, GL_FALSE, &mvpMatrix[0][0]);
     glUniformMatrix4fv(vNormalTransformLoc, 1, GL_FALSE, &normalMatrix[0][0]);
 
-
-
     glDrawElements(GL_TRIANGLES, m_pMesh->getVertexIndicesCount(), GL_UNSIGNED_INT, (void*) 0);
-    m_pShader->SetAllUniforms(mObjectName);
 
     for(auto& attribute : attributeInfos){
         glDisableVertexAttribArray(attribute.location);
@@ -117,7 +118,7 @@ void Object::RenderVertexNormal() const {
 
     //setting&binding buffer
     auto& attributeInfos = pNormalDrawShader->GetAttribInfos();
-    const GLuint VAOID = Engine::GetVAOManager().GetVAO(attributeInfos);
+    const GLuint VAOID = Engine::GetVAOManager().GetVAO(Engine::GetShader("NormalDrawShader")->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
 
@@ -167,7 +168,7 @@ void Object::RenderFaceNormal() const {
 
     //setting&binding buffer
     auto& attributeInfos = pNormalDrawShader->GetAttribInfos();
-    const GLuint VAOID = Engine::GetVAOManager().GetVAO(attributeInfos);
+    const GLuint VAOID = Engine::GetVAOManager().GetVAO(Engine::GetShader("FaceNormalDrawShader")->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
 
@@ -232,7 +233,9 @@ void Object::CleanUp() const {
 bool Object::SetShader(const std::string &shaderStr) {
     auto pShader = Engine::GetShader(shaderStr);
     if(pShader){
+        m_pShader->DeleteShaderBuffer(mObjectName);
         m_pShader = pShader;
+        m_pShader->SetShaderBuffer(mObjectName);
         mShaderName = shaderStr;
         //todo init shader here
 //        m_pShader->

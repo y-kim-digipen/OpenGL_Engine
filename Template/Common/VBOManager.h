@@ -13,6 +13,7 @@ class Mesh;
 class VBOManager {
 public:
     void SetUpVBO(Mesh* pMesh);
+    void CleanUp();
     std::pair<std::map<std::string, GLuint>, GLuint>& GetVBOInfo(std::shared_ptr<Mesh> pMesh);
 private:
     //<MeshName, <<name, VBO>, EBO>>

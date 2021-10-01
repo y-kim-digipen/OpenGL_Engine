@@ -147,7 +147,8 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, datasize});
     }
     mAttributeInfos = attributeInfos;
-    GLuint VAOID = Engine::GetVAOManager().GetVAO(mAttributeInfos);
+    mAttributeInfoID = Engine::GetVAOManager().GetAttribID(mAttributeInfos);
+    GLuint VAOID = Engine::GetVAOManager().GetAttribID(mAttributeInfos);
     printf("\tVAOID: %d\n", VAOID);
 
     GLint numActiveUniforms = 0;
@@ -470,5 +471,9 @@ void Shader::DeleteShaderBuffer(const std::string &objectName) {
         return;
     }
     mUniformVarBuffer.erase(objectName);
+}
+
+GLuint Shader::GetAttributeID() const {
+    return mAttributeInfoID;
 }
 

@@ -34,13 +34,13 @@ public:
     template<class T>
     T& GetUniformValue(const std::string& objName, std::string&& name)
     {
-        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() : mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
+        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() + mUniforms[name].mOffset: mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
     }
 
     template<class T>
     T& GetUniformValue(const std::string& objName, const std::string& name)
     {
-        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() : mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
+        return *(reinterpret_cast<T*>(mUniformVarBuffer.find(objName) != mUniformVarBuffer.end() ? mUniformVarBuffer[objName].data() + mUniforms[name].mOffset: mUniformVarBuffer[defaultBufferName].data() + mUniforms[name].mOffset));
     }
 
     auto& GetUniforms() const
@@ -54,6 +54,7 @@ public:
     }
 
     unsigned int GetProgramID() const { return mProgramID; }
+    GLuint GetAttributeID() const;
 
     AttributeInfoContainer& GetAttribInfos();
 
@@ -85,8 +86,10 @@ private:
     mutable std::map<std::string, std::vector<Byte>> mUniformVarBuffer;
     mutable std::map<std::string, UniformAttribute> mUniforms;
     AttributeInfoContainer mAttributeInfos;
+    GLuint mAttributeInfoID;
     GLint mProgramID = 0;
 
     inline static const std::string defaultBufferName = "DefaultBuffer";
 };
+
 #endif

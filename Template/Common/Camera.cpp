@@ -11,7 +11,7 @@
 
 Camera::Camera(void) : eye(0, 0, 4), back(0, 0, 1), right(1, 0, 0), up(0, 1, 0)
 {
-    fov = PI * 0.5f;
+    fov = PI * 0.3f;
 
     const glm::vec2 windowSize = Engine::GetWindowSize();
 

@@ -414,7 +414,7 @@ void ImGui::BulletTextV(const char* fmt, va_list args)
 // - InvisibleButton()
 // - ArrowButton()
 // - CloseButton() [Internal]
-// - CollapseButton() [Internal]
+// - CollapseButton_Default() [Internal]
 // - GetWindowScrollbarID() [Internal]
 // - GetWindowScrollbarRect() [Internal]
 // - Scrollbar() [Internal]

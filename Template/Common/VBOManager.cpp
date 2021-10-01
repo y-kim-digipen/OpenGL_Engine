@@ -72,3 +72,9 @@ void VBOManager::SetUpVBO(Mesh* pMesh) {
 std::pair<std::map<std::string, GLuint>, GLuint> &VBOManager::GetVBOInfo(std::shared_ptr<Mesh> pMesh) {
     return mVBOInfos[pMesh->GetName()];
 }
+
+void VBOManager::CleanUp() {
+    for(const auto& vboInfo : mVBOInfos){
+        glDeleteBuffers(1, &vboInfo.second.second);
+    }
+}

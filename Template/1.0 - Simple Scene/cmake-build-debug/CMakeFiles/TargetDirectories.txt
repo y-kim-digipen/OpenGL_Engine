@@ -1,4 +1,0 @@
-/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles/common_lib.dir
-/home/yoonki/Desktop/CS300/Template/1.0 - Simple Scene/cmake-build-debug/CMakeFiles/SimpleScene_OGL4.dir

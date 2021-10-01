@@ -18,12 +18,13 @@ class VAOManager {
     friend class Shader;
 public:
     ~VAOManager();
-
     void CleanUp();
 public:
-    GLuint GetVAO(AttributeInfoContainer pAttributes);
+    GLuint GetVAO(GLuint pAttributeID);
 private:
-    std::map<AttributeInfoContainer, GLuint> mVAOs;
+    GLuint GetAttribID(AttributeInfoContainer pAttributes);
+    std::map<GLuint, GLuint> mVAOs;
+    std::map<AttributeInfoContainer, GLuint> mAttribIDs;
 };
 
 
