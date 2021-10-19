@@ -8,45 +8,45 @@
 		<Option virtualFolders="CMake Files\;CMake Files\build_files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug"/>
+				<Option working_dir="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug"/>
+				<Option working_dir="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug"/>
+				<Option working_dir="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Engine">
-				<Option output="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Engine" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug"/>
+				<Option output="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Engine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common"/>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common/shaders"/>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../External/imgui-1.84.2"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common/shaders"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../External/imgui-1.84.2"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -56,22 +56,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 Engine"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 Engine"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Engine/fast">
-				<Option output="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Engine" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug"/>
+				<Option output="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Engine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common"/>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../Common/shaders"/>
-					<Add directory="/home/yoonki/Desktop/CS300/Template/Common/../External/imgui-1.84.2"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common/shaders"/>
+					<Add directory="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../External/imgui-1.84.2"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -81,212 +81,212 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 Engine/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 Engine/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Camera.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Camera.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Color.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Drawer.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Drawer.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Engine.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ColorSet.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/CurrentCameraInfoContent.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/CurrentCameraInfoContent.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/EngineInfo.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/EngineInfo.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectDetailContent.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectDetailContent.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectListContent.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectListContent.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/KeyCodes.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Light.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Mesh.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/OBJReader.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/OBJReader.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/OBJReader.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Object.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Object.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentManager.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentManager.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentManager.inl">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentManager.inl">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/SceneBase.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Shader.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/Shader.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/TestScene.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/TestScene.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VAOManager.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VAOManager.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VBOManager.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/VBOManager.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/main.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/main.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_demo.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_draw.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_tables.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_widgets.cpp">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_rectpack.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_rectpack.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_truetype.h">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_truetype.h">
 			<Option target="Engine"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/CMakeLists.txt">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/build_files/Common_packages.cmake">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/build_files/Common_packages.cmake">
 			<Option virtualFolder="CMake Files\build_files\"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/home/yoonki/Desktop/CS300/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake">
+		<Unit filename="/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
 	</Project>
