@@ -9,6 +9,7 @@
 
 #include "Camera.h"
 #include "Object.h"
+#include "Light.h"
 
 class SceneBase{
 public:
@@ -30,6 +31,7 @@ public:
 
     [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
     [[nodiscard]] const std::map<std::string, std::shared_ptr<Object>>& GetObjectList() const;
+    [[nodiscard]] const std::map<std::string, std::shared_ptr<Light>>& GetLightList() const;
 
     std::shared_ptr<Object> AddObject(const std::string& objectName, const std::string& usingMesh, const std::string& usingShader);
 protected:
@@ -39,6 +41,7 @@ protected:
 
 private:
     std::map<std::string, std::shared_ptr<Object>> m_pObjects;
+    std::map<std::string, std::shared_ptr<Light>> m_pLights;
 };
 
 #endif //ENGINE_SCENEBASE_H

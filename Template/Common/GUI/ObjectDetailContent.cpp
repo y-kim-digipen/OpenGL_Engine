@@ -55,7 +55,7 @@ void GUI::ObjectDetailContent::Render() {
             ImGui::EndTabItem();
         }
         if (ImGui::BeginTabItem("Transforms")) {
-            static float sliderSpeed = 1.f;
+            static float sliderSpeed = 0.1f;
             ImGui::InputFloat("SliderSpeed", (float *) &sliderSpeed);
             ImGui::DragFloat3("Position", (float *) &m_pTargetObject->m_position, sliderSpeed);
             ImGui::DragFloat3("Scale", (float *) &m_pTargetObject->m_scale, sliderSpeed);
