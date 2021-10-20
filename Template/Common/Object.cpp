@@ -77,14 +77,9 @@ void Object::RenderModel() const {
     //Drawing Logic
     glUseProgram(shaderPID);
     GLint vTransformLoc = glGetUniformLocation(shaderPID, "vertexTransform");
-    if(vTransformLoc < 0){
-        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
-
     GLint vNormalTransformLoc = glGetUniformLocation(shaderPID, "vertexNormalTransform");
-    if(vNormalTransformLoc < 0){
-//        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
+
+
     const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
     //Get matricies
@@ -95,6 +90,23 @@ void Object::RenderModel() const {
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
     glm::mat4 normalMatrix = modelToWorldMatrix;//glm::transpose(glm::inverse(/*viewMatrix * */modelToWorldMatrix));
 
+
+    if(vTransformLoc < 0){
+        if(vTransformLoc < 0) /*might using phong things...*/{
+//        GLint uModelToWorldMatLoc = glGetUniformLocation(shaderPID, "modelToWorldTransform");
+//        GLint uPerspectiveMatLoc = glGetUniformLocation(shaderPID, "perspectiveMatrix");
+//
+            m_pShader->GetUniformValue<glm::mat4>(GetName(), "modelToWorldTransform")
+                    = modelToWorldMatrix;
+            m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
+                    = projectionMatrix * viewMatrix;
+
+            m_pShader->GetUniformValue<glm::vec3>(GetName(), "LightPos")
+                    = glm::vec3(1.f, 1.f, 0.f);
+            m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos") = pCam->Eye();
+        }
+
+    }
 
     m_pShader->SetAllUniforms(mObjectName);
 
@@ -188,9 +200,12 @@ void Object::RenderFaceNormal() const {
     //Drawing Logic
     glUseProgram(shaderPID);
     GLint vTransformLoc = glGetUniformLocation(shaderPID, "vertexTransform");
-    if(vTransformLoc < 0){
-        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
+//    if(vTransformLoc < 0) /*might using phong things...*/{
+////        GLint uModelToWorldMatLoc = glGetUniformLocation(shaderPID, "modelToWorldTransform");
+////        GLint uPerspectiveMatLoc = glGetUniformLocation(shaderPID, "perspectiveMatrix");
+////
+//        m_pShader->
+//    }
     const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
     //Get matricies

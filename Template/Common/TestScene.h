@@ -12,6 +12,7 @@ class TestScene : public SceneBase{
 public:
     virtual void Init() override
     {
+        SceneBase::Init();
         constexpr float orbitRadius = 2.f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
         static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 8](int i, Object* obj) mutable {

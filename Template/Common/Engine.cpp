@@ -248,6 +248,17 @@ void Engine::SetupShaders() {
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/FaceNormalVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/FaceNormalFragmentShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("GoAroundShader", new Shader(), true);
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/PhongShading.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/PhongShading.frag"} });
+
+    pShader = mShaderManager.AddComponent("PhongShader", new Shader(), true);
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/PhongShading2.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/PhongShading2.frag"} });
+
 }
 
 void Engine::SetupMeshes() {
@@ -309,6 +320,12 @@ void Engine::SetupMeshes() {
     pMesh->ClearData();
     objReader.ReadOBJFile("../models/triangle.obj", pMesh.get());
     pMesh->Init();
+
+    pMesh = mMeshManager.AddComponent("Bulb", std::make_shared<Mesh>("Bulb"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/cube2.obj", pMesh.get());
+    pMesh->Init();
+
 }
 
 SceneBase* Engine::GetCurrentScene() {

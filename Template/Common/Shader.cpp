@@ -6,6 +6,7 @@
 
 #include "Engine.h"
 #include "Shader.h"
+#include "LightManager.h"
 
 void Shader::deleteProgram()
 {
@@ -105,6 +106,34 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
 
     mShaderPaths = shaderTypePathPairs;
     glUseProgram(mProgramID);
+
+    //Get light infos
+
+    {
+        // First get the block index
+        GLint uboIndex;
+        uboIndex = glGetUniformBlockIndex(mProgramID, "LightArray");
+        // Now get the size
+        if (uboIndex >= 0) {
+            GLint uboSize;
+            glGetActiveUniformBlockiv(mProgramID, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE,
+                                      &uboSize);
+            GLuint indices[9];
+            GLint offset[9];
+            glGetUniformIndices(mProgramID, 9, LightManager::names, indices);
+            glGetActiveUniformsiv(mProgramID, 9, indices,
+                                  GL_UNIFORM_OFFSET, offset);
+
+            GLuint uboHandle;
+            glGenBuffers( 1, &uboHandle );
+            glBindBuffer( GL_UNIFORM_BUFFER, uboHandle );
+            glBufferData( GL_UNIFORM_BUFFER, uboSize,
+                          buffer, GL_DYNAMIC_DRAW );
+            glBindBufferBase( GL_UNIFORM_BUFFER, uboIndex,
+                              uboHandle );
+        }
+
+    }
 
     //setting attribute infos
     GLint attributeCount;

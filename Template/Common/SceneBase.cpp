@@ -7,6 +7,10 @@ void SceneBase::Init() {
     if(m_pCameras.empty() == false){
         mFocusedCameraIdx = 0;
     }
+    auto pLight = m_pLights.emplace("DefaultLight", new Light("DefaultLight")).first->second;
+    pLight->SetScale(glm::vec3(0.2f));
+    pLight->SetPosition(glm::vec3(1.f, 1.f, 0.f));
+
 }
 
 void SceneBase::PreRender() {
@@ -17,6 +21,10 @@ void SceneBase::PreRender() {
         auto& pObject = obj.second;
         pObject->PreRender();
     }
+    for(auto& light : m_pLights){
+        auto& pLight = light.second;
+        pLight->PreRender();
+    }
 }
 
 void SceneBase::Render() const {
@@ -26,6 +34,12 @@ void SceneBase::Render() const {
             pObject->Render();
         }
     }
+    for(auto& light : m_pLights){
+        auto& pLight = light.second;
+        if(pLight->IsRenderReady()) {
+            pLight->Render();
+        }
+    }
 }
 
 void SceneBase::PostRender() {
@@ -33,6 +47,13 @@ void SceneBase::PostRender() {
         auto& pObject = obj.second;
         pObject->PostRender();
     }
+    for(auto& light : m_pLights){
+        auto& pLight = light.second;
+        if(pLight->IsRenderReady()) {
+            pLight->PostRender();
+        }
+    }
+
 }
 
 void SceneBase::CleanUp() {
@@ -66,6 +87,10 @@ const std::map<std::string, std::shared_ptr<Object>> &SceneBase::GetObjectList()
 
 std::shared_ptr<Object> SceneBase::AddObject(const std::string &objectName, const std::string &usingMesh, const std::string &usingShader) {
     return  m_pObjects.emplace(objectName, std::make_unique<Object>(objectName, usingMesh, usingShader)).first->second;
+}
+
+const std::map<std::string, std::shared_ptr<Light>> &SceneBase::GetLightList() const {
+    return m_pLights;
 }
 
 
