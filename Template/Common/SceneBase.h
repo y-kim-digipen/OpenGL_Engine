@@ -10,6 +10,7 @@
 #include "Camera.h"
 #include "Object.h"
 #include "Light.h"
+#include "LightManager.h"
 
 class SceneBase{
 public:

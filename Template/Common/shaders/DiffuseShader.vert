@@ -1,4 +1,4 @@
-#version 410 core
+#version 420 core
 
 uniform mat4 vertexTransform;
 uniform mat4 vertexNormalTransform;

@@ -68,7 +68,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
                     logContent = new char[logLength];
                     int writtenLogLength;
                     glGetShaderInfoLog(shaderID, logLength, &writtenLogLength, logContent);
-                    std::cerr << "================Error Message================\n\t"<<logContent << std::endl;
+                    std::cerr << "================Error Message================\n"<<logContent << std::endl;
                     delete[] logContent;
                 }
                 deleteProgram();
@@ -118,19 +118,21 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
             GLint uboSize;
             glGetActiveUniformBlockiv(mProgramID, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE,
                                       &uboSize);
-            GLuint indices[9];
-            GLint offset[9];
-            glGetUniformIndices(mProgramID, 9, LightManager::names, indices);
-            glGetActiveUniformsiv(mProgramID, 9, indices,
-                                  GL_UNIFORM_OFFSET, offset);
-
-            GLuint uboHandle;
-            glGenBuffers( 1, &uboHandle );
-            glBindBuffer( GL_UNIFORM_BUFFER, uboHandle );
-            glBufferData( GL_UNIFORM_BUFFER, uboSize,
-                          buffer, GL_DYNAMIC_DRAW );
-            glBindBufferBase( GL_UNIFORM_BUFFER, uboIndex,
-                              uboHandle );
+            std::vector<GLuint> indices(9);
+            std::vector<GLint> offset(9);
+            glGetUniformIndices(mProgramID, 9, LightManager::names, indices.data());
+            glGetActiveUniformsiv(mProgramID, 9, indices.data(),
+                                  GL_UNIFORM_OFFSET, offset.data());
+            offset.push_back(uboSize);
+            Engine::GetLightManager().CreateBuffer(offset);
+//
+//            GLuint uboHandle;
+//            glGenBuffers( 1, &uboHandle );
+//            glBindBuffer( GL_UNIFORM_BUFFER, uboHandle );
+//            glBufferData( GL_UNIFORM_BUFFER, uboSize,
+//                          buffer, GL_DYNAMIC_DRAW );
+//            glBindBufferBase( GL_UNIFORM_BUFFER, uboIndex,
+//                              uboHandle );
         }
 
     }

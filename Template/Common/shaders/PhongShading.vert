@@ -1,5 +1,5 @@
 
-#version 410 core
+#version 420 core
 
 uniform mat4 modelToWorldTransform;
 uniform mat4 perspectiveMatrix;

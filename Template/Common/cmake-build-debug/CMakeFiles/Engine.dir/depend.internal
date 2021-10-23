@@ -14,6 +14,7 @@ CMakeFiles/Engine.dir/Camera.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
  /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
@@ -41,6 +42,7 @@ CMakeFiles/Engine.dir/Engine.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/OBJReader.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
@@ -57,6 +59,7 @@ CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o
  ../../Common/Engine.h
  ../../Common/GUI/GUIManager.h
  ../../Common/Light.h
+ ../../Common/LightManager.h
  ../../Common/Mesh.h
  ../../Common/Object.h
  ../../Common/ObjectComponents/ComponentBase.h
@@ -79,6 +82,7 @@ CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o
  ../../Common/Engine.h
  ../../Common/GUI/GUIManager.h
  ../../Common/Light.h
+ ../../Common/LightManager.h
  ../../Common/Mesh.h
  ../../Common/Object.h
  ../../Common/ObjectComponents/ComponentBase.h
@@ -118,6 +122,7 @@ CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o
  ../../Common/Engine.h
  ../../Common/GUI/GUIManager.h
  ../../Common/Light.h
+ ../../Common/LightManager.h
  ../../Common/Mesh.h
  ../../Common/Object.h
  ../../Common/ObjectComponents/ComponentBase.h
@@ -140,6 +145,7 @@ CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o
  ../../Common/Engine.h
  ../../Common/GUI/GUIManager.h
  ../../Common/Light.h
+ ../../Common/LightManager.h
  ../../Common/Mesh.h
  ../../Common/Object.h
  ../../Common/ObjectComponents/ComponentBase.h
@@ -163,6 +169,17 @@ CMakeFiles/Engine.dir/Input/InputManager.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp
  /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
+CMakeFiles/Engine.dir/LightManager.cpp.o
+ /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
+ /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.cpp
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
+ /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
+ /home/yoonki/Desktop/CS300/Template/Common/Object.h
+ /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/Desktop/CS300/Template/Common/Shader.h
+ /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
+ /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/Mesh.cpp.o
  ../../Common/ObjectComponents/ComponentBase.h
  ../../Common/ObjectComponents/ComponentManager.h
@@ -173,6 +190,7 @@ CMakeFiles/Engine.dir/Mesh.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Engine.h
  /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
@@ -197,6 +215,7 @@ CMakeFiles/Engine.dir/Object.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Engine.h
  /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.cpp
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
@@ -209,6 +228,7 @@ CMakeFiles/Engine.dir/SceneBase.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Camera.h
  /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
  /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
@@ -227,6 +247,7 @@ CMakeFiles/Engine.dir/Shader.cpp.o
  /home/yoonki/Desktop/CS300/Template/Common/Engine.h
  /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/Desktop/CS300/Template/Common/LightManager.h
  /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
  /home/yoonki/Desktop/CS300/Template/Common/Object.h
  /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
@@ -294,6 +315,7 @@ CMakeFiles/Engine.dir/main.cpp.o
  ../../Common/Engine.h
  ../../Common/GUI/GUIManager.h
  ../../Common/Light.h
+ ../../Common/LightManager.h
  ../../Common/Mesh.h
  ../../Common/Object.h
  ../../Common/ObjectComponents/ComponentBase.h

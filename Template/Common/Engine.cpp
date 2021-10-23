@@ -365,6 +365,10 @@ VBOManager &Engine::GetVBOManager() {
     return mVBOManager;
 }
 
+LightManager &Engine::GetLightManager() {
+    return mLightManager;
+}
+
 
 
 

@@ -14,6 +14,7 @@ CMakeFiles/Engine.dir/Camera.cpp.o: \
  ../Input/InputManager.h \
  ../Input/KeyCodes.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.h \
  ../Object.h \
  ../ObjectComponents/ComponentBase.h \
@@ -41,6 +42,7 @@ CMakeFiles/Engine.dir/Engine.cpp.o: \
  ../Input/InputManager.h \
  ../Input/KeyCodes.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.h \
  ../OBJReader.h \
  ../Object.h \
@@ -57,6 +59,7 @@ CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o: \
  ../../Common/Engine.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
+ ../../Common/LightManager.h \
  ../../Common/Mesh.h \
  ../../Common/Object.h \
  ../../Common/ObjectComponents/ComponentBase.h \
@@ -79,6 +82,7 @@ CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o: \
  ../../Common/Engine.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
+ ../../Common/LightManager.h \
  ../../Common/Mesh.h \
  ../../Common/Object.h \
  ../../Common/ObjectComponents/ComponentBase.h \
@@ -118,6 +122,7 @@ CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o: \
  ../../Common/Engine.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
+ ../../Common/LightManager.h \
  ../../Common/Mesh.h \
  ../../Common/Object.h \
  ../../Common/ObjectComponents/ComponentBase.h \
@@ -140,6 +145,7 @@ CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o: \
  ../../Common/Engine.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
+ ../../Common/LightManager.h \
  ../../Common/Mesh.h \
  ../../Common/Object.h \
  ../../Common/ObjectComponents/ComponentBase.h \
@@ -163,6 +169,17 @@ CMakeFiles/Engine.dir/Input/InputManager.cpp.o: \
  ../Input/InputManager.cpp \
  ../Input/InputManager.h \
  ../Input/KeyCodes.h
+CMakeFiles/Engine.dir/LightManager.cpp.o: \
+ ../CommonConstants.h \
+ ../Light.h \
+ ../LightManager.cpp \
+ ../LightManager.h \
+ ../Mesh.h \
+ ../Object.h \
+ ../ObjectComponents/ComponentBase.h \
+ ../Shader.h \
+ ../VAOManager.h \
+ ../VBOManager.h
 CMakeFiles/Engine.dir/Mesh.cpp.o: \
  ../../Common/ObjectComponents/ComponentBase.h \
  ../../Common/ObjectComponents/ComponentManager.h \
@@ -173,6 +190,7 @@ CMakeFiles/Engine.dir/Mesh.cpp.o: \
  ../Engine.h \
  ../GUI/GUIManager.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.cpp \
  ../Mesh.h \
  ../Object.h \
@@ -197,6 +215,7 @@ CMakeFiles/Engine.dir/Object.cpp.o: \
  ../Engine.h \
  ../GUI/GUIManager.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.h \
  ../Object.cpp \
  ../Object.h \
@@ -209,6 +228,7 @@ CMakeFiles/Engine.dir/SceneBase.cpp.o: \
  ../Camera.h \
  ../CommonConstants.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.h \
  ../Object.h \
  ../ObjectComponents/ComponentBase.h \
@@ -227,6 +247,7 @@ CMakeFiles/Engine.dir/Shader.cpp.o: \
  ../Engine.h \
  ../GUI/GUIManager.h \
  ../Light.h \
+ ../LightManager.h \
  ../Mesh.h \
  ../Object.h \
  ../ObjectComponents/ComponentBase.h \
@@ -294,6 +315,7 @@ CMakeFiles/Engine.dir/main.cpp.o: \
  ../../Common/Engine.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
+ ../../Common/LightManager.h \
  ../../Common/Mesh.h \
  ../../Common/Object.h \
  ../../Common/ObjectComponents/ComponentBase.h \
