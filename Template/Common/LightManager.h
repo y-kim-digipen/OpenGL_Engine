@@ -24,16 +24,19 @@ public:
                     "LightArray.Is",
             };
 
+    void CreateBuffer(std::vector<GLint>& offsets);
     void Update();
     [[nodiscard]] const int GetNumLights();
 private:
     struct UBOData
     {
         GLint UBOHandle;
-        std::vector<GLint> offsets;
+        int structSize;
+        std::map<std::string, GLint> offsets;
     };
     std::map<std::string/*shader name*/, std::pair<UBOData, std::vector<char>/*buffer*/>> buffers;
     std::vector<std::shared_ptr<Light>> m_pLights;
+    inline static int numLights = 10;
 };
 
 

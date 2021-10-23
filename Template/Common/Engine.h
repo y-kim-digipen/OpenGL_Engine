@@ -24,6 +24,7 @@
 #include "Shader.h"
 #include "VAOManager.h"
 #include "VBOManager.h"
+#include "LightManager.h"
 
 class GLFWwindow;
 
@@ -52,6 +53,7 @@ public:
     static GUI::GUI_Manager& GetGUIManager();
     static ComponentManager<Mesh>& GetMeshManager();
     static ComponentManager<Shader>& GetShaderManager();
+    static LightManager& GetLightManager();
 
     static VAOManager& GetVAOManager();
     static VBOManager& GetVBOManager();
@@ -86,6 +88,7 @@ private:
 
     inline static ComponentManager<Mesh> mMeshManager;
     inline static ComponentManager<Shader> mShaderManager;
+    inline static LightManager mLightManager;
 
     inline static VAOManager mVAOManager;
     inline static VBOManager mVBOManager;

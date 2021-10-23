@@ -1,6 +1,6 @@
-#version 410 core
+#version 420 core
 #define MAX_NUM_TOTAL_LIGHTS 10
-uniform const int NumActiveLights = 1;
+uniform int NumActiveLights = 1;
 uniform vec3 CameraPos;
 
 //Environment
