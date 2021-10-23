@@ -1,6 +1,6 @@
 #version 420 core
 
-uniform int NumActiveLights = 1;
+uniform int NumActiveLights = 2;
 
 //material
 float Ka = 0.7f;

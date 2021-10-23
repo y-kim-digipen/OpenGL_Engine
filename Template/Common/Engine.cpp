@@ -108,6 +108,9 @@ void Engine::InitEngine() {
     }
     SetupGUI();
 
+    lightUBO.createUBO(10 * sizeof(Light::std140_structure));
+    lightUBO.bindBufferBaseToBindingPoint(1);
+
     std::cout << "Engine is initialized, ready to update" << std::endl;
 }
 
@@ -171,8 +174,16 @@ bool Engine::IsRunning() {
 }
 
 void Engine::PreRender() {
-    mLightManager.Update();
+//    mLightManager.Update();
     m_pScenes[mFocusedSceneIdx]->PreRender();
+    lightUBO.bindUBO();
+    GLsizeiptr offset = 0;
+    GLint structureSize = Light::GetSTD140StructureSize();
+    for (const auto& pointLight : GetCurrentScene()->GetLightList())
+    {
+        lightUBO.setBufferData(offset, pointLight.second->GetSTD140Structure(), structureSize);
+        offset += structureSize;
+    }
 }
 
 void Engine::Render() {
@@ -259,7 +270,7 @@ void Engine::SetupShaders() {
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/PhongShading2.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/PhongShading2.frag"} });
-
+    pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 
 void Engine::SetupMeshes() {
@@ -364,10 +375,6 @@ VAOManager &Engine::GetVAOManager() {
 
 VBOManager &Engine::GetVBOManager() {
     return mVBOManager;
-}
-
-LightManager &Engine::GetLightManager() {
-    return mLightManager;
 }
 
 

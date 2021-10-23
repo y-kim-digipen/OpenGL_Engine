@@ -1,6 +1,6 @@
 #version 420 core
+
 #define MAX_NUM_TOTAL_LIGHTS 10
-uniform int NumActiveLights = 1;
 uniform vec3 CameraPos;
 
 //Environment
@@ -8,37 +8,36 @@ float zNear = 1, zFar = 40;
 uniform float c1 = 0.7, c2 = 0.4, c3 = 0.2;
 uniform vec3 I_Fog = vec3(0.3f);
 
-uniform LightArray
+struct Light
 {
-////Light
-//    vec3 Pos = vec3(0.f, 0.f, -4.f);
-//
-////material
-//    float Ka = 0.1f;
-//    float Kd = 0.5f;
-//    float Ks = 0.80f;
-//    vec3 I_Emissive = vec3(50, 10, 10) ;
-//    float ns = 3.f;
-//
-////Light
-//    vec3 Ia = vec3(100, 100, 100) ;
-//    vec3 Id = vec3(120, 250, 10) ;
-//    vec3 Is = vec3(200, 200, 200) ;
 //Light
     vec3 Pos;
+    float PADDING1;
 
 //material
     float Ka;
     float Kd;
     float Ks;
+    float PADDING2;
     vec3 I_Emissive;
     float ns;
 
 //Light
     vec3 Ia;
+    float PADDING3;
     vec3 Id;
+    float PADDING4;
     vec3 Is;
-} LA[MAX_NUM_TOTAL_LIGHTS];
+    float PADDING5;
+};
+
+
+int NumActiveLights = 2;
+
+layout(std140, binding = 1) uniform LightBlock
+{
+    Light lights[MAX_NUM_TOTAL_LIGHTS];
+} light_block;
 
 in PhongShadingData
 {
@@ -56,19 +55,19 @@ void main() {
     for(int i = 0; i < NumActiveLights; ++i)
     {
         //Light
-        vec3 Pos = LA[i].Pos;
+        vec3 Pos = light_block.lights[i].Pos;
 
         //material
-        float Ka = LA[i].Ka;
-        float Kd = LA[i].Kd;
-        float Ks = LA[i].Ks;
-        vec3 I_Emissive = LA[i].I_Emissive;
-        float ns = LA[i].ns;
+        float Ka = light_block.lights[i].Ka;
+        float Kd = light_block.lights[i].Kd;
+        float Ks = light_block.lights[i].Ks;
+        vec3 I_Emissive = light_block.lights[i].I_Emissive;
+        float ns = light_block.lights[i].ns;
 
         //Light
-        vec3 Ia = LA[i].Ia;
-        vec3 Id = LA[i].Id;
-        vec3 Is = LA[i].Is;
+        vec3 Ia = light_block.lights[i].Ia;
+        vec3 Id = light_block.lights[i].Id;
+        vec3 Is = light_block.lights[i].Is;
 
         vec3 L = Pos - shading_data.Position;
         //    vec3 L = vec3(1.f, 0.f, 0.f);

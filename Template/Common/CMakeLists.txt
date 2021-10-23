@@ -83,7 +83,7 @@ add_executable( ${TARGET_NAME}
         ../Common/GUI/ObjectListContent.h
         #GUI stuffs end
 
-        GUI/ColorSet.h GUI/ObjectDetailContent.cpp GUI/ObjectDetailContent.h VAOManager.cpp VAOManager.h VBOManager.cpp VBOManager.h LightManager.cpp LightManager.h)
+        GUI/ColorSet.h GUI/ObjectDetailContent.cpp GUI/ObjectDetailContent.h VAOManager.cpp VAOManager.h VBOManager.cpp VBOManager.h UBO.cpp UBO.h)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )

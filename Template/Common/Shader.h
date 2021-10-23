@@ -72,6 +72,8 @@ public:
 
     void DeleteShaderBuffer(const std::string &objectName);
 
+    void bindUniformBlockToBindingPoint(const std::string& uniformBlockName, const GLuint bindingPoint) const;
+
 private:
     void SetUniform1b(char const *name, bool val);
 

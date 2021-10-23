@@ -1,4 +1,3 @@
-
 #version 420 core
 
 uniform mat4 modelToWorldTransform;
@@ -13,6 +12,7 @@ uniform vec3 CameraPos;
 //Environment
 float zNear = 0.1, zFar = 50;
 uniform float c1 = 0.7, c2 = 0.4, c3 = 0.2;
+
 
 out  PhongShadingData
 {

@@ -11,6 +11,12 @@ void SceneBase::Init() {
     pLight->SetScale(glm::vec3(0.2f));
     pLight->SetPosition(glm::vec3(1.f, 1.f, 0.f));
 
+    pLight = m_pLights.emplace("DefaultLight2", new Light("DefaultLight2")).first->second;
+    pLight->SetScale(glm::vec3(0.2f));
+    pLight->SetPosition(glm::vec3(1.f, 1.f, 0.f));
+    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 0.f, 230.f);
+    pLight->std140_structure.position = glm::vec3(0.f, 0.f, 3.f);
+    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 59.f, 9.f);
 }
 
 void SceneBase::PreRender() {

@@ -6,7 +6,6 @@
 
 #include "Engine.h"
 #include "Shader.h"
-#include "LightManager.h"
 
 void Shader::deleteProgram()
 {
@@ -107,35 +106,6 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     mShaderPaths = shaderTypePathPairs;
     glUseProgram(mProgramID);
 
-    //Get light infos
-
-    {
-        // First get the block index
-        GLint uboIndex;
-        uboIndex = glGetUniformBlockIndex(mProgramID, "LightArray");
-        // Now get the size
-        if (uboIndex >= 0) {
-            GLint uboSize;
-            glGetActiveUniformBlockiv(mProgramID, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE,
-                                      &uboSize);
-            std::vector<GLuint> indices(9);
-            std::vector<GLint> offset(9);
-            glGetUniformIndices(mProgramID, 9, LightManager::names, indices.data());
-            glGetActiveUniformsiv(mProgramID, 9, indices.data(),
-                                  GL_UNIFORM_OFFSET, offset.data());
-            offset.push_back(uboSize);
-            Engine::GetLightManager().CreateBuffer(mName, offset);
-//
-//            GLuint uboHandle;
-//            glGenBuffers( 1, &uboHandle );
-//            glBindBuffer( GL_UNIFORM_BUFFER, uboHandle );
-//            glBufferData( GL_UNIFORM_BUFFER, uboSize,
-//                          buffer, GL_DYNAMIC_DRAW );
-//            glBindBufferBase( GL_UNIFORM_BUFFER, uboIndex,
-//                              uboHandle );
-        }
-
-    }
 
     //setting attribute infos
     GLint attributeCount;
@@ -202,6 +172,10 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         glGetActiveUniform(mProgramID, idx, static_cast<GLsizei>(uniformVarName.length()), &actualLength, &uniformArraySize, &uniformType,uniformVarName.data());
         uniformVarName.resize(actualLength);
 
+        if(uniformVarName.find("LightBlock") <=uniformVarName.length())
+        {
+            continue;
+        }
         UniformAttribute currentUniformAttribute;
         currentUniformAttribute.mOffset = curOffset;
         currentUniformAttribute.mType = static_cast<DataType>(uniformType);
@@ -506,5 +480,12 @@ void Shader::DeleteShaderBuffer(const std::string &objectName) {
 
 GLuint Shader::GetAttributeID() const {
     return mAttributeInfoID;
+}
+
+void Shader::bindUniformBlockToBindingPoint(const std::string &uniformBlockName, const GLuint bindingPoint) const {
+    const auto blockIndex = glGetUniformBlockIndex(mProgramID, uniformBlockName.c_str());
+    if (blockIndex != GL_INVALID_INDEX) {
+        glUniformBlockBinding(mProgramID, blockIndex, bindingPoint);
+    }
 }
 

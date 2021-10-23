@@ -1,22 +1,22 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_907e2/fast && /usr/bin/make  -f CMakeFiles/cmTC_907e2.dir/build.make CMakeFiles/cmTC_907e2.dir/build
-make[1]: Entering directory '/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_907e2.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_907e2.dir/src.c.o -c /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_907e2
-/snap/clion/169/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_907e2.dir/link.txt --verbose=1
-/usr/bin/cc CMakeFiles/cmTC_907e2.dir/src.c.o -o cmTC_907e2 
-/usr/bin/ld: CMakeFiles/cmTC_907e2.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_df71b/fast && /usr/bin/make  -f CMakeFiles/cmTC_df71b.dir/build.make CMakeFiles/cmTC_df71b.dir/build
+make[1]: Entering directory '/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_df71b.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_df71b.dir/src.c.o -c /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_df71b
+/snap/clion/169/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_df71b.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_df71b.dir/src.c.o -o cmTC_df71b 
+/usr/bin/ld: CMakeFiles/cmTC_df71b.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
 /usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_907e2.dir/build.make:99: cmTC_907e2] Error 1
-make[1]: Leaving directory '/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:127: cmTC_907e2/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_df71b.dir/build.make:99: cmTC_df71b] Error 1
+make[1]: Leaving directory '/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_df71b/fast] Error 2
 
 
 Source file was:
@@ -41,20 +41,20 @@ int main(void)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_0047e/fast && /usr/bin/make  -f CMakeFiles/cmTC_0047e.dir/build.make CMakeFiles/cmTC_0047e.dir/build
-make[1]: Entering directory '/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0047e.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_0047e.dir/CheckFunctionExists.c.o -c /snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/CheckFunctionExists.c
-Linking C executable cmTC_0047e
-/snap/clion/169/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0047e.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_0047e.dir/CheckFunctionExists.c.o -o cmTC_0047e  -lpthreads 
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_28233/fast && /usr/bin/make  -f CMakeFiles/cmTC_28233.dir/build.make CMakeFiles/cmTC_28233.dir/build
+make[1]: Entering directory '/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_28233.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_28233.dir/CheckFunctionExists.c.o -c /snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/CheckFunctionExists.c
+Linking C executable cmTC_28233
+/snap/clion/169/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_28233.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_28233.dir/CheckFunctionExists.c.o -o cmTC_28233  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_0047e.dir/build.make:99: cmTC_0047e] Error 1
-make[1]: Leaving directory '/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:127: cmTC_0047e/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_28233.dir/build.make:99: cmTC_28233] Error 1
+make[1]: Leaving directory '/home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_28233/fast] Error 2
 
 
 
