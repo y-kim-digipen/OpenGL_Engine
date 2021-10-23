@@ -20,7 +20,7 @@ enum Primitive_Enum
 
 class Shader {
 public:
-    Shader() = default;
+    Shader(const std::string& name) : mName(name) {};
 
     Shader(const Shader &other);
 
@@ -109,6 +109,8 @@ private:
     AttributeInfoContainer mAttributeInfos;
     GLuint mAttributeInfoID;
     GLint mProgramID = 0;
+
+    std::string mName;
 
     inline static const std::string defaultBufferName = "DefaultBuffer";
 };

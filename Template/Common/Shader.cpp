@@ -124,7 +124,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
             glGetActiveUniformsiv(mProgramID, 9, indices.data(),
                                   GL_UNIFORM_OFFSET, offset.data());
             offset.push_back(uboSize);
-            Engine::GetLightManager().CreateBuffer(offset);
+            Engine::GetLightManager().CreateBuffer(mName, offset);
 //
 //            GLuint uboHandle;
 //            glGenBuffers( 1, &uboHandle );

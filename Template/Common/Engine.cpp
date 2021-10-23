@@ -171,6 +171,7 @@ bool Engine::IsRunning() {
 }
 
 void Engine::PreRender() {
+    mLightManager.Update();
     m_pScenes[mFocusedSceneIdx]->PreRender();
 }
 
@@ -221,40 +222,40 @@ void Engine::SetupScenes() {
 }
 
 void Engine::SetupShaders() {
-    auto pShader = mShaderManager.AddComponent("TestShader", new Shader());
+    auto pShader = mShaderManager.AddComponent("TestShader", new Shader("TestShader"));
 
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/QuadVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/QuadFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("3D_DefaultShader", new Shader());
+    pShader = mShaderManager.AddComponent("3D_DefaultShader", new Shader("3D_DefaultShader"));
 
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/SimpleVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/SimpleFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("DiffuseShader", new Shader());
+    pShader = mShaderManager.AddComponent("DiffuseShader", new Shader("DiffuseShader"));
 
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/DiffuseShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/DiffuseShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("NormalDrawShader", new Shader(), false);
+    pShader = mShaderManager.AddComponent("NormalDrawShader", new Shader("NormalDrawShader"), false);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/SimpleLineVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/SimpleLineFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("FaceNormalDrawShader", new Shader(), false);
+    pShader = mShaderManager.AddComponent("FaceNormalDrawShader", new Shader("FaceNormalDrawShader"), false);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/FaceNormalVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/FaceNormalFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("GoAroundShader", new Shader(), true);
+    pShader = mShaderManager.AddComponent("GoAroundShader", new Shader("GoAroundShader"), true);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/PhongShading.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/PhongShading.frag"} });
 
-    pShader = mShaderManager.AddComponent("PhongShader", new Shader(), true);
+    pShader = mShaderManager.AddComponent("PhongShader", new Shader("PhongShader"), true);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/PhongShading2.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/PhongShading2.frag"} });
