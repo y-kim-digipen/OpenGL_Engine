@@ -15,10 +15,11 @@ Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), 
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
     : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
-    m_position(), m_scale(1.f), m_rotation(0.f), mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
+    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(1.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
+    SetColor(mEmissiveColor);
     mDoVertexNormalDrawing = false;
     mDoFaceNormalDrawing = false;
 }
@@ -357,4 +358,12 @@ void Object::BindFunction(std::function<void(Object *)> func) {
 
 std::string Object::GetName() const {
     return mObjectName;
+}
+
+void Object::SetColor(Color newColor) {
+    mEmissiveColor = newColor;
+    if(m_pShader)
+    {
+        m_pShader->GetUniformValue<glm::vec3>(mObjectName, "EmissiveColor") = mEmissiveColor.AsVec3();
+    }
 }

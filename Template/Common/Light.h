@@ -6,13 +6,18 @@
 #define ENGINE_LIGHT_H
 
 #include "Object.h"
-
+namespace GUI{
+    class LightDetailContent;
+}
 class Light : public Object{
+    friend class GUI::LightDetailContent;
     friend class LightManager;
 public:
-    Light(const std::string& name) : Object(name, "Bulb", "TestShader") {
+    Light(const std::string& lightName) : Object(lightName, "Bulb", "TestShader") {
         SetPosition(glm::vec3(1.f, 1.f, 0.f));
     }
+
+    Light(const std::string& lightName, const std::string& meshName, const std::string& shaderName) : Object(lightName, meshName, shaderName) { }
 
     void PreRender() override
     {
@@ -36,8 +41,6 @@ public:
         float Ka = 0.1f;
         float Kd = 0.5f;
         float Ks = 0.8f;
-        float dummy2;
-        glm::vec3 I_Emissive = glm::vec3(50, 10, 10);
         float ns = 3.f;
 
         glm::vec3 Ia = glm::vec3(250, 50, 50);

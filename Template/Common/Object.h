@@ -11,6 +11,7 @@
 
 #include "Shader.h"
 #include "Mesh.h"
+#include "Color.h"
 
 namespace GUI{
     class ObjectDetailContent;
@@ -49,6 +50,8 @@ public:
     void SetScale(glm::vec3 scale);
     void AddScale(glm::vec3 amount);
 
+    void SetColor(Color newColor);
+
     void BindFunction(std::function<void(Object*)> func);
 
     glm::mat4 GetObjectToWorldMatrix() const;
@@ -60,7 +63,7 @@ private:
     void RenderVertexNormal() const;
     void RenderFaceNormal() const;
 
-private:
+protected:
     std::shared_ptr<Mesh> m_pMesh;
     std::shared_ptr<Shader> m_pShader;
     std::string mObjectName;
@@ -74,6 +77,8 @@ private:
     glm::vec3 m_position;
     glm::vec3 m_scale;
     glm::vec3 m_rotation;
+
+    Color mEmissiveColor;
 
     std::function<void(void)> mAdditionalFunction;
 

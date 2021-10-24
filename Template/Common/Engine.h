@@ -26,6 +26,8 @@
 #include "VBOManager.h"
 #include "UBO.h"
 
+constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
+
 class GLFWwindow;
 
 class Engine

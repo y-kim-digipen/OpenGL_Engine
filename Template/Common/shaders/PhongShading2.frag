@@ -8,6 +8,8 @@ float zNear = 1, zFar = 40;
 uniform float c1 = 0.7, c2 = 0.4, c3 = 0.2;
 uniform vec3 I_Fog = vec3(0.3f);
 
+uniform vec3 EmissiveColor;
+
 struct Light
 {
 //Light
@@ -18,8 +20,6 @@ struct Light
     float Ka;
     float Kd;
     float Ks;
-    float PADDING2;
-    vec3 I_Emissive;
     float ns;
 
 //Light
@@ -32,11 +32,10 @@ struct Light
 };
 
 
-int NumActiveLights = 2;
-
 layout(std140, binding = 1) uniform LightBlock
 {
     Light lights[MAX_NUM_TOTAL_LIGHTS];
+    int NumActiveLights;
 } light_block;
 
 in PhongShadingData
@@ -52,7 +51,7 @@ void main() {
     vec3 V = CameraPos - shading_data.Position;
     float CameraDistance = length(V);
     vec3 V_Normalized = V / CameraDistance;
-    for(int i = 0; i < NumActiveLights; ++i)
+    for(int i = 0; i < light_block.NumActiveLights; ++i)
     {
         //Light
         vec3 Pos = light_block.lights[i].Pos;
@@ -61,7 +60,7 @@ void main() {
         float Ka = light_block.lights[i].Ka;
         float Kd = light_block.lights[i].Kd;
         float Ks = light_block.lights[i].Ks;
-        vec3 I_Emissive = light_block.lights[i].I_Emissive;
+        vec3 I_Emissive = EmissiveColor * 256;
         float ns = light_block.lights[i].ns;
 
         //Light
@@ -91,7 +90,7 @@ void main() {
         Sum_Local_Light += I_Emissive + Att * (I_Ambient + I_Diffuse + I_Specular);
     }
     float S = (zFar - CameraDistance)/(zFar - zNear);
-    vec3 I_Local = Sum_Local_Light / NumActiveLights;
+    vec3 I_Local = Sum_Local_Light / light_block.NumActiveLights;
     vec3 I_Fianl = S * I_Local + (1.f - S) * I_Fog;
     color = I_Fianl / vec3(256.f);
 }

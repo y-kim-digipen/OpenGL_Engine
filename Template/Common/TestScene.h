@@ -120,7 +120,7 @@ public:
         //for initializing camera
         SceneBase::Init();
 
-        auto pCentralObj = AddObject("CentralObject", "Bunny", "3D_DefaultShader");
+        auto pCentralObj = AddObject("CentralObject", "Bunny", "PhongShader");
         pCentralObj->BindFunction(DrawOrbit);
 
         for(int i = 0; i < 8; ++i){
@@ -132,6 +132,11 @@ public:
            Engine::GetShader(pObj->GetUsingShaderName())->GetUniformValue<glm::vec3>(pObj->GetName(), "diffuseColor")
                    = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
         }
+
+        auto pPlaneObj = AddObject("Plane", "Plane", "PhongShader");
+        pPlaneObj->SetRotation(glm::vec3(-HALF_PI,0.f, 0.f));
+        pPlaneObj->SetScale(glm::vec3(5.f, 5.f, 5.f));
+        pPlaneObj->SetPosition(glm::vec3(0.f, -0.45f, 0.f));
     };
 
     //void InitFromFile(const std::filesystem::path& filePath);

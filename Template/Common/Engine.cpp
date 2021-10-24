@@ -8,6 +8,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <thread>
+#include <GUI/LightListContent.h>
 
 #include "Input/InputManager.h"
 //todo delete this after testing scene
@@ -108,7 +109,7 @@ void Engine::InitEngine() {
     }
     SetupGUI();
 
-    lightUBO.createUBO(10 * sizeof(Light::std140_structure));
+    lightUBO.createUBO(10 * sizeof(Light::std140_structure) + sizeof(int));
     lightUBO.bindBufferBaseToBindingPoint(1);
 
     std::cout << "Engine is initialized, ready to update" << std::endl;
@@ -177,6 +178,9 @@ void Engine::PreRender() {
 //    mLightManager.Update();
     m_pScenes[mFocusedSceneIdx]->PreRender();
     lightUBO.bindUBO();
+
+
+
     GLsizeiptr offset = 0;
     GLint structureSize = Light::GetSTD140StructureSize();
     for (const auto& pointLight : GetCurrentScene()->GetLightList())
@@ -184,6 +188,9 @@ void Engine::PreRender() {
         lightUBO.setBufferData(offset, pointLight.second->GetSTD140Structure(), structureSize);
         offset += structureSize;
     }
+
+    GLint numActiveLights = GetCurrentScene()->GetLightList().size();
+    lightUBO.setBufferData(structureSize * ENGINE_SUPPORT_MAX_LIGHTS, (void*)&numActiveLights, sizeof(int));
 }
 
 void Engine::Render() {
@@ -351,6 +358,10 @@ void Engine::SetupGUI() {
     auto pGUIWindow = mGUIManager.AddWindow("Object Lists");
     pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
     pGUIWindow->AddContent("Object Lists", new ObjectListContent());
+
+    pGUIWindow = mGUIManager.AddWindow("Light Lists");
+    pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
+    pGUIWindow->AddContent("Light Lists", new LightListContent());
 }
 
 std::string Engine::GetTitleName() {

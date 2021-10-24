@@ -1,4 +1,4 @@
-/snap/clion/169/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/yoonki/Desktop/CS300/Template/Common
+/snap/clion/169/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common
 GLFW Include : 
 GLFW Libs : glfw
 GLEW Include : /usr/include
@@ -7,4 +7,4 @@ OpenGL includes: /usr/include
 OpenGL libs: /usr/lib/x86_64-linux-gnu/libOpenGL.so, /usr/lib/x86_64-linux-gnu/libGLU.so, /usr/lib/x86_64-linux-gnu/libGLX.so
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/yoonki/Desktop/CS300/Template/Common/cmake-build-debug
+-- Build files have been written to: /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/cmake-build-debug

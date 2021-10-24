@@ -30,8 +30,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU-C.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU-CXX.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU.cmake"
-  "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/FindFontconfig.cmake"
-  "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/FindFreetype.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/FindGLEW.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/FindOpenGL.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/FindPackageHandleStandardArgs.cmake"
