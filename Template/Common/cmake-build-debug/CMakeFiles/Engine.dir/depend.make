@@ -10,6 +10,7 @@ CMakeFiles/Engine.dir/Camera.cpp.o: \
  ../Color.h \
  ../CommonConstants.h \
  ../Engine.h \
+ ../Environment.h \
  ../GUI/GUIManager.h \
  ../Input/InputManager.h \
  ../Input/KeyCodes.h \
@@ -35,6 +36,7 @@ CMakeFiles/Engine.dir/Engine.cpp.o: \
  ../CommonConstants.h \
  ../Engine.cpp \
  ../Engine.h \
+ ../Environment.h \
  ../GUI/CurrentCameraInfoContent.h \
  ../GUI/GUIManager.h \
  ../GUI/GUIObject.h \
@@ -58,6 +60,7 @@ CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -81,6 +84,7 @@ CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -121,6 +125,7 @@ CMakeFiles/Engine.dir/GUI/LightDetailContent.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -145,6 +150,7 @@ CMakeFiles/Engine.dir/GUI/LightListContent.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -172,6 +178,7 @@ CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -195,6 +202,7 @@ CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o: \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \
@@ -229,6 +237,7 @@ CMakeFiles/Engine.dir/Mesh.cpp.o: \
  ../Color.h \
  ../CommonConstants.h \
  ../Engine.h \
+ ../Environment.h \
  ../GUI/GUIManager.h \
  ../Light.h \
  ../Mesh.cpp \
@@ -254,6 +263,7 @@ CMakeFiles/Engine.dir/Object.cpp.o: \
  ../Color.h \
  ../CommonConstants.h \
  ../Engine.h \
+ ../Environment.h \
  ../GUI/GUIManager.h \
  ../Light.h \
  ../Mesh.h \
@@ -269,6 +279,7 @@ CMakeFiles/Engine.dir/SceneBase.cpp.o: \
  ../Camera.h \
  ../Color.h \
  ../CommonConstants.h \
+ ../Environment.h \
  ../Light.h \
  ../Mesh.h \
  ../Object.h \
@@ -286,6 +297,7 @@ CMakeFiles/Engine.dir/Shader.cpp.o: \
  ../Color.h \
  ../CommonConstants.h \
  ../Engine.h \
+ ../Environment.h \
  ../GUI/GUIManager.h \
  ../Light.h \
  ../Mesh.h \
@@ -310,53 +322,54 @@ CMakeFiles/Engine.dir/VBOManager.cpp.o: \
  ../ObjectComponents/ComponentBase.h \
  ../VBOManager.cpp \
  ../VBOManager.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_demo.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_demo.cpp
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_draw.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_draw.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_rectpack.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_truetype.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/misc/freetype/imgui_freetype.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_tables.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_tables.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
-CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_widgets.cpp.o: \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_widgets.cpp \
- /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_rectpack.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_truetype.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/misc/freetype/imgui_freetype.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
+CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o: \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp \
+ /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
 CMakeFiles/Engine.dir/main.cpp.o: \
  ../../Common/Camera.h \
  ../../Common/Color.h \
  ../../Common/CommonConstants.h \
  ../../Common/Engine.h \
+ ../../Common/Environment.h \
  ../../Common/GUI/GUIManager.h \
  ../../Common/Light.h \
  ../../Common/Mesh.h \

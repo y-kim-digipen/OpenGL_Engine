@@ -5,9 +5,9 @@ uniform mat4 perspectiveMatrix;
 
 in layout(location = 0) vec3 vPosition;
 in layout(location = 1) vec3 vertexNormal;
-
-uniform vec3 LightPos = vec3(0.f, 0.f, -4.f);
-uniform vec3 CameraPos;
+//
+//uniform vec3 LightPos = vec3(0.f, 0.f, -4.f);
+//uniform vec3 CameraPos;
 
 //Environment
 float zNear = 0.1, zFar = 50;
@@ -20,7 +20,7 @@ out  PhongShadingData
     vec3 Normal;
 } shading_data;
 
-uniform vec3 AmbientColor = vec3(1.f, 0.f, 0.f);
+//uniform vec3 AmbientColor = vec3(1.f, 0.f, 0.f);
 
 void main() {
     gl_Position = perspectiveMatrix * modelToWorldTransform * vec4(vPosition, 1.f);

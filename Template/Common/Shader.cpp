@@ -172,7 +172,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         glGetActiveUniform(mProgramID, idx, static_cast<GLsizei>(uniformVarName.length()), &actualLength, &uniformArraySize, &uniformType,uniformVarName.data());
         uniformVarName.resize(actualLength);
 
-        if(uniformVarName.find("LightBlock") <=uniformVarName.length())
+        if(uniformVarName.find("Block") <=uniformVarName.length())
         {
             continue;
         }

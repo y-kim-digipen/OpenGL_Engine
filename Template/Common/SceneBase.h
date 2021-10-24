@@ -10,6 +10,7 @@
 #include "Camera.h"
 #include "Object.h"
 #include "Light.h"
+#include "Environment.h"
 
 class SceneBase{
 public:
@@ -34,10 +35,14 @@ public:
     [[nodiscard]] const std::map<std::string, std::shared_ptr<Light>>& GetLightList() const;
 
     std::shared_ptr<Object> AddObject(const std::string& objectName, const std::string& usingMesh, const std::string& usingShader);
+    std::shared_ptr<Light> AddLight(const std::string& lightName, const std::string& usingMesh, const std::string& usingShader);
+
+    Environment& GetEnvironment();
 protected:
     short mFocusedCameraIdx;
-
     std::vector<std::shared_ptr<Camera>> m_pCameras;
+
+    Environment mEnvironment;
 
 private:
     std::map<std::string, std::shared_ptr<Object>> m_pObjects;

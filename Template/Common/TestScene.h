@@ -13,7 +13,7 @@ public:
     virtual void Init() override
     {
         SceneBase::Init();
-        constexpr float orbitRadius = 2.f;
+        constexpr float orbitRadius = 1.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
         static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 8](int i, Object* obj) mutable {
             //axis y is fixed
@@ -127,10 +127,15 @@ public:
             std::random_device randomDevice;
             std::uniform_int_distribution<int> randomDistribution(0, 255);
             const std::string& objName = "OrbitObject" + std::to_string(i);
-            auto pObj = AddObject(objName, "Sphere", "DiffuseShader");
-            pObj->BindFunction(std::bind(OrbitsMoveUpdate,  i, _1));
-           Engine::GetShader(pObj->GetUsingShaderName())->GetUniformValue<glm::vec3>(pObj->GetName(), "diffuseColor")
-                   = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
+            auto pLight = AddLight(objName, "Sphere", "PhongShader");
+            pLight->BindFunction(std::bind(OrbitsMoveUpdate,  i, _1));
+            glm::vec3 randomColor = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
+//           Engine::GetShader(pLight->GetUsingShaderName())->GetUniformValue<glm::vec3>(pLight->GetName(), "diffuseColor")
+//                   = randomColor;
+           pLight->SetColor(Color(randomColor.x, randomColor.y, randomColor.z));
+           pLight->std140_structure.Ia = randomColor * 128.f;
+           pLight->std140_structure.Id = randomColor * 256.f;
+           pLight->std140_structure.Is = glm::vec3(255.f, 255.f, 255.f);
         }
 
         auto pPlaneObj = AddObject("Plane", "Plane", "PhongShader");

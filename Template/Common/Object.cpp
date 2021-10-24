@@ -15,7 +15,7 @@ Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), 
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
     : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
-    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(1.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
+    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
@@ -101,9 +101,9 @@ void Object::RenderModel() const {
                     = modelToWorldMatrix;
             m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
                     = projectionMatrix * viewMatrix;
-
-            m_pShader->GetUniformValue<glm::vec3>(GetName(), "LightPos")
-                    = glm::vec3(1.f, 1.f, 0.f);
+//
+//            m_pShader->GetUniformValue<glm::vec3>(GetName(), "LightPos")
+//                    = glm::vec3(1.f, 1.f, 0.f);
             m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos") = pCam->Eye();
         }
 
@@ -362,7 +362,7 @@ std::string Object::GetName() const {
 
 void Object::SetColor(Color newColor) {
     mEmissiveColor = newColor;
-    if(m_pShader)
+    if(m_pShader->HasUniform("EmissiveColor"))
     {
         m_pShader->GetUniformValue<glm::vec3>(mObjectName, "EmissiveColor") = mEmissiveColor.AsVec3();
     }

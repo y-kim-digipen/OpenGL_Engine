@@ -25,6 +25,7 @@
 #include "VAOManager.h"
 #include "VBOManager.h"
 #include "UBO.h"
+#include "Environment.h"
 
 constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
 
@@ -99,4 +100,6 @@ private:
     inline static int TargetFPS = 30;
 
     inline static UBO lightUBO;
+    inline static UBO environmentUBO;
+
 };

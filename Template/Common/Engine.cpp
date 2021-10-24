@@ -20,6 +20,7 @@
 #include "GUI/GUIWindow.h"
 #include "GUI/CurrentCameraInfoContent.h"
 #include "GUI/ObjectListContent.h"
+#include "Environment.h"
 
 
 static auto CurrentTime = std::chrono::system_clock::now();
@@ -112,6 +113,9 @@ void Engine::InitEngine() {
     lightUBO.createUBO(10 * sizeof(Light::std140_structure) + sizeof(int));
     lightUBO.bindBufferBaseToBindingPoint(1);
 
+    environmentUBO.createUBO(sizeof(Environment::std140_structure));
+    environmentUBO.bindBufferBaseToBindingPoint(2);
+
     std::cout << "Engine is initialized, ready to update" << std::endl;
 }
 
@@ -175,11 +179,7 @@ bool Engine::IsRunning() {
 }
 
 void Engine::PreRender() {
-//    mLightManager.Update();
-    m_pScenes[mFocusedSceneIdx]->PreRender();
     lightUBO.bindUBO();
-
-
 
     GLsizeiptr offset = 0;
     GLint structureSize = Light::GetSTD140StructureSize();
@@ -191,6 +191,14 @@ void Engine::PreRender() {
 
     GLint numActiveLights = GetCurrentScene()->GetLightList().size();
     lightUBO.setBufferData(structureSize * ENGINE_SUPPORT_MAX_LIGHTS, (void*)&numActiveLights, sizeof(int));
+
+    environmentUBO.bindUBO();
+    GetCurrentScene()->GetEnvironment().std140_structure.I_Fog = mClearColor.AsVec3() * 256.f;
+    GetCurrentScene()->GetEnvironment().std140_structure.zFar = GetCurrentScene()->GetCurrentCamera()->FarDistance();
+    GetCurrentScene()->GetEnvironment().std140_structure.zNear = GetCurrentScene()->GetCurrentCamera()->NearDistance();
+    environmentUBO.setBufferData(0, GetCurrentScene()->GetEnvironment().GetSTD140Structure(), sizeof(Environment::std140));
+
+    m_pScenes[mFocusedSceneIdx]->PreRender();
 }
 
 void Engine::Render() {

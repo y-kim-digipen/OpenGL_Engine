@@ -4,11 +4,16 @@
 uniform vec3 CameraPos;
 
 //Environment
-float zNear = 1, zFar = 40;
-uniform float c1 = 0.7, c2 = 0.4, c3 = 0.2;
-uniform vec3 I_Fog = vec3(0.3f);
+
 
 uniform vec3 EmissiveColor;
+
+struct Enviroment
+{
+    vec3 I_Fog;
+    float zNear, zFar;
+    float c1, c2, c3;
+};
 
 struct Light
 {
@@ -37,6 +42,11 @@ layout(std140, binding = 1) uniform LightBlock
     Light lights[MAX_NUM_TOTAL_LIGHTS];
     int NumActiveLights;
 } light_block;
+
+layout(std140, binding = 2) uniform EnvironmentBlock
+{
+    Enviroment data;
+} environment_block;
 
 in PhongShadingData
 {
@@ -78,7 +88,7 @@ void main() {
         float NdotL = dot(N, L_Normalized);
         vec3 ReflectionVector = 2 * NdotL * N - L_Normalized;
         float RdotV = dot(ReflectionVector, V_Normalized);
-        float Att = min(1.f/(c1 + c2 * LightDistance + c3 * LightDistance * LightDistance), 1.f);
+        float Att = min(1.f/(environment_block.data.c1 + environment_block.data.c2 * LightDistance + environment_block.data.c3 * LightDistance * LightDistance), 1.f);
 
 
         vec3 I_Ambient = Ia * Ka;
@@ -89,8 +99,8 @@ void main() {
         //    Att = 1.f;
         Sum_Local_Light += I_Emissive + Att * (I_Ambient + I_Diffuse + I_Specular);
     }
-    float S = (zFar - CameraDistance)/(zFar - zNear);
+    float S = (environment_block.data.zFar - CameraDistance)/(environment_block.data.zFar - environment_block.data.zNear);
     vec3 I_Local = Sum_Local_Light / light_block.NumActiveLights;
-    vec3 I_Fianl = S * I_Local + (1.f - S) * I_Fog;
+    vec3 I_Fianl = S * I_Local + (1.f - S) * environment_block.data.I_Fog;
     color = I_Fianl / vec3(256.f);
 }

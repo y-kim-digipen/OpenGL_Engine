@@ -7,16 +7,16 @@ void SceneBase::Init() {
     if(m_pCameras.empty() == false){
         mFocusedCameraIdx = 0;
     }
-    auto pLight = m_pLights.emplace("DefaultLight", new Light("DefaultLight")).first->second;
-    pLight->SetScale(glm::vec3(0.2f));
-    pLight->SetPosition(glm::vec3(1.f, 1.f, 0.f));
-
-    pLight = m_pLights.emplace("DefaultLight2", new Light("DefaultLight2")).first->second;
-    pLight->SetScale(glm::vec3(0.2f));
-    pLight->SetPosition(glm::vec3(-3.f, 0.f, 0.f));
-//    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 0.f, 230.f);
-    pLight->std140_structure.position = glm::vec3(0.f, 0.f, 3.f);
-//    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 59.f, 9.f);
+//    auto pLight = m_pLights.emplace("DefaultLight", new Light("DefaultLight")).first->second;
+//    pLight->SetScale(glm::vec3(0.2f));
+//    pLight->SetPosition(glm::vec3(1.f, 1.f, 0.f));
+//
+//    pLight = m_pLights.emplace("DefaultLight2", new Light("DefaultLight2")).first->second;
+//    pLight->SetScale(glm::vec3(0.2f));
+//    pLight->SetPosition(glm::vec3(-3.f, 0.f, 0.f));
+////    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 0.f, 230.f);
+//    pLight->std140_structure.position = glm::vec3(0.f, 0.f, 3.f);
+////    pLight->std140_structure.I_Emissive = glm::vec3(0.f, 59.f, 9.f);
 }
 
 void SceneBase::PreRender() {
@@ -97,6 +97,14 @@ std::shared_ptr<Object> SceneBase::AddObject(const std::string &objectName, cons
 
 const std::map<std::string, std::shared_ptr<Light>> &SceneBase::GetLightList() const {
     return m_pLights;
+}
+
+std::shared_ptr<Light> SceneBase::AddLight(const std::string &objectName, const std::string &usingMesh, const std::string &usingShader) {
+    return  m_pLights.emplace(objectName, std::make_unique<Light>(objectName, usingMesh, usingShader)).first->second;
+}
+
+Environment &SceneBase::GetEnvironment() {
+    return mEnvironment;
 }
 
 
