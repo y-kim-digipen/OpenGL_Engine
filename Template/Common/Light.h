@@ -35,20 +35,33 @@ public:
     }
 
 public:
+    enum LightType{
+        POINT_LIGHT,
+        DIRECTIONAL_LIGHT = 1,
+        SPOT_LIGHT,
+    };
+
+
     struct std140{
         glm::vec3 position; /*just update base classes position, it is just for padding*/
-        float dummy1;
+        int type = LightType::POINT_LIGHT;
         float Ka = 0.1f;
         float Kd = 0.5f;
         float Ks = 0.8f;
         float ns = 3.f;
 
         glm::vec3 Ia = glm::vec3(250, 50, 50);
-        float dummy3;
+
+        float c1 = 0.1;
         glm::vec3 Id = glm::vec3(120, 250, 10);
-        float dummy4;
+        float c2 = 0.005;
         glm::vec3 Is = glm::vec3(2, 200, 2);
-        float dummy5;
+        float c3 = 0.0025;
+
+        glm::vec3 dir = glm::vec3(0.f, -1.f, 0.f);
+        float theta = HALF_PI * 0.5f;
+        glm::vec3 padding;
+        float phi =  HALF_PI ;
     } std140_structure;
 //    void Render() override;
 

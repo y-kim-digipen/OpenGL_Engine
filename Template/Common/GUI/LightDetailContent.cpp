@@ -25,13 +25,27 @@ namespace GUI
             if (ImGui::BeginTabItem("LightData")) {
                 auto& lightInfo = m_pTargetLight->std140_structure;
 
+                static std::vector<std::string> lightTypeNames = {"PointLight", "DirectionalLight", "SpotLight"};
+                std::string currentLightTypeStr = lightTypeNames[lightInfo.type];
+                if (ImGui::BeginCombo("LightType", currentLightTypeStr.c_str()))
+                {
+                    int i = 0;
+                    for (const auto &lightName : lightTypeNames) {
+                        bool isSelected = (currentLightTypeStr == lightName);
+                        if (ImGui::Selectable(lightName.c_str(), isSelected)) {
+                            lightInfo.type = i;
+                        }
+                        if (isSelected) {
+                            ImGui::SetItemDefaultFocus();
+                        }
+                        ++i;
+                    }
+                    ImGui::EndCombo();
+                }
+
                 ImGui::DragFloat("Ka", (float*)&lightInfo.Ka, 0.02, 0.f, 1.f);
                 ImGui::DragFloat("Kd", (float*)&lightInfo.Kd, 0.02, 0.f, 1.f);
                 ImGui::DragFloat("Ks", (float*)&lightInfo.Ks, 0.02, 0.f, 1.f);
-
-//                glm::vec3 I_EmissiveColor = lightInfo.I_Emissive / 256.f;
-//                ImGui::ColorEdit3("I_Emissive", (float*)&I_EmissiveColor.x);
-//                lightInfo.I_Emissive = I_EmissiveColor * 256.f;
 
                 glm::vec3 I_AColor = lightInfo.Ia / 256.f;
                 ImGui::ColorEdit3("Ia", (float*)&I_AColor.x);
@@ -44,6 +58,26 @@ namespace GUI
                 glm::vec3 I_SColor = lightInfo.Is / 256.f;
                 ImGui::ColorEdit3("Is", (float*)&I_SColor.x);
                 lightInfo.Is = I_SColor * 256.f;
+
+
+                ImGui::DragFloat("c1", &lightInfo.c1, 0.001f, 0.f, 1.f);
+                ImGui::DragFloat("c2", &lightInfo.c2, 0.001f, 0.f, 1.f);
+                ImGui::DragFloat("c3", &lightInfo.c3, 0.001f, 0.f, 1.f);
+
+                if(lightInfo.type > Light::LightType::POINT_LIGHT)
+                {
+                    ImGui::DragFloat3("LightDir", &lightInfo.dir.x, 0.001f, -1.f, 1.f);
+
+                    float currentInnerRadAsDegree = lightInfo.theta * 180.f / PI;
+                    float currentOuterRadAsDegree = lightInfo.phi * 180.f / PI;
+                    ImGui::DragFloat("InnerConeAngle", &currentInnerRadAsDegree, 0.01f, 0.f, currentOuterRadAsDegree - 1.f);
+
+
+                    ImGui::DragFloat("OuterConeAngle", &currentOuterRadAsDegree, 0.01f, currentInnerRadAsDegree + 1.f, 180.f);
+
+                    lightInfo.theta = PI / 180.f * currentInnerRadAsDegree;
+                    lightInfo.phi = PI / 180.f * currentOuterRadAsDegree;
+                }
                 ImGui::EndTabItem();
             }
 

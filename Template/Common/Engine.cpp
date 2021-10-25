@@ -33,7 +33,7 @@ Engine::Engine() {
 
 int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
     mTitleStr = title_name;
-    mWinSize = win_size;
+    mWinSize = win_size * DPI;
 
     //GLFW settings
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -57,6 +57,7 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
     glfwInit();
 
     m_pWindow = glfwCreateWindow(static_cast<int>(mWinSize.x), static_cast<int>(mWinSize.y), mTitleStr.c_str(), nullptr, nullptr);
+    m_pGUIWindow = glfwCreateWindow(static_cast<int>(mWinSize.x * 0.5f), static_cast<int>(mWinSize.y), "GUIWindow", nullptr, nullptr);
     if(m_pWindow == nullptr) {
         std::cerr << "Failed to open GLFW window. Check if your GPU is compatible." << std::endl;
         glfwTerminate();
@@ -93,7 +94,7 @@ void Engine::InitEngine() {
     OBJReader objReader;
     mFocusedSceneIdx = -1;
     InputManager::Init();
-    mGUIManager.Init(m_pWindow);
+    mGUIManager.Init(m_pGUIWindow);
 
     SetupShaders();
     SetupMeshes();
@@ -102,7 +103,7 @@ void Engine::InitEngine() {
     SetupScenes();
 
     mFocusedSceneIdx = 0;
-    SetClearColor(Color(0.5f));
+    SetClearColor(Color(0.0f));
     //debug part ended here
 
     for(auto& scene : m_pScenes){
@@ -129,6 +130,7 @@ void Engine::Update() {
 //
 //        deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
 //    }
+    glfwMakeContextCurrent(m_pWindow);
     LastTime = CurrentTime;
     CurrentTime = std::chrono::system_clock::now();
     FPS = 1.f / deltaTime;
@@ -146,8 +148,15 @@ void Engine::Update() {
         Render();
         PostRender();
     }
-    mGUIManager.Update();
     glfwSwapBuffers(m_pWindow);
+
+
+    glfwMakeContextCurrent(m_pGUIWindow);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    mGUIManager.Update();
+    glfwSwapBuffers(m_pGUIWindow);
+
     glfwPollEvents();
 }
 
@@ -244,6 +253,8 @@ GUI::GUI_Manager &Engine::GetGUIManager() {
 void Engine::SetupScenes() {
     SceneBase* baseScene = new TestScene();
     baseScene->AddCamera();
+    baseScene->GetCurrentCamera()->SetPosition(glm::vec3(0.f, 1.f, 5.f));
+    baseScene->GetCurrentCamera()->Pitch(-HALF_PI * 0.2f);
     m_pScenes.emplace_back(baseScene);
 }
 

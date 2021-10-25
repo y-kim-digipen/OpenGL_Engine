@@ -15,7 +15,7 @@ public:
         SceneBase::Init();
         constexpr float orbitRadius = 1.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
-        static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 8](int i, Object* obj) mutable {
+        static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 4](int i, Object* obj) mutable {
             //axis y is fixed
             if(initialSetting){
                 obj->SetScale(glm::vec3(orbitalMoveSphereRadius));
@@ -32,7 +32,7 @@ public:
             fixedYCenter += orbitRadius * glm::vec2(std::cos(currentRadian), std::sin(currentRadian));
             obj->SetPosition(glm::vec3(fixedYCenter.x, center.y, fixedYCenter.y));
             obj->SetRotation(glm::vec3(cos(-currentRadian),0.f,sin(-currentRadian)));
-            currentRadian += 0.0003f;
+            currentRadian += 0.003f;
         };
 
         static auto DrawOrbit = [&, initialSetting = true](Object* obj) mutable {
@@ -123,7 +123,7 @@ public:
         auto pCentralObj = AddObject("CentralObject", "Bunny", "PhongShader");
         pCentralObj->BindFunction(DrawOrbit);
 
-        for(int i = 0; i < 8; ++i){
+        for(int i = 0; i < 4; ++i){
             std::random_device randomDevice;
             std::uniform_int_distribution<int> randomDistribution(0, 255);
             const std::string& objName = "OrbitObject" + std::to_string(i);
@@ -136,12 +136,15 @@ public:
            pLight->std140_structure.Ia = randomColor * 128.f;
            pLight->std140_structure.Id = randomColor * 256.f;
            pLight->std140_structure.Is = glm::vec3(255.f, 255.f, 255.f);
+
+           pLight->std140_structure.type = Light::LightType::SPOT_LIGHT;
         }
 
-        auto pPlaneObj = AddObject("Plane", "Plane", "PhongShader");
+        auto pPlaneObj = AddObject("Plane1", "Plane", "PhongShader");
         pPlaneObj->SetRotation(glm::vec3(-HALF_PI,0.f, 0.f));
-        pPlaneObj->SetScale(glm::vec3(5.f, 5.f, 5.f));
+        pPlaneObj->SetScale(glm::vec3(100.f, 100.f, 100.f));
         pPlaneObj->SetPosition(glm::vec3(0.f, -0.45f, 0.f));
+
     };
 
     //void InitFromFile(const std::filesystem::path& filePath);

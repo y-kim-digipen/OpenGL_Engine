@@ -28,6 +28,7 @@
 #include "Environment.h"
 
 constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
+constexpr float DPI = 1.7f;
 
 class GLFWwindow;
 
@@ -81,6 +82,7 @@ private:
 private:
     inline static std::string mTitleStr;
     inline static GLFWwindow* m_pWindow;
+    inline static GLFWwindow* m_pGUIWindow;
     inline static glm::vec2 mWinSize;
     inline static Color mClearColor;
 

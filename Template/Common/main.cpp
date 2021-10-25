@@ -2,10 +2,10 @@
 // Created by yoonki on 9/10/21.
 //
 #include <Engine.h>
-#include <iostream>
+
 int main(){
 
-    Engine::InitWindow(glm::vec2{2000, 1000}, "Test Title");
+    Engine::InitWindow(glm::vec2{1600, 900}, "Assignment 2");
     Engine::InitEngine();
 
     do{

@@ -41,7 +41,7 @@ namespace GUI{
             if(!GUIManager.HasWindow(objNameStr)){
                 if(ImGui::Button("  Detail  ")){
                     auto pWindow = GUIManager.AddWindow(objNameStr);
-                    pWindow->AddFlag(ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoBackground);
+                    pWindow->AddFlag(ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize );
                     pWindow->AddContent((objNameStr + " detail").c_str(), new ObjectDetailContent(obj_itr.second));
                     pWindow->SetCanClose(false);
                 }

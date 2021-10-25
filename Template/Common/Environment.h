@@ -21,7 +21,6 @@ public:
     {
         glm::vec3 I_Fog;
         float zNear, zFar;
-        float c1 = 0.1, c2 = 0.005, c3 = 0.0025;
     } std140_structure;
 };
 #endif //ENGINE_ENVIRONMENT_H

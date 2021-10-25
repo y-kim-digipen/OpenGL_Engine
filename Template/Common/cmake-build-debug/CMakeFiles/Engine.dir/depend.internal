@@ -5,24 +5,24 @@ CMakeFiles/Engine.dir/Camera.cpp.o
  ../../Common/ObjectComponents/ComponentBase.h
  ../../Common/ObjectComponents/ComponentManager.h
  ../../Common/ObjectComponents/ComponentManager.inl
- /home/yoonki/Desktop/CS300/Template/Common/Camera.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Camera.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Engine.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/KeyCodes.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/Engine.cpp.o
  ../../Common/Camera.h
  ../../Common/GUI/GUIContent.h
@@ -32,29 +32,29 @@ CMakeFiles/Engine.dir/Engine.cpp.o
  ../../Common/ObjectComponents/ComponentManager.inl
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Engine.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Engine.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h
- /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/OBJReader.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/TestScene.h
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/CurrentCameraInfoContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectListContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/KeyCodes.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/OBJReader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/TestScene.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -75,10 +75,10 @@ CMakeFiles/Engine.dir/GUI/CurrentCameraInfoContent.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/CurrentCameraInfoContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/CurrentCameraInfoContent.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/CurrentCameraInfoContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
 CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -99,27 +99,44 @@ CMakeFiles/Engine.dir/GUI/EngineInfo.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/EngineInfo.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/EngineInfo.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
 CMakeFiles/Engine.dir/GUI/GUIManager.cpp.o
+ ../../Common/Camera.h
+ ../../Common/Color.h
+ ../../Common/CommonConstants.h
+ ../../Common/Engine.h
+ ../../Common/Environment.h
+ ../../Common/GUI/GUIManager.h
+ ../../Common/Light.h
+ ../../Common/Mesh.h
+ ../../Common/Object.h
+ ../../Common/ObjectComponents/ComponentBase.h
+ ../../Common/ObjectComponents/ComponentManager.h
+ ../../Common/ObjectComponents/ComponentManager.inl
+ ../../Common/SceneBase.h
+ ../../Common/Shader.h
+ ../../Common/UBO.h
+ ../../Common/VAOManager.h
+ ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
  ../../External/imgui-1.84.2/imgui_impl_glfw.h
  ../../External/imgui-1.84.2/imgui_impl_opengl3.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/EngineInfo.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/EngineInfo.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
 CMakeFiles/Engine.dir/GUI/GUIWindow.cpp.o
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
 CMakeFiles/Engine.dir/GUI/LightDetailContent.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -139,12 +156,12 @@ CMakeFiles/Engine.dir/GUI/LightDetailContent.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/LightDetailContent.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/LightDetailContent.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/LightDetailContent.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/LightDetailContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
 CMakeFiles/Engine.dir/GUI/LightListContent.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -165,14 +182,14 @@ CMakeFiles/Engine.dir/GUI/LightListContent.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/LightDetailContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/LightListContent.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/LightListContent.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ColorSet.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/LightDetailContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/LightListContent.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/LightListContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
 CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -193,10 +210,10 @@ CMakeFiles/Engine.dir/GUI/ObjectDetailContent.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectDetailContent.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectDetailContent.h
 CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -217,153 +234,153 @@ CMakeFiles/Engine.dir/GUI/ObjectListContent.cpp.o
  ../../Common/VBOManager.h
  ../../External/imgui-1.84.2/imconfig.h
  ../../External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ColorSet.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIObject.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIWindow.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectDetailContent.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.cpp
- /home/yoonki/Desktop/CS300/Template/Common/GUI/ObjectListContent.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ColorSet.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIObject.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIWindow.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectDetailContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectListContent.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/ObjectListContent.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
 CMakeFiles/Engine.dir/Input/InputManager.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Input/InputManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Input/KeyCodes.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/InputManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Input/KeyCodes.h
 CMakeFiles/Engine.dir/Mesh.cpp.o
  ../../Common/ObjectComponents/ComponentBase.h
  ../../Common/ObjectComponents/ComponentManager.h
  ../../Common/ObjectComponents/ComponentManager.inl
- /home/yoonki/Desktop/CS300/Template/Common/Camera.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Engine.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/OBJReader.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/OBJReader.cpp
- /home/yoonki/Desktop/CS300/Template/Common/OBJReader.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/OBJReader.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/OBJReader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/Object.cpp.o
  ../../Common/ObjectComponents/ComponentBase.h
  ../../Common/ObjectComponents/ComponentManager.h
  ../../Common/ObjectComponents/ComponentManager.inl
- /home/yoonki/Desktop/CS300/Template/Common/Camera.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Engine.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/SceneBase.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/Camera.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.cpp
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/Shader.cpp.o
  ../../Common/ObjectComponents/ComponentBase.h
  ../../Common/ObjectComponents/ComponentManager.h
  ../../Common/ObjectComponents/ComponentManager.inl
- /home/yoonki/Desktop/CS300/Template/Common/Camera.h
- /home/yoonki/Desktop/CS300/Template/Common/Color.h
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Engine.h
- /home/yoonki/Desktop/CS300/Template/Common/Environment.h
- /home/yoonki/Desktop/CS300/Template/Common/GUI/GUIManager.h
- /home/yoonki/Desktop/CS300/Template/Common/Light.h
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/Object.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/SceneBase.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.cpp
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Camera.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Color.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Engine.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Environment.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/GUI/GUIManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Light.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Object.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/SceneBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
 CMakeFiles/Engine.dir/UBO.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/UBO.cpp
- /home/yoonki/Desktop/CS300/Template/Common/UBO.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/UBO.h
 CMakeFiles/Engine.dir/VAOManager.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/CommonConstants.h
- /home/yoonki/Desktop/CS300/Template/Common/Shader.h
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.cpp
- /home/yoonki/Desktop/CS300/Template/Common/VAOManager.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/CommonConstants.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Shader.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VAOManager.h
 CMakeFiles/Engine.dir/VBOManager.cpp.o
- /home/yoonki/Desktop/CS300/Template/Common/Mesh.h
- /home/yoonki/Desktop/CS300/Template/Common/ObjectComponents/ComponentBase.h
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.cpp
- /home/yoonki/Desktop/CS300/Template/Common/VBOManager.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_demo.cpp
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_draw.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_rectpack.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_truetype.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/misc/freetype/imgui_freetype.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_glfw.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_tables.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
-CMakeFiles/Engine.dir/home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imconfig.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_internal.h
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imgui_widgets.cpp
- /home/yoonki/Desktop/CS300/Template/External/imgui-1.84.2/imstb_textedit.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/Mesh.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/ObjectComponents/ComponentBase.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/VBOManager.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_demo.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_demo.cpp
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_draw.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_draw.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_rectpack.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_truetype.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/misc/freetype/imgui_freetype.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_glfw.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_impl_opengl3_loader.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_tables.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_tables.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
+CMakeFiles/Engine.dir/home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_widgets.cpp.o
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imconfig.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_internal.h
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imgui_widgets.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/External/imgui-1.84.2/imstb_textedit.h
 CMakeFiles/Engine.dir/main.cpp.o
  ../../Common/Camera.h
  ../../Common/Color.h
@@ -382,4 +399,4 @@ CMakeFiles/Engine.dir/main.cpp.o
  ../../Common/UBO.h
  ../../Common/VAOManager.h
  ../../Common/VBOManager.h
- /home/yoonki/Desktop/CS300/Template/Common/main.cpp
+ /home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/main.cpp
