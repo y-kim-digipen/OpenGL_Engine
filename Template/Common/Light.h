@@ -59,9 +59,11 @@ public:
         float c3 = 0.0025;
 
         glm::vec3 dir = glm::vec3(0.f, -1.f, 0.f);
-        float theta = HALF_PI * 0.5f;
+        float theta = HALF_PI * 0.12f;
         glm::vec3 padding;
-        float phi =  HALF_PI ;
+        float phi =  HALF_PI * 0.25;
+        glm::vec3 DummyPadding;
+        float P = 1.f;
     } std140_structure;
 //    void Render() override;
 

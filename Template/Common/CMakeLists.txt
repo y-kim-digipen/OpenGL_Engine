@@ -83,7 +83,25 @@ add_executable( ${TARGET_NAME}
         ../Common/GUI/ObjectListContent.h
         #GUI stuffs end
 
-        GUI/ColorSet.h GUI/ObjectDetailContent.cpp GUI/ObjectDetailContent.h VAOManager.cpp VAOManager.h VBOManager.cpp VBOManager.h UBO.cpp UBO.h GUI/LightListContent.cpp GUI/LightListContent.h GUI/LightDetailContent.cpp GUI/LightDetailContent.h Environment.h)
+        GUI/ColorSet.h
+        GUI/ObjectDetailContent.cpp
+        GUI/ObjectDetailContent.h
+        VAOManager.cpp
+        VAOManager.h
+        VBOManager.cpp
+        VBOManager.h
+        UBO.cpp
+        UBO.h
+        GUI/LightListContent.cpp
+        GUI/LightListContent.h
+        GUI/LightDetailContent.cpp
+        GUI/LightDetailContent.h
+        Environment.h
+        TextureManager.cpp
+        TextureManager.h
+        TextureObject.cpp
+        TextureObject.h
+        )
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )
@@ -92,11 +110,10 @@ target_include_directories( ${TARGET_NAME} PUBLIC "../Common/" )
 target_include_directories( ${TARGET_NAME} PUBLIC "../Common/shaders/" )
 target_include_directories( ${TARGET_NAME} PUBLIC /usr/local/include/ )
 target_include_directories( ${TARGET_NAME} PUBLIC "../External/imgui-1.84.2/" )
+#target_include_directories( ${TARGET_NAME} PUBLIC "../External/SOIL/" )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
-#target_link_libraries( common_lib /usr/local/lib/libnanogui.so /usr/local/lib/libSOIL.a )
-
 
 target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}

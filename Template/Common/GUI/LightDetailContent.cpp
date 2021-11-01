@@ -77,6 +77,8 @@ namespace GUI
 
                     lightInfo.theta = PI / 180.f * currentInnerRadAsDegree;
                     lightInfo.phi = PI / 180.f * currentOuterRadAsDegree;
+
+                    ImGui::DragFloat("FallOffFactor", &lightInfo.P);
                 }
                 ImGui::EndTabItem();
             }

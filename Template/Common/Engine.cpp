@@ -407,6 +407,10 @@ VBOManager &Engine::GetVBOManager() {
     return mVBOManager;
 }
 
+TextureManager &Engine::GetTextureManager() {
+    return mTextureManager;
+}
+
 
 
 

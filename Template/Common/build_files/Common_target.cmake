@@ -2,7 +2,7 @@
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )
 target_include_directories( ${TARGET_NAME} PUBLIC ${GLFW_INCLUDE_DIRS} )
 target_include_directories( ${TARGET_NAME} PUBLIC "../Common/" )
-target_include_directories( ${TARGET_NAME} PUBLIC /usr/local/include/ )
+target_include_directories( ${TARGET_NAME} PUBLIC "/usr/local/include/" )
 
 add_library( common_lib
         ../Common/shader.cpp
@@ -42,17 +42,15 @@ add_library( common_lib
         )
 
 target_link_libraries( common_lib ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES}
-        ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
+        ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} /usr/local/lib/libSOIL.a )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
-#target_link_libraries( common_lib /usr/local/lib/libnanogui.so /usr/local/lib/libSOIL.a )
-
+target_link_libraries( ${TARGET_NAME} /usr/local/lib/libSOIL.a )
 
 target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}
         ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
-
 
 target_link_libraries( ${TARGET_NAME} common_lib )
 

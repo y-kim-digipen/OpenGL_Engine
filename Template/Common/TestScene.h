@@ -13,9 +13,10 @@ public:
     virtual void Init() override
     {
         SceneBase::Init();
+        constexpr int numOrbitLights = 8;
         constexpr float orbitRadius = 1.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
-        static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = 4](int i, Object* obj) mutable {
+        static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = numOrbitLights](int i, Object* obj) mutable {
             //axis y is fixed
             if(initialSetting){
                 obj->SetScale(glm::vec3(orbitalMoveSphereRadius));
@@ -30,8 +31,9 @@ public:
             glm::vec3 center = pCentralObject->GetPosition();
             glm::vec2 fixedYCenter = glm::vec2(center.x, center.z);
             fixedYCenter += orbitRadius * glm::vec2(std::cos(currentRadian), std::sin(currentRadian));
-            obj->SetPosition(glm::vec3(fixedYCenter.x, center.y, fixedYCenter.y));
+            obj->SetPosition(glm::vec3(fixedYCenter.x, center.y + 1.f, fixedYCenter.y));
             obj->SetRotation(glm::vec3(cos(-currentRadian),0.f,sin(-currentRadian)));
+            static_cast<Light*>(obj)->std140_structure.dir = obj->GetPosition() + glm::vec3(0.f, 0.5f, 0.f) - pCentralObject->GetPosition();
             currentRadian += 0.003f;
         };
 
@@ -45,8 +47,8 @@ public:
                 glm::vec3 center = obj->GetPosition();
                 const float radianMove = PI * 2.f / segments;
                 for(float radian = 0.f; radian <= PI * 2.f /*- radianMove*/; radian += radianMove){
-                    orbitLines.emplace_back(glm::vec3(std::cos(radian), 0.f , std::sin(radian)) * 0.5f);
-                    orbitLines.emplace_back(glm::vec3( std::cos(radian + radianMove), 0.f, std::sin(radian + radianMove)) * 0.5f);
+                    orbitLines.emplace_back(glm::vec3(std::cos(radian), 0.5f , std::sin(radian)) * 0.5f);
+                    orbitLines.emplace_back(glm::vec3( std::cos(radian + radianMove), 0.5f, std::sin(radian + radianMove)) * 0.5f);
                 }
 
                 glGenBuffers(1, &vertexVBO);
@@ -123,7 +125,7 @@ public:
         auto pCentralObj = AddObject("CentralObject", "Bunny", "PhongShader");
         pCentralObj->BindFunction(DrawOrbit);
 
-        for(int i = 0; i < 4; ++i){
+        for(int i = 0; i < numOrbitLights; ++i){
             std::random_device randomDevice;
             std::uniform_int_distribution<int> randomDistribution(0, 255);
             const std::string& objName = "OrbitObject" + std::to_string(i);
@@ -134,8 +136,8 @@ public:
 //                   = randomColor;
            pLight->SetColor(Color(randomColor.x, randomColor.y, randomColor.z));
            pLight->std140_structure.Ia = randomColor * 128.f;
-           pLight->std140_structure.Id = randomColor * 256.f;
-           pLight->std140_structure.Is = glm::vec3(255.f, 255.f, 255.f);
+           pLight->std140_structure.Id = randomColor * 180.f;
+           pLight->std140_structure.Is = randomColor * 230.f;
 
            pLight->std140_structure.type = Light::LightType::SPOT_LIGHT;
         }

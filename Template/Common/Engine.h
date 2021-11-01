@@ -26,9 +26,10 @@
 #include "VBOManager.h"
 #include "UBO.h"
 #include "Environment.h"
+#include "TextureManager.h"
 
 constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
-constexpr float DPI = 1.7f;
+constexpr float DPI = 0.8f;
 
 class GLFWwindow;
 
@@ -60,6 +61,7 @@ public:
 
     static VAOManager& GetVAOManager();
     static VBOManager& GetVBOManager();
+    static TextureManager& GetTextureManager();
 
     static SceneBase* GetCurrentScene();
     static std::string GetTitleName();
@@ -92,6 +94,7 @@ private:
 
     inline static ComponentManager<Mesh> mMeshManager;
     inline static ComponentManager<Shader> mShaderManager;
+    inline static TextureManager mTextureManager;
 
     inline static VAOManager mVAOManager;
     inline static VBOManager mVBOManager;

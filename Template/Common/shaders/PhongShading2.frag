@@ -36,6 +36,9 @@ struct Light
     float theta;
     vec3 padding;
     float phi;
+
+    vec3 DummyPadding;
+    float P;
 };
 
 
@@ -76,7 +79,6 @@ void main() {
         float Ka = currentlight.Ka;
         float Kd = currentlight.Kd;
         float Ks = currentlight.Ks;
-        vec3 I_Emissive = EmissiveColor * 256;
         float ns = currentlight.ns;
 
         //Light
@@ -105,7 +107,7 @@ void main() {
         {
             case 0: /*PointLight*/
             {
-                Local_Light = I_Emissive + Att * (I_Ambient + I_Diffuse + I_Specular);
+                Local_Light =  Att * (I_Ambient + I_Diffuse + I_Specular);
                 break;
             }
             case 1: /*DirectionalLight*/
@@ -116,15 +118,34 @@ void main() {
             {
                 float P = 1.f;
                 float LdotD = dot(L_Normalized, normalize(currentlight.dir));
-                float SpotLightEffect = max(pow(abs(LdotD - cos(currentlight.phi)) / abs(cos(currentlight.theta) - cos(currentlight.phi)), P), 1.f);
-                Local_Light = I_Emissive + Att * (I_Ambient + SpotLightEffect * (I_Diffuse + I_Specular));
+                float SpotLightEffect = 0.f;
+                float cosPhi = cos(currentlight.phi);
+                float cosTheta = cos(currentlight.theta);
+                if(LdotD < cosPhi)
+                {
+                    SpotLightEffect = 0.f;
+                }
+                else if(LdotD > cosTheta)
+                {
+                    SpotLightEffect = 1.f;
+                }
+                else
+                {
+                    SpotLightEffect = pow((LdotD - cos(currentlight.phi)) / (cos(currentlight.theta) - cos(currentlight.phi)), currentlight.P);
+                }
+
+
+//                float SpotLightEffect = max(pow(abs(LdotD - cos(currentlight.phi)) / abs(cos(currentlight.theta) - cos(currentlight.phi)), P), 1.f);
+                Local_Light =  Att * (I_Ambient + SpotLightEffect * (I_Diffuse + I_Specular));
                 break;
             }
         }
         Sum_Local_Light += Local_Light;
     }
     float S = (environment_block.data.zFar - CameraDistance)/(environment_block.data.zFar - environment_block.data.zNear);
-    vec3 I_Local = Sum_Local_Light / light_block.NumActiveLights;
+
+    vec3 I_Emissive = EmissiveColor * 256;
+    vec3 I_Local = I_Emissive + Sum_Local_Light / light_block.NumActiveLights;
     vec3 I_Fianl = S * I_Local + (1.f - S) * environment_block.data.I_Fog;
     color = I_Fianl / vec3(256.f);
 }
