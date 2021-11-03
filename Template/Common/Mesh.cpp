@@ -360,20 +360,20 @@ int Mesh::calcUVs( Mesh::UVType uvType )
                 break;
 
             case Mesh::CYLINDRICAL_UV:
-                theta = glm::degrees( static_cast<float>( atan2(centroidVec.y, centroidVec.x ) ) );
+                theta = glm::degrees( static_cast<float>( atan2(centroidVec.z, centroidVec.x ) ) );
                 theta += 180.0f;
 
-                z = (centroidVec.z + 1.0f) * 0.5f;
+                z = (centroidVec.y + 1.0f) * 0.5f;
 
                 uv.x = theta / 360.0f;
                 uv.y = z;
                 break;
 
             case Mesh::SPHERICAL_UV:
-                theta = glm::degrees( static_cast<float>(glm::atan(centroidVec.y, centroidVec.x )) );
+                theta = glm::degrees( static_cast<float>(glm::atan(centroidVec.z, centroidVec.x )) );
                 theta += 180.0f;
 
-                z = centroidVec.z;
+                z = centroidVec.y;
                 phi = glm::degrees(glm::acos(z / centroidVec.length() ));
 
                 uv.x = theta / 360.0f;
@@ -384,10 +384,10 @@ int Mesh::calcUVs( Mesh::UVType uvType )
                 uv = calcCubeMap(centroidVec);
                 break;
         }
-
         vertexUVs.push_back( uv );
     }
-
+    preCalculatedUVs.insert(std::make_pair(uvType, vertexUVs));
+    mCurrentUV = uvType;
     return rFlag;
 }
 
@@ -573,6 +573,19 @@ void Mesh::MakeProceduralSphere(int stacks, int slices) {
     boundingBox[0] = glm::vec3(-0.5, -0.5, -0.5);
     boundingBox[1] = glm::vec3(0.5, 0.5, 0.5);
     drawType = DrawType::TRIANGLES;
+}
+
+void Mesh::ChangeUVType(Mesh::UVType newType) {
+    if(newType == mCurrentUV){
+        return;
+    }
+    vertexUVs.clear();
+    vertexUVs = preCalculatedUVs[newType];
+    Engine::GetVBOManager().ChangeVBOData(mName, "vUV", GL_ARRAY_BUFFER, vertexUVs.size() * sizeof(glm::vec2), (GLvoid*)vertexUVs.data());
+}
+
+Mesh::UVType Mesh::GetCurrentUsingCPUMeshUV() const {
+    return mCurrentUV;
 }
 
 

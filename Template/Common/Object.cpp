@@ -15,13 +15,15 @@ Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), 
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
     : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
-    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true) {
+    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true), mUVType(Mesh::PLANAR_UV) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
     SetColor(mEmissiveColor);
     mDoVertexNormalDrawing = false;
     mDoFaceNormalDrawing = false;
+    mUsingTexture = true;
+    mUsingGPUUV = true;
 }
 
 Object::Object(const std::string& name, const std::string &meshStr, const std::string &shaderStr)
@@ -42,12 +44,13 @@ void Object::Init() {
 }
 
 void Object::PreRender() {
-    if(mAdditionalFunction != nullptr){
+    if(mAdditionalFunction != nullptr && mUpdateAdditionalFunction){
         mAdditionalFunction();
     }
     //todo just for debugging.
     m_MatrixCacheDirty = true;
     TryCalculateMatrix();
+    SendMeshDataToShader();
 }
 
 void Object::RenderModel() const {
@@ -59,7 +62,15 @@ void Object::RenderModel() const {
     const GLuint VAOID = Engine::GetVAOManager().GetVAO(m_pShader->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
+    if(mUsingTexture){
+        TextureObject* pTextureObj = Engine::GetTextureManager().FindTextureByName("tex_object0");
+        Engine::GetTextureManager().BindTexture(pTextureObj);
+        pTextureObj->SetTextureUniform(m_pShader);
 
+        pTextureObj = Engine::GetTextureManager().FindTextureByName("tex_object1");
+        Engine::GetTextureManager().BindTexture(pTextureObj);
+        pTextureObj->SetTextureUniform(m_pShader);
+    }
     glBindVertexArray(VAOID);
     for(auto& attribute : attributeInfos){
         glEnableVertexAttribArray(attribute.location);
@@ -91,26 +102,19 @@ void Object::RenderModel() const {
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
     glm::mat4 normalMatrix = modelToWorldMatrix;//glm::transpose(glm::inverse(/*viewMatrix * */modelToWorldMatrix));
 
-
     if(vTransformLoc < 0){
         if(vTransformLoc < 0) /*might using phong things...*/{
-//        GLint uModelToWorldMatLoc = glGetUniformLocation(shaderPID, "modelToWorldTransform");
-//        GLint uPerspectiveMatLoc = glGetUniformLocation(shaderPID, "perspectiveMatrix");
-//
             m_pShader->GetUniformValue<glm::mat4>(GetName(), "modelToWorldTransform")
                     = modelToWorldMatrix;
             m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
                     = projectionMatrix * viewMatrix;
-//
-//            m_pShader->GetUniformValue<glm::vec3>(GetName(), "LightPos")
-//                    = glm::vec3(1.f, 1.f, 0.f);
-            m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos") = pCam->Eye();
+
+            m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos_GUIX") = pCam->Eye();
         }
 
     }
 
     m_pShader->SetAllUniforms(mObjectName);
-
 
     glUniformMatrix4fv(vTransformLoc, 1, GL_FALSE, &mvpMatrix[0][0]);
     glUniformMatrix4fv(vNormalTransformLoc, 1, GL_FALSE, &normalMatrix[0][0]);
@@ -354,6 +358,7 @@ void Object::AddScale(glm::vec3 amount) {
 
 void Object::BindFunction(std::function<void(Object *)> func) {
     mAdditionalFunction = std::bind(func, this);
+    mUpdateAdditionalFunction = true;
 }
 
 std::string Object::GetName() const {
@@ -366,4 +371,53 @@ void Object::SetColor(Color newColor) {
     {
         m_pShader->GetUniformValue<glm::vec3>(mObjectName, "EmissiveColor") = mEmissiveColor.AsVec3();
     }
+}
+
+void Object::SendMeshDataToShader()
+{
+    if(mUsingGPUUV)
+    {
+        if(!IsRenderReady())
+        {
+            return;
+        }
+        if(m_pShader->HasUniform("ModelScale_GUIX"))
+        {
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "ModelScale_GUIX") = m_pMesh->getModelScale();
+        }
+        if(m_pShader->HasUniform("MinBoundingBox_GUIX"))
+        {
+            const auto& boundingBox = m_pMesh->GetBoundingBox();
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "MinBoundingBox_GUIX") = boundingBox.first;
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "MaxBoundingBox_GUIX") = boundingBox.second;
+        }
+        if(m_pShader->HasUniform("UVType_GUIX"))
+        {
+            m_pShader->GetUniformValue<int>(mObjectName, "UVType_GUIX") = static_cast<int>(mUVType);
+        }
+    }
+    else
+    {
+        if(mUVType != m_pMesh->GetCurrentUsingCPUMeshUV())
+        {
+            m_pMesh->ChangeUVType(mUVType);
+        }
+    }
+    if(m_pShader->HasUniform("UsingTexture_GUIX"))
+    {
+        m_pShader->GetUniformValue<GLboolean>(mObjectName, "UsingTexture_GUIX") = mUsingTexture;
+    }
+    if(m_pShader->HasUniform("UsingGPUUV_GUIX"))
+    {
+        m_pShader->GetUniformValue<GLboolean>(mObjectName, "UsingGPUUV_GUIX") = mUsingGPUUV;
+    }
+
+}
+
+void Object::RemoveFunction() {
+    mAdditionalFunction = nullptr;
+}
+
+void Object::SetFunctionUpdate(bool updateStatus) {
+    mUpdateAdditionalFunction = updateStatus;
 }

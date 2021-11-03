@@ -53,6 +53,8 @@ public:
     void SetColor(Color newColor);
 
     void BindFunction(std::function<void(Object*)> func);
+    void RemoveFunction();
+    void SetFunctionUpdate(bool updateStatus);
 
     glm::mat4 GetObjectToWorldMatrix() const;
 
@@ -62,6 +64,8 @@ private:
     void RenderModel() const;
     void RenderVertexNormal() const;
     void RenderFaceNormal() const;
+
+    void SendMeshDataToShader();
 
 protected:
     std::shared_ptr<Mesh> m_pMesh;
@@ -81,9 +85,14 @@ protected:
     Color mEmissiveColor;
 
     std::function<void(void)> mAdditionalFunction;
+    bool mUpdateAdditionalFunction;
 
     bool mDoVertexNormalDrawing;
     bool mDoFaceNormalDrawing;
+
+    bool mUsingTexture;
+    bool mUsingGPUUV;
+    Mesh::UVType mUVType;
 };
 
 #endif //ENGINE_OBJECT_H

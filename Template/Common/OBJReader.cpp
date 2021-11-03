@@ -77,6 +77,9 @@ double OBJReader::ReadOBJFile(std::string filepath, Mesh *pMesh,
     _currentMesh->calcVertexNormals(bFlipNormals);
     _currentMesh->calcFaceNormals(bFlipNormals);
     _currentMesh->calcUVs(Mesh::CYLINDRICAL_UV);
+    _currentMesh->calcUVs(Mesh::SPHERICAL_UV);
+    _currentMesh->calcUVs(Mesh::CUBE_MAPPED_UV);
+    _currentMesh->calcUVs(Mesh::PLANAR_UV);
 
     return timeDuration;
 }

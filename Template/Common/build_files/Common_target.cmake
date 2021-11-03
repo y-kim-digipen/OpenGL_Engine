@@ -42,11 +42,11 @@ add_library( common_lib
         )
 
 target_link_libraries( common_lib ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES}
-        ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} /usr/local/lib/libSOIL.a )
+        /usr/local/lib/libSOIL.a ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
-target_link_libraries( ${TARGET_NAME} /usr/local/lib/libSOIL.a )
+#target_link_libraries( ${TARGET_NAME} /usr/local/lib/libSOIL.a )
 
 target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}

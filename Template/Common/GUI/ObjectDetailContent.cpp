@@ -70,6 +70,10 @@ void GUI::ObjectDetailContent::Render() {
             auto &uniforms = pShader->GetUniforms();
             for (auto &uniformAttrib: uniforms) {
                 std::string name = uniformAttrib.first;
+                if(name.find("_GUIX") <= name.length())
+                    {
+                        continue;
+                    }
                 switch (uniformAttrib.second.mType) {
                     case DataType::Bool: {
                         GLboolean *value = &pShader->GetUniformValue<GLboolean>(objName, name);
@@ -143,6 +147,28 @@ void GUI::ObjectDetailContent::Render() {
                     }
                 }
             }
+            ImGui::EndTabItem();
+        }
+        if (ImGui::BeginTabItem("Texture")) {
+            static std::vector<std::string> UVTypes {"Planar", "Cylindarical", "Spherical", "CubeMap"};
+            const int curUVTypeAsInt = static_cast<int>(m_pTargetObject->mUVType);
+            if (ImGui::BeginCombo("UV", UVTypes[curUVTypeAsInt].c_str())) {
+                for (int i = 0; i < UVTypes.size(); ++i) {
+                    bool isSelected = (curUVTypeAsInt == i);
+                    if (ImGui::Selectable(UVTypes[i].c_str(), isSelected)) {
+                        m_pTargetObject->mUVType = static_cast<Mesh::UVType>(i);
+                    }
+                    if (isSelected) {
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+                ImGui::EndCombo();
+            }
+
+
+            ImGui::Checkbox("UsingTexture", &m_pTargetObject->mUsingTexture);
+            ImGui::Checkbox("GPU_UV?", &m_pTargetObject->mUsingGPUUV);
+
             ImGui::EndTabItem();
         }
         if (ImGui::BeginTabItem("Others")) {

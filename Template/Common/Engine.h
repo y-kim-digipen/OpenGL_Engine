@@ -29,7 +29,7 @@
 #include "TextureManager.h"
 
 constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
-constexpr float DPI = 0.8f;
+constexpr float DPI = 1.8f;
 
 class GLFWwindow;
 
@@ -75,6 +75,8 @@ private:
     static void SetupShaders();
     static void SetupMeshes();
     static void SetupGUI();
+
+    static void SetupTextures();
 
     static void GLFWErrorCallback(int, const char* err_str);
     static void KeyboardInputCallback(GLFWwindow*, int key, [[maybe_unused]] int keyCode, int action, [[maybe_unused]] int modifier);

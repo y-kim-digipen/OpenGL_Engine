@@ -133,6 +133,10 @@ namespace GUI
                 auto &uniforms = pShader->GetUniforms();
                 for (auto &uniformAttrib: uniforms) {
                     std::string name = uniformAttrib.first;
+                    if(name.find("_GUIX") <= name.length())
+                    {
+                        continue;
+                    }
                     switch (uniformAttrib.second.mType) {
                         case DataType::Bool: {
                             GLboolean *value = &pShader->GetUniformValue<GLboolean>(objName, name);

@@ -139,6 +139,12 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
                 datasize = 1;
                 break;
             }
+            case GL_FLOAT_VEC2:
+            {
+                dataType = GL_FLOAT;
+                datasize = 2;
+                break;
+            }
             default:{
                 throw std::logic_error("Trying to send unknown type to shader attrib");
             }

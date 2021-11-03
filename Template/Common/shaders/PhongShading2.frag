@@ -1,10 +1,15 @@
-#version 420 core
+#version 450 core
 
 #define MAX_NUM_TOTAL_LIGHTS 10
-uniform vec3 CameraPos;
+uniform vec3 CameraPos_GUIX;
+
+uniform bool UsingTexture_GUIX;
 
 //Environment
 uniform vec3 EmissiveColor;
+
+layout (binding = 0) uniform sampler2D tex_object0;
+layout (binding = 1) uniform sampler2D tex_object1;
 
 struct Enviroment
 {
@@ -57,13 +62,14 @@ in PhongShadingData
 {
     vec3 Position;
     vec3 Normal;
+    vec2 UV;
 } shading_data;
 out vec3 color;
 
 void main() {
     vec3 Sum_Local_Light = vec3(0.f);
 
-    vec3 V = CameraPos - shading_data.Position;
+    vec3 V = CameraPos_GUIX - shading_data.Position;
     float CameraDistance = length(V);
     vec3 V_Normalized = V / CameraDistance;
     for(int i = 0; i < light_block.NumActiveLights; ++i)
@@ -85,6 +91,12 @@ void main() {
         vec3 Ia = currentlight.Ia;
         vec3 Id = currentlight.Id;
         vec3 Is = currentlight.Is;
+        if(UsingTexture_GUIX)
+        {
+            Id = mix(texture(tex_object0, shading_data.UV).rgb * 256.f, currentlight.Id, 0.4f);
+            Is = mix(texture(tex_object1, shading_data.UV).rgb * 256.f, currentlight.Is, 0.4f);
+            ns = max(texture(tex_object1, shading_data.UV).r, 0.01f);
+        }
 
         vec3 L = Pos - shading_data.Position;
         float LightDistance = length(L);
@@ -147,5 +159,12 @@ void main() {
     vec3 I_Emissive = EmissiveColor * 256;
     vec3 I_Local = I_Emissive + Sum_Local_Light / light_block.NumActiveLights;
     vec3 I_Fianl = S * I_Local + (1.f - S) * environment_block.data.I_Fog;
-    color = I_Fianl / vec3(256.f);
+//    if(UsingTexture)
+//    {
+//        color = mix(texture(tex_object0, shading_data.UV).rgb, I_Fianl / vec3(256.f), 0.5);
+//    }
+//    else
+//    {
+        color = I_Fianl / vec3(256.f);
+//    }
 }

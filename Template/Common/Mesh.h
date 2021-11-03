@@ -92,6 +92,8 @@ public:
 
     [[nodiscard]] DrawType GetDrawType() const;
     void SetDrawType(DrawType drawType);
+    void ChangeUVType(Mesh::UVType newType);
+    Mesh::UVType GetCurrentUsingCPUMeshUV() const;
 
 private:
     void IndexingProceduralMesh(int stacks, int slices);
@@ -104,10 +106,14 @@ private:
     std::vector<glm::vec3>    vertexNormals, vertexNormalDisplay;
     std::vector<glm::vec3>    vertexFaceNormals, vertexFaceNormalsDisplay;
 
+    std::map<Mesh::UVType, std::vector<glm::vec2>> preCalculatedUVs;
+
     glm::vec3               boundingBox[2];
     GLfloat                 normalLength;
 
     DrawType                drawType = DrawType::TRIANGLE_STRIP;
+
+    Mesh::UVType            mCurrentUV;
 
     std::string mName;
 public:

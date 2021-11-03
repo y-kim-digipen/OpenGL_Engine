@@ -78,3 +78,17 @@ void VBOManager::CleanUp() {
         glDeleteBuffers(1, &vboInfo.second.second);
     }
 }
+
+void VBOManager::ChangeVBOData(const std::string &meshName, const std::string &attribName, GLenum bufferType,
+                               GLuint bufferSize, GLvoid* data) {
+    GLuint vbo = mVBOInfos[meshName].first[attribName];
+    if(vbo > 0)
+    {
+        glDeleteBuffers(1, &vbo);
+        GLuint newVBO;
+        glGenBuffers(1, &newVBO);
+        glBindBuffer(bufferType, newVBO);
+        glBufferData(bufferType, bufferSize, data, GL_STATIC_DRAW);
+        mVBOInfos[meshName].first[attribName] = newVBO;
+    }
+}

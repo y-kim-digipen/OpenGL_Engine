@@ -37,7 +37,7 @@ int Engine::InitWindow(glm::vec2 win_size, const std::string& title_name) {
 
     //GLFW settings
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 
     glfwWindowHint(GLFW_SAMPLES, 1); // change for anti-aliasing
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
@@ -98,6 +98,7 @@ void Engine::InitEngine() {
 
     SetupShaders();
     SetupMeshes();
+    SetupTextures();
     //todo for now, it is for debugging
 
     SetupScenes();
@@ -409,6 +410,11 @@ VBOManager &Engine::GetVBOManager() {
 
 TextureManager &Engine::GetTextureManager() {
     return mTextureManager;
+}
+
+void Engine::SetupTextures() {
+    mTextureManager.CreateTextureFromFile("../textures/metal_roof_diff_512x512.png", "tex_object0", GL_TEXTURE_2D, 0);
+    mTextureManager.CreateTextureFromFile("../textures/metal_roof_spec_512x512.png", "tex_object1", GL_TEXTURE_2D, 1);
 }
 
 

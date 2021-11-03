@@ -13,7 +13,7 @@ public:
     virtual void Init() override
     {
         SceneBase::Init();
-        constexpr int numOrbitLights = 8;
+        constexpr int numOrbitLights = 3;
         constexpr float orbitRadius = 1.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
         static auto OrbitsMoveUpdate = [&, initialSetting = true, currentRadian = 0.f, max = numOrbitLights](int i, Object* obj) mutable {
@@ -123,7 +123,7 @@ public:
         SceneBase::Init();
 
         auto pCentralObj = AddObject("CentralObject", "Bunny", "PhongShader");
-        pCentralObj->BindFunction(DrawOrbit);
+//        pCentralObj->BindFunction(DrawOrbit);
 
         for(int i = 0; i < numOrbitLights; ++i){
             std::random_device randomDevice;

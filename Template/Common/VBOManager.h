@@ -14,6 +14,7 @@ class VBOManager {
 public:
     void SetUpVBO(Mesh* pMesh);
     void CleanUp();
+    void ChangeVBOData(const std::string& meshName, const std::string& attribName, GLenum bufferType, GLuint bufferSize, GLvoid* bufferData);
     std::pair<std::map<std::string, GLuint>, GLuint>& GetVBOInfo(std::shared_ptr<Mesh> pMesh);
 private:
     //<MeshName, <<name, VBO>, EBO>>

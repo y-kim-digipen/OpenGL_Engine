@@ -110,12 +110,11 @@ target_include_directories( ${TARGET_NAME} PUBLIC "../Common/" )
 target_include_directories( ${TARGET_NAME} PUBLIC "../Common/shaders/" )
 target_include_directories( ${TARGET_NAME} PUBLIC /usr/local/include/ )
 target_include_directories( ${TARGET_NAME} PUBLIC "../External/imgui-1.84.2/" )
-#target_include_directories( ${TARGET_NAME} PUBLIC "../External/SOIL/" )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
 
-target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
+target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} -lSOIL )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}
         ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
 target_link_libraries(${CMAKE_PROJECT_NAME}

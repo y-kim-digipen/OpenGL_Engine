@@ -15,6 +15,4 @@ namespace GUI
     };
 }
 
-
-
 #endif //ENGINE_LIGHTLISTCONTENT_H
