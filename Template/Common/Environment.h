@@ -21,6 +21,8 @@ public:
     {
         glm::vec3 I_Fog;
         float zNear, zFar;
+        glm::vec3 GlobalAmbient;
+        float padding;
     } std140_structure;
 };
 #endif //ENGINE_ENVIRONMENT_H

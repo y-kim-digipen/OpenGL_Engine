@@ -125,22 +125,22 @@ public:
         auto pCentralObj = AddObject("CentralObject", "Bunny", "PhongShader");
 //        pCentralObj->BindFunction(DrawOrbit);
 
-        for(int i = 0; i < numOrbitLights; ++i){
-            std::random_device randomDevice;
-            std::uniform_int_distribution<int> randomDistribution(0, 255);
-            const std::string& objName = "OrbitObject" + std::to_string(i);
-            auto pLight = AddLight(objName, "Sphere", "PhongShader");
-            pLight->BindFunction(std::bind(OrbitsMoveUpdate,  i, _1));
-            glm::vec3 randomColor = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
-//           Engine::GetShader(pLight->GetUsingShaderName())->GetUniformValue<glm::vec3>(pLight->GetName(), "diffuseColor")
-//                   = randomColor;
-           pLight->SetColor(Color(randomColor.x, randomColor.y, randomColor.z));
-           pLight->std140_structure.Ia = randomColor * 128.f;
-           pLight->std140_structure.Id = randomColor * 180.f;
-           pLight->std140_structure.Is = randomColor * 230.f;
-
-           pLight->std140_structure.type = Light::LightType::SPOT_LIGHT;
-        }
+//        for(int i = 0; i < numOrbitLights; ++i){
+//            std::random_device randomDevice;
+//            std::uniform_int_distribution<int> randomDistribution(0, 255);
+//            const std::string& objName = "OrbitObject" + std::to_string(i);
+//            auto pLight = AddLight(objName, "Sphere", "PhongShader");
+//            pLight->BindFunction(std::bind(OrbitsMoveUpdate,  i, _1));
+//            glm::vec3 randomColor = glm::vec3(randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f, randomDistribution(randomDevice) / 255.f);
+////           Engine::GetShader(pLight->GetUsingShaderName())->GetUniformValue<glm::vec3>(pLight->GetName(), "diffuseColor")
+////                   = randomColor;
+//           pLight->SetColor(Color(randomColor.x, randomColor.y, randomColor.z));
+//           pLight->std140_structure.Ia = randomColor * 128.f;
+//           pLight->std140_structure.Id = randomColor * 180.f;
+//           pLight->std140_structure.Is = randomColor * 230.f;
+//
+//           pLight->std140_structure.type = Light::LightType::SPOT_LIGHT;
+//        }
 
         auto pPlaneObj = AddObject("Plane1", "Plane", "PhongShader");
         pPlaneObj->SetRotation(glm::vec3(-HALF_PI,0.f, 0.f));

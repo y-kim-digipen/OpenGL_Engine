@@ -33,8 +33,14 @@ constexpr float DPI = 1.8f;
 
 class GLFWwindow;
 
+namespace GUI
+{
+    class EngineInfoContent;
+}
+
 class Engine
 {
+    friend GUI::EngineInfoContent;
 public:
     Engine();
 
@@ -109,4 +115,6 @@ private:
     inline static UBO lightUBO;
     inline static UBO environmentUBO;
 
+    inline static glm::vec3 GlobalAmbientColor = glm::vec3(0.3f);
+    inline static glm::vec3 FogColor = glm::vec3(0.f);
 };

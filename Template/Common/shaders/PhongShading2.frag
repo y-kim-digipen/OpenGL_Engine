@@ -15,6 +15,8 @@ struct Enviroment
 {
     vec3 I_Fog;
     float zNear, zFar;
+    vec3 GlobalAmbient;
+    float padding;
 };
 
 struct Light
@@ -158,13 +160,7 @@ void main() {
 
     vec3 I_Emissive = EmissiveColor * 256;
     vec3 I_Local = I_Emissive + Sum_Local_Light / light_block.NumActiveLights;
-    vec3 I_Fianl = S * I_Local + (1.f - S) * environment_block.data.I_Fog;
-//    if(UsingTexture)
-//    {
-//        color = mix(texture(tex_object0, shading_data.UV).rgb, I_Fianl / vec3(256.f), 0.5);
-//    }
-//    else
-//    {
-        color = I_Fianl / vec3(256.f);
-//    }
+    vec3 I_Fianl = /*environment_block.data.GlobalAmbient*/ + S * I_Local + (1.f - S) * environment_block.data.I_Fog;
+
+    color = I_Fianl / vec3(256.f);
 }

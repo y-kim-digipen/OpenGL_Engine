@@ -101,7 +101,7 @@ add_executable( ${TARGET_NAME}
         TextureManager.h
         TextureObject.cpp
         TextureObject.h
-        )
+        GUI/EngineInfoContent.cpp GUI/EngineInfoContent.h)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )

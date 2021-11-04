@@ -20,6 +20,7 @@
 #include "GUI/GUIWindow.h"
 #include "GUI/CurrentCameraInfoContent.h"
 #include "GUI/ObjectListContent.h"
+#include "GUI/EngineInfoContent.h"
 #include "Environment.h"
 
 
@@ -203,9 +204,11 @@ void Engine::PreRender() {
     lightUBO.setBufferData(structureSize * ENGINE_SUPPORT_MAX_LIGHTS, (void*)&numActiveLights, sizeof(int));
 
     environmentUBO.bindUBO();
-    GetCurrentScene()->GetEnvironment().std140_structure.I_Fog = mClearColor.AsVec3() * 256.f;
+//    GetCurrentScene()->GetEnvironment().std140_structure.I_Fog = mClearColor.AsVec3() * 256.f;
     GetCurrentScene()->GetEnvironment().std140_structure.zFar = GetCurrentScene()->GetCurrentCamera()->FarDistance();
     GetCurrentScene()->GetEnvironment().std140_structure.zNear = GetCurrentScene()->GetCurrentCamera()->NearDistance();
+    GetCurrentScene()->GetEnvironment().std140_structure.GlobalAmbient = GlobalAmbientColor * 256.f;
+    GetCurrentScene()->GetEnvironment().std140_structure.I_Fog = FogColor * 256.f;
     environmentUBO.setBufferData(0, GetCurrentScene()->GetEnvironment().GetSTD140Structure(), sizeof(Environment::std140));
 
     m_pScenes[mFocusedSceneIdx]->PreRender();
@@ -382,6 +385,10 @@ void Engine::SetupGUI() {
     pGUIWindow = mGUIManager.AddWindow("Light Lists");
     pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
     pGUIWindow->AddContent("Light Lists", new LightListContent());
+
+    pGUIWindow = mGUIManager.AddWindow("Global Setting");
+    pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
+    pGUIWindow->AddContent("Engine Info", new EngineInfoContent());
 }
 
 std::string Engine::GetTitleName() {

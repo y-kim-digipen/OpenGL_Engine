@@ -107,5 +107,13 @@ Environment &SceneBase::GetEnvironment() {
     return mEnvironment;
 }
 
+unsigned SceneBase::GetNumActiveLights() const {
+    return m_pLights.size();
+}
+
+void SceneBase::RemoveLight(const std::string &lightName) {
+    m_pLights.erase(m_pLights.find(lightName));
+}
+
 
 
