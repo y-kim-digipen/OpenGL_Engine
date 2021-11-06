@@ -37,6 +37,7 @@ public:
     std::shared_ptr<Object> AddObject(const std::string& objectName, const std::string& usingMesh, const std::string& usingShader);
     std::shared_ptr<Light> AddLight(const std::string& lightName, const std::string& usingMesh, const std::string& usingShader);
     void RemoveLight(const std::string& lightName);
+    void ClearLights();
 
     unsigned GetNumActiveLights() const;
 

@@ -109,13 +109,14 @@ void main() {
             vec3 N = normalize(shading_data.Normal);
 
             float NdotL = dot(N, L_Normalized);
-            vec3 ReflectionVector = 2 * NdotL * N - L_Normalized;
-            float RdotV = dot(ReflectionVector, V_Normalized);
+//            vec3 ReflectionVector = 2 * NdotL * N - L_Normalized;
+//            float RdotV = dot(ReflectionVector, V_Normalized);
+            vec3 H = normalize(L_Normalized + V_Normalized);
             float Att = min(1.f/(currentlight.c1 + currentlight.c2 * LightDistance + currentlight.c3 * LightDistance * LightDistance), 1.f);
 
             vec3 I_Ambient = Ia * Ka;
             vec3 I_Diffuse = Id * Kd * max(NdotL, 0.f);
-            vec3 I_Specular = Is * Ks * pow( max(RdotV, 0.f), ns);
+            vec3 I_Specular = Is * Ks * pow( max(dot(N, H), 0.f), ns);
 
             vec3 Local_Light = vec3(0.f);
 

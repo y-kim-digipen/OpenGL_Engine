@@ -115,5 +115,9 @@ void SceneBase::RemoveLight(const std::string &lightName) {
     m_pLights.erase(m_pLights.find(lightName));
 }
 
+void SceneBase::ClearLights() {
+    m_pLights.clear();
+}
+
 
 

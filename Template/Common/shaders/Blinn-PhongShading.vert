@@ -12,14 +12,8 @@ uniform vec3 MinBoundingBox_GUIX, MaxBoundingBox_GUIX;
 in layout(location = 0) vec3 vPosition;
 in layout(location = 1) vec3 vertexNormal;
 in layout(location = 2) vec2 vUV;
-//
-//uniform vec3 LightPos = vec3(0.f, 0.f, -4.f);
-//uniform vec3 CameraPos;
 
-//Environment
-float zNear = 0.1, zFar = 50;
 uniform float c1 = 0.7, c2 = 0.4, c3 = 0.2;
-
 
 out  PhongShadingData
 {
@@ -28,7 +22,6 @@ out  PhongShadingData
     vec2 UV;
 } shading_data;
 
-//uniform vec3 AmbientColor = vec3(1.f, 0.f, 0.f);
 
 vec2 CalcGPU_UV(int type, vec3 vPositon, vec3 vNormal);
 

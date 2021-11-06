@@ -146,7 +146,7 @@ public:
         pPlaneObj->SetRotation(glm::vec3(-HALF_PI,0.f, 0.f));
         pPlaneObj->SetScale(glm::vec3(100.f, 100.f, 100.f));
         pPlaneObj->SetPosition(glm::vec3(0.f, -0.45f, 0.f));
-
+        pPlaneObj->SetTextureOption(false);
     };
 
     //void InitFromFile(const std::filesystem::path& filePath);

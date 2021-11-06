@@ -55,6 +55,7 @@ public:
     void BindFunction(std::function<void(Object*)> func);
     void RemoveFunction();
     void SetFunctionUpdate(bool updateStatus);
+    void SetTextureOption(bool usingTexture, bool usingGPUUV = false);
 
     glm::mat4 GetObjectToWorldMatrix() const;
 

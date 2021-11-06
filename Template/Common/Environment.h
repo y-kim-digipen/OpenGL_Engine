@@ -20,9 +20,9 @@ public:
     struct std140
     {
         glm::vec3 I_Fog;
-        float zNear, zFar;
+        float zNear;
         glm::vec3 GlobalAmbient;
-        float padding;
+        float zFar;
     } std140_structure;
 };
 #endif //ENGINE_ENVIRONMENT_H

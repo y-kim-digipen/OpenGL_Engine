@@ -113,7 +113,7 @@ void Engine::InitEngine() {
     }
     SetupGUI();
 
-    lightUBO.createUBO(10 * sizeof(Light::std140_structure) + sizeof(int));
+    lightUBO.createUBO(ENGINE_SUPPORT_MAX_LIGHTS * sizeof(Light::std140_structure) + sizeof(int));
     lightUBO.bindBufferBaseToBindingPoint(1);
 
     environmentUBO.createUBO(sizeof(Environment::std140_structure));
@@ -194,6 +194,7 @@ void Engine::PreRender() {
 
     GLsizeiptr offset = 0;
     GLint structureSize = Light::GetSTD140StructureSize();
+
     for (const auto& pointLight : GetCurrentScene()->GetLightList())
     {
         lightUBO.setBufferData(offset, pointLight.second->GetSTD140Structure(), structureSize);
@@ -291,15 +292,20 @@ void Engine::SetupShaders() {
                                                                   {GL_VERTEX_SHADER,"../shaders/FaceNormalVertexShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/FaceNormalFragmentShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("GoAroundShader", new Shader("GoAroundShader"), true);
+    pShader = mShaderManager.AddComponent("PhongLighting", new Shader("PhongLighting"), true);
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/PhongLighting.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/PhongLighting.frag"} });
+
+    pShader = mShaderManager.AddComponent("PhongShader", new Shader("PhongShader"), true);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/PhongShading.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/PhongShading.frag"} });
 
-    pShader = mShaderManager.AddComponent("PhongShader", new Shader("PhongShader"), true);
+    pShader = mShaderManager.AddComponent("Blinn-Phong Shader", new Shader("Blinn-Phong Shader"), true);
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
-                                                                  {GL_VERTEX_SHADER,"../shaders/PhongShading2.vert"},
-                                                                  {GL_FRAGMENT_SHADER,"../shaders/PhongShading2.frag"} });
+                                                                  {GL_VERTEX_SHADER,"../shaders/Blinn-PhongShading.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/Blinn-PhongShading.frag"} });
     pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 

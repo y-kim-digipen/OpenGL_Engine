@@ -28,7 +28,7 @@
 #include "Environment.h"
 #include "TextureManager.h"
 
-constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 10;
+constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 16; /*Should be equal to shader max light variable*/
 constexpr float DPI = 1.8f;
 
 class GLFWwindow;

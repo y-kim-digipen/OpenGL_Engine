@@ -421,3 +421,8 @@ void Object::RemoveFunction() {
 void Object::SetFunctionUpdate(bool updateStatus) {
     mUpdateAdditionalFunction = updateStatus;
 }
+
+void Object::SetTextureOption(bool usingTexture, bool usingGPUUV) {
+    mUsingTexture = usingTexture;
+    mUsingGPUUV = usingGPUUV;
+}
