@@ -1,7 +1,15 @@
-//
-// Created by yoonki on 10/23/21.
-//
-
+/* Start Header -------------------------------------------------------
+Copyright (C) 2021 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the prior written
+consent of DigiPen Institute of Technology is prohibited.
+File Name: LightDetailContent.cpp
+Purpose: Source file for LightDetailContent
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
+End Header --------------------------------------------------------*/
 #include "LightDetailContent.h"
 
 #include "Engine.h"
@@ -14,9 +22,9 @@ namespace GUI
     }
 
     void LightDetailContent::Render() {
-        constexpr auto ToFloatColour = [](int r, int g, int b){
-            return ImVec4(r/255.f, g/255.f, b/255.f, 1.f);
-        };
+//        constexpr auto ToFloatColour = [](int r, int g, int b){
+//            return ImVec4(r/255.f, g/255.f, b/255.f, 1.f);
+//        };
 
         if(IsDead()){
             return;
@@ -175,7 +183,7 @@ namespace GUI
                             ImGui::NextColumn();
                             ImGui::Text("%s", name.c_str());
                             ImGui::NextColumn();
-                            if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                            if ((name.find("color") < name.length()) | (name.find("Color") < name.length())) {
                                 ImGui::ColorEdit3(("##" + name).c_str(), &value->x);
                             } else {
 
@@ -188,7 +196,7 @@ namespace GUI
                             ImGui::NextColumn();
                             ImGui::Text("%s", name.c_str());
                             ImGui::NextColumn();
-                            if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                            if ((name.find("color") < name.length()) | (name.find("Color") < name.length())) {
                                 ImGui::ColorEdit4(("##" + name).c_str(), &value->x);
                             } else {
                                 ImGui::DragFloat4(("##" + name).c_str(), &value->x, 0.1f);

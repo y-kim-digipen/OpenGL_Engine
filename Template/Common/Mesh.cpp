@@ -201,7 +201,7 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
 
     // Now sum up the values per vertex
     float shrinkFactor = getModelScale().y;
-    for( int index =0; index < vNormalSet.size(); ++index )
+    for( int index =0; index < static_cast<int>(vNormalSet.size()); ++index )
     {
         glm::vec3  vNormal(0.0f);
 
@@ -237,12 +237,12 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-void Mesh::calcVertexNormalsForDisplay(GLboolean bFlipNormals)
+void Mesh::calcVertexNormalsForDisplay([[maybe_unused]] GLboolean bFlipNormals)
 {
     GLuint numVertices = getVertexCount();
     vertexNormalDisplay.resize(numVertices * 2, glm::vec3(0.0f));
 
-    for (int iNormal = 0; iNormal < vertexNormals.size(); ++iNormal)
+    for (int iNormal = 0; iNormal < static_cast<int>(vertexNormals.size()); ++iNormal)
     {
         glm::vec3 normal = vertexNormals[iNormal] * normalLength;
 
@@ -309,6 +309,7 @@ int Mesh::calcFaceNormals(GLboolean bFlipNormals) {
         vertexFaceNormalsDisplay.emplace_back( vD );
         vertexFaceNormalsDisplay.emplace_back( vD + shrinkFactor * normalLength * N );
     }
+    return 0;
 }
 
 /////////////////////////////////////////////////////
@@ -335,7 +336,7 @@ int Mesh::calcUVs( Mesh::UVType uvType )
 
     glm::vec3 delta = getModelScale();
 
-    for( int nVertex = 0; nVertex < vertexBuffer.size(); ++nVertex )
+    for( int nVertex = 0; nVertex < static_cast<int>(vertexBuffer.size()); ++nVertex )
     {
         glm::vec3 V = vertexBuffer[nVertex];
         glm::vec2 uv(0.0f);

@@ -19,12 +19,16 @@ void Shader::deleteProgram()
 
 Shader::~Shader()
 {
-//    deleteProgram();
+    deleteProgram();
 }
 
 bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs)
 {
+    std::cout << "Loading " << mName << std::endl;
     mProgramID = glCreateProgram();
+//    mUniformVarBuffer.clear();
+    mUniforms.clear();
+    mHasError = true;
     if (mProgramID == 0)
     {
         std::cerr << "Failed to create shader!" <<std::endl;
@@ -151,7 +155,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
 
 
         }
-        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, datasize});
+        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, static_cast<GLint>(datasize)});
     }
     mAttributeInfos = attributeInfos;
     mAttributeInfoID = Engine::GetVAOManager().GetAttribID(mAttributeInfos);
@@ -269,6 +273,8 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     }
     currentUniformVarBuffer.resize(curOffset);
     glUseProgram(0);
+    mHasError = false;
+    std::cout << "\tPID:" << mProgramID <<std::endl;
     return true;
 }
 
@@ -440,10 +446,12 @@ void Shader::SetAllUniforms(const std::string& objName)
 
 void Shader::Reload()
 {
+    Engine::SkipFrame(1);
+    deleteProgram();
     CreateProgramAndLoadCompileAttachLinkShaders(mShaderPaths);
 }
 
-Shader::Shader(const Shader &other) {
+Shader::Shader([[maybe_unused]]const Shader &other) {
     std::cerr << "Refer copy constructor called" << std::endl;
 }
 
@@ -459,12 +467,12 @@ Shader::Shader(Shader &&other) {
 //    CreateProgramAndLoadCompileAttachLinkShaders(other.mShaderPaths, !other.mUniforms.empty());
 }
 
-Shader &Shader::operator=(const Shader &other) {
+Shader &Shader::operator=([[maybe_unused]]const Shader &other) {
     std::cerr << "Refer copy called" << std::endl;
     return *this;
 }
 
-Shader &Shader::operator=(Shader &&other) {
+Shader &Shader::operator=([[maybe_unused]]Shader &&other) {
     std::cerr << "rRefer copy called" << std::endl;
     return *this;
 }
@@ -493,5 +501,13 @@ void Shader::bindUniformBlockToBindingPoint(const std::string &uniformBlockName,
     if (blockIndex != GL_INVALID_INDEX) {
         glUniformBlockBinding(mProgramID, blockIndex, bindingPoint);
     }
+}
+
+bool Shader::HasError() {
+    return mHasError;
+}
+
+std::string Shader::GetName() {
+    return mName;
 }
 

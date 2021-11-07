@@ -123,7 +123,7 @@ void Engine::InitEngine() {
 }
 
 void Engine::Update() {
-    const static float TargetDeltaTime = 1.f / FPS;
+//    const static float TargetDeltaTime = 1.f / FPS;
     auto deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
     //todo set FPS limit
 //    if(deltaTime < TargetDeltaTime){
@@ -132,13 +132,16 @@ void Engine::Update() {
 //
 //        deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>((CurrentTime - LastTime)).count();
 //    }
-    glfwMakeContextCurrent(m_pWindow);
+
     LastTime = CurrentTime;
     CurrentTime = std::chrono::system_clock::now();
     FPS = 1.f / deltaTime;
 
     InputManager::Update();
     //why it had to be called every frame?
+//    glfwMakeContextCurrent(m_pWindow);
+
+    SwapToMainWindow();
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
@@ -146,16 +149,25 @@ void Engine::Update() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     if(mFocusedSceneIdx >= 0){
-        PreRender();
-        Render();
-        PostRender();
+//        std::cout << leftSkipFrames << std::endl;
+        if(leftSkipFrames > 0)
+        {
+            leftSkipFrames--;
+        }
+        else
+        {
+            PreRender();
+            Render();
+            PostRender();
+        }
     }
     glfwSwapBuffers(m_pWindow);
 
-
-    glfwMakeContextCurrent(m_pGUIWindow);
-
+    SwapToGUIWindow();
+//    glfwMakeContextCurrent(m_pGUIWindow);
+//
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
     mGUIManager.Update();
     glfwSwapBuffers(m_pGUIWindow);
 
@@ -227,7 +239,7 @@ void Engine::GLFWErrorCallback([[maybe_unused]]int, const char *err_str) {
     std::cerr << "GLFW Error: " << err_str << std::endl;
 }
 
-void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, int keyCode, int action, [[maybe_unused]] int modifier) {
+void Engine::KeyboardInputCallback(GLFWwindow *, [[maybe_unused]] int key, [[maybe_unused]]int keyCode, int action, [[maybe_unused]] int modifier) {
     if (key < 0 || key > 1000)
     {
         return;
@@ -428,6 +440,25 @@ TextureManager &Engine::GetTextureManager() {
 void Engine::SetupTextures() {
     mTextureManager.CreateTextureFromFile("../textures/metal_roof_diff_512x512.png", "tex_object0", GL_TEXTURE_2D, 0);
     mTextureManager.CreateTextureFromFile("../textures/metal_roof_spec_512x512.png", "tex_object1", GL_TEXTURE_2D, 1);
+}
+
+void Engine::SkipFrame(int Frames) {
+    leftSkipFrames += Frames + 1;
+}
+
+void Engine::SwapToMainWindow() {
+    glfwMakeContextCurrent(m_pWindow);
+//    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_CULL_FACE);
+//    glCullFace(GL_BACK);
+//
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+}
+
+void Engine::SwapToGUIWindow() {
+    glfwMakeContextCurrent(m_pGUIWindow);
+
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
 
 

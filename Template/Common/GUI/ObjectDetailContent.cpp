@@ -1,7 +1,15 @@
-//
-// Created by yoonki on 9/17/21.
-//
-
+/* Start Header -------------------------------------------------------
+Copyright (C) 2021 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the prior written
+consent of DigiPen Institute of Technology is prohibited.
+File Name: ObjectDetailContent.cpp
+Purpose: Source file for ObjectDetailContent
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
+End Header --------------------------------------------------------*/
 #include "ObjectDetailContent.h"
 #include "Engine.h"
 #include "ObjectComponents/ComponentManager.h"
@@ -12,10 +20,6 @@ GUI::ObjectDetailContent::ObjectDetailContent(std::shared_ptr<Object> target) : 
 }
 
 void GUI::ObjectDetailContent::Render() {
-    constexpr auto ToFloatColour = [](int r, int g, int b){
-        return ImVec4(r/255.f, g/255.f, b/255.f, 1.f);
-    };
-
     if(IsDead()){
         return;
     }
@@ -112,7 +116,7 @@ void GUI::ObjectDetailContent::Render() {
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
-                        if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                        if ((name.find("color") < name.length()) | (name.find("Color") < name.length())) {
                             ImGui::ColorEdit3(("##" + name).c_str(), &value->x);
                         } else {
 
@@ -125,7 +129,7 @@ void GUI::ObjectDetailContent::Render() {
                         ImGui::NextColumn();
                         ImGui::Text("%s", name.c_str());
                         ImGui::NextColumn();
-                        if (name.find("color") < name.size() | name.find("Color") < name.size()) {
+                        if ((name.find("color") < name.length()) | (name.find("Color") < name.length())) {
                             ImGui::ColorEdit4(("##" + name).c_str(), &value->x);
                         } else {
                             ImGui::DragFloat4(("##" + name).c_str(), &value->x, 0.1f);
@@ -153,7 +157,7 @@ void GUI::ObjectDetailContent::Render() {
             static std::vector<std::string> UVTypes {"Planar", "Cylindarical", "Spherical", "CubeMap"};
             const int curUVTypeAsInt = static_cast<int>(m_pTargetObject->mUVType);
             if (ImGui::BeginCombo("UV", UVTypes[curUVTypeAsInt].c_str())) {
-                for (int i = 0; i < UVTypes.size(); ++i) {
+                for (int i = 0; i < static_cast<int>(UVTypes.size()); ++i) {
                     bool isSelected = (curUVTypeAsInt == i);
                     if (ImGui::Selectable(UVTypes[i].c_str(), isSelected)) {
                         m_pTargetObject->mUVType = static_cast<Mesh::UVType>(i);

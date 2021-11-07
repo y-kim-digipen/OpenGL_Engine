@@ -2,6 +2,8 @@
 // Created by yoonki on 9/12/21.
 //
 #include "SceneBase.h"
+#include "TestScene.h"
+
 
 void SceneBase::Init() {
     if(m_pCameras.empty() == false){
@@ -68,7 +70,7 @@ void SceneBase::CleanUp() {
 }
 
 std::shared_ptr<Camera> SceneBase::GetCurrentCamera() {
-    if(mFocusedCameraIdx < 0 || mFocusedCameraIdx >= m_pCameras.size()){
+    if(mFocusedCameraIdx < 0 || mFocusedCameraIdx >= static_cast<short>(m_pCameras.size())){
         return nullptr;
     }
     return m_pCameras[mFocusedCameraIdx];
@@ -76,12 +78,12 @@ std::shared_ptr<Camera> SceneBase::GetCurrentCamera() {
 
 template<typename... Args>
 void SceneBase::AddCamera(Args... arg) {
-    AddCamera(std::make_shared<Camera>(arg...));
+    return AddCamera(std::make_shared<Camera>(arg...));
 }
 
-void SceneBase::AddCamera(void) {
-    AddCamera(std::make_shared<Camera>());
-}
+//void SceneBase::AddCamera(void) {
+//    return AddCamera(std::make_shared<Camera>());
+//}
 
 void SceneBase::AddCamera(std::shared_ptr<Camera> cam) {
     m_pCameras.emplace_back(cam);
@@ -117,6 +119,10 @@ void SceneBase::RemoveLight(const std::string &lightName) {
 
 void SceneBase::ClearLights() {
     m_pLights.clear();
+}
+
+std::shared_ptr<Object> SceneBase::GetObject(const std::string &objName) {
+    return m_pObjects[objName];
 }
 
 

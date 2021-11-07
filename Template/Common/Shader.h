@@ -74,6 +74,9 @@ public:
 
     void bindUniformBlockToBindingPoint(const std::string& uniformBlockName, const GLuint bindingPoint) const;
 
+    bool HasError();
+
+    std::string GetName();
 private:
     void SetUniform1b(char const *name, bool val);
 
@@ -113,6 +116,8 @@ private:
     GLint mProgramID = 0;
 
     std::string mName;
+
+    bool mHasError;
 
     inline static const std::string defaultBufferName = "DefaultBuffer";
 };

@@ -15,7 +15,7 @@
 class SceneBase{
 public:
     virtual void Init();
-
+    virtual ~SceneBase() = default;
     //todo implement this if needed
     //void InitFromFile(const std::filesystem::path& filePath);
 
@@ -27,8 +27,8 @@ public:
 
     template<typename... Args>
     void AddCamera(Args... arg);
-    void AddCamera();
-    void AddCamera(std::shared_ptr<Camera> cam);
+//    void AddCamera(void);
+    void AddCamera(std::shared_ptr<Camera> cam = std::make_shared<Camera>());
 
     [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
     [[nodiscard]] const std::map<std::string, std::shared_ptr<Object>>& GetObjectList() const;
@@ -40,6 +40,8 @@ public:
     void ClearLights();
 
     unsigned GetNumActiveLights() const;
+
+    std::shared_ptr<Object> GetObject(const std::string& objName);
 
     Environment& GetEnvironment();
 protected:

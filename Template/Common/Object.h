@@ -60,6 +60,7 @@ public:
     glm::mat4 GetObjectToWorldMatrix() const;
 
     std::string GetName() const;
+
 private:
     void TryCalculateMatrix();
     void RenderModel() const;
@@ -90,7 +91,7 @@ protected:
 
     bool mDoVertexNormalDrawing;
     bool mDoFaceNormalDrawing;
-
+    bool mDoRender;
     bool mUsingTexture;
     bool mUsingGPUUV;
     Mesh::UVType mUVType;

@@ -9,13 +9,14 @@
 #include <iostream>
 #include "Engine.h"
 #include "Shader.h"
+#include "SceneBase.h"
 Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), std::shared_ptr<Shader>()){
 
 }
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
-    : mObjectName(name), m_pMesh(pMesh), m_pShader(pShader),
-    m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),mToWorldMatrix(1.f), m_MatrixCacheDirty(true), mUVType(Mesh::PLANAR_UV) {
+    : m_pMesh(pMesh), m_pShader(pShader), mObjectName(name), m_MatrixCacheDirty(true),mToWorldMatrix(1.f),
+      m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),  mUVType(Mesh::PLANAR_UV) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
@@ -44,6 +45,8 @@ void Object::Init() {
 }
 
 void Object::PreRender() {
+    mDoRender = ((m_pShader != nullptr) & (m_pMesh != nullptr)) | !m_pShader->HasError();
+
     if(mAdditionalFunction != nullptr && mUpdateAdditionalFunction){
         mAdditionalFunction();
     }
@@ -54,7 +57,6 @@ void Object::PreRender() {
 }
 
 void Object::RenderModel() const {
-    auto& VBOManager = Engine::GetVBOManager();
     const GLint shaderPID = m_pShader->GetProgramID();
 
     //setting&binding buffer
@@ -129,7 +131,6 @@ void Object::RenderModel() const {
 }
 
 void Object::RenderVertexNormal() const {
-    auto& VBOManager = Engine::GetVBOManager();
     auto pNormalDrawShader = Engine::GetShader("NormalDrawShader");
     const GLint shaderPID = pNormalDrawShader->GetProgramID();
 
@@ -179,7 +180,6 @@ void Object::RenderVertexNormal() const {
 }
 
 void Object::RenderFaceNormal() const {
-    auto& VBOManager = Engine::GetVBOManager();
     auto pNormalDrawShader = Engine::GetShader("FaceNormalDrawShader");
     const GLint shaderPID = pNormalDrawShader->GetProgramID();
 
@@ -258,7 +258,11 @@ bool Object::SetShader(const std::string &shaderStr) {
         m_pShader->SetShaderBuffer(mObjectName);
         mShaderName = shaderStr;
         //todo init shader here
-//        m_pShader->
+        if(m_pShader->HasError())
+        {
+            std::cerr << m_pShader->GetName() << "has error, try to load again!" << std::endl;
+        }
+
     }
     return pShader != nullptr;
 }
@@ -274,7 +278,7 @@ bool Object::SetMesh(const std::string &meshStr) {
 }
 
 bool Object::IsRenderReady() const {
-    return m_pShader && m_pMesh;
+    return mDoRender;
 }
 
 void Object::TryCalculateMatrix() {

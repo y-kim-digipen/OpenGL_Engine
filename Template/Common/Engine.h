@@ -20,7 +20,7 @@
 
 #include "Color.h"
 #include "Mesh.h"
-#include "SceneBase.h"
+//#include "SceneBase.h"
 #include "Shader.h"
 #include "VAOManager.h"
 #include "VBOManager.h"
@@ -28,9 +28,9 @@
 #include "Environment.h"
 #include "TextureManager.h"
 
-constexpr int ENGINE_SUPPORT_MAX_LIGHTS = 16; /*Should be equal to shader max light variable*/
-constexpr float DPI = 1.8f;
-
+#define ENGINE_SUPPORT_MAX_LIGHTS 16 /*Should be equal to shader max light variable*/
+#define DPI  1.8f;
+class SceneBase;
 class GLFWwindow;
 
 namespace GUI
@@ -72,6 +72,8 @@ public:
     static SceneBase* GetCurrentScene();
     static std::string GetTitleName();
     static float GetFPS();
+
+    static void SkipFrame(int Frames);
 private:
     static void PreRender();
     static void Render();
@@ -88,7 +90,8 @@ private:
     static void KeyboardInputCallback(GLFWwindow*, int key, [[maybe_unused]] int keyCode, int action, [[maybe_unused]] int modifier);
     //static void MouseButtonCallback(GLFWwindow*, int button, int action, [[maybe_unused]] int modifier);
     //static void MouseScrollCallback(GLFWwindow*, double, double yOffset)
-
+    static void SwapToMainWindow();
+    static void SwapToGUIWindow();
 private:
     inline static std::string mTitleStr;
     inline static GLFWwindow* m_pWindow;
@@ -117,4 +120,6 @@ private:
 
     inline static glm::vec3 GlobalAmbientColor = glm::vec3(0.3f);
     inline static glm::vec3 FogColor = glm::vec3(0.f);
+
+    inline static int leftSkipFrames = 0;
 };
