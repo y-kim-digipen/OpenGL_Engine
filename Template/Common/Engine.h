@@ -37,7 +37,7 @@ End Header --------------------------------------------------------*/
 #include "TextureManager.h"
 
 #define ENGINE_SUPPORT_MAX_LIGHTS 16 /*Should be equal to shader max light variable*/
-#define DPI  1.8f;
+#define DPI  0.8f;
 class SceneBase;
 class GLFWwindow;
 

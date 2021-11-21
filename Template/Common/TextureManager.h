@@ -23,8 +23,9 @@ public:
     int CreateTextureFromFile(const std::string& file, const std::string& textureName, GLenum type, GLint textureUnit);
     TextureObject* FindTextureByName(const std::string& name);
     void BindTexture(TextureObject* pTexture);
-private:
+
     TextureObject* CreateTexture(const std::string& textureName, GLint width, GLint height, GLenum textureType, GLint textureUnit);
+private:
     void SetSamplerClampingProperties(GLuint samplerID, GLenum clampProp, GLenum mipmapProp);
 
     //todo change this to shared ptr
