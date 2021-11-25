@@ -109,6 +109,7 @@ void Engine::InitEngine() {
     SetupShaders();
     SetupMeshes();
     SetupTextures();
+    SetupFBO();
     //todo for now, it is for debugging
 
     SetupScenes();
@@ -226,7 +227,6 @@ void Engine::PreRender() {
     lightUBO.setBufferData(structureSize * ENGINE_SUPPORT_MAX_LIGHTS, (void*)&numActiveLights, sizeof(int));
 
     environmentUBO.bindUBO();
-//    GetCurrentScene()->GetEnvironment().std140_structure.I_Fog = mClearColor.AsVec3() * 256.f;
     GetCurrentScene()->GetEnvironment().std140_structure.zFar = GetCurrentScene()->GetCurrentCamera()->FarDistance();
     GetCurrentScene()->GetEnvironment().std140_structure.zNear = GetCurrentScene()->GetCurrentCamera()->NearDistance();
     GetCurrentScene()->GetEnvironment().std140_structure.GlobalAmbient = GlobalAmbientColor * 256.f;
@@ -278,7 +278,7 @@ GUI::GUI_Manager &Engine::GetGUIManager() {
 
 void Engine::SetupScenes() {
     SceneBase* baseScene = new TestScene();
-    baseScene->AddCamera();
+    baseScene->SetCamera();
     baseScene->GetCurrentCamera()->SetPosition(glm::vec3(0.f, 1.f, 5.f));
     baseScene->GetCurrentCamera()->Pitch(-HALF_PI * 0.2f);
     m_pScenes.emplace_back(baseScene);
@@ -327,6 +327,27 @@ void Engine::SetupShaders() {
     pShader->CreateProgramAndLoadCompileAttachLinkShaders({
                                                                   {GL_VERTEX_SHADER,"../shaders/Blinn-PhongShading.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/Blinn-PhongShading.frag"} });
+
+    pShader = mShaderManager.AddComponent("FSQ Shader", new Shader("FSQ Shader"), true);
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/FSQ.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/FSQ.frag"} });
+
+    pShader = mShaderManager.AddComponent("CubeEnvironmentShader", new Shader("CubeEnvironmentShader"), false);
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/CubeEnvironment.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/CubeEnvironment.frag"} });
+
+    pShader = mShaderManager.AddComponent("ReflectionShader", new Shader("ReflectionShader"));
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/ReflectionShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/ReflectionShader.frag"} });
+
+    pShader = mShaderManager.AddComponent("RefractionShader", new Shader("RefractionShader"));
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/RefractShader.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/RefractShader.frag"} });
+
     pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 
@@ -395,6 +416,11 @@ void Engine::SetupMeshes() {
     objReader.ReadOBJFile("../models/cube2.obj", pMesh.get());
     pMesh->Init();
 
+    pMesh = mMeshManager.AddComponent("Quad", std::make_shared<Mesh>("Quad"));
+    pMesh->ClearData();
+    objReader.ReadOBJFile("../models/quad.obj", pMesh.get());
+    pMesh->Init();
+
 }
 
 SceneBase* Engine::GetCurrentScene() {
@@ -403,8 +429,6 @@ SceneBase* Engine::GetCurrentScene() {
 
 void Engine::SetupGUI() {
     using namespace GUI;
-//    auto pGUIWindow = mGUIManager.AddWindow("Camera Settings");
-//    pGUIWindow->AddContent("Position", new CurrentCameraInfoContent());
     auto pGUIWindow = mGUIManager.AddWindow("Object Lists");
     pGUIWindow->AddFlag(ImGuiWindowFlags_AlwaysAutoResize);
     pGUIWindow->AddContent("Object Lists", new ObjectListContent());
@@ -447,8 +471,18 @@ TextureManager &Engine::GetTextureManager() {
 }
 
 void Engine::SetupTextures() {
+    std::cout << "[Setting Textures]" << std::endl;
     mTextureManager.CreateTextureFromFile("../textures/metal_roof_diff_512x512.png", "tex_object0", GL_TEXTURE_2D, 0);
     mTextureManager.CreateTextureFromFile("../textures/metal_roof_spec_512x512.png", "tex_object1", GL_TEXTURE_2D, 1);
+
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/right.jpg", "Right", GL_TEXTURE_2D, 0);
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/left.jpg", "Left", GL_TEXTURE_2D, 1);
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/top.jpg", "Top", GL_TEXTURE_2D, 2);
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/bottom.jpg", "Bottom", GL_TEXTURE_2D, 3);
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/front.jpg", "Front", GL_TEXTURE_2D, 4);
+    mTextureManager.CreateTextureFromFile("../textures/CubeMap/back.jpg", "Back", GL_TEXTURE_2D, 5);
+
+    mTextureManager.CreateTextureFromFile("../textures/SampleCubemap.png", "CubeMap", GL_TEXTURE_2D, 0);
 }
 
 void Engine::SkipFrame(int Frames) {
@@ -457,17 +491,73 @@ void Engine::SkipFrame(int Frames) {
 
 void Engine::SwapToMainWindow() {
     glfwMakeContextCurrent(m_pWindow);
-//    glEnable(GL_DEPTH_TEST);
-//    glEnable(GL_CULL_FACE);
-//    glCullFace(GL_BACK);
-//
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
 
 void Engine::SwapToGUIWindow() {
     glfwMakeContextCurrent(m_pGUIWindow);
+}
 
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+void Engine::SetupFBO() {
+    EnvironmentMappingFBO.Init(mWinSize.y, mWinSize.y);
+    [[maybe_unused]]TextureObject* rightTexture = GetTextureManager().
+            CreateTexture("rightDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 0, GL_RGBA32F);
+    EnvironmentMappingFBO.SetAttachment(GL_COLOR_ATTACHMENT0, rightTexture);
+    EnvironmentMappingFBO.UseDrawBuffers();
+
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    {
+        std::cerr << "[FBO Error] Frame Buffer Incomplete" << std::endl;
+    }
+    else
+    {
+        std::cout << "[FBO Init] Frame Buffer Success" << std::endl;
+    }
+//
+    [[maybe_unused]]TextureObject* leftTexture = GetTextureManager().
+            CreateTexture("leftDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 1, GL_RGBA32F);
+//    EnvironmentMappingFBO.SetAttachment(1, leftTexture);
+//
+    [[maybe_unused]]TextureObject* topTexture = GetTextureManager().
+            CreateTexture("topDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 2, GL_RGBA32F);
+//    EnvironmentMappingFBO.SetAttachment(2, topTexture);
+//
+    [[maybe_unused]]TextureObject* bottomTexture = GetTextureManager().
+            CreateTexture("bottomDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 3, GL_RGBA32F);
+//    EnvironmentMappingFBO.SetAttachment(3, bottomTexture);
+//
+    [[maybe_unused]]TextureObject* frontTexture = GetTextureManager().
+            CreateTexture("frontDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 4, GL_RGBA32F);
+//    EnvironmentMappingFBO.SetAttachment(4, frontTexture);
+//
+    [[maybe_unused]]TextureObject* backTexture = GetTextureManager().
+            CreateTexture("backDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 5, GL_RGBA32F);
+//    EnvironmentMappingFBO.SetAttachment(5, backTexture);
+
+    FSQ_FBO.Init(mWinSize.x, mWinSize.y);
+
+    TextureObject* diffuseTexture = GetTextureManager().CreateTexture("diffuseBuffer", mWinSize.x, mWinSize.y, GL_TEXTURE_2D, 0, GL_RGBA32F);
+    FSQ_FBO.SetAttachment(GL_COLOR_ATTACHMENT0, diffuseTexture);
+
+//    TextureObject* normalTexture = GetTextureManager().CreateTexture("normalBuffer", mWinSize.x, mWinSize.y, GL_TEXTURE_2D, 1);
+//    FSQ_FBO.SetAttachment(GL_COLOR_ATTACHMENT1, normalTexture);
+//
+//    TextureObject* uvTexture = GetTextureManager().CreateTexture("uvBuffer", mWinSize.x, mWinSize.y, GL_TEXTURE_2D, 2);
+//    FSQ_FBO.SetAttachment(GL_COLOR_ATTACHMENT2, uvTexture);
+//
+//    TextureObject* depthTexture = GetTextureManager().CreateTexture("depthBuffer", mWinSize.x, mWinSize.y, GL_TEXTURE_2D, 1, GL_RGBA32F);
+//    FSQ_FBO.SetAttachment(GL_DEPTH_ATTACHMENT, depthTexture);
+
+    FSQ_FBO.SetDepthAttachment();
+    FSQ_FBO.UseDrawBuffers();
+
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    {
+        std::cerr << "[FBO Error] Frame Buffer Incomplete" << std::endl;
+    }
+    else
+    {
+        std::cout << "[FBO Init] Frame Buffer Success" << std::endl;
+    }
 }
 
 

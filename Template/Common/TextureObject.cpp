@@ -44,3 +44,7 @@ GLenum TextureObject::GetTextureType() {
 GLuint TextureObject::GetHandle() {
     return mTextureHandle;
 }
+
+std::pair<GLuint, GLuint> TextureObject::GetSize() {
+    return std::pair<GLuint, GLuint>(mWidth, mHeight);
+}

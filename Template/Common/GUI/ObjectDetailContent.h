@@ -31,10 +31,6 @@ namespace GUI{
     private:
         std::shared_ptr<Object> m_pTargetObject;
     };
-
-
-
-
 }
 
 

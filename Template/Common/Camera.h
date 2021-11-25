@@ -19,6 +19,7 @@ End Header --------------------------------------------------------*/
 class Camera {
 public:
     Camera(void);
+    ~Camera() = default;
     Camera(const glm::vec3& E, const glm::vec3& look, const glm::vec3& vp,
            float fov, float aspect, float near, float far);
     [[nodiscard]] glm::vec3 Eye(void) const;
@@ -40,12 +41,12 @@ public:
     glm::mat4 GetPerspectiveMatrix() const;
     glm::mat4 GetOrthogonalMatrix() const;
 
+    glm::mat4 GetCubeMapMatrix();
+
     glm::vec3 GetEyePosition() const;
     void SetEyePosition(const glm::vec3& pos);
 
-//    virtual void SetupBuffer(Demo*);
-    virtual void Update();
-//    virtual void Unload() {}
+    void Update();
 private:
     glm::vec3 eye;
     glm::vec3 back, right, up;
@@ -53,7 +54,6 @@ private:
     float fov;
     GLuint m_vaoid = static_cast<GLuint>(-1);
     GLuint m_ebo_hdl = static_cast<GLuint>(-1);
-//    std::unique_ptr<Shader> mCameraFrustrumShader = std::make_unique<Shader>();
 };
 
 

@@ -35,6 +35,7 @@ End Header --------------------------------------------------------*/
 #include "UBO.h"
 #include "Environment.h"
 #include "TextureManager.h"
+#include "FBO.h"
 
 #define ENGINE_SUPPORT_MAX_LIGHTS 16 /*Should be equal to shader max light variable*/
 #define DPI  1.8f;
@@ -90,6 +91,7 @@ private:
     static void SetupScenes();
     static void SetupShaders();
     static void SetupMeshes();
+    static void SetupFBO();
     static void SetupGUI();
 
     static void SetupTextures();
@@ -130,4 +132,7 @@ private:
     inline static glm::vec3 FogColor = glm::vec3(0.f);
 
     inline static int leftSkipFrames = 0;
+public:
+    inline static FBO FSQ_FBO;
+    inline static FBO EnvironmentMappingFBO;
 };

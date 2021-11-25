@@ -21,23 +21,25 @@ End Header --------------------------------------------------------*/
 #include "Light.h"
 #include "Environment.h"
 
+class CubeObject;
+
 class SceneBase{
 public:
     virtual void Init();
-    virtual ~SceneBase() = default;
+    virtual ~SceneBase();
     //todo implement this if needed
     //void InitFromFile(const std::filesystem::path& filePath);
 
     virtual void PreRender();
     virtual void Render() const;
+    virtual void RenderForEnvironmentMapping();
     virtual void PostRender();
 
     virtual void CleanUp();
 
     template<typename... Args>
-    void AddCamera(Args... arg);
-//    void AddCamera(void);
-    void AddCamera(std::shared_ptr<Camera> cam = std::make_shared<Camera>());
+    void SetCamera(Args... arg);
+    void SetCamera(std::shared_ptr<Camera> cam = std::make_shared<Camera>());
 
     [[nodiscard]] std::shared_ptr<Camera> GetCurrentCamera();
     [[nodiscard]] const std::map<std::string, std::shared_ptr<Object>>& GetObjectList() const;
@@ -53,13 +55,23 @@ public:
     std::shared_ptr<Object> GetObject(const std::string& objName);
 
     Environment& GetEnvironment();
-protected:
-    short mFocusedCameraIdx;
-    std::vector<std::shared_ptr<Camera>> m_pCameras;
 
+    void UseFBO(GLuint FBOHandle, GLuint viewportWidth, GLuint viewportHeight, bool clearBuffer = true, GLuint viewportStartX = 0,GLuint viewportStartY = 0) const;
+
+    [[maybe_unused]] void RenderCubeMap() const;
+protected:
+    std::shared_ptr<Camera> m_pCamera;
     Environment mEnvironment;
 
 private:
+    Object* FSQ_Obj;
+    Object* FSQ_Obj2;
+    Object* FSQ_Obj3;
+    Object* FSQ_Obj4;
+    Object* FSQ_Obj5;
+    Object* FSQ_Obj6;
+    Object* FSQ_Obj7;
+    CubeObject* CubeMap_Obj;
     std::map<std::string, std::shared_ptr<Object>> m_pObjects;
     std::map<std::string, std::shared_ptr<Light>> m_pLights;
 };

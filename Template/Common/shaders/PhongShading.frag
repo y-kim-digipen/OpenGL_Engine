@@ -66,7 +66,15 @@ in PhongShadingData
     vec3 Normal;
     vec2 UV;
 } shading_data;
+
+
+
 out vec3 color;
+
+//layout(location = 0) out vec3 color;
+//layout(location = 1) out float depth;
+//layout(location = 2) out vec3 normal;
+
 
 void main() {
     vec3 Sum_Local_Light = vec3(0.f);
@@ -164,4 +172,7 @@ void main() {
     vec3 I_Fianl = environment_block.data.GlobalAmbient  +S * I_Local + (1.f - S) * environment_block.data.I_Fog;
 
     color = I_Fianl / vec3(256.f);
+//    depth = 1.f;
+//    normal = vec3(1.f);
+//    glFragColor = color;
 }

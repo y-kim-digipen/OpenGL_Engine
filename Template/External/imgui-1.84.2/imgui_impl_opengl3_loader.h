@@ -194,8 +194,8 @@ typedef void (APIENTRYP PFNGLGENTEXTURESPROC) (GLsizei n, GLuint *textures);
 #ifdef GL_GLEXT_PROTOTYPES
 GLAPI void APIENTRY glDrawElements (GLenum mode, GLsizei count, GLenum type, const void *indices);
 GLAPI void APIENTRY glBindTexture (GLenum target, GLuint texture);
-GLAPI void APIENTRY glDeleteTextures (GLsizei n, const GLuint *textures);
-GLAPI void APIENTRY glGenTextures (GLsizei n, GLuint *textures);
+GLAPI void APIENTRY glDeleteTextures (GLsizei n, const GLuint *mTextures);
+GLAPI void APIENTRY glGenTextures (GLsizei n, GLuint *mTextures);
 #endif
 #endif /* GL_VERSION_1_1 */
 #ifndef GL_VERSION_1_3

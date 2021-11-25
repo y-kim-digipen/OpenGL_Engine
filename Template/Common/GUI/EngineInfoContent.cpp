@@ -45,7 +45,7 @@ namespace GUI
             glm::vec3 center = pCentralObject->GetPosition();
             glm::vec2 fixedYCenter = glm::vec2(center.x, center.z);
             fixedYCenter += orbitRadius * glm::vec2(std::cos(currentRadian), std::sin(currentRadian));
-            obj->SetPosition(glm::vec3(fixedYCenter.x, center.y + 1.f, fixedYCenter.y));
+            obj->SetPosition(glm::vec3(fixedYCenter.x, center.y + 0.f, fixedYCenter.y));
             obj->SetRotation(glm::vec3(cos(-currentRadian), 0.f, sin(-currentRadian)));
             static_cast<Light *>(obj)->std140_structure.dir =
                     obj->GetPosition() + glm::vec3(0.f, 0.5f, 0.f) - pCentralObject->GetPosition();
@@ -64,8 +64,7 @@ namespace GUI
                 glm::vec3 randomColor = glm::vec3(randomDistribution(randomDevice) / 255.f,
                                                   randomDistribution(randomDevice) / 255.f,
                                                   randomDistribution(randomDevice) / 255.f);
-//           Engine::GetShader(pLight->GetUsingShaderName())->GetUniformValue<glm::vec3>(pLight->GetName(), "diffuseColor")
-//                   = randomColor;
+
                 if (firstStartDoRandLightCol == false) {
                     randomColor = Color(0.8f).AsVec3();
                 }

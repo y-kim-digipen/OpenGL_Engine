@@ -199,3 +199,10 @@ glm::vec3 Camera::GetEyePosition() const {
 void Camera::SetEyePosition(const glm::vec3 &pos) {
     eye = pos;
 }
+
+glm::mat4 Camera::GetCubeMapMatrix() {
+    const glm::vec3 e { eye.x, eye.y, eye.z };
+    const glm::vec3 b { back.x, back.y, back.z };
+    const glm::vec3 u { up.x, up.y, up.z };
+    return glm::lookAt(glm::vec3{0.f}, -b,  u);
+}

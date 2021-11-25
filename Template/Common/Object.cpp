@@ -19,6 +19,9 @@ End Header --------------------------------------------------------*/
 #include "Engine.h"
 #include "Shader.h"
 #include "SceneBase.h"
+#include "Camera.h"
+#include "CubeCaptureCamera.h"
+
 Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), std::shared_ptr<Shader>()){
 
 }
@@ -34,6 +37,15 @@ Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared
     mDoFaceNormalDrawing = false;
     mUsingTexture = true;
     mUsingGPUUV = true;
+    mFitToBox = true;
+
+    mTextureSlots.resize(2);
+
+    mTextureSlots[0] = "tex_object0";
+    mTextureSlots[1] = "tex_object1";
+
+    mDoEnvironmentMapping = false;
+    mEnvironmentMappingCam = nullptr;
 }
 
 Object::Object(const std::string& name, const std::string &meshStr, const std::string &shaderStr)
@@ -41,6 +53,15 @@ Object::Object(const std::string& name, const std::string &meshStr, const std::s
     mMeshName = meshStr;
     mShaderName = shaderStr;
 }
+
+Object::~Object() {
+    std::cout << "[Deleting Object] " << mObjectName << std::endl;
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        delete mEnvironmentMappingCam;
+    }
+}
+
 
 void Object::Init() {
     //todo change this after mesh and shader implementation is completed
@@ -66,6 +87,7 @@ void Object::PreRender() {
 }
 
 void Object::RenderModel() const {
+
     const GLint shaderPID = m_pShader->GetProgramID();
 
     //setting&binding buffer
@@ -73,15 +95,20 @@ void Object::RenderModel() const {
     const GLuint VAOID = Engine::GetVAOManager().GetVAO(m_pShader->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
-    if(mUsingTexture){
-        TextureObject* pTextureObj = Engine::GetTextureManager().FindTextureByName("tex_object0");
-        Engine::GetTextureManager().BindTexture(pTextureObj);
-        pTextureObj->SetTextureUniform(m_pShader);
 
-        pTextureObj = Engine::GetTextureManager().FindTextureByName("tex_object1");
-        Engine::GetTextureManager().BindTexture(pTextureObj);
-        pTextureObj->SetTextureUniform(m_pShader);
+    if(mUsingTexture){
+        for(const std::string& textureName : mTextureSlots)
+        {
+            if(textureName.length() == 0)
+            {
+                continue;
+            }
+            TextureObject* pTextureObj = Engine::GetTextureManager().FindTextureByName(textureName);
+            Engine::GetTextureManager().BindTexture(pTextureObj);
+            pTextureObj->SetTextureUniform(m_pShader);
+        }
     }
+
     glBindVertexArray(VAOID);
     for(auto& attribute : attributeInfos){
         glEnableVertexAttribArray(attribute.location);
@@ -113,16 +140,16 @@ void Object::RenderModel() const {
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
     glm::mat4 normalMatrix = modelToWorldMatrix;//glm::transpose(glm::inverse(/*viewMatrix * */modelToWorldMatrix));
 
-    if(vTransformLoc < 0){
-        if(vTransformLoc < 0) /*might using phong things...*/{
-            m_pShader->GetUniformValue<glm::mat4>(GetName(), "modelToWorldTransform")
-                    = modelToWorldMatrix;
-            m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
-                    = projectionMatrix * viewMatrix;
-
-            m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos_GUIX") = pCam->Eye();
-        }
-
+    if(m_pShader->HasUniform("modelToWorldTransform")) {
+        m_pShader->GetUniformValue<glm::mat4>(GetName(), "modelToWorldTransform")
+                = modelToWorldMatrix;
+    }
+    if(m_pShader->HasUniform("perspectiveMatrix")) {
+        m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
+                = projectionMatrix * viewMatrix;
+    }
+    if( m_pShader->HasUniform("CameraPos_GUIX") ) /*might using phong things...*/{
+        m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos_GUIX") = pCam->Eye();
     }
 
     m_pShader->SetAllUniforms(mObjectName);
@@ -174,7 +201,6 @@ void Object::RenderVertexNormal() const {
     glm::mat4 viewMatrix = pCam->GetLookAtMatrix();
     glm::mat4 projectionMatrix = pCam->GetPerspectiveMatrix();
 
-
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
 
     glUniformMatrix4fv(vTransformLoc, 1, GL_FALSE, &mvpMatrix[0][0]);
@@ -204,6 +230,7 @@ void Object::RenderFaceNormal() const {
 
         glBindBuffer(GL_ARRAY_BUFFER, VBOInfo.first[attribute.name]);
         glVertexAttribPointer( attribute.location,
+
                                attribute.DataSize,
                                attribute.DataType,
                                GL_FALSE,
@@ -214,12 +241,6 @@ void Object::RenderFaceNormal() const {
     //Drawing Logic
     glUseProgram(shaderPID);
     GLint vTransformLoc = glGetUniformLocation(shaderPID, "vertexTransform");
-//    if(vTransformLoc < 0) /*might using phong things...*/{
-////        GLint uModelToWorldMatLoc = glGetUniformLocation(shaderPID, "modelToWorldTransform");
-////        GLint uPerspectiveMatLoc = glGetUniformLocation(shaderPID, "perspectiveMatrix");
-////
-//        m_pShader->
-//    }
     const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
     //Get matricies
@@ -242,7 +263,24 @@ void Object::RenderFaceNormal() const {
 }
 
 void Object::Render() const {
+    //Environment Capture part
+    if(mDoEnvironmentMapping)
+    {
+        static const std::vector<std::string> environmentMapStrings =
+                {"rightDiffuseBuffer", "leftDiffuseBuffer", "topDiffuseBuffer", "bottomDiffuseBuffer", "frontDiffuseBuffer", "backDiffuseBuffer" };
+        std::shared_ptr<Camera> originalCamera = Engine::GetCurrentScene()->GetCurrentCamera();
+        Engine::GetCurrentScene()->UseFBO(Engine::EnvironmentMappingFBO.GetFBOHandle(), Engine::EnvironmentMappingFBO.GetFBOSize().first, Engine::EnvironmentMappingFBO.GetFBOSize().second);
+        for(int i = 0; i < 6; ++i)
+        {
+            Engine::EnvironmentMappingFBO.SetAttachment(GL_COLOR_ATTACHMENT0, Engine::GetTextureManager().FindTextureByName(environmentMapStrings[i]));
+            Engine::GetCurrentScene()->SetCamera(mEnvironmentMappingCam->GetCamera(i));
+            Engine::GetCurrentScene()->RenderForEnvironmentMapping();
+        }
+        Engine::GetCurrentScene()->SetCamera(originalCamera);
+        Engine::GetCurrentScene()->UseFBO(Engine::FSQ_FBO.GetFBOHandle(), Engine::GetWindowSize().x, Engine::GetWindowSize().y, false);
+    }
     RenderModel();
+
     if(mDoVertexNormalDrawing){
         RenderVertexNormal();
     }
@@ -438,4 +476,49 @@ void Object::SetFunctionUpdate(bool updateStatus) {
 void Object::SetTextureOption(bool usingTexture, bool usingGPUUV) {
     mUsingTexture = usingTexture;
     mUsingGPUUV = usingGPUUV;
+}
+
+void Object::ChangeTexture(int slot, const std::string &textureName) {
+    mTextureSlots[slot] = textureName;
+}
+
+void Object::SetFitToBox(bool option) {
+    mFitToBox = option;
+}
+
+void Object::SetDoEnvironmentMapping(bool option) {
+    if(mDoEnvironmentMapping == option)
+    {
+        std::cout <<"[" << GetName() << "]" << "Environment Mapping option is already set to " << std::boolalpha << option << std::endl;
+        return;
+    }
+    mDoEnvironmentMapping = option;
+    if(mDoEnvironmentMapping == true)
+    {
+        mEnvironmentMappingCam = new CubeCaptureCamera(Engine::GetCurrentScene()->GetObject(GetName()));
+        mTextureSlots.clear();
+        mTextureSlots.resize(6);
+        ChangeTexture(0, "rightDiffuseBuffer");
+        ChangeTexture(1, "leftDiffuseBuffer");
+        ChangeTexture(2, "topDiffuseBuffer");
+        ChangeTexture(3, "bottomDiffuseBuffer");
+        ChangeTexture(4, "frontDiffuseBuffer");
+        ChangeTexture(5, "backDiffuseBuffer");
+    }
+    else
+    {
+        delete mEnvironmentMappingCam;
+        mTextureSlots.clear();
+        mTextureSlots.resize(2);
+        mTextureSlots[0] = "tex_object0";
+        mTextureSlots[1] = "tex_object1";
+    }
+}
+
+bool Object::DoEnvironmentMapping() {
+    return mDoEnvironmentMapping;
+}
+
+CubeCaptureCamera *Object::GetEnvironmentMappingCameras() {
+    return mEnvironmentMappingCam;
 }
