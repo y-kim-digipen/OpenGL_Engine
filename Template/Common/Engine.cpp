@@ -343,11 +343,6 @@ void Engine::SetupShaders() {
                                                                   {GL_VERTEX_SHADER,"../shaders/ReflectionShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/ReflectionShader.frag"} });
 
-    pShader = mShaderManager.AddComponent("RefractionShader", new Shader("RefractionShader"));
-    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
-                                                                  {GL_VERTEX_SHADER,"../shaders/RefractShader.vert"},
-                                                                  {GL_FRAGMENT_SHADER,"../shaders/RefractShader.frag"} });
-
     pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 
