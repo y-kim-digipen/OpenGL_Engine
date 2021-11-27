@@ -100,7 +100,7 @@ void TestScene::Init() {
     //for initializing camera
     SceneBase::Init();
 
-    auto pCentralObj = AddObject("CentralObject", "Cube", "ReflectionShader");
+    auto pCentralObj = AddObject("CentralObject", "Cube", "RefractionShader");
     pCentralObj->SetTextureOption(true);
     pCentralObj->SetDoEnvironmentMapping(true);
 
