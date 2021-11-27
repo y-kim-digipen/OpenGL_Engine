@@ -20,7 +20,7 @@ in VS_OUT
 out vec3 Color;
 
 void main() {
-    vec3 I = -normalize(fs_in.vertexPosition/* - CameraPos_GUIX*/);
+    vec3 I = normalize(fs_in.vertexPosition - CameraPos_GUIX);
     vec3 N = normalize(fs_in.vertexNormal);
 
     vec3 T = vec3(0.f);
