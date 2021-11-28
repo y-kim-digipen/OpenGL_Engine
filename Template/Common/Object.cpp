@@ -370,11 +370,17 @@ glm::vec3 Object::GetPosition() {
 }
 
 void Object::SetPosition(glm::vec3 position) {
-    m_position = position;
+    const glm::vec3 amount = position - m_position;
+//    m_position = position;
+    AddPosition(amount);
     m_MatrixCacheDirty = true;
 }
 
 void Object::AddPosition(glm::vec3 amount) {
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        mEnvironmentMappingCam->Translate(amount);
+    }
     m_position += amount;
     m_MatrixCacheDirty = true;
 }
@@ -384,11 +390,17 @@ glm::vec3 Object::GetRotation() {
 }
 
 void Object::SetRotation(glm::vec3 rotation) {
-    m_rotation = rotation;
+    const glm::vec3 amount = rotation - m_rotation;
+//    m_rotation = rotation;
+    AddRotation(amount);
     m_MatrixCacheDirty = true;
 }
 
 void Object::AddRotation(glm::vec3 amount) {
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        mEnvironmentMappingCam->Rotate(amount);
+    }
     m_rotation += amount;
     m_MatrixCacheDirty = true;
 }

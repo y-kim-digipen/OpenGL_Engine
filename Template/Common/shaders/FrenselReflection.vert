@@ -13,12 +13,6 @@ out VS_OUT
     vec3 vertexNormal;
 } vs_out;
 
-//void main() {
-
-//    gl_Position = vertexTransform * vec4( vPosition, 1.0f );
-//    vs_out.vertexPosition = (vertexTransform * vec4( vPosition, 1.0f )).xyz / (vertexTransform * vec4( vPosition, 1.0f )).w;
-//    vs_out.vertexNormal = mat3(vertexNormalTransform) * vertexNormal;
-
 void main() {
     vec4 Position = vertexTransform * vec4( vPosition, 1.0f );
     gl_Position = Position;

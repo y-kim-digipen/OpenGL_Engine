@@ -41,10 +41,6 @@ CubeCaptureCamera::~CubeCaptureCamera() {
     mAttachedCameras.clear();
 }
 
-void CubeCaptureCamera::Update() {
-
-}
-
 std::shared_ptr<Camera> CubeCaptureCamera::GetCamera(int slot) {
     if(slot < 0 || slot > static_cast<int>(mAttachedCameras.size()))
     {
@@ -52,4 +48,21 @@ std::shared_ptr<Camera> CubeCaptureCamera::GetCamera(int slot) {
         return nullptr;
     }
     return mAttachedCameras[slot];
+}
+
+void CubeCaptureCamera::Translate(const glm::vec3 &amount) {
+    const glm::vec3 currentCamPos = mAttachedCameras.front()->GetEyePosition();
+    for(auto& cam : mAttachedCameras)
+    {
+        cam->SetPosition(currentCamPos + amount);
+    }
+}
+
+void CubeCaptureCamera::Rotate(const glm::vec3 &amount) {
+    for(auto& cam : mAttachedCameras)
+    {
+        cam->Yaw(amount.x);
+        cam->Pitch(amount.y);
+        cam->Roll(amount.z);
+    }
 }

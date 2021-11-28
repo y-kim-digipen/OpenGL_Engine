@@ -15,7 +15,8 @@ class CubeCaptureCamera{
 public:
     CubeCaptureCamera(const std::shared_ptr<Object>& owner);
     ~CubeCaptureCamera();
-    void Update();
+    void Translate(const glm::vec3& amount);
+    void Rotate(const glm::vec3& amount);
     std::shared_ptr<Camera> GetCamera(int slot);
 private:
     std::shared_ptr<Object> mOwner;

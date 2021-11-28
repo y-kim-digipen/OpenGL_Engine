@@ -348,6 +348,11 @@ void Engine::SetupShaders() {
                                                                   {GL_VERTEX_SHADER,"../shaders/RefractionShader.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/RefractionShader.frag"} });
 
+    pShader = mShaderManager.AddComponent("FrenselReflection", new Shader("FrenselReflection"));
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/FrenselReflection.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/FrenselReflection.frag"} });
+
     pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 
@@ -380,7 +385,7 @@ void Engine::SetupMeshes() {
     pMesh->ClearData();
     objReader.ReadOBJFile("../models/sphere_modified.obj", pMesh.get());
     pMesh->Init();
-
+//
 //    pMesh = mMeshManager.AddComponent("Rhino", std::make_shared<Mesh>("Rhino"));
 //    pMesh->ClearData();
 //    objReader.ReadOBJFile("../models/rhino.obj", pMesh.get());
@@ -416,7 +421,7 @@ void Engine::SetupMeshes() {
     objReader.ReadOBJFile("../models/cube2.obj", pMesh.get());
     pMesh->Init();
 
-    pMesh = mMeshManager.AddComponent("Quad", std::make_shared<Mesh>("Quad"));
+    pMesh = mMeshManager.AddComponent("Quad", std::make_shared<Mesh>("Quad"), false);
     pMesh->ClearData();
     objReader.ReadOBJFile("../models/quad.obj", pMesh.get());
     pMesh->Init();
@@ -498,7 +503,8 @@ void Engine::SwapToGUIWindow() {
 }
 
 void Engine::SetupFBO() {
-    EnvironmentMappingFBO.Init(mWinSize.y, mWinSize.y);
+    GLuint environmentMappingFBOResolution = static_cast<GLuint>(mWinSize.x * (DPI));
+    EnvironmentMappingFBO.Init(environmentMappingFBOResolution, environmentMappingFBOResolution);
     [[maybe_unused]]TextureObject* rightTexture = GetTextureManager().
             CreateTexture("rightDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 0, GL_RGBA32F);
     EnvironmentMappingFBO.SetAttachment(GL_COLOR_ATTACHMENT0, rightTexture);

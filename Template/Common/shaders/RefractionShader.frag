@@ -9,7 +9,7 @@ layout (binding = 5) uniform sampler2D backDiffuseBuffer;
 
 uniform vec3 CameraPos_GUIX;
 
-uniform float eta = 1.f / 1.002;
+uniform float eta = 0.9;
 
 in VS_OUT
 {
@@ -50,11 +50,6 @@ void main() {
 
         uv = uv / absVec.z;
     }
-//    else
-//    {
-//        plane = -1;
-//    }
-    //    uv.y = -uv.y;
     uv = (uv + vec2(1.f)) * 0.5f;
 
     vec3 FinalColor = vec3(0.f);

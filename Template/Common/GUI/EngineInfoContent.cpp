@@ -30,7 +30,7 @@ namespace GUI
         using std::placeholders::_1;
         static int numOrbitLights = 8;
 //        numOrbitLights = Engine::GetCurrentScene()->GetNumActiveLights();
-        constexpr float orbitRadius = 1.5f;
+        constexpr float orbitRadius = 3.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
 
         static float firstOrbitLightRadian = 0.f;
