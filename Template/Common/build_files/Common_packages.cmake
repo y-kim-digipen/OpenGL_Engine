@@ -9,3 +9,6 @@ find_package( GLEW REQUIRED )
 
 find_package(Threads REQUIRED)
 find_package(X11 REQUIRED)
+
+#add_link_options(-lSOIL)
+add_compile_options(-Wall -Wextra -pedantic -Werror)

@@ -3,13 +3,14 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: OBJReader.h
-Purpose: Header file of OBJReader
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Pushpak Karnick, Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Header file for OBJReader
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
+
 #ifndef SIMPLE_SCENE_OBJREADER_H
 #define SIMPLE_SCENE_OBJREADER_H
 

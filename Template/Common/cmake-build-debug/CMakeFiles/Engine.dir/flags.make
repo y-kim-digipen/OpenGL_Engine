@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yoonki/Desktop/CS300/Template/Common/../Common -I/home/yoonki/Desktop/CS300/Template/Common/../Common/shaders -I/home/yoonki/Desktop/CS300/Template/Common/../External/imgui-1.84.2
+CXX_INCLUDES = -I/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common -I/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../Common/shaders -I/home/yoonki/CLionProjects/OpenGL_Engine/Template/Common/../External/imgui-1.84.2
 
 CXX_FLAGS = -g -Wall -Wextra -pedantic -Werror -std=gnu++17
 

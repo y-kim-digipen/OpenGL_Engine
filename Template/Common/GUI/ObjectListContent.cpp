@@ -1,6 +1,15 @@
-//
-// Created by yoonki on 9/16/21.
-//
+/* Start Header -------------------------------------------------------
+Copyright (C) 2021 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the prior written
+consent of DigiPen Institute of Technology is prohibited.
+File Name: ObjectListContent.cpp
+Purpose: Source file for ObjectListContent
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
+End Header --------------------------------------------------------*/
 
 #include "ObjectListContent.h"
 
@@ -8,6 +17,7 @@
 #include "GUIWindow.h"
 #include "ColorSet.h"
 #include "ObjectDetailContent.h"
+#include "SceneBase.h"
 
 namespace GUI{
 
@@ -41,7 +51,7 @@ namespace GUI{
             if(!GUIManager.HasWindow(objNameStr)){
                 if(ImGui::Button("  Detail  ")){
                     auto pWindow = GUIManager.AddWindow(objNameStr);
-                    pWindow->AddFlag(ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoBackground);
+                    pWindow->AddFlag(ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize );
                     pWindow->AddContent((objNameStr + " detail").c_str(), new ObjectDetailContent(obj_itr.second));
                     pWindow->SetCanClose(false);
                 }
@@ -60,5 +70,4 @@ namespace GUI{
             ImGui::PopID();
         }
     }
-
 }

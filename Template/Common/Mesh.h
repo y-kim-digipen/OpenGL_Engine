@@ -2,13 +2,13 @@
 Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
-File Name: Mesh.h
-Purpose: Header file of mesh
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+File Name: Mesh.h6
+Purpose: Header file for Mesh
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #ifndef SIMPLE_OBJ_SCENE_MESH_H
 #define SIMPLE_OBJ_SCENE_MESH_H
@@ -100,6 +100,8 @@ public:
 
     [[nodiscard]] DrawType GetDrawType() const;
     void SetDrawType(DrawType drawType);
+    void ChangeUVType(Mesh::UVType newType);
+    Mesh::UVType GetCurrentUsingCPUMeshUV() const;
 
 private:
     void IndexingProceduralMesh(int stacks, int slices);
@@ -112,10 +114,14 @@ private:
     std::vector<glm::vec3>    vertexNormals, vertexNormalDisplay;
     std::vector<glm::vec3>    vertexFaceNormals, vertexFaceNormalsDisplay;
 
+    std::map<Mesh::UVType, std::vector<glm::vec2>> preCalculatedUVs;
+
     glm::vec3               boundingBox[2];
     GLfloat                 normalLength;
 
     DrawType                drawType = DrawType::TRIANGLE_STRIP;
+
+    Mesh::UVType            mCurrentUV;
 
     std::string mName;
 public:

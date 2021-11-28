@@ -1,11 +1,22 @@
 cmake_minimum_required( VERSION 3.9 )
 project( Engine )
 
-include( ../Common/build_files/Common_packages.cmake )
+set( CMAKE_CXX_STANDARD 17 )
+set( OpenGL_GL_PREFERENCE GLVND)
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GLFW REQUIRED glfw3)
+find_package( glfw3 REQUIRED )
+find_package( OpenGL REQUIRED )
+find_package( GLEW REQUIRED )
+
+find_package(Threads REQUIRED)
+find_package(X11 REQUIRED)
+
+#add_link_options(-lSOIL)
+add_compile_options(-Wall -Wextra -pedantic -Werror)
 
 set( TARGET_NAME Engine )
-
-add_compile_options(-Wall -Wextra -pedantic -Werror)
 
 add_executable( ${TARGET_NAME}
         ../Common/main.cpp
@@ -69,10 +80,6 @@ add_executable( ${TARGET_NAME}
         ../Common/Camera.h
         ../Common/SceneBase.cpp
         ../Common/Light.h
-        VAOManager.cpp
-        VAOManager.h
-        VBOManager.cpp
-        VBOManager.h
         #GUI stuffs begin
         ../Common/GUI/GUIManager.h
         ../Common/GUI/GUIManager.cpp
@@ -86,11 +93,27 @@ add_executable( ${TARGET_NAME}
         ../Common/GUI/EngineInfo.h
         ../Common/GUI/ObjectListContent.cpp
         ../Common/GUI/ObjectListContent.h
+        #GUI stuffs end
+
         GUI/ColorSet.h
         GUI/ObjectDetailContent.cpp
         GUI/ObjectDetailContent.h
-        #GUI stuffs end
-)
+        VAOManager.cpp
+        VAOManager.h
+        VBOManager.cpp
+        VBOManager.h
+        UBO.cpp
+        UBO.h
+        GUI/LightListContent.cpp
+        GUI/LightListContent.h
+        GUI/LightDetailContent.cpp
+        GUI/LightDetailContent.h
+        Environment.h
+        TextureManager.cpp
+        TextureManager.h
+        TextureObject.cpp
+        TextureObject.h
+        GUI/EngineInfoContent.cpp GUI/EngineInfoContent.h TestScene.cpp FBO.cpp FBO.h CubeObject.cpp CubeObject.h CubeCaptureCamera.cpp CubeCaptureCamera.h)
 
 # Set target properties
 target_include_directories( ${TARGET_NAME} PUBLIC ${OPENGL_INCLUDE_DIR} )
@@ -102,10 +125,8 @@ target_include_directories( ${TARGET_NAME} PUBLIC "../External/imgui-1.84.2/" )
 
 #target_include_directories( common_lib PUBLIC /usr/local/include/eigen3/
 #        /usr/local/include/nanovg/src/ )
-#target_link_libraries( common_lib /usr/local/lib/libnanogui.so /usr/local/lib/libSOIL.a )
 
-
-target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} )
+target_link_libraries( ${TARGET_NAME} ${GLEW_LIBRARIES}  ${GLFW_LIBRARIES} -lSOIL )
 target_link_libraries( ${TARGET_NAME} ${OPENGL_opengl_LIBRARY}
         ${OPENGL_glu_LIBRARY} ${OPENGL_glx_LIBRARY} )
 target_link_libraries(${CMAKE_PROJECT_NAME}

@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: Shader.cpp
-Purpose: Source file of Shader
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Source file for Shader
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #include <iostream>
 #include <fstream>
@@ -31,12 +31,16 @@ void Shader::deleteProgram()
 
 Shader::~Shader()
 {
-//    deleteProgram();
+    deleteProgram();
 }
 
 bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std::pair<unsigned int, std::string>>& shaderTypePathPairs)
 {
+    std::cout << "Loading " << mName << std::endl;
     mProgramID = glCreateProgram();
+//    mUniformVarBuffer.clear();
+    mUniforms.clear();
+    mHasError = true;
     if (mProgramID == 0)
     {
         std::cerr << "Failed to create shader!" <<std::endl;
@@ -79,7 +83,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
                     logContent = new char[logLength];
                     int writtenLogLength;
                     glGetShaderInfoLog(shaderID, logLength, &writtenLogLength, logContent);
-                    std::cerr << "================Error Message================\n\t"<<logContent << std::endl;
+                    std::cerr << "================Error Message================\n"<<logContent << std::endl;
                     delete[] logContent;
                 }
                 deleteProgram();
@@ -118,6 +122,7 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     mShaderPaths = shaderTypePathPairs;
     glUseProgram(mProgramID);
 
+
     //setting attribute infos
     GLint attributeCount;
     glGetProgramiv(mProgramID, GL_ACTIVE_ATTRIBUTES, &attributeCount);
@@ -150,13 +155,19 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
                 datasize = 1;
                 break;
             }
+            case GL_FLOAT_VEC2:
+            {
+                dataType = GL_FLOAT;
+                datasize = 2;
+                break;
+            }
             default:{
                 throw std::logic_error("Trying to send unknown type to shader attrib");
             }
 
 
         }
-        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, static_cast<int>(datasize)});
+        attributeInfos.push_back(AttributeInfo{attribLocation, name, dataType, static_cast<GLint>(datasize)});
     }
     mAttributeInfos = attributeInfos;
     mAttributeInfoID = Engine::GetVAOManager().GetAttribID(mAttributeInfos);
@@ -183,6 +194,10 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
         glGetActiveUniform(mProgramID, idx, static_cast<GLsizei>(uniformVarName.length()), &actualLength, &uniformArraySize, &uniformType,uniformVarName.data());
         uniformVarName.resize(actualLength);
 
+        if(uniformVarName.find("Block") <=uniformVarName.length())
+        {
+            continue;
+        }
         UniformAttribute currentUniformAttribute;
         currentUniformAttribute.mOffset = curOffset;
         currentUniformAttribute.mType = static_cast<DataType>(uniformType);
@@ -270,6 +285,8 @@ bool Shader::CreateProgramAndLoadCompileAttachLinkShaders(const std::vector<std:
     }
     currentUniformVarBuffer.resize(curOffset);
     glUseProgram(0);
+    mHasError = false;
+    std::cout << "\tPID:" << mProgramID <<std::endl;
     return true;
 }
 
@@ -441,7 +458,13 @@ void Shader::SetAllUniforms(const std::string& objName)
 
 void Shader::Reload()
 {
+    Engine::SkipFrame(1);
+    deleteProgram();
     CreateProgramAndLoadCompileAttachLinkShaders(mShaderPaths);
+}
+
+Shader::Shader([[maybe_unused]]const Shader &other) {
+    std::cerr << "Refer copy constructor called" << std::endl;
 }
 
 Shader::Shader(Shader &&other) {
@@ -454,6 +477,16 @@ Shader::Shader(Shader &&other) {
     mAttributeInfos = std::move(other.mAttributeInfos);
 
 //    CreateProgramAndLoadCompileAttachLinkShaders(other.mShaderPaths, !other.mUniforms.empty());
+}
+
+Shader &Shader::operator=([[maybe_unused]]const Shader &other) {
+    std::cerr << "Refer copy called" << std::endl;
+    return *this;
+}
+
+Shader &Shader::operator=([[maybe_unused]]Shader &&other) {
+    std::cerr << "rRefer copy called" << std::endl;
+    return *this;
 }
 
 AttributeInfoContainer &Shader::GetAttribInfos() {
@@ -473,5 +506,20 @@ void Shader::DeleteShaderBuffer(const std::string &objectName) {
 
 GLuint Shader::GetAttributeID() const {
     return mAttributeInfoID;
+}
+
+void Shader::bindUniformBlockToBindingPoint(const std::string &uniformBlockName, const GLuint bindingPoint) const {
+    const auto blockIndex = glGetUniformBlockIndex(mProgramID, uniformBlockName.c_str());
+    if (blockIndex != GL_INVALID_INDEX) {
+        glUniformBlockBinding(mProgramID, blockIndex, bindingPoint);
+    }
+}
+
+bool Shader::HasError() {
+    return mHasError;
+}
+
+std::string Shader::GetName() {
+    return mName;
 }
 

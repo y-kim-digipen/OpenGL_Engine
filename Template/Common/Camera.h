@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: Camera.h
-Purpose: Header file of camera
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Header file for Camera
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #ifndef ENGINE_CAMERA_H
 #define ENGINE_CAMERA_H
@@ -19,6 +19,7 @@ End Header --------------------------------------------------------*/
 class Camera {
 public:
     Camera(void);
+    ~Camera() = default;
     Camera(const glm::vec3& E, const glm::vec3& look, const glm::vec3& vp,
            float fov, float aspect, float near, float far);
     [[nodiscard]] glm::vec3 Eye(void) const;
@@ -40,12 +41,12 @@ public:
     glm::mat4 GetPerspectiveMatrix() const;
     glm::mat4 GetOrthogonalMatrix() const;
 
+    glm::mat4 GetCubeMapMatrix();
+
     glm::vec3 GetEyePosition() const;
     void SetEyePosition(const glm::vec3& pos);
 
-//    virtual void SetupBuffer(Demo*);
-    virtual void Update();
-//    virtual void Unload() {}
+    void Update();
 private:
     glm::vec3 eye;
     glm::vec3 back, right, up;
@@ -53,7 +54,6 @@ private:
     float fov;
     GLuint m_vaoid = static_cast<GLuint>(-1);
     GLuint m_ebo_hdl = static_cast<GLuint>(-1);
-//    std::unique_ptr<Shader> mCameraFrustrumShader = std::make_unique<Shader>();
 };
 
 

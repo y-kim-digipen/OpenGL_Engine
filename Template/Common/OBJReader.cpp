@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: OBJReader.cpp
-Purpose: Source file of OBJReader
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Pushpak Karnick, Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Source file for OBJReader
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #include <iostream>
 #include <cstring>
@@ -72,19 +72,25 @@ double OBJReader::ReadOBJFile(std::string filepath, Mesh *pMesh,
         break;
     }
 
-    auto endTime = std::chrono::high_resolution_clock::now();
 
-    double timeDuration = std::chrono::duration< double, std::milli >( endTime - startTime ).count();
-
-    std::cout << "OBJ file: " << filepath << " read in "
-              << timeDuration
-              << "  milli seconds." << std::endl;
 
 
     // Now calculate vertex normals
     _currentMesh->calcVertexNormals(bFlipNormals);
     _currentMesh->calcFaceNormals(bFlipNormals);
-    _currentMesh->calcUVs(Mesh::CYLINDRICAL_UV);
+    if(_currentMesh->vertexUVs.empty()) //if file has its own UV
+    {
+        _currentMesh->calcUVs(Mesh::CYLINDRICAL_UV);
+        _currentMesh->calcUVs(Mesh::SPHERICAL_UV);
+        _currentMesh->calcUVs(Mesh::CUBE_MAPPED_UV);
+        _currentMesh->calcUVs(Mesh::PLANAR_UV);
+    }
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    double timeDuration = std::chrono::duration< double, std::milli >( endTime - startTime ).count();
+    std::cout << "OBJ file: " << filepath << " read in "
+              << timeDuration
+              << "  milli seconds." << std::endl;
 
     return timeDuration;
 }
@@ -260,6 +266,24 @@ void OBJReader::ParseOBJRecord( char *buffer, glm::vec3 &min, glm::vec3 &max )
                 vNormal[2] = static_cast<GLfloat &&>(atof(token));
 
                 _currentMesh->vertexNormals.push_back( glm::normalize(vNormal) );
+            }
+            else if(token[1] == 't')
+            {
+                glm::vec2 vUV;
+
+                token = strtok( nullptr, delims );
+                if( token == nullptr )
+                    break;
+
+                vUV[0] = static_cast<GLfloat &&>(atof(token));
+
+                token = strtok( nullptr, delims );
+                if( token == nullptr )
+                    break;
+
+                vUV[1] = static_cast<GLfloat &&>(atof(token));
+
+                _currentMesh->vertexUVs.push_back(vUV);
             }
 
             break;

@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: Mesh.cpp
-Purpose: Source file of mesh
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Source file for Mesh
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #include <iostream>
 #include <set>
@@ -244,7 +244,7 @@ int Mesh::calcVertexNormals(GLboolean bFlipNormals)
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-void Mesh::calcVertexNormalsForDisplay([[maybe_unused]]GLboolean bFlipNormals)
+void Mesh::calcVertexNormalsForDisplay([[maybe_unused]] GLboolean bFlipNormals)
 {
     GLuint numVertices = getVertexCount();
     vertexNormalDisplay.resize(numVertices * 2, glm::vec3(0.0f));
@@ -368,20 +368,20 @@ int Mesh::calcUVs( Mesh::UVType uvType )
                 break;
 
             case Mesh::CYLINDRICAL_UV:
-                theta = glm::degrees( static_cast<float>( atan2(centroidVec.y, centroidVec.x ) ) );
+                theta = glm::degrees( static_cast<float>( atan2(centroidVec.z, centroidVec.x ) ) );
                 theta += 180.0f;
 
-                z = (centroidVec.z + 1.0f) * 0.5f;
+                z = (centroidVec.y + 1.0f) * 0.5f;
 
                 uv.x = theta / 360.0f;
                 uv.y = z;
                 break;
 
             case Mesh::SPHERICAL_UV:
-                theta = glm::degrees( static_cast<float>(glm::atan(centroidVec.y, centroidVec.x )) );
+                theta = glm::degrees( static_cast<float>(glm::atan(centroidVec.z, centroidVec.x )) );
                 theta += 180.0f;
 
-                z = centroidVec.z;
+                z = centroidVec.y;
                 phi = glm::degrees(glm::acos(z / centroidVec.length() ));
 
                 uv.x = theta / 360.0f;
@@ -392,10 +392,10 @@ int Mesh::calcUVs( Mesh::UVType uvType )
                 uv = calcCubeMap(centroidVec);
                 break;
         }
-
         vertexUVs.push_back( uv );
     }
-
+    preCalculatedUVs.insert(std::make_pair(uvType, vertexUVs));
+    mCurrentUV = uvType;
     return rFlag;
 }
 
@@ -581,6 +581,19 @@ void Mesh::MakeProceduralSphere(int stacks, int slices) {
     boundingBox[0] = glm::vec3(-0.5, -0.5, -0.5);
     boundingBox[1] = glm::vec3(0.5, 0.5, 0.5);
     drawType = DrawType::TRIANGLES;
+}
+
+void Mesh::ChangeUVType(Mesh::UVType newType) {
+    if(newType == mCurrentUV){
+        return;
+    }
+    vertexUVs.clear();
+    vertexUVs = preCalculatedUVs[newType];
+    Engine::GetVBOManager().ChangeVBOData(mName, "vUV", GL_ARRAY_BUFFER, vertexUVs.size() * sizeof(glm::vec2), (GLvoid*)vertexUVs.data());
+}
+
+Mesh::UVType Mesh::GetCurrentUsingCPUMeshUV() const {
+    return mCurrentUV;
 }
 
 

@@ -1,15 +1,6 @@
-/* Start Header -------------------------------------------------------
-Copyright (C) 2021 DigiPen Institute of Technology.
-Reproduction or disclosure of this file or its contents without the prior written
-consent of DigiPen Institute of Technology is prohibited.
-File Name: ComponentManager.inl
-Purpose: Inline file of ComponentManager
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
-End Header --------------------------------------------------------*/
+//
+// Created by yoonki on 9/11/21.
+//
 #include <iostream>
 #include "ComponentManager.h"
 
@@ -44,7 +35,7 @@ bool ComponentManager<ComponentType>::RemoveComponent(const std::string &nameStr
     //for debugging purpose
     //todo change to meaningful error message
     if(validate_sizes() == false){
-        throw(std::logic_error("Trying to remove " + nameStr + "does not exist!"));
+        throw(std::logic_error("Something went wrong! From ComponentManager.inl RemoveComponent Func"));
     }
     return true;
 }
@@ -57,7 +48,7 @@ bool ComponentManager<ComponentType>::validate_sizes() {
 template<typename ComponentType>
 size_t ComponentManager<ComponentType>::Size() const {
     if(validate_sizes() == false){
-        throw(std::logic_error("From ComponentManager::Size(), This does not have to be happen"));
+        throw(std::logic_error("Something went wrong! From ComponentManager.inl Size Func"));
     }
     return mNameList.size();
 }

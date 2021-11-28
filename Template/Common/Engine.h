@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: Engine.h
-Purpose: Header file of engine
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Header file for Engine
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #ifndef SIMPLE_SCENE_ENGINE_H
 #define SIMPLE_SCENE_ENGINE_H
@@ -28,15 +28,28 @@ End Header --------------------------------------------------------*/
 
 #include "Color.h"
 #include "Mesh.h"
-#include "SceneBase.h"
+//#include "SceneBase.h"
 #include "Shader.h"
 #include "VAOManager.h"
 #include "VBOManager.h"
+#include "UBO.h"
+#include "Environment.h"
+#include "TextureManager.h"
+#include "FBO.h"
 
+#define ENGINE_SUPPORT_MAX_LIGHTS 16 /*Should be equal to shader max light variable*/
+#define DPI  1.f
+class SceneBase;
 class GLFWwindow;
+
+namespace GUI
+{
+    class EngineInfoContent;
+}
 
 class Engine
 {
+    friend GUI::EngineInfoContent;
 public:
     Engine();
 
@@ -63,10 +76,13 @@ public:
 
     static VAOManager& GetVAOManager();
     static VBOManager& GetVBOManager();
+    static TextureManager& GetTextureManager();
 
     static SceneBase* GetCurrentScene();
     static std::string GetTitleName();
     static float GetFPS();
+
+    static void SkipFrame(int Frames);
 private:
     static void PreRender();
     static void Render();
@@ -75,16 +91,21 @@ private:
     static void SetupScenes();
     static void SetupShaders();
     static void SetupMeshes();
+    static void SetupFBO();
     static void SetupGUI();
+
+    static void SetupTextures();
 
     static void GLFWErrorCallback(int, const char* err_str);
     static void KeyboardInputCallback(GLFWwindow*, int key, [[maybe_unused]] int keyCode, int action, [[maybe_unused]] int modifier);
     //static void MouseButtonCallback(GLFWwindow*, int button, int action, [[maybe_unused]] int modifier);
     //static void MouseScrollCallback(GLFWwindow*, double, double yOffset)
-
+    static void SwapToMainWindow();
+    static void SwapToGUIWindow();
 private:
     inline static std::string mTitleStr;
     inline static GLFWwindow* m_pWindow;
+    inline static GLFWwindow* m_pGUIWindow;
     inline static glm::vec2 mWinSize;
     inline static Color mClearColor;
 
@@ -94,6 +115,7 @@ private:
 
     inline static ComponentManager<Mesh> mMeshManager;
     inline static ComponentManager<Shader> mShaderManager;
+    inline static TextureManager mTextureManager;
 
     inline static VAOManager mVAOManager;
     inline static VBOManager mVBOManager;
@@ -102,4 +124,15 @@ private:
     inline static float FPS;
 
     inline static int TargetFPS = 30;
+
+    inline static UBO lightUBO;
+    inline static UBO environmentUBO;
+
+    inline static glm::vec3 GlobalAmbientColor = glm::vec3(0.3f);
+    inline static glm::vec3 FogColor = glm::vec3(0.f);
+
+    inline static int leftSkipFrames = 0;
+public:
+    inline static FBO FSQ_FBO;
+    inline static FBO EnvironmentMappingFBO;
 };

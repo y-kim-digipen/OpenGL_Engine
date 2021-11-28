@@ -2,16 +2,21 @@
 Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
-File Name: VBOManager.cpp
-Purpose: Source file of VBOManager
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+File Name: VBOManger.cpp
+Purpose: Source file for VBOManger
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
+
 #include <GL/glew.h>
+
 #include "VBOManager.h"
+
+
+
 #include "Mesh.h"
 
 void VBOManager::SetUpVBO(Mesh* pMesh) {
@@ -81,5 +86,19 @@ std::pair<std::map<std::string, GLuint>, GLuint> &VBOManager::GetVBOInfo(std::sh
 void VBOManager::CleanUp() {
     for(const auto& vboInfo : mVBOInfos){
         glDeleteBuffers(1, &vboInfo.second.second);
+    }
+}
+
+void VBOManager::ChangeVBOData(const std::string &meshName, const std::string &attribName, GLenum bufferType,
+                               GLuint bufferSize, GLvoid* data) {
+    GLuint vbo = mVBOInfos[meshName].first[attribName];
+    if(vbo > 0)
+    {
+        glDeleteBuffers(1, &vbo);
+        GLuint newVBO;
+        glGenBuffers(1, &newVBO);
+        glBindBuffer(bufferType, newVBO);
+        glBufferData(bufferType, bufferSize, data, GL_STATIC_DRAW);
+        mVBOInfos[meshName].first[attribName] = newVBO;
     }
 }

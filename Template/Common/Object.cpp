@@ -3,12 +3,12 @@ Copyright (C) 2021 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the prior written
 consent of DigiPen Institute of Technology is prohibited.
 File Name: Object.cpp
-Purpose: Source file of object
-Language: c++, g++
-Platform: linux_amd64, opengl 4.1 support gpu required
-Project: y.kim_CS300_1
-Author: Yoonki Kim, 180002421, y.kim
-Creation date: 10/1/21
+Purpose: Source file for Object
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_2
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Nov 7, 2021
 End Header --------------------------------------------------------*/
 #include "Object.h"
 
@@ -18,18 +18,34 @@ End Header --------------------------------------------------------*/
 #include <iostream>
 #include "Engine.h"
 #include "Shader.h"
+#include "SceneBase.h"
+#include "Camera.h"
+#include "CubeCaptureCamera.h"
+
 Object::Object(const std::string& name) : Object(name, std::shared_ptr<Mesh>(), std::shared_ptr<Shader>()){
 
 }
 
 Object::Object(const std::string& name, std::shared_ptr<Mesh> pMesh, std::shared_ptr<Shader> pShader)
-    : m_pMesh(pMesh), m_pShader(pShader), mObjectName(name),
-      m_MatrixCacheDirty(true), mToWorldMatrix(1.f), m_position(), m_scale(1.f), m_rotation(0.f) {
+    : m_pMesh(pMesh), m_pShader(pShader), mObjectName(name), m_MatrixCacheDirty(true),mToWorldMatrix(1.f),
+      m_position(), m_scale(1.f), m_rotation(0.f), mEmissiveColor(Color(0.f)),  mUVType(Mesh::PLANAR_UV) {
     if(m_pShader){
         m_pShader->SetShaderBuffer(mObjectName);
     }
+    SetColor(mEmissiveColor);
     mDoVertexNormalDrawing = false;
     mDoFaceNormalDrawing = false;
+    mUsingTexture = true;
+    mUsingGPUUV = true;
+    mFitToBox = true;
+
+    mTextureSlots.resize(2);
+
+    mTextureSlots[0] = "tex_object0";
+    mTextureSlots[1] = "tex_object1";
+
+    mDoEnvironmentMapping = false;
+    mEnvironmentMappingCam = nullptr;
 }
 
 Object::Object(const std::string& name, const std::string &meshStr, const std::string &shaderStr)
@@ -37,6 +53,15 @@ Object::Object(const std::string& name, const std::string &meshStr, const std::s
     mMeshName = meshStr;
     mShaderName = shaderStr;
 }
+
+Object::~Object() {
+    std::cout << "[Deleting Object] " << mObjectName << std::endl;
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        delete mEnvironmentMappingCam;
+    }
+}
+
 
 void Object::Init() {
     //todo change this after mesh and shader implementation is completed
@@ -50,15 +75,19 @@ void Object::Init() {
 }
 
 void Object::PreRender() {
-    if(mAdditionalFunction != nullptr){
+    mDoRender = ((m_pShader != nullptr) & (m_pMesh != nullptr)) | !m_pShader->HasError();
+
+    if(mAdditionalFunction != nullptr && mUpdateAdditionalFunction){
         mAdditionalFunction();
     }
     //todo just for debugging.
     m_MatrixCacheDirty = true;
     TryCalculateMatrix();
+    SendMeshDataToShader();
 }
 
 void Object::RenderModel() const {
+
     const GLint shaderPID = m_pShader->GetProgramID();
 
     //setting&binding buffer
@@ -66,6 +95,19 @@ void Object::RenderModel() const {
     const GLuint VAOID = Engine::GetVAOManager().GetVAO(m_pShader->GetAttributeID());
 
     auto& VBOInfo = Engine::GetVBOManager().GetVBOInfo(m_pMesh);
+
+    if(mUsingTexture){
+        for(const std::string& textureName : mTextureSlots)
+        {
+            if(textureName.length() == 0)
+            {
+                continue;
+            }
+            TextureObject* pTextureObj = Engine::GetTextureManager().FindTextureByName(textureName);
+            Engine::GetTextureManager().BindTexture(pTextureObj);
+            pTextureObj->SetTextureUniform(m_pShader);
+        }
+    }
 
     glBindVertexArray(VAOID);
     for(auto& attribute : attributeInfos){
@@ -85,14 +127,9 @@ void Object::RenderModel() const {
     //Drawing Logic
     glUseProgram(shaderPID);
     GLint vTransformLoc = glGetUniformLocation(shaderPID, "vertexTransform");
-    if(vTransformLoc < 0){
-        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
-
     GLint vNormalTransformLoc = glGetUniformLocation(shaderPID, "vertexNormalTransform");
-    if(vNormalTransformLoc < 0){
-//        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
+
+
     const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
     //Get matricies
@@ -103,9 +140,19 @@ void Object::RenderModel() const {
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
     glm::mat4 normalMatrix = modelToWorldMatrix;//glm::transpose(glm::inverse(/*viewMatrix * */modelToWorldMatrix));
 
+    if(m_pShader->HasUniform("modelToWorldTransform")) {
+        m_pShader->GetUniformValue<glm::mat4>(GetName(), "modelToWorldTransform")
+                = modelToWorldMatrix;
+    }
+    if(m_pShader->HasUniform("perspectiveMatrix")) {
+        m_pShader->GetUniformValue<glm::mat4>(GetName(), "perspectiveMatrix")
+                = projectionMatrix * viewMatrix;
+    }
+    if( m_pShader->HasUniform("CameraPos_GUIX") ) /*might using phong things...*/{
+        m_pShader->GetUniformValue<glm::vec3>(GetName(), "CameraPos_GUIX") = pCam->Eye();
+    }
 
     m_pShader->SetAllUniforms(mObjectName);
-
 
     glUniformMatrix4fv(vTransformLoc, 1, GL_FALSE, &mvpMatrix[0][0]);
     glUniformMatrix4fv(vNormalTransformLoc, 1, GL_FALSE, &normalMatrix[0][0]);
@@ -154,7 +201,6 @@ void Object::RenderVertexNormal() const {
     glm::mat4 viewMatrix = pCam->GetLookAtMatrix();
     glm::mat4 projectionMatrix = pCam->GetPerspectiveMatrix();
 
-
     glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelToWorldMatrix;
 
     glUniformMatrix4fv(vTransformLoc, 1, GL_FALSE, &mvpMatrix[0][0]);
@@ -184,6 +230,7 @@ void Object::RenderFaceNormal() const {
 
         glBindBuffer(GL_ARRAY_BUFFER, VBOInfo.first[attribute.name]);
         glVertexAttribPointer( attribute.location,
+
                                attribute.DataSize,
                                attribute.DataType,
                                GL_FALSE,
@@ -194,9 +241,6 @@ void Object::RenderFaceNormal() const {
     //Drawing Logic
     glUseProgram(shaderPID);
     GLint vTransformLoc = glGetUniformLocation(shaderPID, "vertexTransform");
-    if(vTransformLoc < 0){
-        std::cerr << "Unable to find uniform variable!" << std::endl;
-    }
     const auto& pCam = Engine::GetCurrentScene()->GetCurrentCamera();
 
     //Get matricies
@@ -219,7 +263,24 @@ void Object::RenderFaceNormal() const {
 }
 
 void Object::Render() const {
+    //Environment Capture part
+    if(mDoEnvironmentMapping)
+    {
+        static const std::vector<std::string> environmentMapStrings =
+                {"rightDiffuseBuffer", "leftDiffuseBuffer", "topDiffuseBuffer", "bottomDiffuseBuffer", "frontDiffuseBuffer", "backDiffuseBuffer" };
+        std::shared_ptr<Camera> originalCamera = Engine::GetCurrentScene()->GetCurrentCamera();
+        Engine::GetCurrentScene()->UseFBO(Engine::EnvironmentMappingFBO.GetFBOHandle(), Engine::EnvironmentMappingFBO.GetFBOSize().first, Engine::EnvironmentMappingFBO.GetFBOSize().second);
+        for(int i = 0; i < 6; ++i)
+        {
+            Engine::EnvironmentMappingFBO.SetAttachment(GL_COLOR_ATTACHMENT0, Engine::GetTextureManager().FindTextureByName(environmentMapStrings[i]));
+            Engine::GetCurrentScene()->SetCamera(mEnvironmentMappingCam->GetCamera(i));
+            Engine::GetCurrentScene()->RenderForEnvironmentMapping();
+        }
+        Engine::GetCurrentScene()->SetCamera(originalCamera);
+        Engine::GetCurrentScene()->UseFBO(Engine::FSQ_FBO.GetFBOHandle(), Engine::GetWindowSize().x, Engine::GetWindowSize().y, false);
+    }
     RenderModel();
+
     if(mDoVertexNormalDrawing){
         RenderVertexNormal();
     }
@@ -244,7 +305,11 @@ bool Object::SetShader(const std::string &shaderStr) {
         m_pShader->SetShaderBuffer(mObjectName);
         mShaderName = shaderStr;
         //todo init shader here
-//        m_pShader->
+        if(m_pShader->HasError())
+        {
+            std::cerr << m_pShader->GetName() << "has error, try to load again!" << std::endl;
+        }
+
     }
     return pShader != nullptr;
 }
@@ -260,7 +325,7 @@ bool Object::SetMesh(const std::string &meshStr) {
 }
 
 bool Object::IsRenderReady() const {
-    return m_pShader && m_pMesh;
+    return mDoRender;
 }
 
 void Object::TryCalculateMatrix() {
@@ -305,11 +370,17 @@ glm::vec3 Object::GetPosition() {
 }
 
 void Object::SetPosition(glm::vec3 position) {
-    m_position = position;
+    const glm::vec3 amount = position - m_position;
+//    m_position = position;
+    AddPosition(amount);
     m_MatrixCacheDirty = true;
 }
 
 void Object::AddPosition(glm::vec3 amount) {
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        mEnvironmentMappingCam->Translate(amount);
+    }
     m_position += amount;
     m_MatrixCacheDirty = true;
 }
@@ -319,11 +390,17 @@ glm::vec3 Object::GetRotation() {
 }
 
 void Object::SetRotation(glm::vec3 rotation) {
-    m_rotation = rotation;
+    const glm::vec3 amount = rotation - m_rotation;
+//    m_rotation = rotation;
+    AddRotation(amount);
     m_MatrixCacheDirty = true;
 }
 
 void Object::AddRotation(glm::vec3 amount) {
+    if(mEnvironmentMappingCam != nullptr)
+    {
+        mEnvironmentMappingCam->Rotate(amount);
+    }
     m_rotation += amount;
     m_MatrixCacheDirty = true;
 }
@@ -344,8 +421,116 @@ void Object::AddScale(glm::vec3 amount) {
 
 void Object::BindFunction(std::function<void(Object *)> func) {
     mAdditionalFunction = std::bind(func, this);
+    mUpdateAdditionalFunction = true;
 }
 
 std::string Object::GetName() const {
     return mObjectName;
+}
+
+void Object::SetColor(Color newColor) {
+    mEmissiveColor = newColor;
+    if(m_pShader->HasUniform("EmissiveColor"))
+    {
+        m_pShader->GetUniformValue<glm::vec3>(mObjectName, "EmissiveColor") = mEmissiveColor.AsVec3();
+    }
+}
+
+void Object::SendMeshDataToShader()
+{
+    if(mUsingGPUUV)
+    {
+        if(!IsRenderReady())
+        {
+            return;
+        }
+        if(m_pShader->HasUniform("ModelScale_GUIX"))
+        {
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "ModelScale_GUIX") = m_pMesh->getModelScale();
+        }
+        if(m_pShader->HasUniform("MinBoundingBox_GUIX"))
+        {
+            const auto& boundingBox = m_pMesh->GetBoundingBox();
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "MinBoundingBox_GUIX") = boundingBox.first;
+            m_pShader->GetUniformValue<glm::vec3>(mObjectName, "MaxBoundingBox_GUIX") = boundingBox.second;
+        }
+        if(m_pShader->HasUniform("UVType_GUIX"))
+        {
+            m_pShader->GetUniformValue<int>(mObjectName, "UVType_GUIX") = static_cast<int>(mUVType);
+        }
+    }
+    else
+    {
+        if(mUVType != m_pMesh->GetCurrentUsingCPUMeshUV())
+        {
+            m_pMesh->ChangeUVType(mUVType);
+        }
+    }
+    if(m_pShader->HasUniform("UsingTexture_GUIX"))
+    {
+        m_pShader->GetUniformValue<GLboolean>(mObjectName, "UsingTexture_GUIX") = mUsingTexture;
+    }
+    if(m_pShader->HasUniform("UsingGPUUV_GUIX"))
+    {
+        m_pShader->GetUniformValue<GLboolean>(mObjectName, "UsingGPUUV_GUIX") = mUsingGPUUV;
+    }
+
+}
+
+void Object::RemoveFunction() {
+    mAdditionalFunction = nullptr;
+}
+
+void Object::SetFunctionUpdate(bool updateStatus) {
+    mUpdateAdditionalFunction = updateStatus;
+}
+
+void Object::SetTextureOption(bool usingTexture, bool usingGPUUV) {
+    mUsingTexture = usingTexture;
+    mUsingGPUUV = usingGPUUV;
+}
+
+void Object::ChangeTexture(int slot, const std::string &textureName) {
+    mTextureSlots[slot] = textureName;
+}
+
+void Object::SetFitToBox(bool option) {
+    mFitToBox = option;
+}
+
+void Object::SetDoEnvironmentMapping(bool option) {
+    if(mDoEnvironmentMapping == option)
+    {
+        std::cout <<"[" << GetName() << "]" << "Environment Mapping option is already set to " << std::boolalpha << option << std::endl;
+        return;
+    }
+    mDoEnvironmentMapping = option;
+    if(mDoEnvironmentMapping == true)
+    {
+        mEnvironmentMappingCam = new CubeCaptureCamera(Engine::GetCurrentScene()->GetObject(GetName()));
+        mTextureSlots.clear();
+        mTextureSlots.resize(6);
+        ChangeTexture(0, "rightDiffuseBuffer");
+        ChangeTexture(1, "leftDiffuseBuffer");
+        ChangeTexture(2, "topDiffuseBuffer");
+        ChangeTexture(3, "bottomDiffuseBuffer");
+        ChangeTexture(4, "frontDiffuseBuffer");
+        ChangeTexture(5, "backDiffuseBuffer");
+    }
+    else
+    {
+        delete mEnvironmentMappingCam;
+        mTextureSlots.clear();
+        mTextureSlots.resize(2);
+        mTextureSlots[0] = "tex_object0";
+        mTextureSlots[1] = "tex_object1";
+    }
+}
+
+bool Object::DoEnvironmentMapping() {
+    return mDoEnvironmentMapping;
+}
+
+CubeCaptureCamera *Object::GetEnvironmentMappingCameras() {
+    return mEnvironmentMappingCam;
 }
