@@ -24,13 +24,13 @@ namespace GUI
         static bool DoRearrangeOrbit = true;
         DoRearrangeOrbit = false;
         static bool firstStart = true;
-        static bool firstStartDoRandLightCol = false;
-        static bool firstStartDoRandomLightType = false;
+        static bool firstStartDoRandLightCol = true;
+        static bool firstStartDoRandomLightType = true;
 
         using std::placeholders::_1;
         static int numOrbitLights = 8;
 //        numOrbitLights = Engine::GetCurrentScene()->GetNumActiveLights();
-        constexpr float orbitRadius = 3.5f;
+        constexpr float orbitRadius = 1.5f;
         constexpr float orbitalMoveSphereRadius = 0.2f;
 
         static float firstOrbitLightRadian = 0.f;

@@ -1,6 +1,15 @@
-//
-// Created by yoonki on 11/20/21.
-//
+/* Start Header -------------------------------------------------------
+Copyright (C) 2021 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the prior written
+consent of DigiPen Institute of Technology is prohibited.
+File Name: FBO.h
+Purpose: Source file for FBO
+Language: C++, g++
+Platform: gcc version 9.3.0/ Linux / Opengl 4.5 supported GPU required
+Project: y.kim_CS300_3
+Author: Yoonki Kim, y.kim,  180002421
+Creation date: Dec 2, 2021
+End Header --------------------------------------------------------*/
 
 #include "FBO.h"
 #include "TextureObject.h"
@@ -60,4 +69,9 @@ std::string FBO::GetAttachmentTextureName(GLenum slot) {
 
 TextureObject *FBO::GetTextureAttachment(GLenum slot) {
     return mAttachments[slot];
+}
+
+FBO::~FBO() {
+    std::cout << "[Deleting FBO] " << mFBOHandle << std::endl;
+    glDeleteFramebuffers(1, &mFBOHandle);
 }

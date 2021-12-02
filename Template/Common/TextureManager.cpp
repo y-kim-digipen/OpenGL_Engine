@@ -45,11 +45,7 @@ TextureManager::CreateTexture(const std::string &textureName, GLint width, GLint
     glCreateTextures(GL_TEXTURE_2D, 1, &textureHandle);
     glBindTexture(GL_TEXTURE_2D, textureHandle);
 
-//    glTextureStorage2D(textureHandle, 6, GL_RGBA32F, width, height);
-//    channel
     glTextureStorage2D(textureHandle, 6, channel, width, height);
-//    glTexImage2D(textureType, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
-
 
     GLuint samplerID;
     glCreateSamplers(1, &samplerID);

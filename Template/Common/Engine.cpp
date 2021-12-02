@@ -353,6 +353,12 @@ void Engine::SetupShaders() {
                                                                   {GL_VERTEX_SHADER,"../shaders/FrenselReflection.vert"},
                                                                   {GL_FRAGMENT_SHADER,"../shaders/FrenselReflection.frag"} });
 
+    pShader = mShaderManager.AddComponent("FrenselPhong", new Shader("FrenselPhong"));
+    pShader->CreateProgramAndLoadCompileAttachLinkShaders({
+                                                                  {GL_VERTEX_SHADER,"../shaders/FrenselPhong.vert"},
+                                                                  {GL_FRAGMENT_SHADER,"../shaders/FrenselPhong.frag"} });
+
+
     pShader->bindUniformBlockToBindingPoint("LightBlock", 1);
 }
 
@@ -477,8 +483,8 @@ TextureManager &Engine::GetTextureManager() {
 
 void Engine::SetupTextures() {
     std::cout << "[Setting Textures]" << std::endl;
-    mTextureManager.CreateTextureFromFile("../textures/metal_roof_diff_512x512.png", "tex_object0", GL_TEXTURE_2D, 0);
-    mTextureManager.CreateTextureFromFile("../textures/metal_roof_spec_512x512.png", "tex_object1", GL_TEXTURE_2D, 1);
+    mTextureManager.CreateTextureFromFile("../textures/metal_roof_diff_512x512.png", "tex_object0", GL_TEXTURE_2D, 10);
+    mTextureManager.CreateTextureFromFile("../textures/metal_roof_spec_512x512.png", "tex_object1", GL_TEXTURE_2D, 11);
 
     mTextureManager.CreateTextureFromFile("../textures/CubeMap/right.jpg", "Right", GL_TEXTURE_2D, 0);
     mTextureManager.CreateTextureFromFile("../textures/CubeMap/left.jpg", "Left", GL_TEXTURE_2D, 1);
@@ -503,7 +509,7 @@ void Engine::SwapToGUIWindow() {
 }
 
 void Engine::SetupFBO() {
-    GLuint environmentMappingFBOResolution = static_cast<GLuint>(mWinSize.x * (DPI));
+    GLuint environmentMappingFBOResolution = static_cast<GLuint>(mWinSize.y * (DPI * 0.5f));
     EnvironmentMappingFBO.Init(environmentMappingFBOResolution, environmentMappingFBOResolution);
     [[maybe_unused]]TextureObject* rightTexture = GetTextureManager().
             CreateTexture("rightDiffuseBuffer", EnvironmentMappingFBO.GetFBOSize().first, EnvironmentMappingFBO.GetFBOSize().second, GL_TEXTURE_2D, 0, GL_RGBA32F);

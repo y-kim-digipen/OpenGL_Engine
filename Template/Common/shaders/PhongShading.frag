@@ -8,8 +8,8 @@ uniform bool UsingTexture_GUIX;
 //Environment
 uniform vec3 EmissiveColor;
 
-layout (binding = 0) uniform sampler2D tex_object0;
-layout (binding = 1) uniform sampler2D tex_object1;
+layout (binding = 10) uniform sampler2D tex_object0;
+layout (binding = 11) uniform sampler2D tex_object1;
 
 struct Enviroment
 {

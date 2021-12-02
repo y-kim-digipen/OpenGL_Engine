@@ -17,7 +17,7 @@ End Header --------------------------------------------------------*/
 using std::placeholders::_1;
 void TestScene::Init() {
     SceneBase::Init();
-    constexpr float orbitRadius = 1.5f;
+    constexpr float orbitRadius = 0.3f;
     [[maybe_unused]]static auto DrawOrbit = [&, initialSetting = true](Object *obj) mutable {
         static std::vector<glm::vec3> orbitLines;
         constexpr int segments = 100;
@@ -100,25 +100,25 @@ void TestScene::Init() {
     //for initializing camera
     SceneBase::Init();
 
-    auto pCentralObj1 = AddObject("CentralObject", "4Sphere", "FrenselReflection");
+    auto pCentralObj1 = AddObject("CentralObject", "4Sphere", "FrenselPhong");
     pCentralObj1->SetTextureOption(true);
     pCentralObj1->SetDoEnvironmentMapping(true);
 
-    auto pCentralObj2 = AddObject("CentralObject2", "Lucy", "RefractionShader");
-    pCentralObj2->SetTextureOption(true);
-    pCentralObj2->SetDoEnvironmentMapping(true);
-    pCentralObj2->SetPosition(glm::vec3(-1.5, 0.f, 0.f));
+//    auto pCentralObj2 = AddObject("CentralObject2", "Lucy", "RefractionShader");
+//    pCentralObj2->SetTextureOption(true);
+//    pCentralObj2->SetDoEnvironmentMapping(true);
+//    pCentralObj2->SetPosition(glm::vec3(-1.5, 0.f, 0.f));
+//
+//    auto pCentralObj3 = AddObject("CentralObject3", "Bunny", "ReflectionShader");
+//    pCentralObj3->SetTextureOption(true);
+//    pCentralObj3->SetDoEnvironmentMapping(true);
+//    pCentralObj3->SetPosition(glm::vec3(1.5, 0.f, 0.f));
 
-    auto pCentralObj3 = AddObject("CentralObject3", "Bunny", "ReflectionShader");
-    pCentralObj3->SetTextureOption(true);
-    pCentralObj3->SetDoEnvironmentMapping(true);
-    pCentralObj3->SetPosition(glm::vec3(1.5, 0.f, 0.f));
-
-    auto pPlaneObj = AddObject("Plane1", "Plane", "PhongShader");
-    pPlaneObj->SetRotation(glm::vec3(-HALF_PI, 0.f, 0.f));
-    pPlaneObj->SetScale(glm::vec3(10.f, 10.f, 1.f));
-    pPlaneObj->SetPosition(glm::vec3(0.f, -0.6f, 0.f));
-    pPlaneObj->SetTextureOption(false);
+//    auto pPlaneObj = AddObject("Plane1", "Plane", "PhongShader");
+//    pPlaneObj->SetRotation(glm::vec3(-HALF_PI, 0.f, 0.f));
+//    pPlaneObj->SetScale(glm::vec3(10.f, 10.f, 1.f));
+//    pPlaneObj->SetPosition(glm::vec3(0.f, -0.6f, 0.f));
+//    pPlaneObj->SetTextureOption(false);
 }
 
 

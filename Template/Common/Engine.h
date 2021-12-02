@@ -38,7 +38,7 @@ End Header --------------------------------------------------------*/
 #include "FBO.h"
 
 #define ENGINE_SUPPORT_MAX_LIGHTS 16 /*Should be equal to shader max light variable*/
-#define DPI  1.f
+#define DPI  0.8f
 class SceneBase;
 class GLFWwindow;
 
